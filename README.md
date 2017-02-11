@@ -2,6 +2,12 @@
 React components and bin for rendering `html`.
 
 ## Components
+- Example:
+
+  ```javascript
+  import Wrapper from 'cat-components/lib/Wrapper';
+  ```
+
 - Wrapper: wrapper for `radium`.
 - router
   - You need to install `react-router`.
