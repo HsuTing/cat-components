@@ -1,5 +1,5 @@
-# Cat-components
-React components
+# Cat-components [![NPM version][npm-image]][npm-url]
+React components and bin for rendering `html`.
 
 ## Components
 - Wrapper: wrapper for `radium`.
@@ -38,3 +38,6 @@ You can use any name, but need to give this name as argument.
 
 ## License
 MIT © [hsuting](http://hsuting.com)
+
+[npm-image]: https://badge.fury.io/js/cat-components.svg
+[npm-url]: https://npmjs.org/package/cat-components
