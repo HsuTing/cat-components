@@ -65,7 +65,8 @@ const radium = component => {
 const redux = (component, options) => {
   const Provider = require('react-redux').Provider;
   const createStore = require('redux').createStore;
-  const reducer = require(options.reducer).default || require(options.reducer);
+  const reducerPath = path.resolve(root, options.reducer);
+  const reducer = require(reducerPath).default || require(reducerPath);
 
   return React.createElement(Provider, {
     store: options.data ? createStore(reducer, options.data) : createStore(reducer)
@@ -90,7 +91,8 @@ const router = (component, options) => {
 }
 
 config.forEach(options => {
-  options.component = require(options.component).default || require(options.component);
+  const componentPath = path.resolve(root, options.component);
+  options.component = require(componentPath).default || require(componentPath);
 
   if(options.router)
     return router(options.component, options);
