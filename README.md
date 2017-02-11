@@ -4,6 +4,7 @@ React components and bin for rendering `html`.
 ## Components
 - Wrapper: wrapper for `radium`.
 - router
+  - You need to install `react-router`.
   - Link: `Link` of `react-router` for `radium`.
 
 ## Bin
