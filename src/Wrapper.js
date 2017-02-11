@@ -4,7 +4,7 @@ import React from 'react';
 import radium from 'radium';
 
 @radium
-export class Wrapper extends React.Component {
+export default class Wrapper extends React.Component {
   static propTypes = {
     children: React.PropTypes.element.isRequired
   }

@@ -10,7 +10,7 @@ import {minify} from 'html-minifier';
 import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 
-import {Wrapper} from './../radium';
+import Wrapper from './../Wrapper';
 
 const root = process.cwd();
 const config = require(path.resolve(root, process.argv[2]));
