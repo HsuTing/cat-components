@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "react",
+    "latest",
+    "stage-0"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    "transform-object-assign",
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "share": "share"
+      }
+    }]
+  ]
+}

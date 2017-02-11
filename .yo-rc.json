@@ -1,0 +1,36 @@
+{
+  "generator-cat": {
+    "promptValues": {
+      "authorName": "hsuting",
+      "authorEmail": "hsuting0106@gmail.com",
+      "authorUrl": "http://hsuting.com",
+      "type": [
+        "website",
+        "npm"
+      ],
+      "subject": "",
+      "url": "",
+      "other": [],
+      "router": true,
+      "redux": true
+    },
+    "plugins": [
+      "react",
+      "websiteNoServer",
+      "router",
+      "redux"
+    ],
+    "subject": "",
+    "url": "",
+    "extension": "",
+    "alias": {
+      "public": "public",
+      "components": "components",
+      "componentsShare": "components/share",
+      "containers": "containers",
+      "reducers": "reducers",
+      "actions": "actions",
+      "stores": "stores"
+    }
+  }
+}
