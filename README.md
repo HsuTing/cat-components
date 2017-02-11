@@ -9,9 +9,12 @@ React components and bin for rendering `html`.
   ```
 
 - Wrapper: wrapper for `radium`.
-- router
+- Link
+  - `Link` of `react-router` for `radium`.
   - You need to install `react-router`.
-  - Link: `Link` of `react-router` for `radium`.
+- GoogleDrive
+  - Use to login `google drive`.
+  - You need to add "https://apis.google.com/js/api.js" to html.
 
 ## Bin
 Use to render `HTML` with `react` and `nunjucks`.
