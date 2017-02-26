@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 'use strict';
 
-import fs from 'fs';
 import path from 'path';
 import process from 'process';
 import nunjucks from 'nunjucks';
 import chalk from 'chalk';
 import {minify} from 'html-minifier';
+import memFs from 'mem-fs';
+import editor from 'mem-fs-editor';
 import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 
@@ -15,9 +16,11 @@ import Wrapper from './../Wrapper';
 const root = process.cwd();
 const config = require(path.resolve(root, process.argv[2]));
 nunjucks.configure(path.resolve(root, './views'));
+const store = memFs.create();
+const fs = editor.create(store);
 
-const copyFile = (html, options) => {
-  options.content = html;
+const render = (component, options) => {
+  options.content = renderToStaticMarkup(component);
 
   const filename = (options.name === 'index' ? '' : options.name + '/') + 'index.html';
   const output = nunjucks.render(
@@ -27,7 +30,7 @@ const copyFile = (html, options) => {
     })
   );
 
-  fs.writeFile(
+  fs.write(
     path.resolve(root, filename),
     minify(output, process.env.NODE_ENV === 'production' ? {
       removeComments: true,
@@ -35,27 +38,15 @@ const copyFile = (html, options) => {
       minifyCSS: true,
       minifyURLs: true,
       minifyJS: true
-    }: {}),
-    err => {
-      if(err)
-        throw err;
-
-      console.log(chalk.green('rendered ') + chalk.cyan(filename));
-    }
+    }: {})
   );
-};
 
-const render = (component, options) => {
-  const html = renderToStaticMarkup(component);
-  if(options.name !== 'index') {
-    fs.mkdir(options.name, err => {
-      if(err)
-        throw err;
+  fs.commit(err => {
+    if(err)
+      throw new Error(err);
 
-      copyFile(html, options);
-    });
-  } else
-    copyFile(html, options);
+    console.log(chalk.green('rendered ') + chalk.cyan(filename));
+  });
 };
 
 const radium = component => {
