@@ -6,7 +6,8 @@
     "lint": "eslint --cache ./src ./bin --ext .js",
     "lint:watch": "esw --cache ./src ./bin --ext .js -w --color",
     "babel": "rm -rf ./lib && babel src --out-dir lib",
-    "babel:watch": "rm -rf ./lib && babel -w src --out-dir lib"
+    "babel:watch": "rm -rf ./lib && babel -w src --out-dir lib",
+    "prepublish": "yarn babel"
   },
   "main": "./lib/index.js",
   "name": "cat-components",
