@@ -2,20 +2,12 @@
 React components and bin for rendering `html`.
 
 ## Components
-- Example:
+You can see [here](http://hsuting.github.io/cat-components) to learn how to use components.
 
-  ```javascript
-  import Wrapper from 'cat-components/lib/Wrapper';
-  ```
-
-- Wrapper: wrapper for `radium`.
+#### List
 - Link
-  - `Link` of `react-router` for `radium`.
-  - You need to install `react-router`.
+- Wrapper
 - GoogleDrive
-  - Use to login `google drive`.
-  - You need to add "https://apis.google.com/js/api.js" to html.
-  - add `client_id` in `props`.
 
 ## Bin
 Use to render `HTML` with `react` and `nunjucks`.

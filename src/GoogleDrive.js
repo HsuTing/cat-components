@@ -11,7 +11,7 @@ export default class GoogleDrive extends React.Component {
   static propTypes = {
     children: React.PropTypes.element.isRequired,
     clientId: React.PropTypes.string.isRequired,
-    updateSigninStatus: React.PropTypes.func,
+    updateSigninStatus: React.PropTypes.func.isRequired,
     authClick: React.PropTypes.func,
     signoutClick: React.PropTypes.func
   }
@@ -27,7 +27,9 @@ export default class GoogleDrive extends React.Component {
     this.updateSigninStatus = this.updateSigninStatus.bind(this);
     this.authClick = this.authClick.bind(this);
     this.signoutClick = this.signoutClick.bind(this);
+  }
 
+  componentDidMount() {
     this.handleClientLoad();
   }
 
@@ -59,22 +61,24 @@ export default class GoogleDrive extends React.Component {
   }
 
   updateSigninStatus(isSignedIn) {
-    if(this.props.updateSigninStatus)
-      this.props.updateSigninStatus(isSignedIn);
-
+    this.props.updateSigninStatus(isSignedIn);
     this.setState({isSignedIn});
   }
 
-  authClick() {
-    if(this.props.authClick)
-      this.props.authClick();
+  authClick(e) {
+    const {authClick} = this.props;
+
+    if(authClick)
+      authClick(e);
 
     gapi.auth2.getAuthInstance().signIn();
   }
 
-  signoutClick() {
-    if(this.props.signoutClick)
-      this.props.signoutClick();
+  signoutClick(e) {
+    const {signoutClick} = this.props;
+
+    if(signoutClick)
+      signoutClick(e);
 
     gapi.auth2.getAuthInstance().signOut();
   }

@@ -1,7 +1,7 @@
 {
   "presets": [
     "react",
-    "latest",
+    "env",
     "stage-0"
   ],
   "plugins": [
@@ -10,7 +10,14 @@
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
-        "share": "share"
+        "public": "public",
+        "components": "components",
+        "componentsShare": "components/share",
+        "containers": "containers",
+        "reducers": "reducers",
+        "actions": "actions",
+        "stores": "stores",
+        "utils": "utils"
       }
     }]
   ]

@@ -6,23 +6,23 @@
       "authorUrl": "http://hsuting.com",
       "type": [
         "website",
-        "npm"
+        "npm",
+        "docs"
       ],
-      "subject": "",
-      "url": "",
+      "subject": "cat components",
+      "url": "http://hsuting.github.io/cat-components",
       "other": [],
-      "router": true,
-      "redux": true
+      "router": false,
+      "redux": false
     },
     "plugins": [
       "react",
       "websiteNoServer",
-      "router",
-      "redux"
+      "docs"
     ],
-    "subject": "",
-    "url": "",
-    "extension": "",
+    "subject": "cat components",
+    "url": "http://hsuting.github.io/cat-components",
+    "extension": "cat-components/",
     "alias": {
       "public": "public",
       "components": "components",
