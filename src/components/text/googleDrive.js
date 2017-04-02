@@ -33,7 +33,7 @@ export default [
   '    const {isSignedIn, info} = this.state;',
   '',
   '    return (',
-  '      <GoogleDrive clientId={clientId}',
+  '      <GoogleDrive clientId=\'test\'',
   '                   updateSigninStatus={this.updateSigninStatus}',
   '      >',
   '        <button>{isSignedIn ? \'Sign out\' : \'Authorize\' }</button>',

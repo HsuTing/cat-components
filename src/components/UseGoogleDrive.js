@@ -5,7 +5,7 @@ import radium from 'radium';
 
 import GoogleDrive from './../GoogleDrive';
 
-const clientId = '490149305457-0ql2dk9sf50gf8j9m1bie940ugm55k2q.apps.googleusercontent.com';
+const clientId = 'clientId';
 
 @radium
 export default class UseGoogleDrive extends React.Component {

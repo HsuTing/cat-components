@@ -17,7 +17,7 @@ export default class Example extends React.Component {
     const {isSignedIn, info} = this.state;
 
     return (
-      &lt;GoogleDrive clientId={clientId}
+      &lt;GoogleDrive clientId=&#x27;test&#x27;
                    updateSigninStatus={this.updateSigninStatus}
       &gt;
         &lt;button&gt;{isSignedIn ? &#x27;Sign out&#x27; : &#x27;Authorize&#x27; }&lt;/button&gt;
