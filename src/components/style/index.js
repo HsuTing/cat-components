@@ -1,18 +1,21 @@
 'use strict';
 
+import color from './../../style/color';
+
 export default {
   root: {
     margin: '30px 10%'
   },
 
   block: {
+    margin: '40px 0px',
     padding: '30px',
-    border: '1px solid #EEEEEE',
+    border: `1px solid ${color.grey}`,
     borderRadius: '5px'
   },
 
   titleRoot: {
-    height: '150px'
+    height: '80px'
   },
 
   title: {
@@ -23,5 +26,9 @@ export default {
     marginRight: '20px',
     height: '70px',
     float: 'left'
+  },
+
+  npm: {
+    margin: '4px 2px'
   }
 };

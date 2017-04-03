@@ -4,6 +4,7 @@ import React from 'react';
 import radium from 'radium';
 
 import GoogleDrive from './../GoogleDrive';
+import Button from './../Button';
 
 const clientId = 'clientId';
 
@@ -32,7 +33,7 @@ export default class UseGoogleDrive extends React.Component {
                      authClick={this.authClick}
                      signoutClick={this.signoutClick}
         >
-          <button>{isSignedIn ? 'Sign out' : 'Authorize' }</button>
+          <Button>{isSignedIn ? 'Sign out' : 'Authorize' }</Button>
         </GoogleDrive>
         {info && info.length > 0 ?
           info.map((data, index) => {

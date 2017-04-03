@@ -2,8 +2,10 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Wrapper from 'cat-components/lib/Wrapper';
+
 import Index from 'components/Index';
+
+import Wrapper from './../Wrapper';
 
 (() => {
   ReactDOM.render(

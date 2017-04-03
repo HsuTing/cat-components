@@ -4,6 +4,11 @@ import React from 'react';
 import radium, {Style as StyleRadium} from 'radium';
 import normalize from 'radium-normalize';
 
+const all = {
+  letterSpacing: '0.8px',
+  lineHeight: '22px'
+};
+
 const a = {
   fontWeight: 'bold',
   color: 'inherit',
@@ -38,7 +43,7 @@ export default class Normalize extends React.Component {
       <style>
         <StyleRadium rules={normalize} />
         <StyleRadium scopeSelector='*'
-                     rules={{lineHeight: '22px'}}
+                     rules={all}
         />
         <StyleRadium scopeSelector='a'
                      rules={a}
