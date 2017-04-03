@@ -64,7 +64,8 @@ export default class GoTo extends React.Component {
       let next_position = total * (1 - func(t)) + end;
 
       if(total > 0 && next_position <= end ||
-         total < 0 && next_position >= end
+        total < 0 && next_position >= end ||
+        total === 0
       ) {
         next_position = end;
         clearInterval(interval);

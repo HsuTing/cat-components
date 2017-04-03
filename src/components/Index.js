@@ -20,7 +20,7 @@ import textButton from './text/button';
 import UseButton from './UseButton';
 import textImg from './text/img';
 import UseImg from './UseImg';
-import textGoTo from './text/goTo.js';
+import textGoTo from './text/goTo';
 import UseGoTo from './UseGoTo';
 
 const components = [{
