@@ -2,7 +2,6 @@
 
 export default [
   '# GoogleDrive',
-  '',
   'Use to login `google drive` and get data from `google drive api`. You need to add `https://apis.google.com/js/api.js` to html.',
   '',
   '#### Props',

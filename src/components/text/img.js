@@ -2,7 +2,6 @@
 
 export default [
   '# Img',
-  '',
   'Combine `a` tag and `img` tag in one component.',
   '',
   '#### Props',

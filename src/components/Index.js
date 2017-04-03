@@ -3,10 +3,12 @@
 import React from 'react';
 import radium from 'radium';
 import Markdown from 'react-markdown';
+import ArrowUpward from 'react-icons/lib/md/arrow-upward';
 
 import Normalize from 'componentsShare/Normalize';
 
 import style from './style/index';
+import GoTo from './../GoTo';
 import Button from './../Button';
 import Img from './../Img';
 
@@ -18,6 +20,8 @@ import textButton from './text/button';
 import UseButton from './UseButton';
 import textImg from './text/img';
 import UseImg from './UseImg';
+import textGoTo from './text/goTo.js';
+import UseGoTo from './UseGoTo';
 
 const components = [{
   name: 'GoogleDrive',
@@ -35,6 +39,10 @@ const components = [{
   name: 'Img',
   component: UseImg,
   text: textImg
+}, {
+  name: 'GoTo',
+  component: UseGoTo,
+  text: textGoTo
 }];
 
 @radium
@@ -45,10 +53,14 @@ export default class Index extends React.Component {
         <Normalize />
 
         <div style={style.titleRoot}>
-          <Img src='http://hsuting.github.io/img/icon.svg'
-               style={style.icon}
-          />
-          <h1 style={style.title}>Cat components</h1>
+          <a href='https://github.com/HsuTing/cat-components'
+             target='_blank'
+          >
+            <Img src='http://hsuting.github.io/img/icon.svg'
+                 style={style.icon}
+            />
+            <h1 style={style.title}>Cat components</h1>
+          </a>
         </div>
 
         <Img link='https://npmjs.org/package/cat-components'
@@ -60,9 +72,12 @@ export default class Index extends React.Component {
         <div>
           {components.map((component, index) => {
             return (
-              <Button key={index}
-                      link={`./#${component.name}`}
-              >{component.name}</Button>
+              <GoTo key={index}
+                    main='body'
+                    target={`#${component.name}`}
+              >
+                <Button>{component.name}</Button>
+              </GoTo>
             );
           })}
         </div>
@@ -78,6 +93,10 @@ export default class Index extends React.Component {
             </div>
           );
         })}
+
+        <GoTo main='body'>
+          <ArrowUpward style={style.arrowUpward} />
+        </GoTo>
       </div>
     );
   }

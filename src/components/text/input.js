@@ -2,7 +2,6 @@
 
 export default [
   '# Input',
-  '',
   'This is `input` tag with using `validator` to check value. The most important thing is that you must install [validator](https://github.com/chriso/validator.js/).',
   '',
   '#### Props',

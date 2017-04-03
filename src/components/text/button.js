@@ -2,7 +2,6 @@
 
 export default [
   '# Button',
-  '',
   'Combine `a` tag and `button` tag in one component with custom style.',
   '',
   '#### Props',
