@@ -9,7 +9,7 @@ import Img from './../Img';
 export default class UseImg extends React.Component {
   render() {
     return (
-      <Img src='http://hsuting.github.io/img/icon.svg' />
+      <Img src='https://hsuting.github.io/img/icon.svg' />
     );
   }
 }

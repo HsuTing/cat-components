@@ -18,7 +18,7 @@ export default [
   'export default class Example extends React.Component {',
   '  render() {',
   '    return (',
-  '      <Img src=\'http://hsuting.github.io/img/icon.svg\' />',
+  '      <Img src=\'https://hsuting.github.io/img/icon.svg\' />',
   '    );',
   '  }',
   '}',

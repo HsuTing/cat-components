@@ -56,7 +56,7 @@ export default class Index extends React.Component {
           <a href='https://github.com/HsuTing/cat-components'
              target='_blank'
           >
-            <Img src='http://hsuting.github.io/img/icon.svg'
+            <Img src='https://hsuting.github.io/img/icon.svg'
                  style={style.icon}
             />
             <h1 style={style.title}>Cat components</h1>
