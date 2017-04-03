@@ -1,7 +1,7 @@
 'use strict';
 
 export default [
-  '# Img',
+  '# [Img](./#Img)',
   'Combine `a` tag and `img` tag in one component.',
   '',
   '#### Props',

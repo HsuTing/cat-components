@@ -1,7 +1,7 @@
 'use strict';
 
 export default [
-  '# GoTo',
+  '# [GoTo](./#GoTo)',
   'Use to scroll main `DOM` to target `DOM` or top of window.',
   '',
   '#### Props',

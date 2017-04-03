@@ -1,7 +1,7 @@
 'use strict';
 
 export default [
-  '# Button',
+  '# [Button](./#Button)',
   'Combine `a` tag and `button` tag in one component with custom style.',
   '',
   '#### Props',
