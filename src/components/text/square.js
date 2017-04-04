@@ -1,7 +1,7 @@
 'use strict';
 
 export default [
-  '# Square',
+  '# [Square](./#Square)',
   'Make a square `DOM`. Remember that you do not set `height` of children `DOM`. If you set `height`, it will overwrite the `height` of `Square`.',
   '',
   '#### Other packages',
