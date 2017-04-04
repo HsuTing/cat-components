@@ -25,6 +25,8 @@ import textGoTo from './text/goTo';
 import UseGoTo from './UseGoTo';
 import textPictureSlideshow from './text/pictureSlideshow';
 import UsePictureSlideshow from './UsePictureSlideshow';
+import textSquare from './text/square';
+import UseSquare from './UseSquare';
 
 const components = [{
   name: 'GoogleDrive',
@@ -50,6 +52,10 @@ const components = [{
   name: 'PictureSlideshow',
   component: UsePictureSlideshow,
   text: textPictureSlideshow
+}, {
+  name: 'Square',
+  component: UseSquare,
+  text: textSquare
 }];
 
 @radium

@@ -2,7 +2,11 @@
 
 export default [
   '# [PictureSlideshow](./#PictureSlideshow)',
-  'Use to make a picture slideshow. You need to install [uuid](https://www.npmjs.com/package/uuid) and [cat-utils](https://github.com/HsuTing/cat-utils).',
+  'Use to make a picture slideshow.',
+  '',
+  '#### Other packages',
+  '- [uuid](https://www.npmjs.com/package/uuid)',
+  '- [cat-utils](https://github.com/HsuTing/cat-utils)',
   '',
   '#### Props',
   '- `index(required)`: This is the index of slideshow. Use this to control which `image` should be shown.',

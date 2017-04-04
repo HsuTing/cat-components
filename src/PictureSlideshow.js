@@ -81,7 +81,6 @@ export default class PictureSlideshowAnimation extends React.Component {
         id
       };
     });
-    eventController.runEvent();
   }
 
   render() {
@@ -153,7 +152,6 @@ export default class PictureSlideshowAnimation extends React.Component {
       id,
       event: resize
     };
-    eventController.runEvent();
     this.eventId.push(id);
   }
 
