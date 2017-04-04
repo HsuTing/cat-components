@@ -3,6 +3,8 @@
 import React from 'react';
 import radium, {StyleRoot} from 'radium';
 import invariant from 'invariant';
+import uuid from 'uuid';
+import eventController from 'cat-utils/lib/event-controller';
 import imgResize from 'cat-utils/lib/imgResize';
 
 import style from './style/pictureSlideshow';
@@ -30,6 +32,7 @@ export default class PictureSlideshowAnimation extends React.Component {
       direction: 'right',
       isAnimation: true
     };
+    this.eventId = [];
 
     this.resize = this.resize.bind(this);
     this.resizeAll = this.resizeAll.bind(this);
@@ -69,6 +72,16 @@ export default class PictureSlideshowAnimation extends React.Component {
 
   componentDidUpdate() {
     this.resizeAll();
+  }
+
+  componentWillUnmount() {
+    this.eventId.forEach(id => {
+      eventController.removeEvent = {
+        name: 'resize',
+        id
+      };
+    });
+    eventController.runEvent();
   }
 
   render() {
@@ -128,13 +141,20 @@ export default class PictureSlideshowAnimation extends React.Component {
   }
 
   resize(e) {
+    const id = uuid.v4();
     const target = e.target;
     const resize = () => {
       imgResize(target);
     };
 
     resize();
-    window.addEventListener('resize', resize);
+    eventController.addEvent = {
+      name: 'resize',
+      id,
+      event: resize
+    };
+    eventController.runEvent();
+    this.eventId.push(id);
   }
 
   resizeAll() {

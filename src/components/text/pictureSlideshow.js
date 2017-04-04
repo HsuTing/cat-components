@@ -2,7 +2,7 @@
 
 export default [
   '# [PictureSlideshow](./#PictureSlideshow)',
-  'Use to make a picture slideshow.',
+  'Use to make a picture slideshow. You need to install `uuid` and `cat-utils`',
   '',
   '#### Props',
   '- `index(required)`: This is the index of slideshow. Use this to control which `image` should be shown.',
