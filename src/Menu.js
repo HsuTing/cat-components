@@ -9,10 +9,8 @@ import style from './style/menu';
 export default class Menu extends React.Component {
   static propTypes ={
     children: React.PropTypes.element.isRequired,
-    menu: React.PropTypes.shape({
-      component: React.PropTypes.func.isRequired,
-      props: React.PropTypes.object
-    }).isRequired,
+    menu: React.PropTypes.element.isRequired,
+    menuStyle: React.PropTypes.object,
     showStyle: React.PropTypes.object,
     hideStyle: React.PropTypes.object,
     delay: React.PropTypes.number
@@ -37,14 +35,8 @@ export default class Menu extends React.Component {
   }
 
   render() {
-    const {children, menu, showStyle, hideStyle, ...props} = this.props;
+    const {children, menu, menuStyle, showStyle, hideStyle, ...props} = this.props;
     const {isShown, addStyle} = this.state;
-    const menuRootStyle = [
-      style.menu,
-      (menu.props || {}).style,
-      isShown ? showStyle : hideStyle,
-      addStyle
-    ];
 
     delete props.delay;
 
@@ -57,13 +49,11 @@ export default class Menu extends React.Component {
           onMouseLeave: this.hideMenu
         })}
 
-        <StyleRoot style={menuRootStyle}
+        <StyleRoot style={[style.menu, menuStyle, (isShown ? showStyle : hideStyle), addStyle]}
                    onMouseEnter={this.showMenu}
                    onMouseLeave={this.hideMenu}
                    onAnimationEnd={this.animationEnd}
-        >
-          {React.createElement(menu.component, menu.props)}
-        </StyleRoot>
+        >{menu}</StyleRoot>
       </div>
     );
   }

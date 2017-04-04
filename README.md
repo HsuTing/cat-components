@@ -1,5 +1,5 @@
 # Cat-components [![NPM version][npm-image]][npm-url]
-React components and bin for rendering `html`.
+Here are `react` components and a bin function to rendering `html` with `react`. All components are build with [radium](https://github.com/FormidableLabs/radium).
 
 ## How to use
 #### Install
@@ -13,7 +13,7 @@ npm install cat-components
 Some components need other packages. You should install those packages by yourself.
 
 #### Use it
-Then you can use those components with `import [component name] from 'cat-components/lib/[component name]';`. You can see [here](https://github.com/HsuTing/cat-components/tree/master/src/components) to learn how to use those components.
+Then you can use those components with `import [component name] from 'cat-components/lib/[component name]';`. You can see [here](http://hsuting.github.io/cat-components) to learn how to use those components.
 
 ## Components
 You can see [here](http://hsuting.github.io/cat-components) to learn how to use components.
