@@ -2,12 +2,12 @@
 
 export default [
   '# [PictureSlideshow](./#PictureSlideshow)',
-  'Use to make a picture slideshow. You need to install `uuid` and `cat-utils`',
+  'Use to make a picture slideshow. You need to install [uuid](https://www.npmjs.com/package/uuid) and [cat-utils](https://github.com/HsuTing/cat-utils).',
   '',
   '#### Props',
   '- `index(required)`: This is the index of slideshow. Use this to control which `image` should be shown.',
   '- `imgs(required)`: This is an array of `image`. It should have `src` to give a link of the `image` and other attributes will be given to `image` as `props`.',
-  '- `type`: Choose the type of `image`. If `type` is `img`, this will use `img` tag as `image`. If it is not, this will use `div` tag as `image`.',
+  '- `type`: Choose the type of `image`. If `type` is `img`, this component will use `img` tag as `image`. If it is not, this component will use `div` tag as `image`.',
   '- `hideAnimation`: This is the animation of hiding `image`.',
   '- `showAnimation`: This is the animation of showing `image`.',
   '',

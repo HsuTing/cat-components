@@ -12,6 +12,7 @@ import GoTo from './../GoTo';
 import Button from './../Button';
 import Img from './../Img';
 
+import text from './text/index';
 import textGoogleDrive from './text/googleDrive';
 import UseGoogleDrive from './UseGoogleDrive';
 import textInput from './text/input';
@@ -86,6 +87,10 @@ export default class Index extends React.Component {
               </GoTo>
             );
           })}
+        </div>
+
+        <div style={style.block}>
+          <Markdown source={text.join('\n')} />
         </div>
 
         {components.map((component, index) => {
