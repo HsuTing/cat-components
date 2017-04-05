@@ -29,6 +29,8 @@ export default class Menu extends React.Component {
       addStyle: {}
     };
 
+    this.isEnter = false;
+    this.toggleMenu = this.toggleMenu.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.hideMenu = this.hideMenu.bind(this);
     this.animationEnd = this.animationEnd.bind(this);
@@ -46,7 +48,8 @@ export default class Menu extends React.Component {
       >
         {React.cloneElement(children, {
           onMouseEnter: this.showMenu,
-          onMouseLeave: this.hideMenu
+          onMouseLeave: this.hideMenu,
+          onClick: this.toggleMenu
         })}
 
         <StyleRoot style={[style.menu, menuStyle, (isShown ? showStyle : hideStyle), addStyle]}
@@ -58,14 +61,24 @@ export default class Menu extends React.Component {
     );
   }
 
+  toggleMenu() {
+    if(!this.isEnter)
+      this.setState({isShown: !this.state.isShown});
+  }
+
   showMenu() {
     clearInterval(this.interval);
+    this.isEnter = true;
+    this.interval = setInterval(() => {
+      this.isEnter = false;
+    }, 500);
     this.setState({isShown: true});
   }
 
   hideMenu() {
     const {delay} = this.props;
 
+    this.isEnter = false;
     this.interval = setInterval(() => {
       this.setState({isShown: false});
     }, delay * 1000);

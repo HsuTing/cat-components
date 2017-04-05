@@ -38,7 +38,7 @@ export default {
       animationName: radium.keyframes({
         '0%': {left: '0px'},
         '100%': {left: '100%'}
-      }, 'pulse')
+      })
     },
 
     left: {
@@ -46,7 +46,7 @@ export default {
       animationName: radium.keyframes({
         '0%': {left: '0px'},
         '100%': {left: '-100%'}
-      }, 'pulse')
+      })
     }
   },
 
@@ -56,7 +56,7 @@ export default {
       animationName: radium.keyframes({
         '0%': {left: '-100%'},
         '100%': {left: '0px'}
-      }, 'pulse')
+      })
     },
 
     left: {
@@ -64,7 +64,7 @@ export default {
       animationName: radium.keyframes({
         '0%': {left: '100%'},
         '100%': {left: '0px'}
-      }, 'pulse')
+      })
     }
   },
 
