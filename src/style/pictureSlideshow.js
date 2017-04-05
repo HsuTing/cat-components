@@ -32,12 +32,12 @@ export default {
     animation: 'x 1s ease-in-out'
   },
 
-  hideAnimation: {
+  hideStyle: {
     right: {
       left: '100%',
       animationName: radium.keyframes({
         '0%': {left: '0px'},
-        '100%': {left: '100%'},
+        '100%': {left: '100%'}
       }, 'pulse')
     },
 
@@ -45,17 +45,17 @@ export default {
       left: '-100%',
       animationName: radium.keyframes({
         '0%': {left: '0px'},
-        '100%': {left: '-100%'},
+        '100%': {left: '-100%'}
       }, 'pulse')
     }
   },
 
-  showAnimation: {
+  showStyle: {
     right: {
       left: '0px',
       animationName: radium.keyframes({
         '0%': {left: '-100%'},
-        '100%': {left: '0px'},
+        '100%': {left: '0px'}
       }, 'pulse')
     },
 
@@ -63,7 +63,7 @@ export default {
       left: '0px',
       animationName: radium.keyframes({
         '0%': {left: '100%'},
-        '100%': {left: '0px'},
+        '100%': {left: '0px'}
       }, 'pulse')
     }
   },

@@ -37,14 +37,14 @@ export default {
   showStyle: Object.assign({}, showStyle, {
     animationName: radium.keyframes({
       '0%': hideStyle,
-      '100%': showStyle,
+      '100%': showStyle
     }, 'pulse')
   }),
 
   hideStyle: Object.assign({}, hideStyle, {
     animationName: radium.keyframes({
       '0%': showStyle,
-      '100%': hideStyle,
+      '100%': hideStyle
     }, 'pulse')
   }),
 

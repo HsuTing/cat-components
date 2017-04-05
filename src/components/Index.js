@@ -22,6 +22,7 @@ const components = [
   'PictureSlideshow',
   'Square',
   'Menu',
+  'Accordion'
 ].map(name => {
   return {
     name,

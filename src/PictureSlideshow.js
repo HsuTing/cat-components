@@ -10,18 +10,18 @@ import imgResize from 'cat-utils/lib/imgResize';
 import style from './style/pictureSlideshow';
 
 @radium
-export default class PictureSlideshowAnimation extends React.Component {
+export default class PictureSlideshowStyle extends React.Component {
   static propTypes = {
     index: React.PropTypes.number.isRequired,
     imgs: React.PropTypes.array.isRequired,
     type: React.PropTypes.string,
-    hideAnimation: React.PropTypes.object,
-    showAnimation: React.PropTypes.object
+    hideStyle: React.PropTypes.object,
+    showStyle: React.PropTypes.object
   }
 
   static defaultProps = {
-    hideAnimation: style.hideAnimation,
-    showAnimation: style.showAnimation
+    hideStyle: style.hideStyle,
+    showStyle: style.showStyle
   }
 
   constructor(props) {
@@ -60,13 +60,13 @@ export default class PictureSlideshowAnimation extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    const {index, imgs, hideAnimation, showAnimation} = this.props;
+    const {index, imgs, hideStyle, showStyle} = this.props;
 
     return (
       nextProps.index !== index ||
       nextProps.imgs !== imgs ||
-      nextProps.hideAnimation !== hideAnimation ||
-      nextProps.showAnimation !== showAnimation
+      nextProps.hideStyle !== hideStyle ||
+      nextProps.showStyle !== showStyle
     );
   }
 
@@ -84,19 +84,19 @@ export default class PictureSlideshowAnimation extends React.Component {
   }
 
   render() {
-    const {imgs, type, hideAnimation, showAnimation, ...props} = this.props;
+    const {imgs, type, hideStyle, showStyle, ...props} = this.props;
     const {direction, index, preIndex} = this.state;
 
     delete props.index;
 
     invariant(
-      hideAnimation.right || hideAnimation.left,
-      'Props "hideAnimation" should have "right" and "left" to make an animation.'
+      hideStyle.right || hideStyle.left,
+      'Props "hideStyle" should have "right" and "left" to make an animation.'
     );
 
     invariant(
-      showAnimation.right || showAnimation.left,
-      'Props "showAnimation" should have "right" and "left" to make an animation.'
+      showStyle.right || showStyle.left,
+      'Props "showStyle" should have "right" and "left" to make an animation.'
     );
 
     return (
@@ -108,9 +108,9 @@ export default class PictureSlideshowAnimation extends React.Component {
           let animation = style.hide;
 
           if(imgIndex === index)
-            animation = showAnimation[direction];
+            animation = showStyle[direction];
           else if(imgIndex === preIndex)
-            animation = hideAnimation[direction];
+            animation = hideStyle[direction];
 
           if(type === 'img')
             return (
