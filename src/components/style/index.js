@@ -1,6 +1,6 @@
 'use strict';
 
-import color from './../../style/color';
+import color, {boxShadow} from './../../style/color';
 
 export default {
   root: {
@@ -41,6 +41,6 @@ export default {
     cursor: 'pointer',
     background: color.blue,
     borderRadius: '50%',
-    boxShadow: '1px 0 5px rgba(0,0,0,0.2)'
+    boxShadow
   }
 };

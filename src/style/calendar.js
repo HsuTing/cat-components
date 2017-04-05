@@ -1,13 +1,13 @@
 'use strict';
 
-import color from './color';
+import color, {boxShadow} from './color';
 
 export default {
   root: {
     maxWidth: '300px',
     borderRadius: '5px',
     background: color.white,
-    boxShadow: '1px 0 5px rgba(0,0,0,0.4)',
+    boxShadow,
     color: color.darkGrey,
     lineHeight: '30px'
   },

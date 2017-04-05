@@ -23,7 +23,8 @@ const components = [
   'Square',
   'Menu',
   'Accordion',
-  'Calendar'
+  'Calendar',
+  'Table'
 ].map(name => {
   return {
     name,

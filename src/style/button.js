@@ -1,6 +1,6 @@
 'use strict';
 
-import color from './color';
+import color, {boxShadow} from './color';
 
 export default {
   root: {
@@ -14,7 +14,7 @@ export default {
     outline: '0px',
     fontWeight: 'normal',
     ':hover': {
-      boxShadow: '1px 0 5px rgba(0,0,0,0.2)'
+      boxShadow
     }
   }
 };

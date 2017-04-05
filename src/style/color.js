@@ -9,3 +9,5 @@ export default {
   grey: '#EEEEEE',
   darkGrey: '#999999'
 };
+
+export const boxShadow = '1px 0 5px rgba(0, 0, 0, 0.2)';

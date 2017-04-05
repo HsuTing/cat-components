@@ -17,6 +17,7 @@ You can see [here](http://hsuting.github.io/cat-components) to learn how to use 
 - Menu
 - Accordion
 - Calendar
+- Table
 
 ## Bin
 Use to render `HTML` with `react` and `nunjucks`.
