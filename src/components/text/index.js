@@ -13,5 +13,7 @@ export default [
   'Some components need other packages. You should install those packages by yourself.',
   '',
   '#### Use it',
-  'Then you can use those components with `import [component name] from \'cat-components/lib/[component name]\';`. You can see [code](https://github.com/HsuTing/cat-components/tree/master/src/components) to learn how to use those components.'
+  'Then you can use those components with `import [component name] from \'cat-components/lib/[component name]\';`. You can see [code](https://github.com/HsuTing/cat-components/tree/master/src/components) to learn how to use those components.',
+  '',
+  'Most components can be used like normal component. As a result, you can use like `style`, `onClick` and so on.'
 ];

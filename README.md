@@ -1,19 +1,5 @@
 # Cat-components [![NPM version][npm-image]][npm-url]
-Here are `react` components and a bin function to rendering `html` with `react`. All components are build with [radium](https://github.com/FormidableLabs/radium).
-
-## How to use
-#### Install
-```sh
-yarn add cat-components
-// or
-npm install cat-components
-```
-
-#### Install other packages
-Some components need other packages. You should install those packages by yourself.
-
-#### Use it
-Then you can use those components with `import [component name] from 'cat-components/lib/[component name]';`. You can see [here](http://hsuting.github.io/cat-components) to learn how to use those components.
+Here are `react` components and a function to rendering `html` with `react`. All components are build with [radium](https://github.com/FormidableLabs/radium).
 
 ## Components
 You can see [here](http://hsuting.github.io/cat-components) to learn how to use components.
@@ -29,6 +15,8 @@ You can see [here](http://hsuting.github.io/cat-components) to learn how to use 
 - PictureSlideshow
 - Square
 - Menu
+- Accordion
+- Calendar
 
 ## Bin
 Use to render `HTML` with `react` and `nunjucks`.

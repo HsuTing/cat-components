@@ -15,7 +15,7 @@
   },
   "main": "./lib/index.js",
   "name": "cat-components",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "react components",
   "author": {
     "name": "hsuting",
@@ -62,6 +62,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^6.10.3",
     "eslint-watch": "^3.0.1",
+    "moment": "^2.18.1",
     "pre-commit": "^1.2.2",
     "radium-normalize": "^2.0.5",
     "react-icons": "^2.2.3",

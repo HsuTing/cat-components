@@ -5,8 +5,7 @@ import radium, {Style as StyleRadium} from 'radium';
 import normalize from 'radium-normalize';
 
 const all = {
-  letterSpacing: '0.8px',
-  lineHeight: '22px'
+  letterSpacing: '0.8px'
 };
 
 const a = {
@@ -33,7 +32,12 @@ const code = {
 };
 
 const li = {
-  margin: '8px 0px'
+  margin: '8px 0px',
+  lineHeight: '24px'
+};
+
+const p = {
+  lineHeight: '24px'
 };
 
 @radium
@@ -59,6 +63,9 @@ export default class Normalize extends React.Component {
         />
         <StyleRadium scopeSelector='li'
                      rules={li}
+        />
+        <StyleRadium scopeSelector='p'
+                     rules={p}
         />
       </style>
     );
