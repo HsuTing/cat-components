@@ -1211,9 +1211,9 @@ caseless@~0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.11.0.tgz#715b96ea9841593cc33067923f5ec60ebda4f7d7"
 
-cat-utils@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/cat-utils/-/cat-utils-0.2.2.tgz#4224341667966d9b703ab7e856437e2001ff20f5"
+cat-utils@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/cat-utils/-/cat-utils-0.2.4.tgz#f9259447cacb7c726e5ad8522a18c4e7cd895124"
 
 center-align@^0.1.1:
   version "0.1.3"

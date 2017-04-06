@@ -79,11 +79,8 @@ export default class Toggle extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const {type, clicked} = this.props;
-
-    if(type === 'radio' && nextProps.clicked !== clicked) {
+    if(nextProps.clicked !== this.props.clicked)
       this.setState({isClicked: nextProps.clicked});
-    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
