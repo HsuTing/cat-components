@@ -9,7 +9,8 @@ export default {
     display: 'inline-block',
     width: '25px',
     height: '25px',
-    color: color.blue
+    color: color.blue,
+    cursor: 'pointer'
   },
 
   icon: {

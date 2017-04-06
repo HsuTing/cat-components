@@ -15,7 +15,7 @@
   },
   "main": "./lib/index.js",
   "name": "cat-components",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "react components",
   "author": {
     "name": "hsuting",
