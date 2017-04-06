@@ -7,17 +7,17 @@ import MenuIcon from 'react-icons/lib/md/menu';
 import style from './style/useMenu';
 import Menu from './../Menu';
 
-const menuStyle = {
+const menuStyles = () => ({
   top: '-230px',
   transformOrigin: '0px 100%'
-};
+});
 
 @radium
 export default class UseMenu extends React.Component {
   render() {
     return (
       <Menu menu={<h4>Menu</h4>}
-            menuStyle={menuStyle}
+            menuStyles={menuStyles}
       >
         <MenuIcon style={style.menu} />
       </Menu>

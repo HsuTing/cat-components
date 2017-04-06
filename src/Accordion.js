@@ -22,17 +22,15 @@ export default class Accordion extends React.Component {
       }
     ).isRequired,
     index: React.PropTypes.number.isRequired,
-    showStyle: React.PropTypes.object,
-    hideStyle: React.PropTypes.object
+    contentStyles: React.PropTypes.func
   }
 
   static defaultProps = {
-    showStyle: style.showStyle,
-    hideStyle: style.hideStyle
+    contentStyles: () => {}
   }
 
   render() {
-    const {index, children, showStyle, hideStyle, ...props} = this.props;
+    const {index, children, contentStyles, ...props} = this.props;
 
     return (
       <div {...props}>
@@ -41,7 +39,8 @@ export default class Accordion extends React.Component {
           const contentStyle = Object.assign({},
             style.content,
             content.props.style,
-            index === itemIndex ? showStyle : hideStyle
+            style.styles(index === itemIndex),
+            contentStyles(index === itemIndex)
           );
 
           return React.cloneElement(item, {},

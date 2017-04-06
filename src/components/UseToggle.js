@@ -21,6 +21,7 @@ export default class UseToggle extends React.Component {
 
     return (
       <div>
+        <h5>Type: radio</h5>
         <div>
           <Toggle type='radio'
                   clicked={value === '1'}
@@ -32,9 +33,20 @@ export default class UseToggle extends React.Component {
           />
         </div>
 
+        <h5>Type: checkbox</h5>
         <div>
           <Toggle checked />
           <Toggle />
+        </div>
+
+        <h5>Type: switch</h5>
+        <div>
+          <Toggle type='switch'
+                  checked
+          />
+        </div>
+        <div>
+          <Toggle type='switch' />
         </div>
       </div>
     );

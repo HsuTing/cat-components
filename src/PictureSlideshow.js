@@ -2,7 +2,6 @@
 
 import React from 'react';
 import radium, {StyleRoot} from 'radium';
-import invariant from 'invariant';
 import uuid from 'uuid';
 import eventController from 'cat-utils/lib/event-controller';
 import imgResize from 'cat-utils/lib/imgResize';
@@ -15,8 +14,14 @@ export default class PictureSlideshowStyle extends React.Component {
     index: React.PropTypes.number.isRequired,
     imgs: React.PropTypes.array.isRequired,
     type: React.PropTypes.string,
-    hideStyle: React.PropTypes.object,
-    showStyle: React.PropTypes.object
+    hideStyle: React.PropTypes.shape({
+      left: React.PropTypes.object.isRequired,
+      right: React.PropTypes.object.isRequired
+    }),
+    showStyle: React.PropTypes.shape({
+      left: React.PropTypes.object.isRequired,
+      right: React.PropTypes.object.isRequired
+    })
   }
 
   static defaultProps = {
@@ -88,16 +93,6 @@ export default class PictureSlideshowStyle extends React.Component {
     const {direction, index, preIndex} = this.state;
 
     delete props.index;
-
-    invariant(
-      hideStyle.right || hideStyle.left,
-      'Props "hideStyle" should have "right" and "left" to make an animation.'
-    );
-
-    invariant(
-      showStyle.right || showStyle.left,
-      'Props "showStyle" should have "right" and "left" to make an animation.'
-    );
 
     return (
       <div {...props}

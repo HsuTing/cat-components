@@ -10,15 +10,12 @@ export default class Menu extends React.Component {
   static propTypes ={
     children: React.PropTypes.element.isRequired,
     menu: React.PropTypes.element.isRequired,
-    menuStyle: React.PropTypes.object,
-    showStyle: React.PropTypes.object,
-    hideStyle: React.PropTypes.object,
+    menuStyles: React.PropTypes.func,
     delay: React.PropTypes.number
   }
 
   static defaultProps = {
-    showStyle: style.showStyle,
-    hideStyle: style.hideStyle,
+    menuStyles: () => {},
     delay: 1
   }
 
@@ -37,8 +34,14 @@ export default class Menu extends React.Component {
   }
 
   render() {
-    const {children, menu, menuStyle, showStyle, hideStyle, ...props} = this.props;
+    const {children, menu, menuStyles, ...props} = this.props;
     const {isShown, addStyle} = this.state;
+    const menuStyle = [
+      style.menu,
+      style.styles(isShown),
+      menuStyles(isShown),
+      addStyle
+    ];
 
     delete props.delay;
 
@@ -52,7 +55,7 @@ export default class Menu extends React.Component {
           onClick: this.toggleMenu
         })}
 
-        <StyleRoot style={[style.menu, menuStyle, (isShown ? showStyle : hideStyle), addStyle]}
+        <StyleRoot style={menuStyle}
                    onMouseEnter={this.showMenu}
                    onMouseLeave={this.hideMenu}
                    onAnimationEnd={this.animationEnd}

@@ -17,17 +17,12 @@ export default {
     animation: 'x 0.5s ease-in-out'
   },
 
-  showStyle: Object.assign({}, showStyle, {
-    animationName: radium.keyframes({
-      '0%': hideStyle,
-      '100%': showStyle
-    })
-  }),
-
-  hideStyle: Object.assign({}, hideStyle, {
-    animationName: radium.keyframes({
-      '0%': showStyle,
-      '100%': hideStyle
-    })
-  })
+  styles: isClicked => Object.assign({},
+    isClicked ? showStyle : hideStyle, {
+      animationName: radium.keyframes({
+        '0%': isClicked ? hideStyle : showStyle,
+        '100%': isClicked ? showStyle : hideStyle
+      })
+    }
+  )
 }

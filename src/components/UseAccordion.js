@@ -37,7 +37,10 @@ export default class UseAccordion extends React.Component {
 
   onClick(index) {
     return e => {
-      this.setState({index});
+      if(index === this.state.index)
+        this.setState({index: -1});
+      else
+        this.setState({index});
     };
   }
 }

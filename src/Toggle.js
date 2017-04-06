@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import radium from 'radium';
+import radium, {StyleRoot} from 'radium';
 import invariant from 'invariant';
 import CheckBoxIcon from 'react-icons/lib/md/check-box';
 import CheckBoxOutlineIcon from 'react-icons/lib/md/check-box-outline-blank';
@@ -11,18 +11,48 @@ import RadioButtonUnchecked from 'react-icons/lib/md/radio-button-unchecked';
 import style from './style/toggle';
 
 @radium
+class Switch extends React.Component {
+  static propTypes = {
+    isClicked: React.PropTypes.bool,
+    buttonStyles: React.PropTypes.func
+  }
+
+  static defaultProps = {
+    isClicked: false,
+    buttonStyles: () => {}
+  }
+
+  render() {
+    const {buttonStyles, isClicked, ...props} = this.props;
+    const newStyle = [
+      style.switch(isClicked).button,
+      buttonStyles(isClicked)
+    ];
+
+    return (
+      <div {...props}>
+        <StyleRoot style={newStyle} />
+      </div>
+    );
+  }
+}
+
+@radium
 export default class Toggle extends React.Component {
   static propTypes = {
     checked: React.PropTypes.bool,
     onClick: React.PropTypes.func,
-    style: React.PropTypes.object,
+    styles: React.PropTypes.func,
     type: React.PropTypes.string,
     clicked: React.PropTypes.bool,
-    icon: React.PropTypes.any,
-    clickedIcon: React.PropTypes.any
+    icons: React.PropTypes.shape({
+      default: React.PropTypes.any.isRequired,
+      clicked: React.PropTypes.any.isRequired
+    })
   }
 
   static defaultProps = {
+    styles: () => {},
     type: 'checkbox',
     checked: false,
     onClick: () => {}
@@ -61,48 +91,47 @@ export default class Toggle extends React.Component {
   }
 
   render() {
-    const {...props} = this.props;
+    const {type, ...props} = this.props;
     const {isClicked} = this.state;
-    const {icon, clickedIcon} = this.getIcons();
-    const Icon = isClicked ? clickedIcon: icon;
+    const Icon = this.getIcons(isClicked);
+    const iconStyle = Object.assign({},
+      style.root,
+      (type === 'switch' ? style.switch(isClicked).bar : {}),
+      props.styles(isClicked)
+    );
 
-    delete props.type;
+    delete props.styles;
     delete props.clicked;
-    delete props.icon;
-    delete props.clickedIcon;
+    delete props.icons;
+
+    if(type === 'switch') {
+      props.isClicked = isClicked;
+    }
 
     return (
       <Icon {...props}
-            style={Object.assign({}, style.root, props.style)}
+            style={iconStyle}
             onClick={this.click}
       />
     );
   }
 
-  getIcons() {
-    const {type, icon, clickedIcon} = this.props;
+  getIcons(isClicked) {
+    const {type, icons} = this.props;
 
-    invariant(
-      !((icon && !clickedIcon) || (!icon && clickedIcon)),
-      'You should give "icon" and "clickedIcon" at the same time.'
-    );
+    if(icons)
+      return isClicked ? icons.clicked : icons.default;
 
-    if(icon && clickedIcon)
-      return {
-        icon,
-        clickedIcon
-      };
+    switch(type) {
+      case 'radio':
+        return isClicked ? RadioButtonCheckedIcon : RadioButtonUnchecked;
 
-    if(type === 'radio')
-      return {
-        icon: RadioButtonUnchecked,
-        clickedIcon: RadioButtonCheckedIcon
-      };
+      case 'switch':
+        return Switch;
 
-    return {
-      icon: CheckBoxOutlineIcon,
-      clickedIcon: CheckBoxIcon
-    };
+      default:
+        return isClicked ? CheckBoxIcon : CheckBoxOutlineIcon;
+    }
   }
 
   click(e) {
