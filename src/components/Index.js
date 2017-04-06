@@ -24,7 +24,8 @@ const components = [
   'Menu',
   'Accordion',
   'Calendar',
-  'Table'
+  'Table',
+  'Toggle'
 ].map(name => {
   return {
     name,

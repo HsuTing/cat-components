@@ -8,7 +8,7 @@ export default [
   '- [validator](https://github.com/chriso/validator.js/)',
   '',
   '#### Props',
-  '- `type`: This can be all type of `input`, and it can be `textarea`.',
+  '- `type(default: text)`: This can be all type of `input`, and it can be `textarea`.',
   '- `rules(required)`: This is an array of `validator` and `message`.',
   '  - `validator(required)`: Use to check value. You can use function from `validator` with giving a name or write a function to check value. The parameters of function are `value` and `event`. This function need to return `true` or `false` to show if value is correct.',
   '  - `message(required)`: This message will be pushed to `error` when value is incorrect.',

@@ -45,11 +45,18 @@ export default class Calendar extends React.Component {
     this.choose = this.choose.bind(this);
   }
 
-  render() {
-    const {format, isChosenStyle, getDate, ...props} = this.props;
-    const {choices, date} = this.state;
+  componentDidMount() {
+    const {getDate} = this.props;
+    const {date} = this.state;
 
     getDate(Object.assign({}, date, {month: date.month + 1}));
+  }
+
+  render() {
+    const {format, isChosenStyle, ...props} = this.props;
+    const {choices, date} = this.state;
+
+    delete props.getDate;
 
     return (
       <div {...props}
@@ -90,6 +97,7 @@ export default class Calendar extends React.Component {
 
   choose(key, value) {
     return e => {
+      const {getDate} = this.props;
       const {choices, date} = this.state;
       date[key] = value;
       const maxDate = moment({
@@ -99,6 +107,7 @@ export default class Calendar extends React.Component {
 
       date.date = date.date > maxDate ? maxDate : date.date;
       choices.date = this.getChoice(maxDate);
+      getDate(Object.assign({}, date, {month: date.month + 1}));
       this.setState({date});
     };
   }
