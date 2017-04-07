@@ -21,6 +21,8 @@ You can see [here](http://hsuting.github.io/cat-components) to learn how to use 
 - Toggle
 - Slider
 - Loading
+- Alert
+- Sidebar
 
 ## Bin
 Use to render `HTML` with `react` and `nunjucks`.

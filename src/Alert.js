@@ -11,12 +11,13 @@ import style from './style/alert';
 class Alert extends React.Component {
   static propTypes = {
     children: React.PropTypes.element.isRequired,
+    rootStyle: React.PropTypes.object,
     iconStyle: React.PropTypes.object,
     hide: React.PropTypes.func.isRequired
   }
 
   render() {
-    const {children, iconStyle, hide} = this.props;
+    const {children, rootStyle, iconStyle, hide} = this.props;
     const childrenProps = children.props;
     const childrens = React.Children.toArray(childrenProps.children)
       .concat([
@@ -30,7 +31,8 @@ class Alert extends React.Component {
       style: Object.assign(
         {},
         style.root,
-        childrenProps.style
+        childrenProps.style,
+        rootStyle
       )
     }, childrens);
   }
@@ -53,6 +55,7 @@ class AlertController {
       return;
 
     this.isShown = true;
+    this.component = component;
     ReactDOM.render(
       <Alert iconStyle={iconStyle}
              hide={this.hide}
@@ -65,7 +68,9 @@ class AlertController {
   hide(callback = () => {}) {
     this.isShown = false;
     ReactDOM.render(
-      <div />,
+      <Alert hide={this.hide}
+             rootStyle={{display: 'none'}}
+      >{this.component}</Alert>,
       document.getElementById(this.nodeId)
     );
     callback();
