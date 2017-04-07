@@ -27,7 +27,9 @@ const components = [
   'Table',
   'Toggle',
   'Slider',
-  'Loading'
+  'Loading',
+  'Alert',
+  'Sidebar'
 ].map(name => {
   return {
     name,
