@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 import invariant from 'invariant';
 import CheckBoxIcon from 'react-icons/lib/md/check-box';
@@ -13,8 +14,8 @@ import style from './style/toggle';
 @radium
 class Switch extends React.Component {
   static propTypes = {
-    isClicked: React.PropTypes.bool,
-    buttonStyles: React.PropTypes.func
+    isClicked: PropTypes.bool,
+    buttonStyles: PropTypes.func
   }
 
   static defaultProps = {
@@ -40,14 +41,14 @@ class Switch extends React.Component {
 @radium
 export default class Toggle extends React.Component {
   static propTypes = {
-    checked: React.PropTypes.bool,
-    onClick: React.PropTypes.func,
-    styles: React.PropTypes.func,
-    type: React.PropTypes.string,
-    clicked: React.PropTypes.bool,
-    icons: React.PropTypes.shape({
-      default: React.PropTypes.any.isRequired,
-      clicked: React.PropTypes.any.isRequired
+    checked: PropTypes.bool,
+    onClick: PropTypes.func,
+    styles: PropTypes.func,
+    type: PropTypes.string,
+    clicked: PropTypes.bool,
+    icons: PropTypes.shape({
+      default: PropTypes.any.isRequired,
+      clicked: PropTypes.any.isRequired
     })
   }
 

@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 
 import style from './style/menu';
@@ -8,10 +9,10 @@ import style from './style/menu';
 @radium
 export default class Menu extends React.Component {
   static propTypes ={
-    children: React.PropTypes.element.isRequired,
-    menu: React.PropTypes.element.isRequired,
-    menuStyles: React.PropTypes.func,
-    delay: React.PropTypes.number
+    children: PropTypes.element.isRequired,
+    menu: PropTypes.element.isRequired,
+    menuStyles: PropTypes.func,
+    delay: PropTypes.number
   }
 
   static defaultProps = {

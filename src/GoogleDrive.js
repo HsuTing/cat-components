@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium from 'radium';
 
 const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'];
@@ -9,11 +10,11 @@ const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
 @radium
 export default class GoogleDrive extends React.Component {
   static propTypes = {
-    children: React.PropTypes.element.isRequired,
-    clientId: React.PropTypes.string.isRequired,
-    updateSigninStatus: React.PropTypes.func.isRequired,
-    authClick: React.PropTypes.func,
-    signoutClick: React.PropTypes.func
+    children: PropTypes.element.isRequired,
+    clientId: PropTypes.string.isRequired,
+    updateSigninStatus: PropTypes.func.isRequired,
+    authClick: PropTypes.func,
+    signoutClick: PropTypes.func
   }
 
   constructor(props) {

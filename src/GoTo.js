@@ -1,20 +1,21 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium from 'radium';
 import eases from 'eases';
 
 @radium
 export default class GoTo extends React.Component {
   static propTypes = {
-    children: React.PropTypes.element.isRequired,
-    main: React.PropTypes.string.isRequired,
-    target: React.PropTypes.string,
-    sec: React.PropTypes.number,
-    fps: React.PropTypes.number,
-    animation: React.PropTypes.oneOfType([
-      React.PropTypes.string,
-      React.PropTypes.func
+    children: PropTypes.element.isRequired,
+    main: PropTypes.string.isRequired,
+    target: PropTypes.string,
+    sec: PropTypes.number,
+    fps: PropTypes.number,
+    animation: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.func
     ])
   }
 

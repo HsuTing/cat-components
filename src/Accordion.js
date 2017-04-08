@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 
 import style from './style/accordion';
@@ -8,7 +9,7 @@ import style from './style/accordion';
 @radium
 export default class Accordion extends React.Component {
   static propTypes = {
-    children: React.PropTypes.arrayOf(
+    children: PropTypes.arrayOf(
       (propValue, key) => {
         if(propValue[key].type !== StyleRoot)
           return new Error(
@@ -21,8 +22,8 @@ export default class Accordion extends React.Component {
           );
       }
     ).isRequired,
-    index: React.PropTypes.number.isRequired,
-    contentStyles: React.PropTypes.func
+    index: PropTypes.number.isRequired,
+    contentStyles: PropTypes.func
   }
 
   static defaultProps = {

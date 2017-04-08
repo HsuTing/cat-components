@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium from 'radium';
 import invariant from 'invariant';
 import eventController from 'cat-utils/lib/event-controller';
@@ -10,12 +11,12 @@ import style from './style/slider';
 @radium
 export default class Slider extends React.Component {
   static propTypes = {
-    onChange: React.PropTypes.func,
-    value: React.PropTypes.number,
-    max: React.PropTypes.number,
-    min: React.PropTypes.number,
-    buttonStyle: React.PropTypes.func,
-    barStyle: React.PropTypes.func
+    onChange: PropTypes.func,
+    value: PropTypes.number,
+    max: PropTypes.number,
+    min: PropTypes.number,
+    buttonStyle: PropTypes.func,
+    barStyle: PropTypes.func
   }
 
   static defaultProps = {

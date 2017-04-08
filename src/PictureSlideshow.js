@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 import uuid from 'uuid';
 import eventController from 'cat-utils/lib/event-controller';
@@ -11,16 +12,16 @@ import style from './style/pictureSlideshow';
 @radium
 export default class PictureSlideshowStyle extends React.Component {
   static propTypes = {
-    index: React.PropTypes.number.isRequired,
-    imgs: React.PropTypes.array.isRequired,
-    type: React.PropTypes.string,
-    hideStyle: React.PropTypes.shape({
-      left: React.PropTypes.object.isRequired,
-      right: React.PropTypes.object.isRequired
+    index: PropTypes.number.isRequired,
+    imgs: PropTypes.array.isRequired,
+    type: PropTypes.string,
+    hideStyle: PropTypes.shape({
+      left: PropTypes.object.isRequired,
+      right: PropTypes.object.isRequired
     }),
-    showStyle: React.PropTypes.shape({
-      left: React.PropTypes.object.isRequired,
-      right: React.PropTypes.object.isRequired
+    showStyle: PropTypes.shape({
+      left: PropTypes.object.isRequired,
+      right: PropTypes.object.isRequired
     })
   }
 

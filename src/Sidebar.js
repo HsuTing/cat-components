@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import radium, {StyleRoot} from 'radium';
 
@@ -9,10 +10,10 @@ import style from './style/sidebar';
 @radium
 class Sidebar extends React.Component {
   static propTypes = {
-    children: React.PropTypes.element.isRequired,
-    rootStyle: React.PropTypes.func,
-    isShown: React.PropTypes.bool,
-    hide: React.PropTypes.func.isRequired
+    children: PropTypes.element.isRequired,
+    rootStyle: PropTypes.func,
+    isShown: PropTypes.bool,
+    hide: PropTypes.func.isRequired
   }
 
   constructor(props) {

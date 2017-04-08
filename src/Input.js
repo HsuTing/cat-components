@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium from 'radium';
 import validator from 'validator';
 import invariant from 'invariant';
@@ -10,18 +11,18 @@ import style from './style/input';
 @radium
 export default class Input extends React.Component {
   static propTypes = {
-    type: React.PropTypes.string,
-    value: React.PropTypes.string,
-    style: React.PropTypes.object,
-    onChange: React.PropTypes.func,
-    onBlur: React.PropTypes.func,
-    rules: React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-        validator: React.PropTypes.oneOfType([
-          React.PropTypes.string,
-          React.PropTypes.func
+    type: PropTypes.string,
+    value: PropTypes.string,
+    style: PropTypes.object,
+    onChange: PropTypes.func,
+    onBlur: PropTypes.func,
+    rules: PropTypes.arrayOf(
+      PropTypes.shape({
+        validator: PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.func
         ]).isRequired,
-        message: React.PropTypes.string.isRequired
+        message: PropTypes.string.isRequired
       })
     ).isRequired
   }

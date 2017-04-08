@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import radium from 'radium';
 import CloseIcon from 'react-icons/lib/md/close';
@@ -10,10 +11,10 @@ import style from './style/alert';
 @radium
 class Alert extends React.Component {
   static propTypes = {
-    children: React.PropTypes.element.isRequired,
-    rootStyle: React.PropTypes.object,
-    iconStyle: React.PropTypes.object,
-    hide: React.PropTypes.func.isRequired
+    children: PropTypes.element.isRequired,
+    rootStyle: PropTypes.object,
+    iconStyle: PropTypes.object,
+    hide: PropTypes.func.isRequired
   }
 
   render() {

@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 import * as d3 from 'd3';
 import eases from 'eases';
@@ -10,12 +11,12 @@ import style from './style/loading';
 @radium
 export default class Loading extends React.Component {
   static propTypes = {
-    innerRadius: React.PropTypes.number,
-    outerRadius: React.PropTypes.number,
-    fps: React.PropTypes.number,
-    sec: React.PropTypes.number,
-    diff: React.PropTypes.number,
-    animation: React.PropTypes.string
+    innerRadius: PropTypes.number,
+    outerRadius: PropTypes.number,
+    fps: PropTypes.number,
+    sec: PropTypes.number,
+    diff: PropTypes.number,
+    animation: PropTypes.string
   }
 
   static defaultProps = {

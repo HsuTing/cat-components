@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium from 'radium';
 import moment from 'moment';
 
@@ -9,12 +10,12 @@ import style from './style/calendar';
 @radium
 export default class Calendar extends React.Component {
   static propTypes = {
-    style: React.PropTypes.object,
-    start: React.PropTypes.number,
-    end: React.PropTypes.number,
-    format: React.PropTypes.string,
-    isChosenStyle: React.PropTypes.object,
-    getDate: React.PropTypes.func
+    style: PropTypes.object,
+    start: PropTypes.number,
+    end: PropTypes.number,
+    format: PropTypes.string,
+    isChosenStyle: PropTypes.object,
+    getDate: PropTypes.func
   }
 
   static defaultProps = {

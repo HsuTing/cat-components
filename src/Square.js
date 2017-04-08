@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium from 'radium';
 import uuid from 'uuid';
 import eventController from 'cat-utils/lib/event-controller';
@@ -8,7 +9,7 @@ import eventController from 'cat-utils/lib/event-controller';
 @radium
 export default class Square extends React.Component {
   static propTypes = {
-    children: React.PropTypes.element.isRequired
+    children: PropTypes.element.isRequired
   }
 
   constructor(props) {

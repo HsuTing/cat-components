@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium from 'radium';
 
 import style from './style/table';
@@ -8,7 +9,7 @@ import style from './style/table';
 @radium
 export class Table extends React.Component {
   static propTypes = {
-    style: React.PropTypes.object
+    style: PropTypes.object
   }
 
   render() {
@@ -23,7 +24,7 @@ export class Table extends React.Component {
 @radium
 export class Tr extends React.Component {
   static propTypes = {
-    style: React.PropTypes.object
+    style: PropTypes.object
   }
 
   render() {
@@ -38,7 +39,7 @@ export class Tr extends React.Component {
 @radium
 export class Th extends React.Component {
   static propTypes = {
-    style: React.PropTypes.object
+    style: PropTypes.object
   }
 
   render() {
@@ -53,7 +54,7 @@ export class Th extends React.Component {
 @radium
 export class Td extends React.Component {
   static propTypes = {
-    style: React.PropTypes.object
+    style: PropTypes.object
   }
 
   render() {
@@ -68,7 +69,7 @@ export class Td extends React.Component {
 @radium
 export class Thead extends React.Component {
   static propTypes = {
-    style: React.PropTypes.object
+    style: PropTypes.object
   }
 
   render() {
@@ -83,8 +84,8 @@ export class Thead extends React.Component {
 @radium
 export class Tbody extends React.Component {
   static propTypes = {
-    children: React.PropTypes.node,
-    style: React.PropTypes.object
+    children: PropTypes.node,
+    style: PropTypes.object
   }
 
   render() {

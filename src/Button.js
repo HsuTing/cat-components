@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium from 'radium';
 
 import style from './style/button';
@@ -8,8 +9,8 @@ import style from './style/button';
 @radium
 export default class Button extends React.Component {
   static propTypes = {
-    link: React.PropTypes.string,
-    target: React.PropTypes.string
+    link: PropTypes.string,
+    target: PropTypes.string
   }
 
   render() {
