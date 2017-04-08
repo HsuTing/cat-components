@@ -6,9 +6,9 @@ import Markdown from 'react-markdown';
 import ArrowUpward from 'react-icons/lib/md/arrow-upward';
 
 import Normalize from 'componentsShare/Normalize';
+import style from 'componentsStyle/index';
+import text from 'componentsText/index';
 
-import style from './style/index';
-import text from './text/index';
 import GoTo from './../GoTo';
 import Button from './../Button';
 import Img from './../Img';

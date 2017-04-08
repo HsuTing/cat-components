@@ -1,6 +1,6 @@
 'use strict';
 
-import color from './../../style/color';
+import color from 'style/color';
 
 export default {
   inputError: {

@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 
-import style from './style/menu';
+import style from 'style/menu';
 
 @radium
 export default class Menu extends React.Component {

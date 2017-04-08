@@ -3,7 +3,8 @@
 import React from 'react';
 import radium from 'radium';
 
-import style from './style/useSquare';
+import style from 'componentsStyle/useSquare';
+
 import Square from './../Square';
 
 @radium

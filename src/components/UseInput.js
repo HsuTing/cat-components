@@ -3,7 +3,8 @@
 import React from 'react';
 import radium from 'radium';
 
-import style from './style/useInput';
+import style from 'componentsStyle/useInput';
+
 import Input from './../Input';
 
 const rules = [{

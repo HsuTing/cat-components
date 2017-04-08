@@ -7,7 +7,7 @@ import uuid from 'uuid';
 import eventController from 'cat-utils/lib/event-controller';
 import imgResize from 'cat-utils/lib/imgResize';
 
-import style from './style/pictureSlideshow';
+import style from 'style/pictureSlideshow';
 
 @radium
 export default class PictureSlideshowStyle extends React.Component {

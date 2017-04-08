@@ -6,7 +6,7 @@ import radium from 'radium';
 import validator from 'validator';
 import invariant from 'invariant';
 
-import style from './style/input';
+import style from 'style/input';
 
 @radium
 export default class Input extends React.Component {

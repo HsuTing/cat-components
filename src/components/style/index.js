@@ -1,6 +1,6 @@
 'use strict';
 
-import color, {boxShadow} from './../../style/color';
+import color, {boxShadow} from 'style/color';
 
 export default {
   root: {

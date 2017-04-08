@@ -6,7 +6,7 @@ import radium, {StyleRoot} from 'radium';
 import * as d3 from 'd3';
 import eases from 'eases';
 
-import style from './style/loading';
+import style from 'style/loading';
 
 @radium
 export default class Loading extends React.Component {

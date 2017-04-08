@@ -3,7 +3,8 @@
 import React from 'react';
 import radium from 'radium';
 
-import style from './style/usePictureSlideshow';
+import style from 'componentsStyle/usePictureSlideshow';
+
 import PictureSlideshow from './../PictureSlideshow';
 import Button from './../Button';
 

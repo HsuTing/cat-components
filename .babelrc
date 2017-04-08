@@ -10,13 +10,12 @@
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
+        "style": "style",
         "public": "public",
         "components": "components",
         "componentsShare": "components/share",
-        "containers": "containers",
-        "reducers": "reducers",
-        "actions": "actions",
-        "stores": "stores",
+        "componentsStyle": "components/style",
+        "componentsText": "components/text",
         "utils": "utils"
       }
     }]

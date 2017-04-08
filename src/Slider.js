@@ -6,7 +6,7 @@ import radium from 'radium';
 import invariant from 'invariant';
 import eventController from 'cat-utils/lib/event-controller';
 
-import style from './style/slider';
+import style from 'style/slider';
 
 @radium
 export default class Slider extends React.Component {

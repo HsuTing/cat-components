@@ -4,7 +4,8 @@ import React from 'react';
 import radium from 'radium';
 import MenuIcon from 'react-icons/lib/md/menu';
 
-import style from './style/useMenu';
+import style from 'componentsStyle/useMenu';
+
 import Menu from './../Menu';
 
 const menuStyles = () => ({
