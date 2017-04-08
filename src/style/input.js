@@ -6,7 +6,7 @@ export default {
   input: {
     margin: '5px 0px',
     padding: '5px 10px',
-    width: 'calc(100% - 10px * 2)',
+    width: 'calc(100% - 10px * 2 - 1.5px * 2)',
     height: '22px',
     lineHeight: '22px',
     fontSize: '18px',
