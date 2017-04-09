@@ -32,6 +32,7 @@ static [config name]
 
 #### Config
 You can use any name, but need to give this name as argument.
+
 - Example:
 
   ```javascript
@@ -44,15 +45,12 @@ You can use any name, but need to give this name as argument.
   ]
   ```
 - options
-  - router(boolean): use `react-router` or not.
-  - location(string): if `router` is true, you need to give a url to render.
-  - redux(boolean): use `redux` or not.
-  - reducer(string): if `redux` is true, you need to give a path of reducer.
-  - data(object or array): if `redux` is true, you can give a inital data or not.
-  - component(react component): your main component.
-  - js(string): name of main js.
-  - name(string): output name of html.
-  - template(string): if you need, you can choose your template in `views`(default: `./views/template.html`).
+  - `component`: This is your main component.
+  - `js`: This the name of the main js which will be include in `template`.
+  - `name`: The name of `html` is rendered.
+  - `root`: This is the root folder of `views` which is  your `template` folder.
+  - `template(default: ./views/template.html)`: If you need, you can choose your template in `views`.
+  - You can add any option which you need to give to your `template`.
 
 ## License
 MIT © [hsuting](http://hsuting.com)
