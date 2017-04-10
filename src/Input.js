@@ -3,10 +3,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
-import validator from 'validator';
 import invariant from 'invariant';
 
 import style from 'style/input';
+import inputCheck from 'utils/inputCheck';
 
 @radium
 export default class Input extends React.Component {
@@ -81,37 +81,7 @@ export default class Input extends React.Component {
     return e => {
       const {rules} = this.props;
       const value = e.target.value;
-      const error = [];
-
-      rules.forEach(rule => {
-        if(typeof rule.validator === 'string') {
-          switch(rule.validator) {
-            case 'isEmail':
-              if(!validator.normalizeEmail(value, rule.options))
-                error.push(rule.message);
-              break;
-
-            default:
-              invariant(
-                validator[rule.validator],
-                `${rule.validator} is not in validator. You can write a function to use.`
-              );
-
-              if(validator[rule.validator](value, rule.options))
-                error.push(rule.message);
-              break;
-          }
-        } else {
-          if(rule.validator(value, e))
-            error.push(rule.message);
-        }
-      });
-
-      const output = {
-        value,
-        isError: error.length !== 0,
-        error
-      };
+      const output = inputCheck(value, rules, e);
 
       func(output, e);
       this.setState(output);
