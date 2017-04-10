@@ -2,7 +2,7 @@
 
 export default [
   '# [Input](./#Input)',
-  'This is `input` tag with using `validator` to check value.',
+  'This is `input` tag with using `validator` to check value. For checking value in server, you can use `import chcekInput from \'cat-components/lib/utils/checkInput\';` and give this function `value` and `rules`.',
   '',
   '#### Other packages',
   '- [validator](https://github.com/chriso/validator.js/)',
