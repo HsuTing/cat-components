@@ -1,6 +1,6 @@
 'use strict';
 
-import {Link as RouterLink} from 'react-router';
+import {Link as RouterLink} from 'react-router-dom';
 import radium from 'radium';
 
 const Link = radium(RouterLink);
