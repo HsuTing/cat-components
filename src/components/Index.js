@@ -29,7 +29,8 @@ const components = [
   'Slider',
   'Loading',
   'Alert',
-  'Sidebar'
+  'Sidebar',
+  'Icon'
 ].map(name => {
   return {
     name,
