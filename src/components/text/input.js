@@ -12,6 +12,8 @@ export default [
   '- `rules(required)`: This is an array of `validator` and `message`.',
   '  - `validator(required)`: Use to check value. You can use function from `validator` with giving a name or write a function to check value. The parameters of function are `value` and `event`. This function need to return `true` or `false` to show if value is correct.',
   '  - `message(required)`: This message will be pushed to `error` when value is incorrect.',
+  '  - `options`: This is the options of the `validator`.',
+  '  - `not`: If this is true, the value does not pass the `validator`, the message will be pushed to `error`.',
   '- `onChange`: This function will be called when value is changed.',
   '- `onBlur`: This function will be called when input is not focus.',
   '- `value`: Give `input` a value. If this is set, you must write `onChange` function.',

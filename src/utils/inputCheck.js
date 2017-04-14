@@ -10,7 +10,9 @@ export default (value, rules = [], e = null) => {
     if(typeof rule.validator === 'string') {
       switch(rule.validator) {
         case 'isEmail':
-          if(!validator.normalizeEmail(value, rule.options))
+          if(rule.not && !validator.normalizeEmail(value, rule.options))
+            error.push(rule.message);
+          else if(!rule.not && validator.normalizeEmail(value, rule.options))
             error.push(rule.message);
           break;
 
@@ -20,7 +22,9 @@ export default (value, rules = [], e = null) => {
             `${rule.validator} is not in validator. You can write a function to use.`
           );
 
-          if(validator[rule.validator](value, rule.options))
+          if(rule.not && !validator[rule.validator](value, rule.options))
+            error.push(rule.message);
+          else if(!rule.not && validator[rule.validator](value, rule.options))
             error.push(rule.message);
           break;
       }

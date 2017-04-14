@@ -12,6 +12,7 @@ const rules = [{
   message: 'It can not be empty.'
 }, {
   validator: 'isEmail',
+  not: true,
   message: 'It must be a email.'
 }, {
   validator: value => value !== 'hsuting0106@gmail.com',
