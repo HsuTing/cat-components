@@ -64,7 +64,7 @@ config.forEach(options => {
   }
 
   render(
-    React.createElement(options.component),
+    React.createElement(options.component, options.props),
     options
   );
 });
