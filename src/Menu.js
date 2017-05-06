@@ -34,6 +34,10 @@ export default class Menu extends React.Component {
     this.animationEnd = this.animationEnd.bind(this);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   render() {
     const {children, menu, menuStyles, ...props} = this.props;
     const {isShown, addStyle} = this.state;
