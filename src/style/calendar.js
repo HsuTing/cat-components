@@ -27,6 +27,7 @@ export default {
   },
 
   choice: {
+    position: 'relative',
     width: 'calc(100% / 3)',
     height: '200px',
     overflowY: 'scroll',

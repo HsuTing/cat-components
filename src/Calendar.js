@@ -15,7 +15,8 @@ export default class Calendar extends React.Component {
     end: PropTypes.number,
     format: PropTypes.string,
     isChosenStyle: PropTypes.object,
-    getDate: PropTypes.func
+    getDate: PropTypes.func,
+    defaultDate: PropTypes.object
   }
 
   static defaultProps = {
@@ -28,8 +29,8 @@ export default class Calendar extends React.Component {
 
   constructor(props) {
     super(props);
-    const {start, end} = props;
-    const now = moment();
+    const {start, end, defaultDate} = props;
+    const now = moment(defaultDate || {});
     this.state = {
       choices: {
         year: this.getChoice(end - start + 1, start),
@@ -44,10 +45,16 @@ export default class Calendar extends React.Component {
     };
 
     this.choose = this.choose.bind(this);
+    this.scroll = this.scroll.bind(this);
   }
 
   componentDidMount() {
-    const {getDate} = this.props;
+    this.scroll();
+
+    if(defaultDate)
+      return;
+
+    const {getDate, defaultDate} = this.props;
     const {date} = this.state;
 
     getDate(Object.assign({}, date, {month: date.month + 1}));
@@ -58,6 +65,7 @@ export default class Calendar extends React.Component {
     const {choices, date} = this.state;
 
     delete props.getDate;
+    delete props.defaultDate;
 
     return (
       <div {...props}
@@ -66,7 +74,9 @@ export default class Calendar extends React.Component {
         <div style={[style.block, style.textBlock]}>
           {moment(date).format(format)}
         </div>
-        <div style={style.choiceBlock}>
+        <div style={style.choiceBlock}
+             ref={node => (this.node = node)}
+        >
           {Object.keys(choices).map((key, index) => {
             return (
               <div key={index}
@@ -80,6 +90,7 @@ export default class Calendar extends React.Component {
                     <div key={dataIndex}
                          style={choiceStyle}
                          onClick={this.choose(key, key === 'month' ? data - 1 : data)}
+                         id={data === value ? 'is-chosen' : ''}
                     >{data}</div>
                   );
                 })}
@@ -111,5 +122,14 @@ export default class Calendar extends React.Component {
       getDate(Object.assign({}, date, {month: date.month + 1}));
       this.setState({date});
     };
+  }
+
+  scroll() {
+    Array.from(this.node.childNodes)
+      .map(node => {
+        const childNode = node.querySelector('#is-chosen');
+
+        node.scrollTop = childNode.offsetTop - (node.offsetHeight / 2) + (childNode.offsetHeight / 2);
+      });
   }
 }
