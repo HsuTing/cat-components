@@ -43,6 +43,8 @@ class AlertController {
   constructor() {
     this.nodeId = 'alert';
     this.isShown = false;
+    this.show_callback = () => {};
+    this.hide_callback = () => {};
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
   }
@@ -51,7 +53,15 @@ class AlertController {
     this.nodeId = id;
   }
 
-  show(component = <div />, iconStyle = {}, callback = () => {}) {
+  set showCallback(callback = () => {}) {
+    this.show_callback = callback;
+  }
+
+  set hideCallback(callback = () => {}) {
+    this.hide_callback = callback;
+  }
+
+  show(component = <div />, iconStyle = {}) {
     if(this.isShown)
       return;
 
@@ -63,10 +73,10 @@ class AlertController {
       >{component}</Alert>,
       document.getElementById(this.nodeId)
     );
-    callback();
+    this.show_callback();
   }
 
-  hide(callback = () => {}) {
+  hide() {
     this.isShown = false;
     ReactDOM.render(
       <Alert hide={this.hide}
@@ -74,7 +84,7 @@ class AlertController {
       >{this.component}</Alert>,
       document.getElementById(this.nodeId)
     );
-    callback();
+    this.hide_callback();
   }
 }
 
