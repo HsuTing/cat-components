@@ -13,7 +13,7 @@ export default [
   '- `format(default: \'MMM D YYYY\')`: You can use this to modify the format of the text. See [here](http://momentjs.com/docs/#/displaying/format/) to learn more information.',
   '- `isChosenStyle`: Use to modify style when date is chosen.',
   '- `getDate`: Use to get date.',
-  '- `defaultDate': 'Give a default date to `Calendar`. This is an object like `{year: 2017}`.',
+  '- `defaultDate`: Give a default date to `Calendar`. This is an object like `{year: 2017}`.',
   '',
   '#### Example',
   '```js',
