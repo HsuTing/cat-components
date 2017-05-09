@@ -45,11 +45,10 @@ class Sidebar extends React.Component {
         />
 
         {React.cloneElement(children, {
-          style: Object.assign(
-            {},
-            style.menu,
-            childrenProps.style
-          )
+          style: {
+            ...style.menu,
+            ...childrenProps.style
+          }
         })}
       </StyleRoot>
     );

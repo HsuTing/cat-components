@@ -67,13 +67,13 @@ export default class Input extends React.Component {
       newStyle.push(style.textarea);
 
     return React.createElement(
-      props.type === 'textarea' ? 'textarea' : 'input',
-      Object.assign(props, {
+      props.type === 'textarea' ? 'textarea' : 'input', {
+        ...props,
         style: newStyle.concat([props.style]),
         value,
         onChange: this.onChange,
         onBlur: this.onBlur
-      })
+      }
     );
   }
 

@@ -23,18 +23,17 @@ class Alert extends React.Component {
     const childrens = React.Children.toArray(childrenProps.children)
       .concat([
         <CloseIcon key='icon'
-                   style={Object.assign({}, style.icon, iconStyle)}
+                   style={{...style.icon, ...iconStyle}}
                    onClick={() => (hide())}
         />
       ]);
 
     return React.cloneElement(children, {
-      style: Object.assign(
-        {},
-        style.root,
-        childrenProps.style,
-        rootStyle
-      )
+      style: {
+        ...style.root,
+        ...childrenProps.style,
+        ...rootStyle
+      }
     }, childrens);
   }
 }

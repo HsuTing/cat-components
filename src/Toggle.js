@@ -92,11 +92,11 @@ export default class Toggle extends React.Component {
     const {type, ...props} = this.props;
     const {isClicked} = this.state;
     const Icon = this.getIcons(isClicked);
-    const iconStyle = Object.assign({},
-      style.root,
-      (type === 'switch' ? style.switch(isClicked).bar : {}),
-      props.styles(isClicked)
-    );
+    const iconStyle = {
+      ...style.root,
+      ...(type === 'switch' ? style.switch(isClicked).bar : {}),
+      ...props.styles(isClicked)
+    };
 
     delete props.styles;
     delete props.clicked;

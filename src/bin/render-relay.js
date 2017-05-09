@@ -7,9 +7,9 @@ export default (options, render) => IsomorphicRelay
   .prepareData(options.rootContainerProps, options.networkLayer)
   .then(({data, props}) => {
     render(
-      <IsomorphicRelay.Renderer {...props} />,
-      Object.assign({}, options, {
+      <IsomorphicRelay.Renderer {...props} />, {
+        ...options,
         data: JSON.stringify(data)
-      })
+      }
     );
   });

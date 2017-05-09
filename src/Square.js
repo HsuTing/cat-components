@@ -49,7 +49,10 @@ export default class Square extends React.Component {
 
     return React.cloneElement(children, {
       ref: node => (this.node = node),
-      style: Object.assign({height}, children.props.style)
+      style: {
+        height,
+        ...children.props.style
+      }
     });
   }
 

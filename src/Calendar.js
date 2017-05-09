@@ -57,7 +57,10 @@ export default class Calendar extends React.Component {
     const {getDate, defaultDate} = this.props;
     const {date} = this.state;
 
-    getDate(Object.assign({}, date, {month: date.month + 1}));
+    getDate({
+      ...date,
+      month: date.month + 1
+    });
   }
 
   render() {
@@ -119,7 +122,10 @@ export default class Calendar extends React.Component {
 
       date.date = date.date > maxDate ? maxDate : date.date;
       choices.date = this.getChoice(maxDate);
-      getDate(Object.assign({}, date, {month: date.month + 1}));
+      getDate({
+        ...date,
+        month: date.month + 1
+      });
       this.setState({date});
     };
   }

@@ -37,12 +37,12 @@ export default class Accordion extends React.Component {
       <div {...props}>
         {React.Children.map(children, (item, itemIndex) => {
           const [title, content] = item.props.children;
-          const contentStyle = Object.assign({},
-            style.content,
-            content.props.style,
-            style.styles(index === itemIndex),
-            contentStyles(index === itemIndex)
-          );
+          const contentStyle = {
+            ...style.content,
+            ...content.props.style,
+            ...style.styles(index === itemIndex),
+            ...contentStyles(index === itemIndex)
+          };
 
           return React.cloneElement(item, {},
             title,

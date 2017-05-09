@@ -17,7 +17,7 @@ const hideStyle = {
 };
 
 export default {
-  root: isShown => Object.assign({
+  root: isShown => ({
     position: 'fixed',
     top: '0px',
     left: '0px',
@@ -27,8 +27,9 @@ export default {
     animationName: radium.keyframes({
       '0%': isShown ? hideStyle : showStyle,
       '100%': isShown ? showStyle : hideStyle
-    })
-  }, isShown ? showStyle : hideStyle),
+    }),
+    ...(isShown ? showStyle : hideStyle)
+  }),
 
   background: {
     position: 'absolute',

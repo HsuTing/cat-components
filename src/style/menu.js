@@ -34,14 +34,13 @@ export default {
     animation: 'x 0.5s ease-in-out'
   },
 
-  styles: isShown => Object.assign({},
-    isShown ? showStyle : hideStyle, {
-      animationName: radium.keyframes({
-        '0%': isShown ? hideStyle : showStyle,
-        '100%': isShown ? showStyle : hideStyle
-      })
-    }
-  ),
+  styles: isShown => ({
+    ...(isShown ? showStyle : hideStyle),
+    animationName: radium.keyframes({
+      '0%': isShown ? hideStyle : showStyle,
+      '100%': isShown ? showStyle : hideStyle
+    })
+  }),
 
   hide: {
     zIndex: '-1'

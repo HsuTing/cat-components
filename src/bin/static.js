@@ -27,10 +27,10 @@ const render = (component, options) => {
 
   const filename = (options.name === 'index' ? '' : options.name + '/') + 'index.html';
   const output = nunjucks.render(
-    options.template ? options.template : 'template.html',
-    Object.assign({}, options, {
+    options.template ? options.template : 'template.html', {
+      ...options,
       ENV
-    })
+    }
   );
 
   fs.write(
