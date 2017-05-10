@@ -44,12 +44,9 @@ class Sidebar extends React.Component {
              onClick={this.hide}
         />
 
-        {React.cloneElement(children, {
-          style: {
-            ...style.menu,
-            ...childrenProps.style
-          }
-        })}
+        <aside {...childrenProps}
+               style={[style.menu, childrenProps.style]}
+        />
       </StyleRoot>
     );
   }
