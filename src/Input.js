@@ -82,9 +82,9 @@ export default class Input extends React.Component {
       const {rules} = this.props;
       const value = e.target.value;
       const output = inputCheck(value, rules, e);
+      const newOutput = {...output, ...func(output, e)};
 
-      func(output, e);
-      this.setState(output);
+      this.setState(newOutput);
     };
   }
 }

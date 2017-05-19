@@ -18,7 +18,7 @@ export default [
   '- `onBlur`: This function will be called when input is not focus.',
   '- `value`: Give `input` a value. If this is set, you must write `onChange` function.',
   '',
-  'The information of checking value will be given to `onChange` and `onBlur` as parameters. There will be an object and `event`. Object has `value`, `isError` and `error`.',
+  'The information of checking value will be given to `onChange` and `onBlur` as parameters. There will be an object and `event`. Object has `value`, `isError` and `error`. If you return a new object, this will use new object to `input`.',
   '- `value`: This is a value of this `input`.',
   '- `isError`: This will be `false`, when `value` passes all test.',
   '- `error`: Messages will be pushed in `error` if `value` does not pass the test.',
