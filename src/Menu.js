@@ -36,12 +36,19 @@ export default class Menu extends React.Component {
     this.animationEnd = this.animationEnd.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.state.isShown !== nextState.isShown ||
+      JSON.stringify(this.state.addStyle) !== JSON.stringify(nextState.addStyle)
+    );
+  }
+
   componentWillUnmount() {
     clearInterval(this.interval);
   }
 
   render() {
-    const {children, menu, menuStyle, trigger, ...props} = this.props;
+    const {children, menu, menuStyle, ...props} = this.props;
     const {isShown, addStyle} = this.state;
     const newMenuStyle = [
       style.menu,
@@ -49,22 +56,19 @@ export default class Menu extends React.Component {
       menuStyle(isShown),
       addStyle
     ];
-    const childrenProps = {};
-
-    if(trigger.indexOf('click') !== -1)
-      childrenProps.onClick = this.toggleMenu
-    if(trigger.indexOf('hover') !== -1) {
-      childrenProps.onMouseEnter = this.showMenu;
-      childrenProps.onMouseLeave = this.hideMenu;
-    }
 
     delete props.delay;
+    delete props.trigger;
 
     return (
       <div {...props}
            style={[style.root, props.style]}
       >
-        {React.cloneElement(children, childrenProps)}
+        {React.cloneElement(children, {
+          onClick: this.toggleMenu,
+          onMouseEnter: this.showMenu,
+          onMouseLeave: this.hideMenu
+        })}
 
         <StyleRoot style={newMenuStyle}
                    onMouseEnter={this.showMenu}
@@ -81,12 +85,18 @@ export default class Menu extends React.Component {
   }
 
   showMenu() {
+    const {trigger} = this.props;
+
     clearInterval(this.interval);
+
     this.isEnter = true;
     this.interval = setInterval(() => {
       this.isEnter = false;
     }, 500);
-    this.setState({isShown: true});
+
+    if(trigger.indexOf('click') !== -1 &&
+      trigger.indexOf('hover') !== -1)
+      this.setState({isShown: true});
   }
 
   hideMenu() {
