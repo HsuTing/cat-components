@@ -11,13 +11,15 @@ export default class Menu extends React.Component {
   static propTypes ={
     children: PropTypes.element.isRequired,
     menu: PropTypes.element.isRequired,
-    menuStyles: PropTypes.func,
-    delay: PropTypes.number
+    menuStyle: PropTypes.func,
+    delay: PropTypes.number,
+    trigger: PropTypes.array
   }
 
   static defaultProps = {
-    menuStyles: () => {},
-    delay: 1
+    menuStyle: () => {},
+    delay: 1,
+    trigger: ['click', 'hover']
   }
 
   constructor(props) {
@@ -39,14 +41,22 @@ export default class Menu extends React.Component {
   }
 
   render() {
-    const {children, menu, menuStyles, ...props} = this.props;
+    const {children, menu, menuStyle, trigger, ...props} = this.props;
     const {isShown, addStyle} = this.state;
-    const menuStyle = [
+    const newMenuStyle = [
       style.menu,
-      style.styles(isShown),
-      menuStyles(isShown),
+      style.style(isShown),
+      menuStyle(isShown),
       addStyle
     ];
+    const childrenProps = {};
+
+    if(trigger.indexOf('click') !== -1)
+      childrenProps.onClick = this.toggleMenu
+    if(trigger.indexOf('hover') !== -1) {
+      childrenProps.onMouseEnter = this.showMenu;
+      childrenProps.onMouseLeave = this.hideMenu;
+    }
 
     delete props.delay;
 
@@ -54,13 +64,9 @@ export default class Menu extends React.Component {
       <div {...props}
            style={[style.root, props.style]}
       >
-        {React.cloneElement(children, {
-          onMouseEnter: this.showMenu,
-          onMouseLeave: this.hideMenu,
-          onClick: this.toggleMenu
-        })}
+        {React.cloneElement(children, childrenProps)}
 
-        <StyleRoot style={menuStyle}
+        <StyleRoot style={newMenuStyle}
                    onMouseEnter={this.showMenu}
                    onMouseLeave={this.hideMenu}
                    onAnimationEnd={this.animationEnd}

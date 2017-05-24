@@ -23,31 +23,31 @@ export default class Accordion extends React.Component {
       }
     ).isRequired,
     index: PropTypes.number.isRequired,
-    contentStyles: PropTypes.func
+    contentStyle: PropTypes.func
   }
 
   static defaultProps = {
-    contentStyles: () => {}
+    contentStyle: () => {}
   }
 
   render() {
-    const {index, children, contentStyles, ...props} = this.props;
+    const {index, children, contentStyle, ...props} = this.props;
 
     return (
       <div {...props}>
         {React.Children.map(children, (item, itemIndex) => {
           const [title, content] = item.props.children;
-          const contentStyle = {
+          const newContentStyle = {
             ...style.content,
             ...content.props.style,
-            ...style.styles(index === itemIndex),
-            ...contentStyles(index === itemIndex)
+            ...style.style(index === itemIndex),
+            ...contentStyle(index === itemIndex)
           };
 
           return React.cloneElement(item, {},
             title,
             React.cloneElement(content, {
-              style: contentStyle
+              style: newContentStyle
             })
           );
         })}

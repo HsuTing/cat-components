@@ -34,7 +34,7 @@ export default {
     animation: 'x 0.5s ease-in-out'
   },
 
-  styles: isShown => ({
+  style: isShown => ({
     ...(isShown ? showStyle : hideStyle),
     animationName: radium.keyframes({
       '0%': isShown ? hideStyle : showStyle,

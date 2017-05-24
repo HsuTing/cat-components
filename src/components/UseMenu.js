@@ -8,7 +8,7 @@ import style from 'componentsStyle/useMenu';
 
 import Menu from './../Menu';
 
-const menuStyles = () => ({
+const menuStyle = () => ({
   top: '-230px',
   transformOrigin: '0px 100%'
 });
@@ -18,7 +18,7 @@ export default class UseMenu extends React.Component {
   render() {
     return (
       <Menu menu={<h4>Menu</h4>}
-            menuStyles={menuStyles}
+            menuStyle={menuStyle}
       >
         <MenuIcon style={style.menu} />
       </Menu>

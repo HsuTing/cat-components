@@ -15,19 +15,19 @@ import style from 'style/toggle';
 class Switch extends React.Component {
   static propTypes = {
     isClicked: PropTypes.bool,
-    buttonStyles: PropTypes.func
+    buttonStyle: PropTypes.func
   }
 
   static defaultProps = {
     isClicked: false,
-    buttonStyles: () => {}
+    buttonStyle: () => {}
   }
 
   render() {
-    const {buttonStyles, isClicked, ...props} = this.props;
+    const {buttonStyle, isClicked, ...props} = this.props;
     const newStyle = [
       style.switch(isClicked).button,
-      buttonStyles(isClicked)
+      buttonStyle(isClicked)
     ];
 
     return (
@@ -43,7 +43,7 @@ export default class Toggle extends React.Component {
   static propTypes = {
     checked: PropTypes.bool,
     onClick: PropTypes.func,
-    styles: PropTypes.func,
+    rootStyle: PropTypes.func,
     type: PropTypes.string,
     clicked: PropTypes.bool,
     icons: PropTypes.shape({
@@ -53,7 +53,7 @@ export default class Toggle extends React.Component {
   }
 
   static defaultProps = {
-    styles: () => {},
+    rootStyle: () => {},
     type: 'checkbox',
     checked: false,
     onClick: () => {}
@@ -95,16 +95,15 @@ export default class Toggle extends React.Component {
     const iconStyle = {
       ...style.root,
       ...(type === 'switch' ? style.switch(isClicked).bar : {}),
-      ...props.styles(isClicked)
+      ...props.rootStyle(isClicked)
     };
 
-    delete props.styles;
+    delete props.rootStyle;
     delete props.clicked;
     delete props.icons;
 
-    if(type === 'switch') {
+    if(type === 'switch')
       props.isClicked = isClicked;
-    }
 
     return (
       <Icon {...props}
