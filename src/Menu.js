@@ -38,6 +38,7 @@ export default class Menu extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
+      nextProps.children !== this.props.children ||
       this.state.isShown !== nextState.isShown ||
       JSON.stringify(this.state.addStyle) !== JSON.stringify(nextState.addStyle)
     );

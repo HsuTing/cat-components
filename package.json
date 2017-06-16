@@ -15,7 +15,7 @@
   },
   "main": "./lib/index.js",
   "name": "cat-components",
-  "version": "1.2.10",
+  "version": "1.2.11",
   "description": "react components",
   "author": {
     "name": "hsuting",
@@ -67,7 +67,7 @@
     "pre-commit": "^1.2.2",
     "radium-normalize": "^2.0.5",
     "react-icons": "^2.2.3",
-    "react-markdown": "^2.4.6",
+    "react-markdown": "^2.5.0",
     "uuid": "^3.0.1",
     "validator": "^7.0.0",
     "webpack": "^2.3.2",

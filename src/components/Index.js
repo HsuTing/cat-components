@@ -30,7 +30,8 @@ const components = [
   'Loading',
   'Alert',
   'Sidebar',
-  'Icon'
+  'Icon',
+  'Language'
 ].map(name => {
   return {
     name,
