@@ -24,6 +24,7 @@ const components = [
   'Menu',
   'Accordion',
   'Calendar',
+  'CalendarTable',
   'Table',
   'Toggle',
   'Slider',
