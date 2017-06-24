@@ -15,7 +15,7 @@ export default class UseGoTo extends React.Component {
           <Button>Go Top</Button>
         </GoTo>
         <GoTo main='body'
-              target='#Input'
+          target='#Input'
         >
           <Button>Go To Input</Button>
         </GoTo>

@@ -19,17 +19,17 @@ export default class Button extends React.Component {
     if(link)
       return (
         <a href={link}
-           target={target ? target : '_self'}
+          target={target ? target : '_self'}
         >
           <button {...props}
-                  style={[style.root, props.style]}
+            style={[style.root, props.style]}
           ></button>
         </a>
       );
 
     return (
       <button {...props}
-              style={[style.root, props.style]}
+        style={[style.root, props.style]}
       ></button>
     );
   }

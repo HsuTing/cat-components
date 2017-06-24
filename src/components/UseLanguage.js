@@ -51,7 +51,7 @@ export default class UseLanguage extends React.Component {
             value: 'eng'
           }].map((item, itemIndex) => (
             <Button key={itemIndex}
-                    onClick={this.choose(item.value)}
+              onClick={this.choose(item.value)}
             >{item.title}</Button>
           ))}
 

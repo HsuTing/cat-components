@@ -23,8 +23,8 @@ class Alert extends React.Component {
     const childrens = React.Children.toArray(childrenProps.children)
       .concat([
         <CloseIcon key='icon'
-                   style={{...style.icon, ...iconStyle}}
-                   onClick={() => (hide())}
+          style={{...style.icon, ...iconStyle}}
+          onClick={() => (hide())}
         />
       ]);
 
@@ -68,7 +68,7 @@ class AlertController {
     this.component = component;
     ReactDOM.render(
       <Alert iconStyle={iconStyle}
-             hide={this.hide}
+        hide={this.hide}
       >{component}</Alert>,
       document.getElementById(this.nodeId)
     );
@@ -79,7 +79,7 @@ class AlertController {
     this.isShown = false;
     ReactDOM.render(
       <Alert hide={this.hide}
-             rootStyle={{display: 'none'}}
+        rootStyle={{display: 'none'}}
       >{this.component}</Alert>,
       document.getElementById(this.nodeId)
     );

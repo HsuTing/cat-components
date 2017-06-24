@@ -38,14 +38,14 @@ class Sidebar extends React.Component {
 
     return (
       <StyleRoot style={[style.root(isShown), rootStyle(isShown)]}
-                 onAnimationEnd={this.animationEnd}
+        onAnimationEnd={this.animationEnd}
       >
         <div style={style.background}
-             onClick={this.hide}
+          onClick={this.hide}
         />
 
         <aside {...childrenProps}
-               style={[style.menu, childrenProps.style]}
+          style={[style.menu, childrenProps.style]}
         />
       </StyleRoot>
     );
@@ -81,8 +81,8 @@ class SidebarController {
     this.component = component;
     ReactDOM.render(
       <Sidebar rootStyle={rootStyle}
-               hide={this.hide}
-               isShown={true}
+        hide={this.hide}
+        isShown={true}
       >{component}</Sidebar>,
       document.getElementById(this.nodeId)
     );
@@ -93,7 +93,7 @@ class SidebarController {
     this.isShown = false;
     ReactDOM.render(
       <Sidebar rootStyle={() => ({display: 'none'})}
-               hide={this.hide}
+        hide={this.hide}
       >{this.component}</Sidebar>,
       document.getElementById(this.nodeId)
     );

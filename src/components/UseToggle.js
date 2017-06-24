@@ -24,12 +24,12 @@ export default class UseToggle extends React.Component {
         <h5>Type: radio</h5>
         <div>
           <Toggle type='radio'
-                  clicked={value === '1'}
-                  onClick={this.click('1')}
+            clicked={value === '1'}
+            onClick={this.click('1')}
           />
           <Toggle type='radio'
-                  clicked={value === '2'}
-                  onClick={this.click('2')}
+            clicked={value === '2'}
+            onClick={this.click('2')}
           />
         </div>
 
@@ -42,7 +42,7 @@ export default class UseToggle extends React.Component {
         <h5>Type: switch</h5>
         <div>
           <Toggle type='switch'
-                  checked
+            checked
           />
         </div>
         <div>

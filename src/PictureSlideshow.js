@@ -97,8 +97,8 @@ export default class PictureSlideshowStyle extends React.Component {
 
     return (
       <div {...props}
-           style={[style.root, props.style]}
-           ref={node => (this.node = node)}
+        style={[style.root, props.style]}
+        ref={node => (this.node = node)}
       >
         {imgs.map((img, imgIndex) => {
           let animation = style.hide;
@@ -111,11 +111,11 @@ export default class PictureSlideshowStyle extends React.Component {
           if(type === 'img')
             return (
               <StyleRoot key={imgIndex}
-                         style={[style.item, img.style, animation]}
+                style={[style.item, img.style, animation]}
               >
                 <img {...img}
-                     style={style.img}
-                     onLoad={this.resize}
+                  style={style.img}
+                  onLoad={this.resize}
                 />
               </StyleRoot>
             );
@@ -126,8 +126,8 @@ export default class PictureSlideshowStyle extends React.Component {
           };
           return (
             <StyleRoot key={imgIndex}
-                       {...imgProps}
-                       style={[style.item, picture, img.style, animation]}
+              {...imgProps}
+              style={[style.item, picture, img.style, animation]}
             />
           );
         })}

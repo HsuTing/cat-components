@@ -68,12 +68,12 @@ export default class Loading extends React.Component {
 
     return (
       <StyleRoot {...props}
-                 style={[style.root(outerRadius), style.animtion, props.style]}
+        style={[style.root(outerRadius), style.animtion, props.style]}
       >
         <svg style={style.root(outerRadius)}>
           <g style={style.g(outerRadius)}>
             <path d={path.startAngle(start * 2 * Math.PI).endAngle(end * 2 * Math.PI)()}
-                  style={style.circle}
+              style={style.circle}
             />
           </g>
         </svg>

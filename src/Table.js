@@ -15,7 +15,7 @@ export class Table extends React.Component {
   render() {
     return (
       <table {...this.props}
-             style={[style.table, this.props.style]}
+        style={[style.table, this.props.style]}
       />
     );
   }
@@ -30,7 +30,7 @@ export class Tr extends React.Component {
   render() {
     return (
       <tr {...this.props}
-          style={[style.tr, this.props.style]}
+        style={[style.tr, this.props.style]}
       />
     );
   }
@@ -45,7 +45,7 @@ export class Th extends React.Component {
   render() {
     return (
       <th {...this.props}
-          style={[style.th, this.props.style]}
+        style={[style.th, this.props.style]}
       />
     );
   }
@@ -60,7 +60,7 @@ export class Td extends React.Component {
   render() {
     return (
       <td {...this.props}
-          style={[style.td, this.props.style]}
+        style={[style.td, this.props.style]}
       />
     );
   }
@@ -75,7 +75,7 @@ export class Thead extends React.Component {
   render() {
     return (
       <thead {...this.props}
-             style={[style.thead, this.props.style]}
+        style={[style.thead, this.props.style]}
       />
     );
   }
@@ -91,7 +91,7 @@ export class Tbody extends React.Component {
   render() {
     return (
       <tbody {...this.props}
-             style={[style.tbody, this.props.style]}
+        style={[style.tbody, this.props.style]}
       >
         {React.Children.map(this.props.children, node => {
           const component = React.cloneElement(node);

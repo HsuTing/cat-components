@@ -38,16 +38,16 @@ class UseInputItem extends React.Component {
     return (
       <div>
         <Input {...this.props}
-               style={isError ? style.inputError : {}}
-               rules={rules}
-               value={value}
-               onChange={this.onChange}
+          style={isError ? style.inputError : {}}
+          rules={rules}
+          value={value}
+          onChange={this.onChange}
         />
 
         {error.map((err, index) => {
           return (
             <p key={index}
-               style={style.error}
+              style={style.error}
             >{err}</p>
           );
         })}

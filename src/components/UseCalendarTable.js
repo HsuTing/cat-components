@@ -19,7 +19,7 @@ const Cell = ({year, month, date, isBefore, isAfter, sameMonth, ...props}) => {
 
   return (
     <StyleRoot {...props}
-               style={[props.style, addStyle]}
+      style={[props.style, addStyle]}
     >
       <font style={!isBefore && !isAfter ? style.today : {}}>
         {`

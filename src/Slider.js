@@ -68,13 +68,13 @@ export default class Slider extends React.Component {
 
     return (
       <div {...props}
-           ref={node => (this.node = node)}
-           style={[style.root, props.style]}
-           onClick={this.click}
+        ref={node => (this.node = node)}
+        style={[style.root, props.style]}
+        onClick={this.click}
       >
         <div style={[style.bar(left), barStyle(percentage / 100)]} />
         <div style={[style.button(left), buttonStyle(percentage / 100)]}
-             onMouseDown={this.dragStart}
+          onMouseDown={this.dragStart}
         />
       </div>
     );

@@ -8,9 +8,9 @@ export default class Icon extends React.Component {
   render() {
     return (
       <svg width='400'
-           height='400'
-           viewBox='0 0 800 800'
-           {...this.props}
+        height='400'
+        viewBox='0 0 800 800'
+        {...this.props}
       >
         <title>Hsu Ting</title>
         <path d='M390,222.19q9.93,0,9.8,10.73l-4.5,33.78q-.27,6-5.17,6-5.3,0-5.43-6l-4.38-33.78Q379.92,222.19,390,222.19Zm16.29,10.73q-.4-10.73,9.67-10.73t9.8,10.73l-4.5,33.78q-.27,6-5.17,6-5.3,0-5.43-6Z'/>

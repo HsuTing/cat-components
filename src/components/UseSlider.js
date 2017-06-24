@@ -22,7 +22,7 @@ export default class UseSlider extends React.Component {
     return (
       <div>
         <Slider onChange={this.change}
-                value={value}
+          value={value}
         />
 
         <h5>{value}</h5>

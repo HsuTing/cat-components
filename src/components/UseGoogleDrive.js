@@ -29,9 +29,9 @@ export default class UseGoogleDrive extends React.Component {
     return (
       <div>
         <GoogleDrive clientId={clientId}
-                     updateSigninStatus={this.updateSigninStatus}
-                     authClick={this.authClick}
-                     signoutClick={this.signoutClick}
+          updateSigninStatus={this.updateSigninStatus}
+          authClick={this.authClick}
+          signoutClick={this.signoutClick}
         >
           <Button>{isSignedIn ? 'Sign out' : 'Authorize' }</Button>
         </GoogleDrive>

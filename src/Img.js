@@ -17,7 +17,7 @@ export default class Button extends React.Component {
     if(link)
       return (
         <a href={link}
-           target={target ? target : '_self'}
+          target={target ? target : '_self'}
         >
           <img {...props} />
         </a>

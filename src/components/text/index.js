@@ -5,7 +5,7 @@ export default [
   '#### Install package',
   '```sh',
   'yarn add cat-components',
-  '\/\/or',
+  '\/\/or', // eslint-disable-line no-useless-escape
   'npm install cat-components',
   '```',
   '',

@@ -50,27 +50,28 @@ export default class Index extends React.Component {
 
         <div style={style.titleRoot}>
           <a href='https://github.com/HsuTing/cat-components'
-             target='_blank'
+            target='_blank'
+            rel='noopener noreferrer'
           >
             <Img src='https://hsuting.github.io/img/icon.svg'
-                 style={style.icon}
+              style={style.icon}
             />
             <h1 style={style.title}>Cat components</h1>
           </a>
         </div>
 
         <Img link='https://npmjs.org/package/cat-components'
-             target='_blank'
-             src='https://badge.fury.io/js/cat-components.svg'
-             style={style.npm}
+          target='_blank'
+          src='https://badge.fury.io/js/cat-components.svg'
+          style={style.npm}
         />
 
         <div>
           {components.map((component, index) => {
             return (
               <GoTo key={index}
-                    main='body'
-                    target={`#${component.name}`}
+                main='body'
+                target={`#${component.name}`}
               >
                 <Button>{component.name}</Button>
               </GoTo>
@@ -85,8 +86,8 @@ export default class Index extends React.Component {
         {components.map((component, index) => {
           return (
             <div key={index}
-                 id={component.name}
-                 style={style.block}
+              id={component.name}
+              style={style.block}
             >
               <Markdown source={component.text.join('\n')} />
               {React.createElement(component.component)}

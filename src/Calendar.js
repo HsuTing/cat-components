@@ -72,18 +72,18 @@ export default class Calendar extends React.Component {
 
     return (
       <div {...props}
-           style={[style.root, this.props.style]}
+        style={[style.root, this.props.style]}
       >
         <div style={[style.block, style.textBlock]}>
           {moment(date).format(format)}
         </div>
         <div style={style.choiceBlock}
-             ref={node => (this.node = node)}
+          ref={node => (this.node = node)}
         >
           {Object.keys(choices).map((key, index) => {
             return (
               <div key={index}
-                   style={style.choice}
+                style={style.choice}
               >
                 {choices[key].map((data, dataIndex) => {
                   const value = key === 'month' ? date[key] + 1 : date[key];
@@ -91,9 +91,9 @@ export default class Calendar extends React.Component {
 
                   return (
                     <div key={dataIndex}
-                         style={choiceStyle}
-                         onClick={this.choose(key, key === 'month' ? data - 1 : data)}
-                         id={data === value ? 'is-chosen' : ''}
+                      style={choiceStyle}
+                      onClick={this.choose(key, key === 'month' ? data - 1 : data)}
+                      id={data === value ? 'is-chosen' : ''}
                     >{data}</div>
                   );
                 })}

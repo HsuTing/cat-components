@@ -24,7 +24,7 @@ export default class UseAccordion extends React.Component {
         {['1', '2', '3'].map((name, nameIndex) => {
           return (
             <StyleRoot key={nameIndex}
-                       onClick={this.onClick(nameIndex)}
+              onClick={this.onClick(nameIndex)}
             >
               <h5>{`title${name}`}</h5>
               <p>{`content${name}`}</p>

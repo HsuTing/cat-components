@@ -64,8 +64,8 @@ export default class Toggle extends React.Component {
     this.state = {
       isClicked: (
         props.type === 'checkbox' ?
-        props.checked :
-        props.checked || props.clicked
+          props.checked :
+          props.checked || props.clicked
       )
     };
 
@@ -107,8 +107,8 @@ export default class Toggle extends React.Component {
 
     return (
       <Icon {...props}
-            style={iconStyle}
-            onClick={this.click}
+        style={iconStyle}
+        onClick={this.click}
       />
     );
   }

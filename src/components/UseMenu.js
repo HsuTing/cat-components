@@ -18,7 +18,7 @@ export default class UseMenu extends React.Component {
   render() {
     return (
       <Menu menu={<h4>Menu</h4>}
-            menuStyle={menuStyle}
+        menuStyle={menuStyle}
       >
         <MenuIcon style={style.menu} />
       </Menu>

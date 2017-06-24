@@ -47,25 +47,25 @@ export default class Normalize extends React.Component {
       <style>
         <StyleRadium rules={normalize} />
         <StyleRadium scopeSelector='*'
-                     rules={all}
+          rules={all}
         />
         <StyleRadium scopeSelector='a'
-                     rules={a}
+          rules={a}
         />
         <StyleRadium scopeSelector='pre'
-                     rules={pre}
+          rules={pre}
         />
         <StyleRadium scopeSelector='code'
-                     rules={code}
+          rules={code}
         />
         <StyleRadium scopeSelector='pre code'
-                     rules={{backgroundColor: 'initial'}}
+          rules={{backgroundColor: 'initial'}}
         />
         <StyleRadium scopeSelector='li'
-                     rules={li}
+          rules={li}
         />
         <StyleRadium scopeSelector='p'
-                     rules={p}
+          rules={p}
         />
       </style>
     );

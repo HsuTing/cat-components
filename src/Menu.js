@@ -63,7 +63,7 @@ export default class Menu extends React.Component {
 
     return (
       <div {...props}
-           style={[style.root, props.style]}
+        style={[style.root, props.style]}
       >
         {React.cloneElement(children, {
           onClick: this.toggleMenu,
@@ -72,9 +72,9 @@ export default class Menu extends React.Component {
         })}
 
         <StyleRoot style={newMenuStyle}
-                   onMouseEnter={this.showMenu}
-                   onMouseLeave={this.hideMenu}
-                   onAnimationEnd={this.animationEnd}
+          onMouseEnter={this.showMenu}
+          onMouseLeave={this.hideMenu}
+          onAnimationEnd={this.animationEnd}
         >{menu}</StyleRoot>
       </div>
     );
