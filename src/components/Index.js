@@ -33,6 +33,7 @@ const components = [
 
 const decorators = [
   'checkFBAPI',
+  'checkGAPI',
   //'GoogleDrive',
   //'GoTo',
   //'Square',
