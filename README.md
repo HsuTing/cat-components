@@ -1,29 +1,26 @@
 # Cat-components [![NPM version][npm-image]][npm-url]
-Here are `react` components and a function to rendering `html` with `react`. All components are build with [radium](https://github.com/FormidableLabs/radium).
+Here are `react` components, decorators and a function to rendering `html` with `react`. All components are build with [radium](https://github.com/FormidableLabs/radium).
 
-## Components
-You can see [here](http://hsuting.github.io/cat-components) to learn how to use components.
+## How to use it
+You can see [here](http://hsuting.github.io/cat-components) to learn how to use components and decorators.
 
 #### List
-- Link
-- Wrapper
-- GoogleDrive
-- Input
+###### Components
 - Button
-- Img
-- GoTo
-- PictureSlideshow
-- Square
-- Menu
-- Accordion
 - Calendar
+- CalendarTable
+- Loading
+- Icon
+- Img
+- Input
+- PictureSlideshow
+- Slider
 - Table
 - Toggle
-- Slider
-- Loading
-- Alert
-- Sidebar
-- Icon
+
+###### Decorators
+- checkFBAPI
+- checkGAPI
 
 ## Bin
 Use to render `HTML` with `react` and `nunjucks`.
