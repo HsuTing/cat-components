@@ -7,11 +7,11 @@
     "babel": "rm -rf ./lib && babel src --out-dir lib",
     "babel:watch": "rm -rf ./lib && babel -w src --out-dir lib",
     "prepublish": "yarn babel",
-    "static": "node ./lib/bin/static.js static.config.js",
     "build": "yarn babel && yarn static",
     "prod": "export NODE_ENV=production && yarn babel && yarn static && yarn webpack",
     "watch": "concurrently -c green \"yarn lint:watch\" \"yarn babel:watch\" \"yarn webpack-server\"",
-    "postinstall": "rm -rf ./node_modules/radium/.babelrc"
+    "postinstall": "rm -rf ./node_modules/radium/.babelrc",
+    "static": "node ./lib/bin/static.js static.config.js"
   },
   "main": "./lib/index.js",
   "name": "cat-components",
@@ -38,7 +38,7 @@
     "url": "git+https://github.com/HsuTing/cat-components.git"
   },
   "bugs": {
-    "ur": "https://github.com/HsuTing/cat-components/issues"
+    "url": "https://github.com/HsuTing/cat-components/issues"
   },
   "license": "MIT",
   "devDependencies": {

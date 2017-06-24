@@ -11,9 +11,13 @@
       ],
       "subject": "cat components",
       "url": "http://hsuting.github.io/cat-components",
-      "other": [],
+      "other": [
+        "facebook"
+      ],
       "router": false,
-      "redux": false
+      "redux": false,
+      "app_id": "1687681968184120",
+      "version": "v2.8"
     },
     "plugins": [
       "react",
@@ -31,6 +35,10 @@
       "reducers": "reducers",
       "actions": "actions",
       "stores": "stores"
+    },
+    "facebook": {
+      "app_id": "1687681968184120",
+      "version": "v2.8"
     }
   }
 }

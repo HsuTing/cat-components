@@ -29,7 +29,7 @@ export default {
   },
 
   npm: {
-    margin: '4px 2px'
+    margin: '4px 2px 30px'
   },
 
   arrowUpward: {

@@ -14,32 +14,38 @@ import Button from './../Button';
 import Img from './../Img';
 
 const components = [
-  'GoogleDrive',
-  'Input',
   'Button',
-  'Img',
-  'GoTo',
-  'PictureSlideshow',
-  'Square',
-  'Menu',
-  'Accordion',
   'Calendar',
   'CalendarTable',
-  'Table',
-  'Toggle',
-  'Slider',
   'Loading',
-  'Alert',
-  'Sidebar',
   'Icon',
-  'Language'
-].map(name => {
-  return {
-    name,
-    text: require(`./text/${name[0].toLowerCase() + name.slice(1)}`).default,
-    component: require(`./Use${name}`).default
-  };
-});
+  'Img',
+  'Input',
+  'PictureSlideshow',
+  'Slider',
+  'Table',
+  'Toggle'
+].map(name => ({
+  name,
+  text: require(`./text/${name[0].toLowerCase() + name.slice(1)}`).default,
+  component: require(`./Use${name}`).default
+}));
+
+const decorators = [
+  'checkFBAPI',
+  //'GoogleDrive',
+  //'GoTo',
+  //'Square',
+  //'Menu',
+  //'Accordion',
+  //'Alert',
+  //'Sidebar',
+  //'Language',
+].map(name => ({
+  name,
+  text: require(`./text/${name[0].toLowerCase() + name.slice(1)}`).default,
+  component: require(`./Use${name}`).default
+}));
 
 @radium
 export default class Index extends React.Component {
@@ -66,34 +72,53 @@ export default class Index extends React.Component {
           style={style.npm}
         />
 
+        <h4>Components</h4>
         <div>
-          {components.map((component, index) => {
-            return (
-              <GoTo key={index}
-                main='body'
-                target={`#${component.name}`}
-              >
-                <Button>{component.name}</Button>
-              </GoTo>
-            );
-          })}
+          {components.map((component, index) => (
+            <GoTo key={index}
+              main='body'
+              target={`#${component.name}`}
+            >
+              <Button>{component.name}</Button>
+            </GoTo>
+          ))}
+        </div>
+
+        <h4>Decorators</h4>
+        <div>
+          {decorators.map((decorator, index) => (
+            <GoTo key={index}
+              main='body'
+              target={`#${decorator.name}`}
+            >
+              <Button>{decorator.name}</Button>
+            </GoTo>
+          ))}
         </div>
 
         <div style={style.block}>
-          <Markdown source={text.join('\n')} />
+          <Markdown source={text} />
         </div>
 
-        {components.map((component, index) => {
-          return (
-            <div key={index}
-              id={component.name}
-              style={style.block}
-            >
-              <Markdown source={component.text.join('\n')} />
-              {React.createElement(component.component)}
-            </div>
-          );
-        })}
+        {components.map((component, index) => (
+          <div key={index}
+            id={component.name}
+            style={style.block}
+          >
+            <Markdown source={component.text} />
+            {React.createElement(component.component)}
+          </div>
+        ))}
+
+        {decorators.map((decorator, index) => (
+          <div key={index}
+            id={decorator.name}
+            style={style.block}
+          >
+            <Markdown source={decorator.text} />
+            {React.createElement(decorator.component)}
+          </div>
+        ))}
 
         <GoTo main='body'>
           <ArrowUpward style={style.arrowUpward} />
