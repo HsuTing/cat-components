@@ -10,7 +10,10 @@ import Wrapper from './../Wrapper';
 (() => {
   ReactDOM.render(
     <Wrapper>
-      <Index />
+      <Index leng='en-us'
+        defaultData={languageData}
+        dirPath={languageDir}
+      />
     </Wrapper>,
     document.getElementById('root')
   );

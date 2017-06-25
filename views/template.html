@@ -55,11 +55,14 @@
     {% block body %}{% endblock %}
   </body>
   {% block script %}{% endblock %}
-  {% if data %}
   <script>
-    var data = {{ data | safe }}
-  </script>
+    var languageData = {{ languageData | safe }};
+  {% if ENV %}
+    var languageDir = '/cat-components/public/i18n';
+  {% else %}
+    var languageDir = '/cat-components/docs/public/i18n';
   {% endif %}
+  </script>
 
   {% if ENV %}
   <script defer src="/cat-components/public/js/common.min.js" type="text/javascript"></script>

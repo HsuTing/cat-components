@@ -15,8 +15,9 @@ const alias = resolver[1].alias;
 module.exports = {
   "globals": {
     "Promise": true,
-    "gapi": true,
-    "FB": true
+    "FB": true,
+    "languageData": true,
+    "languageDir": true
   },
   "extends": [
     "google",
