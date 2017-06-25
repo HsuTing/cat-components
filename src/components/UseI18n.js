@@ -4,8 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
 
-import {language} from './../I18n';
 import Button from './../Button';
+import {language} from './../I18n';
 
 @radium
 @language

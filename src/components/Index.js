@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium from 'radium';
 import Markdown from 'react-markdown';
 import ArrowUpward from 'react-icons/lib/md/arrow-upward';
@@ -10,9 +11,9 @@ import style from 'componentsStyle/index';
 import text from 'componentsText/index';
 
 import I18n from './../I18n';
-import GoTo from './../GoTo';
 import Button from './../Button';
 import Img from './../Img';
+import goToAnimation from './../goToAnimation';
 
 const components = [
   'Button',
@@ -37,7 +38,7 @@ const decorators = [
   //'Accordion',
   //'Alert',
   'checkAPI',
-  //'GoTo',
+  'goToAnimation',
   //'Menu',
   //'Sidebar',
   //'Square',
@@ -48,8 +49,15 @@ const decorators = [
 }));
 
 @radium
+@goToAnimation('body')
 export default class Index extends React.Component {
+  static propTypes = {
+    goTo: PropTypes.func.isRequired
+  }
+
   render() {
+    const {goTo} = this.props;
+
     return (
       <I18n {...this.props}
             lang='en-us'
@@ -78,24 +86,18 @@ export default class Index extends React.Component {
           <h4>Components</h4>
           <div>
             {components.map((component, index) => (
-              <GoTo key={index}
-                main='body'
-                target={`#${component.name}`}
-              >
-                <Button>{component.name}</Button>
-              </GoTo>
+              <Button key={index}
+                onClick={() => goTo(`#${component.name}`)}
+              >{component.name}</Button>
             ))}
           </div>
 
           <h4>Decorators</h4>
           <div>
             {decorators.map((decorator, index) => (
-              <GoTo key={index}
-                main='body'
-                target={`#${decorator.name}`}
-              >
-                <Button>{decorator.name}</Button>
-              </GoTo>
+              <Button key={index}
+                onClick={() => goTo(`#${decorator.name}`)}
+              >{decorator.name}</Button>
             ))}
           </div>
 
@@ -123,9 +125,9 @@ export default class Index extends React.Component {
             </div>
           ))}
 
-          <GoTo main='body'>
-            <ArrowUpward style={style.arrowUpward} />
-          </GoTo>
+          <ArrowUpward style={style.arrowUpward}
+            onClick={() => goTo()}
+          />
         </div>
       </I18n>
     );

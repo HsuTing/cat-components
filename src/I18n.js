@@ -5,22 +5,20 @@ import path from 'path';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const language = Component => {
-  return class Translate extends React.Component {
-    static contextTypes = {
-      translate: PropTypes.object.isRequired,
-      changeLanguage: PropTypes.func.isRequired
-    }
+export const language = Component => class Translate extends React.Component {
+  static contextTypes = {
+    translate: PropTypes.object.isRequired,
+    changeLanguage: PropTypes.func.isRequired
+  }
 
-    render() {
-      return (
-        <Component {...this.state}
-          {...this.props}
-          {...this.context}
-        />
-      );
-    }
-  };
+  render() {
+    return (
+      <Component {...this.state}
+        {...this.props}
+        {...this.context}
+      />
+    );
+  }
 };
 
 export default class I18n extends React.Component {
