@@ -4,6 +4,9 @@ export default `
   # [I18n](./#I18n)
   This is used to build several languages in website.
 
+  #### Other packages
+  - [whatwg-fetch](https://github.com/github/fetch)
+
   #### Props
   - \`lang(required)\`: This is the default language which will be used at first.
   - \`defaultData(required)\`: The data of the language is used at first.
