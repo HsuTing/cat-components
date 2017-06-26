@@ -1,31 +1,29 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium from 'radium';
 
 import Button from './../Button';
-import Alert from './../Alert';
+import Alert, {alertBuilder} from './../Alert';
 
 @radium
-export default class UseAlert extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.click = this.click.bind(this);
+@alertBuilder
+class UseAlert extends React.Component {
+  static propTypes = {
+    alert: PropTypes.func.isRequired
   }
 
   render() {
     return (
-      <Button onClick={this.click}>Alert</Button>
-    );
-  }
-
-  click() {
-    Alert.show(
-      <div>
-        <h4>title</h4>
-        <p>Alert</p>
-      </div>
+      <Button onClick={() => this.props.alert(<div>Alert</div>)}
+      >Alert</Button>
     );
   }
 }
+
+export default () => ( // eslint-disable-line react/display-name
+  <Alert>
+    <UseAlert />
+  </Alert>
+);

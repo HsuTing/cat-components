@@ -9,22 +9,22 @@ import CloseIcon from 'react-icons/lib/md/close';
 import style from 'style/alert';
 
 @radium
-class Alert extends React.Component {
+class AlertTemplate extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
     rootStyle: PropTypes.object,
     iconStyle: PropTypes.object,
-    hide: PropTypes.func.isRequired
+    hideAlert: PropTypes.func.isRequired
   }
 
   render() {
-    const {children, rootStyle, iconStyle, hide} = this.props;
+    const {children, rootStyle, iconStyle, hideAlert} = this.props;
     const childrenProps = children.props;
     const childrens = React.Children.toArray(childrenProps.children)
       .concat([
         <CloseIcon key='icon'
           style={{...style.icon, ...iconStyle}}
-          onClick={() => (hide())}
+          onClick={hideAlert}
         />
       ]);
 
@@ -38,53 +38,79 @@ class Alert extends React.Component {
   }
 }
 
-class AlertController {
-  constructor() {
-    this.nodeId = 'alert';
-    this.isShown = false;
-    this.show_callback = () => {};
-    this.hide_callback = () => {};
-    this.show = this.show.bind(this);
-    this.hide = this.hide.bind(this);
+export const alertBuilder = Component => class AlertBuilder extends React.Component {
+  static contextTypes = {
+    alert: PropTypes.func.isRequired,
+    hideAlert: PropTypes.func.isRequired
   }
 
-  set id(id) {
-    this.nodeId = id;
-  }
-
-  set showCallback(callback = () => {}) {
-    this.show_callback = callback;
-  }
-
-  set hideCallback(callback = () => {}) {
-    this.hide_callback = callback;
-  }
-
-  show(component = <div />, iconStyle = {}) {
-    if(this.isShown)
-      return;
-
-    this.isShown = true;
-    this.component = component;
-    ReactDOM.render(
-      <Alert iconStyle={iconStyle}
-        hide={this.hide}
-      >{component}</Alert>,
-      document.getElementById(this.nodeId)
+  render() {
+    return (
+      <Component {...this.state}
+        {...this.props}
+        {...this.context}
+      />
     );
-    this.show_callback();
-  }
-
-  hide() {
-    this.isShown = false;
-    ReactDOM.render(
-      <Alert hide={this.hide}
-        rootStyle={{display: 'none'}}
-      >{this.component}</Alert>,
-      document.getElementById(this.nodeId)
-    );
-    this.hide_callback();
   }
 }
 
-export default new AlertController();
+export default class Alert extends React.Component {
+  static propTypes = {
+    id: PropTypes.string,
+    iconStyle: PropTypes.object,
+    children: PropTypes.element.isRequired
+  }
+
+  static defaultProps ={
+    id: 'alert'
+  }
+
+  static childContextTypes = {
+    alert: PropTypes.func.isRequired,
+    hideAlert: PropTypes.func.isRequired
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.isShown =  false;
+    this.alert = this.alert.bind(this);
+    this.hideAlert = this.hideAlert.bind(this);
+  }
+
+  getChildContext() {
+    return {
+      alert: this.alert,
+      hideAlert: this.hideAlert
+    };
+  }
+
+  render() {
+    return React.Children.only(
+      this.props.children
+    );
+  }
+
+  alert(component = <div />) {
+    if(this.isShown)
+      return;
+
+    const {iconStyle, id} = this.props;
+
+    this.isShown = true;
+    ReactDOM.render(
+      <AlertTemplate iconStyle={iconStyle}
+        hideAlert={this.hideAlert}
+      >{component}</AlertTemplate>,
+      document.getElementById(id)
+    );
+  }
+
+  hideAlert() {
+    this.isShown = false;
+    ReactDOM.render(
+      <div />,
+      document.getElementById(this.props.id)
+    );
+  }
+}

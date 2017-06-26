@@ -17,6 +17,7 @@ import goToAnimation from './../goToAnimation';
 
 const components = [
   'Accordion',
+  'Alert',
   'Button',
   'Calendar',
   'CalendarTable',
@@ -25,6 +26,7 @@ const components = [
   'Icon',
   'Img',
   'Input',
+  'Menu',
   'PictureSlideshow',
   'Slider',
   'Square',
@@ -37,10 +39,8 @@ const components = [
 }));
 
 const decorators = [
-  //'Alert',
   'checkAPI',
   'goToAnimation',
-  //'Menu',
   //'Sidebar',
 ].map(name => ({
   name,

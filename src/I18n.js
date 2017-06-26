@@ -5,7 +5,7 @@ import path from 'path';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const language = Component => class Translate extends React.Component {
+export const language = Component => class Language extends React.Component {
   static contextTypes = {
     translate: PropTypes.object.isRequired,
     changeLanguage: PropTypes.func.isRequired
