@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import radium from 'radium';
+import radium, {StyleRoot} from 'radium';
 import CloseIcon from 'react-icons/lib/md/close';
 
 import style from 'style/alert';
@@ -14,27 +14,57 @@ class AlertTemplate extends React.Component {
     children: PropTypes.element.isRequired,
     rootStyle: PropTypes.object,
     iconStyle: PropTypes.object,
+    isShown: PropTypes.bool,
     hideAlert: PropTypes.func.isRequired
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isShown: true
+    };
+
+    this.hide = this.hide.bind(this);
+    this.animationEnd = this.animationEnd.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.isShown !== this.state.isShown)
+      this.setState({isShown: nextProps.isShown});
+  }
+
   render() {
-    const {children, rootStyle, iconStyle, hideAlert} = this.props;
+    const {children, rootStyle, iconStyle} = this.props;
+    const {isShown} = this.state;
     const childrenProps = children.props;
     const childrens = React.Children.toArray(childrenProps.children)
       .concat([
         <CloseIcon key='icon'
           style={{...style.icon, ...iconStyle}}
-          onClick={hideAlert}
+          onClick={this.hide}
         />
       ]);
 
-    return React.cloneElement(children, {
-      style: {
-        ...style.root,
-        ...childrenProps.style,
-        ...rootStyle
-      }
-    }, childrens);
+    return (
+      <StyleRoot {...childrenProps}
+        onAnimationEnd={this.animationEnd}
+        style={{
+          ...style.root(isShown),
+          ...childrenProps.style,
+          ...rootStyle
+        }}
+        children={childrens}
+      />
+    );
+  }
+
+  hide() {
+    this.setState({isShown: false});
+  }
+
+  animationEnd() {
+    if(!this.state.isShown)
+      this.props.hideAlert();
   }
 }
 
@@ -95,22 +125,29 @@ export default class Alert extends React.Component {
     if(this.isShown)
       return;
 
-    const {iconStyle, id} = this.props;
+    const {id, iconStyle} = this.props;
 
     this.isShown = true;
+    this.component = component;
     ReactDOM.render(
       <AlertTemplate iconStyle={iconStyle}
         hideAlert={this.hideAlert}
+        isShown={true}
       >{component}</AlertTemplate>,
       document.getElementById(id)
     );
   }
 
   hideAlert() {
+    const {id, iconStyle} = this.props;
+
     this.isShown = false;
     ReactDOM.render(
-      <div />,
-      document.getElementById(this.props.id)
+      <AlertTemplate iconStyle={iconStyle}
+        hideAlert={this.hideAlert}
+        rootStyle={{display: 'none'}}
+      >{this.component}</AlertTemplate>,
+      document.getElementById(id)
     );
   }
 }

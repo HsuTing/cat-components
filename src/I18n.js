@@ -38,15 +38,6 @@ export default class I18n extends React.Component {
     changeLanguage: PropTypes.func.isRequired
   };
 
-  getChildContext() {
-    const {lang, ...data} = this.state;
-
-    return {
-      translate: data[lang],
-      changeLanguage: this.changeLanguage
-    };
-  }
-
   constructor(props) {
     super(props);
     const state = {
@@ -57,6 +48,15 @@ export default class I18n extends React.Component {
     state[props.lang] = props.defaultData;
     this.state = state;
     this.changeLanguage = this.changeLanguage.bind(this);
+  }
+
+  getChildContext() {
+    const {lang, ...data} = this.state;
+
+    return {
+      translate: data[lang],
+      changeLanguage: this.changeLanguage
+    };
   }
 
   render() {

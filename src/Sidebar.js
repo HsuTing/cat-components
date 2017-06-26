@@ -8,12 +8,13 @@ import radium, {StyleRoot} from 'radium';
 import style from 'style/sidebar';
 
 @radium
-class Sidebar extends React.Component {
+class SidebarTemplate extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
-    rootStyle: PropTypes.func,
+    rootStyle: PropTypes.object,
+    backgroundStyle: PropTypes.object,
     isShown: PropTypes.bool,
-    hide: PropTypes.func.isRequired
+    hideSidebar: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -32,15 +33,15 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    const {children, rootStyle} = this.props;
+    const {children, rootStyle, backgroundStyle} = this.props;
     const {isShown} = this.state;
     const childrenProps = children.props;
 
     return (
-      <StyleRoot style={[style.root(isShown), rootStyle(isShown)]}
+      <StyleRoot style={[style.root(isShown), rootStyle]}
         onAnimationEnd={this.animationEnd}
       >
-        <div style={style.background}
+        <div style={[style.background, backgroundStyle]}
           onClick={this.hide}
         />
 
@@ -57,48 +58,92 @@ class Sidebar extends React.Component {
 
   animationEnd() {
     if(!this.state.isShown)
-      this.props.hide();
+      this.props.hideSidebar();
   }
 }
 
-class SidebarController {
-  constructor() {
-    this.nodeId = 'sidebar';
-    this.isShown = false;
-    this.show = this.show.bind(this);
-    this.hide = this.hide.bind(this);
+export const sidebarBuilder = Component => class SidebarBuilder extends React.Component {
+  static contextTypes = {
+    sidebar: PropTypes.func.isRequired,
+    hideSidebar: PropTypes.func.isRequired
   }
 
-  set id(id) {
-    this.nodeId = id;
+  render() {
+    return (
+      <Component {...this.state}
+        {...this.props}
+        {...this.context}
+      />
+    );
+  }
+}
+
+export default class Sidebar extends React.Component {
+  static propTypes = {
+    id: PropTypes.string,
+    children: PropTypes.element.isRequired,
+    menu: PropTypes.element.isRequired,
+    rootStyle: PropTypes.object,
+    backgroundStyle: PropTypes.object
   }
 
-  show(component = <div />, rootStyle = () => {}, callback = () => {}) {
+  static defaultProps ={
+    id: 'sidebar'
+  }
+
+  static childContextTypes = {
+    sidebar: PropTypes.func.isRequired,
+    hideSidebar: PropTypes.func.isRequired
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.isShown =  false;
+    this.sidebar = this.sidebar.bind(this);
+    this.hideSidebar = this.hideSidebar.bind(this);
+  }
+
+  getChildContext() {
+    return {
+      sidebar: this.sidebar,
+      hideSidebar: this.hideSidebar
+    };
+  }
+
+  render() {
+    return React.Children.only(
+      this.props.children
+    );
+  }
+
+  sidebar() {
     if(this.isShown)
       return;
 
+    const {id, menu, rootStyle, backgroundStyle} = this.props;
+
     this.isShown = true;
-    this.component = component;
     ReactDOM.render(
-      <Sidebar rootStyle={rootStyle}
-        hide={this.hide}
+      <SidebarTemplate rootStyle={rootStyle}
+        backgroundStyle={backgroundStyle}
+        hideSidebar={this.hideSidebar}
         isShown={true}
-      >{component}</Sidebar>,
-      document.getElementById(this.nodeId)
+      >{menu}</SidebarTemplate>,
+      document.getElementById(id)
     );
-    callback();
   }
 
-  hide(callback = () => {}) {
+  hideSidebar() {
+    const {id, menu, backgroundStyle} = this.props;
+
     this.isShown = false;
     ReactDOM.render(
-      <Sidebar rootStyle={() => ({display: 'none'})}
-        hide={this.hide}
-      >{this.component}</Sidebar>,
-      document.getElementById(this.nodeId)
+      <SidebarTemplate rootStyle={{display: 'none'}}
+        backgroundStyle={backgroundStyle}
+        hideSidebar={this.hideSidebar}
+      >{menu}</SidebarTemplate>,
+      document.getElementById(id)
     );
-    callback();
   }
 }
-
-export default new SidebarController();

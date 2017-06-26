@@ -28,6 +28,7 @@ const components = [
   'Input',
   'Menu',
   'PictureSlideshow',
+  'Sidebar',
   'Slider',
   'Square',
   'Table',
@@ -41,7 +42,6 @@ const components = [
 const decorators = [
   'checkAPI',
   'goToAnimation',
-  //'Sidebar',
 ].map(name => ({
   name,
   text: require(`./text/${name[0].toLowerCase() + name.slice(1)}`).default,

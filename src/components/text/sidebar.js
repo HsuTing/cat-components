@@ -1,43 +1,54 @@
 'use strict';
 
-export default [
-  '# [Sidebar](./#Sidebar)',
-  'Use to make a sidebar, but this is not a component. This is a class which have three functions, and use `ReactDOM.render` to make a sidebar. As a result, you need to add a `DOM` whose `id` is `sidebar` like `<div id=\'sidebar\' />` or use `sidebar.id` to set a new id for sidebar.',
-  '',
-  '#### Functions',
-  '- `id`: Use to set `id` for rendering `sidebar`.',
-  '- `show`: This function have three parameters. The first one is a component as sidebar. The second one is `rootStyle` which is used to modify the style of the root component. This parameter is a function, and you will get if sidebar is shown. You need to return an object to modify style. The last one is a function which is called when sidebar is shown.',
-  '- `hide`: This function use to hide sidebar. The parameter is a function which is called when sidebar is hidden.',
-  '',
-  '#### Example',
-  '```js',
-  '\'use strict\';',
-  '',
-  'import React from \'react\';',
-  'import Sidebar from \'cat-components/lib/Sidebar\';',
-  '',
-  'export default class Example extends React.Component {',
-  '  constructor(props) {',
-  '    super(props);',
-  '',
-  '    this.click = this.click.bind(this);',
-  '  }',
-  '',
-  '  render() {',
-  '    return (',
-  '      <button>Sidebar</button>',
-  '    );',
-  '  }',
-  '',
-  '  click() {',
-  '    Sidebar.show(',
-  '      <div>',
-  '        <h4>Item1</h4>',
-  '        <h4>Item2</h4>',
-  '        <h4>Item3</h4>',
-  '      </div>',
-  '    );',
-  '  }',
-  '}',
-  '```'
-];
+export default `
+  # [Sidebar](./#Sidebar)
+  This use \`ReactDOM.render\` to make a sidebar. As a result, you need to add a \`DOM\` whose \`id\` is \`sidebar\` like \`<div id='sidebar' />\` or use \`id\` to set a new id for the sidebar.
+
+  #### Props
+  - \`id\`: Use to set \`id\` for rendering \`sidebar\`.
+  - \`menu\`: This is uesd to build the menu of the \`sidebar\`.
+  - \`rootStyle\`: This is the style of the root component.
+  - \`backgroundStyle\`: This is the style of the background component.
+
+  #### Decorators
+  - sidebarBuilder
+    - Props
+      - \`sidebar\`: This is the function to build \`sidebar\`.
+      - \`hideSidebar\`: This is the function to hide \`sidebar\`.
+
+  #### Example
+  \`\`\`js
+  'use strict';
+
+  import React from 'react';
+  import Sidebar, {sidebarBuilder} from 'cat-components/lib/Sidebar';
+
+  @sidebarBuilder
+  export default class Example extends React.Component {
+    static propTypes = {
+      sidebar: PropTypes.func.isRequired
+    }
+
+    render() {
+      return (
+        <button onClick={this.props.sidebar}
+        >Sidebar</button>
+      );
+    }
+  }
+
+  const menu = (
+    <div>
+      <h4>Item1</h4>
+      <h4>Item2</h4>
+      <h4>Item3</h4>
+    </div>
+  );
+
+  export default () => (
+    <Sidebar menu={meun}>
+      <Example />
+    <Sidebar>
+  );
+  \`\`\`
+`;
