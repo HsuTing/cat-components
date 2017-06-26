@@ -28,7 +28,7 @@ export default {
     float: 'left'
   },
 
-  npm: {
+  statusImage: {
     margin: '4px 2px 30px'
   },
 

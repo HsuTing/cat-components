@@ -80,7 +80,12 @@ export default class Index extends React.Component {
           <Img link='https://npmjs.org/package/cat-components'
             target='_blank'
             src='https://badge.fury.io/js/cat-components.svg'
-            style={style.npm}
+            style={style.statusImage}
+          />
+          <Img link='https://travis-ci.org/HsuTing/cat-components'
+            target='_blank'
+            src='https://travis-ci.org/HsuTing/cat-components.svg?branch=master'
+            style={style.statusImage}
           />
 
           <h4>Components</h4>
