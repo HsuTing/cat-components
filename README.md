@@ -1,4 +1,4 @@
-# Cat-components [![NPM version][npm-image]][npm-url]
+# Cat-components [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 Here are `react` components, decorators and a function to rendering `html` with `react`. All components are build with [radium](https://github.com/FormidableLabs/radium).
 
 ## How to use it
@@ -6,15 +6,21 @@ You can see [here](http://hsuting.github.io/cat-components) to learn how to use 
 
 #### List
 ###### Components
+- Accordion
+- Alert
 - Button
 - Calendar
 - CalendarTable
 - Loading
+- I18n
 - Icon
 - Img
 - Input
+- Menu
 - PictureSlideshow
+- Sidebar
 - Slider
+- Square
 - Table
 - Toggle
 
@@ -55,3 +61,5 @@ MIT © [hsuting](http://hsuting.com)
 
 [npm-image]: https://badge.fury.io/js/cat-components.svg
 [npm-url]: https://npmjs.org/package/cat-components
+[travis-image]: https://travis-ci.org/HsuTing/cat-components.svg?branch=master
+[travis-url]: https://travis-ci.org/HsuTing/cat-components
