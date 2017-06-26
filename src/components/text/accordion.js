@@ -47,7 +47,7 @@ export default `
     }
 
     onClick(index) {
-      return e => {
+      return () => {
         this.setState({index});
       };
     }

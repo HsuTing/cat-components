@@ -16,6 +16,7 @@ import Img from './../Img';
 import goToAnimation from './../goToAnimation';
 
 const components = [
+  'Accordion',
   'Button',
   'Calendar',
   'CalendarTable',
@@ -26,6 +27,7 @@ const components = [
   'Input',
   'PictureSlideshow',
   'Slider',
+  'Square',
   'Table',
   'Toggle'
 ].map(name => ({
@@ -35,13 +37,11 @@ const components = [
 }));
 
 const decorators = [
-  //'Accordion',
   //'Alert',
   'checkAPI',
   'goToAnimation',
   //'Menu',
   //'Sidebar',
-  //'Square',
 ].map(name => ({
   name,
   text: require(`./text/${name[0].toLowerCase() + name.slice(1)}`).default,

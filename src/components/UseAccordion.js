@@ -26,7 +26,7 @@ export default class UseAccordion extends React.Component {
             <StyleRoot key={nameIndex}
               onClick={this.onClick(nameIndex)}
             >
-              <h5>{`title${name}`}</h5>
+              <h5 style={{cursor: 'pointer'}}>{`title${name}`}</h5>
               <p>{`content${name}`}</p>
             </StyleRoot>
           );
@@ -36,7 +36,7 @@ export default class UseAccordion extends React.Component {
   }
 
   onClick(index) {
-    return e => {
+    return () => {
       if(index === this.state.index)
         this.setState({index: -1});
       else
