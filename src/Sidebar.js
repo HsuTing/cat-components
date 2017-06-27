@@ -62,7 +62,7 @@ class SidebarTemplate extends React.Component {
   }
 }
 
-export const sidebarBuilder = Component => class SidebarBuilder extends React.Component {
+export const sidebarBuilder = Component => class extends React.Component { // eslint-disable-line react/display-name
   static contextTypes = {
     sidebar: PropTypes.func.isRequired,
     hideSidebar: PropTypes.func.isRequired

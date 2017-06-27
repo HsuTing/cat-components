@@ -68,7 +68,7 @@ class AlertTemplate extends React.Component {
   }
 }
 
-export const alertBuilder = Component => class AlertBuilder extends React.Component {
+export const alertBuilder = Component => class extends React.Component { // eslint-disable-line react/display-name
   static contextTypes = {
     alert: PropTypes.func.isRequired,
     hideAlert: PropTypes.func.isRequired

@@ -23,17 +23,35 @@ export default `
   - \`isError\`: This will be \`false\`, when \`value\` passes all test.
   - \`error\`: Messages will be pushed in \`error\` if \`value\` does not pass the test.
 
+  #### Decorators
+  - inputConnect
+
+    This is like \`connect\` in \`react-redux\`. It will return \`connect\` when you give a \`formName\`. So you can give the arguments to \`inputConnect\`, like \`inputConnect('test_form')(mapStateToProps, mapDispatchToProps, mergeProps, options)\`.
+
+    Remeber to add \`form\` in your \`combineReducers\`. Use \`import {form} from 'cat-components/lib/utils/inputRedux';\` to import this \`reducer\`.
+
+    - Other packages
+      - [redux](https://github.com/reactjs/redux)
+      - [react-redux](https://github.com/reactjs/react-redux)
+    - Arguments
+      - \`formName(required)\`: Use to determine the form which should be used.
+    - Props
+      - \`form\`: This is the data of the form.
+      - \`inputDispatch\`: Use this function in \`onChange\` function. The arguments of this function are a \`inputName\` and a data from \`onChange\`.
+
   #### Example
   \`\`\`js
+  // rules
+  const rules = [{
+    validator: 'isEmpty',
+    message: 'It can not be empty.'
+  }];
+
+  // use default value
   'use strict';
 
   import React from 'react';
   import Input from 'cat-components/lib/Input';
-
-  const rules = [{
-    validator: 'isEmpty'
-    message: 'It can not be empty.'
-  }];
 
   export default class Example extends React.Component {
     constructor(props) {
@@ -52,8 +70,7 @@ export default `
 
       return (
         <div>
-          <Input {...this.props}
-            rules={rules}
+          <Input rules={rules}
             value={value}
             onChange={this.onChange}
           />
@@ -73,5 +90,54 @@ export default `
       this.setState(data);
     }
   }
+
+  // use redux
+  'use strict';
+
+  import React from 'react';
+  import PropTypes from 'prop-types';
+  import {combineReducers, createStore} from 'redux';
+  import {Provider} from 'react-redux';
+  import Input, {inputConnect} from 'cat-components/lib/Input';
+  import {form} from 'cat-components/lib/utils/inputRedux';
+
+  @inputConnect('test_form')()
+  class Example extends React.Component {
+    static propTypes = {
+      form: PropTypes.object.isRequired,
+      inputDispatch: PropTypes.func.isRequired
+    }
+
+    render() {
+      const {form, inputDispatch} = this.props;
+      const {value, isError, error} = form.test_input || {};
+
+      return (
+        <div>
+          <Input rules={rules}
+            value={value || 'test@gmail.com'}
+            onChange={data => inputDispatch('test_input', data)}
+          />
+
+          {error.map((err, index) => {
+            return (
+              <p key={index}
+                style={style.error}
+              >{err}</p>
+            );
+          })}
+        </div>
+      );
+    }
+  }
+
+  const reducers = combineReducers({form});
+  const store = createStore(reducers);
+
+  export default () => (
+    <Provider store={store}>
+      <Example />
+    </Provider>
+  );
   \`\`\`
 `;

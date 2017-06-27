@@ -1,11 +1,11 @@
 'use strict';
 
-import 'whatwg-fetch'
+import 'whatwg-fetch';
 import path from 'path';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const language = Component => class Language extends React.Component {
+export const language = Component => class extends React.Component { // eslint-disable-line react/display-name
   static contextTypes = {
     translate: PropTypes.object.isRequired,
     changeLanguage: PropTypes.func.isRequired
