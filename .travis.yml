@@ -4,6 +4,7 @@ node_js:
 script:
   - yarn run prod
   - yarn run lint
+  - yarn run test
 branches:
 only:
   - master

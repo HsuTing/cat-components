@@ -1,17 +1,20 @@
 {
   "scripts": {
+    "test": "yarn babel:test && yarn static:test && istanbul cover _mocha -- -R spec test/**/*.js",
     "webpack-server": "webpack-dev-server --content-base src --hot --inline",
     "webpack": "NODE_ENV=production webpack",
     "lint": "eslint --cache ./src ./bin --ext .js",
     "lint:watch": "esw --cache ./src ./bin --ext .js -w --color",
     "babel": "rm -rf ./lib && babel src --out-dir lib",
     "babel:watch": "rm -rf ./lib && babel -w src --out-dir lib",
+    "babel:test": "rm -rf ./lib/test ./lib/bin && babel src/test --out-dir lib/test && babel src/bin --out-dir lib/bin",
     "prepublish": "yarn babel",
     "build": "yarn babel && yarn static",
     "prod": "export NODE_ENV=production && yarn babel && yarn static && yarn webpack",
     "watch": "concurrently -c green \"yarn lint:watch\" \"yarn babel:watch\" \"yarn webpack-server\"",
     "postinstall": "rm -rf ./node_modules/radium/.babelrc",
-    "static": "node ./lib/bin/static.js static.config.js"
+    "static": "node ./lib/bin/static.js static.config.js",
+    "static:test": "node ./lib/bin/static.js ./test/test.config.js"
   },
   "main": "./lib/index.js",
   "name": "cat-components",
@@ -63,6 +66,8 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^6.10.3",
     "eslint-watch": "^3.0.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
     "moment": "^2.18.1",
     "pre-commit": "^1.2.2",
     "radium-normalize": "^2.0.5",
@@ -71,6 +76,7 @@
     "react-redux": "^5.0.5",
     "redux": "^3.7.1",
     "redux-logger": "^3.0.6",
+    "should": "^11.2.1",
     "uuid": "^3.0.1",
     "validator": "^7.0.0",
     "webpack": "^2.3.2",
