@@ -120,7 +120,7 @@ export default class Example extends React.Component {
     );
   }
 }
-</code></pre></div><div style="-webkit-animation:x 1s ease-in-out infinite;-webkit-animation-name:radium-animation-41d1bafb;width:26px;height:26px;animation:x 1s ease-in-out infinite;animation-name:radium-animation-41d1bafb" data-radium="true"><svg style="width:26px;height:26px" data-radium="true"><g style="-webkit-transform:translate(13px,13px);-ms-transform:translate(13px,13px);transform:translate(13px,13px)" data-radium="true"><path d="M7.960204194457795e-16,-13L6.123233995736766e-16,-10Z" style="fill:#2196f3" data-radium="true"></path></g></svg><style>@undefined radium-animation-41d1bafb{-ms-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}</style></div></div><div id="I18n" style="margin:40px 0;padding:30px;border:1px solid #eee;border-radius:5px"><div><h1><a href="./#I18n">I18n</a></h1><p>This is used to build several languages in website.</p><h4>Props</h4><ul><li><code>lang(required)</code>: This is the default language which will be used at first.</li><li><code>defaultData(required)</code>: The data of the language is used at first.</li><li><code>dirPath(default: &#x27;/public/i18n&#x27;)</code>: This is the path of the file folder which has the files, like <code>en-us.json</code>, <code>zh-tw.json</code>.</li></ul><h4>Decorators</h4><ul><li>language<ul><li>Props<ul><li><code>translate</code>: This is the object data of the language from your json file.</li><li><code>changeLanguage</code>: This is a function which can be used to change the language. The argument of the function is your new language. Use like <code>onClick={changeLanguage(&#x27;en-us&#x27;)}</code>.</li></ul></li></ul></li></ul><h4>Example</h4><pre><code class="language-js">//en-us.json
+</code></pre></div><div style="-webkit-animation:x 1s ease-in-out infinite;-webkit-animation-name:radium-animation-41d1bafb;width:26px;height:26px;animation:x 1s ease-in-out infinite;animation-name:radium-animation-41d1bafb" data-radium="true"><svg style="width:26px;height:26px" data-radium="true"><g style="-webkit-transform:translate(13px,13px);-ms-transform:translate(13px,13px);transform:translate(13px,13px)" data-radium="true"><path d="M7.960204194457795e-16,-13L6.123233995736766e-16,-10Z" style="fill:#2196f3" data-radium="true"></path></g></svg><style>@undefined radium-animation-41d1bafb{-ms-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}</style></div></div><div id="I18n" style="margin:40px 0;padding:30px;border:1px solid #eee;border-radius:5px"><div><h1><a href="./#I18n">I18n</a></h1><p>This is used to build several languages in website.</p><h4>Other packages</h4><ul><li><a href="https://github.com/github/fetch">whatwg-fetch</a></li></ul><h4>Props</h4><ul><li><code>lang(required)</code>: This is the default language which will be used at first.</li><li><code>defaultData(required)</code>: The data of the language is used at first.</li><li><code>dirPath(default: &#x27;/public/i18n&#x27;)</code>: This is the path of the file folder which has the files, like <code>en-us.json</code>, <code>zh-tw.json</code>.</li></ul><h4>Decorators</h4><ul><li>language<ul><li>Props<ul><li><code>translate</code>: This is the object data of the language from your json file.</li><li><code>changeLanguage</code>: This is a function which can be used to change the language. The argument of the function is your new language. Use like <code>onClick={changeLanguage(&#x27;en-us&#x27;)}</code>.</li></ul></li></ul></li></ul><h4>Example</h4><pre><code class="language-js">//en-us.json
 {
   hello: &quot;Hello world&quot;
 }
@@ -178,15 +178,17 @@ export default class Example extends React.Component {
     );
   }
 }
-</code></pre></div><img src="https://hsuting.github.io/img/icon.svg"></div><div id="Input" style="margin:40px 0;padding:30px;border:1px solid #eee;border-radius:5px"><div><h1><a href="./#Input">Input</a></h1><p>This is <code>input</code> tag with using <code>validator</code> to check value. For checking value in server, you can use <code>import chcekInput from &#x27;cat-components/lib/utils/checkInput&#x27;;</code> and give this function <code>value</code> and <code>rules</code>.</p><h4>Other packages</h4><ul><li><a href="https://github.com/chriso/validator.js/">validator</a></li></ul><h4>Props</h4><ul><li><code>type(default: text)</code>: This can be all type of <code>input</code>, and it can be <code>textarea</code>.</li><li><code>rules(required)</code>: This is an array of <code>validator</code> and <code>message</code>.<ul><li><code>validator(required)</code>: Use to check value. You can use function from <code>validator</code> with giving a name or write a function to check value. The parameters of function are <code>value</code> and <code>event</code>. This function need to return <code>true</code> or <code>false</code> to show if value is correct.</li><li><code>message(required)</code>: This message will be pushed to <code>error</code> when value is incorrect.</li><li><code>options</code>: This is the options of the <code>validator</code>.</li><li><code>not</code>: If this is true, the value does not pass the <code>validator</code>, the message will be pushed to <code>error</code>.</li></ul></li><li><code>onChange</code>: This function will be called when value is changed.</li><li><code>onBlur</code>: This function will be called when input is not focus.</li><li><code>value</code>: Give <code>input</code> a value. If this is set, you must write <code>onChange</code> function.</li></ul><p>The information of checking value will be given to <code>onChange</code> and <code>onBlur</code> as parameters. There will be an object and <code>event</code>. Object has <code>value</code>, <code>isError</code> and <code>error</code>. If you return a new object, this will use new object to <code>input</code>.</p><ul><li><code>value</code>: This is a value of this <code>input</code>.</li><li><code>isError</code>: This will be <code>false</code>, when <code>value</code> passes all test.</li><li><code>error</code>: Messages will be pushed in <code>error</code> if <code>value</code> does not pass the test.</li></ul><h4>Example</h4><pre><code class="language-js">&#x27;use strict&#x27;;
+</code></pre></div><img src="https://hsuting.github.io/img/icon.svg"></div><div id="Input" style="margin:40px 0;padding:30px;border:1px solid #eee;border-radius:5px"><div><h1><a href="./#Input">Input</a></h1><p>This is <code>input</code> tag with using <code>validator</code> to check value. For checking value in server, you can use <code>import chcekInput from &#x27;cat-components/lib/utils/checkInput&#x27;;</code> and give this function <code>value</code> and <code>rules</code>.</p><h4>Other packages</h4><ul><li><a href="https://github.com/chriso/validator.js/">validator</a></li></ul><h4>Props</h4><ul><li><code>type(default: text)</code>: This can be all type of <code>input</code>, and it can be <code>textarea</code>.</li><li><code>rules(required)</code>: This is an array of <code>validator</code> and <code>message</code>.<ul><li><code>validator(required)</code>: Use to check value. You can use function from <code>validator</code> with giving a name or write a function to check value. The parameters of function are <code>value</code> and <code>event</code>. This function need to return <code>true</code> or <code>false</code> to show if value is correct.</li><li><code>message(required)</code>: This message will be pushed to <code>error</code> when value is incorrect.</li><li><code>options</code>: This is the options of the <code>validator</code>.</li><li><code>not</code>: If this is true, the value does not pass the <code>validator</code>, the message will be pushed to <code>error</code>.</li></ul></li><li><code>onChange</code>: This function will be called when value is changed.</li><li><code>onBlur</code>: This function will be called when input is not focus.</li><li><code>value</code>: Give <code>input</code> a value. If this is set, you must write <code>onChange</code> function.</li></ul><p>The information of checking value will be given to <code>onChange</code> and <code>onBlur</code> as parameters. There will be an object and <code>event</code>. Object has <code>value</code>, <code>isError</code> and <code>error</code>. If you return a new object, this will use new object to <code>input</code>.</p><ul><li><code>value</code>: This is a value of this <code>input</code>.</li><li><code>isError</code>: This will be <code>false</code>, when <code>value</code> passes all test.</li><li><code>error</code>: Messages will be pushed in <code>error</code> if <code>value</code> does not pass the test.</li></ul><h4>Decorators</h4><ul><li><p>inputConnect</p><p>This is like <code>connect</code> in <code>react-redux</code>. It will return <code>connect</code> when you give a <code>formName</code>. So you can give the arguments to <code>inputConnect</code>, like <code>inputConnect(&#x27;test_form&#x27;)(mapStateToProps, mapDispatchToProps, mergeProps, options)</code>.</p><p>Remeber to add <code>form</code> in your <code>combineReducers</code>. Use <code>import {form} from &#x27;cat-components/lib/utils/inputRedux&#x27;;</code> to import this <code>reducer</code>.</p><ul><li>Other packages<ul><li><a href="https://github.com/reactjs/redux">redux</a></li><li><a href="https://github.com/reactjs/react-redux">react-redux</a></li></ul></li><li>Arguments<ul><li><code>formName(required)</code>: Use to determine the form which should be used.</li></ul></li><li>Props<ul><li><code>form</code>: This is the data of the form.</li><li><code>inputDispatch</code>: Use this function in <code>onChange</code> function. The arguments of this function are a <code>inputName</code> and a data from <code>onChange</code>.</li></ul></li></ul></li></ul><h4>Example</h4><pre><code class="language-js">// rules
+const rules = [{
+  validator: &#x27;isEmpty&#x27;,
+  message: &#x27;It can not be empty.&#x27;
+}];
+
+// use default value
+&#x27;use strict&#x27;;
 
 import React from &#x27;react&#x27;;
 import Input from &#x27;cat-components/lib/Input&#x27;;
-
-const rules = [{
-  validator: &#x27;isEmpty&#x27;
-  message: &#x27;It can not be empty.&#x27;
-}];
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -205,8 +207,7 @@ export default class Example extends React.Component {
 
     return (
       &lt;div&gt;
-        &lt;Input {...this.props}
-          rules={rules}
+        &lt;Input rules={rules}
           value={value}
           onChange={this.onChange}
         /&gt;
@@ -226,7 +227,56 @@ export default class Example extends React.Component {
     this.setState(data);
   }
 }
-</code></pre></div><div data-radium="true"><div data-radium="true"><input style="letter-spacing:1.2px;margin:5px 0;width:-webkit-calc(100% - 10px * 2 - 1.5px * 2),-moz-calc(100% - 10px * 2 - 1.5px * 2),calc(100% - 10px * 2 - 1.5px * 2);height:22px;line-height:22px;font-size:18px;padding:5px 10px;border:solid 1.5px #000;border-radius:3px;color:#000;outline:0;resize:none" value="" data-radium="true"></div><div data-radium="true"><textarea type="textarea" style="letter-spacing:1.2px;margin:5px 0;width:-webkit-calc(100% - 10px * 2 - 1.5px * 2),-moz-calc(100% - 10px * 2 - 1.5px * 2),calc(100% - 10px * 2 - 1.5px * 2);height:100px;line-height:22px;font-size:18px;padding:5px 10px;border:solid 1.5px #000;border-radius:3px;color:#000;outline:0;resize:none" data-radium="true"></textarea></div></div></div><div id="Menu" style="margin:40px 0;padding:30px;border:1px solid #eee;border-radius:5px"><div><h1><a href="./#Menu">Menu</a></h1><p>Use to make a menu.</p><h4>Props</h4><ul><li><code>children(required)</code></li><li><code>menu(required)</code>: This is a component of <code>menu</code>.</li><li><code>menuStyle</code>: Use to modify style when the component is shown. It is a function and the parameter is a boolean to show if the component is shown. Then, you need to return a object to modify style.</li><li><code>delay(default: 1)</code>: This is the delay time of hiding <code>menu</code>.</li><li><code>trigger(default: [&#x27;click &#x27;hover&#x27;])</code>: Determine that will trigger the animation of <code>show</code> and <code>hide</code>.</li></ul><h4>Example</h4><pre><code class="language-js">&#x27;use strict&#x27;;
+
+// use redux
+&#x27;use strict&#x27;;
+
+import React from &#x27;react&#x27;;
+import PropTypes from &#x27;prop-types&#x27;;
+import {combineReducers, createStore} from &#x27;redux&#x27;;
+import {Provider} from &#x27;react-redux&#x27;;
+import Input, {inputConnect} from &#x27;cat-components/lib/Input&#x27;;
+import {form} from &#x27;cat-components/lib/utils/inputRedux&#x27;;
+
+@inputConnect(&#x27;test_form&#x27;)()
+class Example extends React.Component {
+  static propTypes = {
+    form: PropTypes.object.isRequired,
+    inputDispatch: PropTypes.func.isRequired
+  }
+
+  render() {
+    const {form, inputDispatch} = this.props;
+    const {value, isError, error} = form.test_input || {};
+
+    return (
+      &lt;div&gt;
+        &lt;Input rules={rules}
+          value={value || &#x27;test@gmail.com&#x27;}
+          onChange={data =&gt; inputDispatch(&#x27;test_input&#x27;, data)}
+        /&gt;
+
+        {error.map((err, index) =&gt; {
+          return (
+            &lt;p key={index}
+              style={style.error}
+            &gt;{err}&lt;/p&gt;
+          );
+        })}
+      &lt;/div&gt;
+    );
+  }
+}
+
+const reducers = combineReducers({form});
+const store = createStore(reducers);
+
+export default () =&gt; (
+  &lt;Provider store={store}&gt;
+    &lt;Example /&gt;
+  &lt;/Provider&gt;
+);
+</code></pre></div><div><h5>Type: input</h5><input style="letter-spacing:1.2px;margin:5px 0;width:-webkit-calc(100% - 10px * 2 - 1.5px * 2),-moz-calc(100% - 10px * 2 - 1.5px * 2),calc(100% - 10px * 2 - 1.5px * 2);height:22px;line-height:22px;font-size:18px;padding:5px 10px;border:solid 1.5px #000;border-radius:3px;color:#000;outline:0;resize:none" value="" data-radium="true"><h5>Type: textare</h5><textarea type="textarea" style="letter-spacing:1.2px;margin:5px 0;width:-webkit-calc(100% - 10px * 2 - 1.5px * 2),-moz-calc(100% - 10px * 2 - 1.5px * 2),calc(100% - 10px * 2 - 1.5px * 2);height:100px;line-height:22px;font-size:18px;padding:5px 10px;border:solid 1.5px #000;border-radius:3px;color:#000;outline:0;resize:none" data-radium="true"></textarea><h5>Use default value</h5><div data-radium="true"><input style="letter-spacing:1.2px;margin:5px 0;width:-webkit-calc(100% - 10px * 2 - 1.5px * 2),-moz-calc(100% - 10px * 2 - 1.5px * 2),calc(100% - 10px * 2 - 1.5px * 2);height:22px;line-height:22px;font-size:18px;padding:5px 10px;border:solid 1.5px #000;border-radius:3px;color:#000;outline:0;resize:none" value="" data-radium="true"></div><h5>Use redux</h5><div><input style="letter-spacing:1.2px;margin:5px 0;width:-webkit-calc(100% - 10px * 2 - 1.5px * 2),-moz-calc(100% - 10px * 2 - 1.5px * 2),calc(100% - 10px * 2 - 1.5px * 2);height:22px;line-height:22px;font-size:18px;padding:5px 10px;border:solid 1.5px #000;border-radius:3px;color:#000;outline:0;resize:none" value="" data-radium="true"></div></div></div><div id="Menu" style="margin:40px 0;padding:30px;border:1px solid #eee;border-radius:5px"><div><h1><a href="./#Menu">Menu</a></h1><p>Use to make a menu.</p><h4>Props</h4><ul><li><code>children(required)</code></li><li><code>menu(required)</code>: This is a component of <code>menu</code>.</li><li><code>menuStyle</code>: Use to modify style when the component is shown. It is a function and the parameter is a boolean to show if the component is shown. Then, you need to return a object to modify style.</li><li><code>delay(default: 1)</code>: This is the delay time of hiding <code>menu</code>.</li><li><code>trigger(default: [&#x27;click &#x27;hover&#x27;])</code>: Determine that will trigger the animation of <code>show</code> and <code>hide</code>.</li></ul><h4>Example</h4><pre><code class="language-js">&#x27;use strict&#x27;;
 
 import React from &#x27;react&#x27;;
 import Menu from &#x27;cat-components/lib/Menu&#x27;;
