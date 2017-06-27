@@ -22,7 +22,7 @@ const ENV = process.env.NODE_ENV === 'production';
 const render = (component, options) => {
   nunjucks.configure(path.resolve(root, options.root || './views'));
   options.content = renderToStaticMarkup(
-    renderRadium(component)
+    renderRadium(component, {})
   );
 
   const filename = (options.name === 'index' ? '' : options.name + '/') + 'index.html';
@@ -52,19 +52,29 @@ const render = (component, options) => {
   });
 };
 
-config.forEach(options => {
+config.forEach(({props, ...options}) => {
   const componentPath = path.resolve(root, options.component);
 
   options.component = require(componentPath).default || require(componentPath);
 
+  if(options.redux) {
+    const renderRedux = require('./render-redux').default;
+
+    options.component = renderRedux(
+      React.createElement(options.component, props),
+      props
+    );
+  }
+
   if(options.relay) {
     const renderRelay = require('./render-relay').default;
 
-    renderRelay(options, render);
+    renderRelay(options, props, render);
+    return;
   }
 
   render(
-    React.createElement(options.component, options.props),
+    React.createElement(options.component, props),
     options
   );
 });

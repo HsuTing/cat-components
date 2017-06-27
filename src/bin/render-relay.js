@@ -3,8 +3,8 @@
 import React from 'react';
 import IsomorphicRelay from 'isomorphic-relay';
 
-export default (options, render) => IsomorphicRelay
-  .prepareData(options.rootContainerProps, options.networkLayer)
+export default (options, {rootContainerProps, networkLayer}, render) => IsomorphicRelay
+  .prepareData(rootContainerProps, networkLayer)
   .then(({data, props}) => {
     render(
       <IsomorphicRelay.Renderer {...props} />, {

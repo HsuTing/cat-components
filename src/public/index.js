@@ -11,9 +11,9 @@ import {form} from 'utils/inputRedux';
 
 import Wrapper from './../Wrapper';
 
-const reducers = combineReducers({form});
+const reducer = combineReducers({form});
 const store = createStore(
-  reducers,
+  reducer,
   applyMiddleware(createLogger({
     collapsed: true
   }))
