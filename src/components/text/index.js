@@ -19,5 +19,8 @@ export default `
 
   ##### Other components
   - \`Link\`: This is a component of \`Link\` in \`react-router-dom\` with \`radium\`.
-  - \`Wrapper\` is a component for using server side rendering with \`radium\`.
+  - \`Wrapper\`: This is a component for using server side rendering with \`radium\`. It can alos render \`react-redux\` and \`react-router-dom\`.
+    - Props
+      - \`redux\`: This is an object. You can give \`reducer(required)\`, \`preloadedState\` and \`enhancer\`. This is used like \`createStore\` in \`redux\`.
+      - \`router\`: This is an object. You can give \`isServer\` to choose \`StaticRouter\` or \`BrowserRouter\`. When \`isServer\` is \`true\`. you need to give an object like \`{location: '/', context: {}}\`.
 `;
