@@ -16,6 +16,7 @@ You can see [here](http://hsuting.github.io/cat-components) to learn how to use 
 - Icon
 - Img
 - Input
+- Link
 - Menu
 - PictureSlideshow
 - Sidebar
@@ -23,6 +24,7 @@ You can see [here](http://hsuting.github.io/cat-components) to learn how to use 
 - Square
 - Table
 - Toggle
+- Wrapper
 
 ###### Decorators
 - checkFBAPI
@@ -39,21 +41,19 @@ You can use any name, but need to give this name as argument.
 
 - Example:
 
-  ```javascript
-  module.exports = [
-    {
-      component: './lib/components/Index',
-      js: 'index',
-      name: 'index'
-    }
-  ]
+  ```js
+  module.exports = [{
+    component: './lib/components/Index',
+    js: 'index',
+    name: 'index'
+  }];
   ```
 - options
-  - `component`: This is your main component.
-  - `js`: This the name of the main js which will be include in `template`.
-  - `name`: The name of `html` is rendered.
-  - `root`: This is the root folder of `views` which is  your `template` folder.
-  - `template(default: ./views/template.html)`: If you need, you can choose your template in `views`.
+  - `component(required)`: This is your main component.
+  - `name(required)`: The name of `html` is rendered.
+  - `root(default: './views')`: This is the root folder of `views` which is  your `template` folder.
+  - `template(default: './views/template.html')`: If you need, you can choose your template in `views`.
+  - `Props`: Give `Props` to you component.
   - You can add any option which you need to give to your `template`.
 
 ## License

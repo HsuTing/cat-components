@@ -27,17 +27,28 @@ const components = [
   'Icon',
   'Img',
   'Input',
+  'Link',
   'Menu',
   'PictureSlideshow',
   'Sidebar',
   'Slider',
   'Square',
   'Table',
-  'Toggle'
+  'Toggle',
+  'Wrapper'
 ].map(name => ({
   name,
   text: require(`./text/${name[0].toLowerCase() + name.slice(1)}`).default,
-  component: require(`./Use${name}`).default
+  component: (name => {
+    switch(name) {
+      case 'Link':
+      case 'Wrapper':
+        return false;
+
+      default:
+        return require(`./Use${name}`).default;
+    }
+  })(name)
 }));
 
 const decorators = [
@@ -114,7 +125,7 @@ class Index extends React.Component {
             style={style.block}
           >
             <Markdown source={component.text} />
-            {React.createElement(component.component)}
+            {component.component ? React.createElement(component.component) : null}
           </div>
         ))}
 
@@ -124,7 +135,7 @@ class Index extends React.Component {
             style={style.block}
           >
             <Markdown source={decorator.text} />
-            {React.createElement(decorator.component)}
+            {decorator.component ? React.createElement(decorator.component) : null}
           </div>
         ))}
 

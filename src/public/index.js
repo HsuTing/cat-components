@@ -9,9 +9,7 @@ import Index from 'components/Index';
 import {form} from 'utils/inputRedux';
 
 const reducer = combineReducers({form});
-const enhancer = createLogger({
-  collapsed: true
-});
+const enhancer = createLogger({collapsed: true});
 
 (() => {
   ReactDOM.render(
