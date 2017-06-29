@@ -3,11 +3,21 @@
 import React from 'react';
 import radium from 'radium';
 
+import Wrapper from './../Wrapper';
+
 @radium
-export default class TestReact extends React.Component {
+class TestReact extends React.Component {
   render() {
     return (
       <div>test react</div>
     );
   }
 }
+
+/* eslint-disable */
+export default () => (
+  <Wrapper>
+    <TestReact />
+  </Wrapper>
+);
+/* eslint-enable */

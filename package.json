@@ -14,7 +14,7 @@
     "watch": "concurrently -c green \"yarn lint:watch\" \"yarn babel:watch\" \"yarn webpack-server\"",
     "postinstall": "rm -rf ./node_modules/radium/.babelrc",
     "static": "node ./lib/bin/static.js static.config.js",
-    "static:test": "node ./lib/bin/static.js ./test/test.config.js"
+    "static:test": "node ./lib/bin/static.js ./test.config.js"
   },
   "main": "./lib/index.js",
   "name": "cat-components",
@@ -74,6 +74,7 @@
     "react-icons": "^2.2.3",
     "react-markdown": "^2.5.0",
     "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
     "redux": "^3.7.1",
     "redux-logger": "^3.0.6",
     "should": "^11.2.1",

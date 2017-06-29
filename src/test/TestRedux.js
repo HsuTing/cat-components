@@ -5,13 +5,15 @@ import PropTypes from 'prop-types';
 import radium from 'radium';
 import {connect} from 'react-redux';
 
+import Wrapper from './../Wrapper';
+
 export const testReducer = (state = 'origin state', {type}) => {
   return state;
 };
 
 @radium
 @connect(state => ({data: state.testReducer}))
-export default class TestRedux extends React.Component {
+class TestRedux extends React.Component {
   static propTypes = {
     data: PropTypes.string.isRequired
   };
@@ -22,3 +24,11 @@ export default class TestRedux extends React.Component {
     );
   }
 }
+
+/* eslint-disable */
+export default ({redux}) => (
+  <Wrapper redux={redux}>
+    <TestRedux />
+  </Wrapper>
+);
+/* eslint-enable */

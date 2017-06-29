@@ -11,18 +11,16 @@ import editor from 'mem-fs-editor';
 import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 
-import renderRadium from './render-radium';
-
 const root = process.cwd();
 const config = require(path.resolve(root, process.argv[2]));
 const store = memFs.create();
 const fs = editor.create(store);
 const ENV = process.env.NODE_ENV === 'production';
 
-const render = (component, options) => {
+const render = (component, options, props) => {
   nunjucks.configure(path.resolve(root, options.root || './views'));
   options.content = renderToStaticMarkup(
-    renderRadium(component, {})
+    React.createElement(component, props)
   );
 
   const filename = (options.name === 'index' ? '' : options.name + '/') + 'index.html';
@@ -57,24 +55,16 @@ config.forEach(({props, ...options}) => {
 
   options.component = require(componentPath).default || require(componentPath);
 
-  if(options.redux) {
-    const renderRedux = require('./render-redux').default;
-
-    options.component = renderRedux(
-      React.createElement(options.component, props),
-      props
-    );
-  }
-
   if(options.relay) {
     const renderRelay = require('./render-relay').default;
 
-    renderRelay(options, props, render);
+    renderRelay(options, props || {}, render);
     return;
   }
 
   render(
-    React.createElement(options.component, props),
-    options
+    options.component,
+    options,
+    props || {}
   );
 });

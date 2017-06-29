@@ -13,6 +13,8 @@ module.exports = [{
   languageData: JSON.stringify(languageData),
   props: {
     defaultData: languageData,
-    reducer: combineReducers({form})
+    redux: {
+      reducer: combineReducers({form})
+    }
   }
 }];
