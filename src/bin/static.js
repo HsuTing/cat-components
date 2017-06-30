@@ -51,16 +51,15 @@ const render = (component, options, props) => {
 };
 
 config.forEach(({props, ...options}) => {
-  const componentPath = path.resolve(root, options.component);
-
-  options.component = require(componentPath).default || require(componentPath);
-
   if(options.relay) {
     const renderRelay = require('./render-relay').default;
 
     renderRelay(options, props || {}, render);
     return;
   }
+
+  const componentPath = path.resolve(root, options.component);
+  options.component = require(componentPath).default || require(componentPath);
 
   render(
     options.component,
