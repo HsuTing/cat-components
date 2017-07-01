@@ -8,14 +8,16 @@ import {createLogger} from 'redux-logger';
 import Index from 'components/Index';
 import {form} from 'utils/inputRedux';
 
-const reducer = combineReducers({form});
-const enhancer = createLogger({collapsed: true});
+const redux = {
+  reducer: combineReducers({form}),
+  enhancer: createLogger({collapsed: true})
+};
 
 (() => {
   ReactDOM.render(
     <Index defaultData={languageData}
       dirPath={languageDir}
-      redux={{reducer, enhancer}}
+      redux={redux}
     />,
     document.getElementById('root')
   );

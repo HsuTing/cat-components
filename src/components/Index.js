@@ -151,7 +151,7 @@ class Index extends React.Component {
 export default ({redux, ...props}) => (
   <Wrapper redux={redux}>
     <I18n {...props}
-          lang='en-us'
+      lang='en-us'
     >
       <Index />
     </I18n>
