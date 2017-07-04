@@ -9,7 +9,8 @@ export default class Wrapper extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
     redux: PropTypes.object,
-    router: PropTypes.object
+    router: PropTypes.object,
+    modules: PropTypes.object
   }
 
   constructor(props) {
@@ -30,8 +31,9 @@ export default class Wrapper extends React.Component {
     if(!this.props.redux)
       return component;
 
-    const {createStore, applyMiddleware} = require('redux');
-    const {Provider} = require('react-redux');
+    const {redux, reactRedux} = this.props.modules;
+    const {createStore, applyMiddleware} = redux;
+    const {Provider} = reactRedux;
 
     const {reducer, preloadedState, enhancer} = this.props.redux;
     let store;
@@ -58,13 +60,11 @@ export default class Wrapper extends React.Component {
     if(!this.props.router)
       return component;
 
+    const {reactRouterDom} = this.props.modules;
     const {isServer, ...routerProps} = this.props.router;
-    let Router = null;
-
-    if(isServer)
-      Router = require('react-router-dom').StaticRouter;
-    else
-      Router = require('react-router-dom').BrowserRouter;
+    const Router = reactRouterDom[
+      isServer ? 'StaticRouter' : 'BrowserRouter'
+    ];
 
     return (
       <Router {...(routerProps || {})}>

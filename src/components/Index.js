@@ -91,11 +91,6 @@ class Index extends React.Component {
           src='https://badge.fury.io/js/cat-components.svg'
           style={style.statusImage}
         />
-        <Img link='https://travis-ci.org/HsuTing/cat-components'
-          target='_blank'
-          src='https://travis-ci.org/HsuTing/cat-components.svg?branch=master'
-          style={style.statusImage}
-        />
 
         <h4>Components</h4>
         <div>
@@ -149,7 +144,9 @@ class Index extends React.Component {
 
 /* eslint-disable */
 export default ({redux, ...props}) => (
-  <Wrapper redux={redux}>
+  <Wrapper redux={redux}
+    modules={{redux: require('redux'), reactRedux: require('react-redux')}}
+  >
     <I18n {...props}
       lang='en-us'
     >

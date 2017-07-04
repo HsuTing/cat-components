@@ -26,7 +26,9 @@ class TestRouter extends React.Component {
 
 /* eslint-disable */
 export default ({router}) => (
-  <Wrapper router={router}>
+  <Wrapper router={router}
+    modules={{reactRouterDom: require('react-router-dom')}}
+  >
     <TestRouter />
   </Wrapper>
 );
