@@ -56,6 +56,15 @@ export default class Input extends React.Component {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.value !== this.state.value)
+      this.onChange({
+        target: {
+          value: nextProps.value || ''
+        }
+      });
+  }
+
   render() {
     const props = {...this.props};
     const {value} = this.state;
