@@ -56,11 +56,13 @@ export default class Input extends React.Component {
     });
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.value !== this.state.value)
+  componentWillUpdate(nextProps, nextState) {
+    const value = nextProps.value || '';
+
+    if(value !== nextState.value)
       this.onChange({
         target: {
-          value: nextProps.value || ''
+          value
         }
       });
   }

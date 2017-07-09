@@ -13,7 +13,9 @@ export default class Menu extends React.Component {
     menu: PropTypes.element.isRequired,
     menuStyle: PropTypes.func,
     delay: PropTypes.number,
-    trigger: PropTypes.array
+    trigger: PropTypes.arrayOf(
+      PropTypes.oneOf(['click', 'hover'])
+    )
   }
 
   static defaultProps = {
@@ -49,7 +51,7 @@ export default class Menu extends React.Component {
   }
 
   render() {
-    const {children, menu, menuStyle, ...props} = this.props;
+    const {children, menu, menuStyle, trigger, ...props} = this.props;
     const {isShown, addStyle} = this.state;
     const newMenuStyle = [
       style.menu,
@@ -57,37 +59,47 @@ export default class Menu extends React.Component {
       menuStyle(isShown),
       addStyle
     ];
+    const events = {};
+
+    trigger.forEach(event => {
+      switch(event) {
+        case 'hover':
+          events.onMouseEnter = this.showMenu;
+          events.onMouseLeave = this.hideMenu;
+          break;
+      }
+    });
 
     delete props.delay;
-    delete props.trigger;
 
     return (
       <div {...props}
         style={[style.root, props.style]}
       >
         {React.cloneElement(children, {
-          onClick: this.toggleMenu,
-          onMouseEnter: this.showMenu,
-          onMouseLeave: this.hideMenu
+          ...(trigger.indexOf('click') !== -1 ? {onClick: this.toggleMenu} : {}),
+          ...events
         })}
 
         <StyleRoot style={newMenuStyle}
-          onMouseEnter={this.showMenu}
-          onMouseLeave={this.hideMenu}
           onAnimationEnd={this.animationEnd}
+          {...events}
         >{menu}</StyleRoot>
       </div>
     );
   }
 
   toggleMenu() {
-    if(!this.isEnter)
+    const {trigger} = this.props;
+
+    if(trigger.indexOf('hover') !== -1) {
+      if(!this.isEnter)
+        this.setState({isShown: !this.state.isShown});
+    } else
       this.setState({isShown: !this.state.isShown});
   }
 
   showMenu() {
-    const {trigger} = this.props;
-
     clearInterval(this.interval);
 
     this.isEnter = true;
@@ -95,9 +107,7 @@ export default class Menu extends React.Component {
       this.isEnter = false;
     }, 500);
 
-    if(trigger.indexOf('click') !== -1 &&
-      trigger.indexOf('hover') !== -1)
-      this.setState({isShown: true});
+    this.setState({isShown: true});
   }
 
   hideMenu() {

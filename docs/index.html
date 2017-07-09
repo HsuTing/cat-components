@@ -253,7 +253,7 @@ class Example extends React.Component {
     return (
       &lt;div&gt;
         &lt;Input rules={rules}
-          value={value || &#x27;test@gmail.com&#x27;}
+          value={value === undefined ? &#x27;test@gmail.com&#x27; : value}
           onChange={data =&gt; inputDispatch(&#x27;test_input&#x27;, data)}
         /&gt;
 

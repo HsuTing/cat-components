@@ -116,7 +116,7 @@ export default `
       return (
         <div>
           <Input rules={rules}
-            value={value || 'test@gmail.com'}
+            value={value === undefined ? 'test@gmail.com' : value}
             onChange={data => inputDispatch('test_input', data)}
           />
 

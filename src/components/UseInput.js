@@ -77,7 +77,7 @@ class UseRedux extends React.Component {
       <div>
         <Input style={isError ? style.inputError : {}}
           rules={rules}
-          value={value || 'test@gmail.com'}
+          value={value === undefined ? 'test@gmail.com' : value}
           onChange={data => inputDispatch('test_input', data)}
         />
 
