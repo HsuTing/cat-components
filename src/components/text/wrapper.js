@@ -78,7 +78,7 @@ export default `
   // # router
   // client
   ReactDOM.render(
-    <Example />,
+    <Example router={{isServer: false}} />,
     document.getElementById('root')
   );
   // server
@@ -88,7 +88,7 @@ export default `
     <Example radiumConfig={{userAgent: ctx.request.headers['user-agent']}}
       router={{
         isServer: true,
-        location={req.url}
+        location={ctx.request.url}
         context={context}
       }}
     />

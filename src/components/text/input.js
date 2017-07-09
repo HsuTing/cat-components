@@ -98,7 +98,8 @@ export default `
   import PropTypes from 'prop-types';
   import {combineReducers, createStore} from 'redux';
   import {Provider} from 'react-redux';
-  import Input, {inputConnect} from 'cat-components/lib/Input';
+  import Input from 'cat-components/lib/Input';
+  import inputConnect from 'cat-components/lib/inputConnect';
   import {form} from 'cat-components/lib/utils/inputRedux';
 
   @inputConnect('test_form')()

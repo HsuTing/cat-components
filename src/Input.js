@@ -8,33 +8,6 @@ import invariant from 'invariant';
 import style from 'style/input';
 import inputCheck from 'utils/inputCheck';
 
-export const inputConnect = formName => (
-  mapStateToProps = () => {},
-  mapDispatchToProps = () => {},
-  mergeProps,
-  options
-) => {
-  const {connect} = require('react-redux');
-  const {changeValue} = require('utils/inputRedux');
-
-  return connect(
-    (state, ownProps) => ({
-      ...mapStateToProps(state, ownProps),
-      form: state.form[formName] || {}
-    }),
-    (dispatch, ownProps) => ({
-      ...mapDispatchToProps(dispatch, ownProps),
-      inputDispatch: (inputName, value) => {
-        dispatch(changeValue({
-          formName,
-          inputName,
-          value
-        }));
-      }
-    }), mergeProps, options
-  );
-};
-
 @radium
 export default class Input extends React.Component {
   static propTypes = {
