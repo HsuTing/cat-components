@@ -59,16 +59,6 @@ export default class Menu extends React.Component {
       menuStyle(isShown),
       addStyle
     ];
-    const events = {};
-
-    trigger.forEach(event => {
-      switch(event) {
-        case 'hover':
-          events.onMouseEnter = this.showMenu;
-          events.onMouseLeave = this.hideMenu;
-          break;
-      }
-    });
 
     delete props.delay;
 
@@ -77,13 +67,15 @@ export default class Menu extends React.Component {
         style={[style.root, props.style]}
       >
         {React.cloneElement(children, {
-          ...(trigger.indexOf('click') !== -1 ? {onClick: this.toggleMenu} : {}),
-          ...events
+          ...(trigger.includes('click') ? {onClick: this.toggleMenu} : {}),
+          onMouseEnter: this.showMenu,
+          onMouseLeave: this.hideMenu
         })}
 
         <StyleRoot style={newMenuStyle}
           onAnimationEnd={this.animationEnd}
-          {...events}
+          onMouseEnter={this.showMenu}
+          onMouseLeave={this.hideMenu}
         >{menu}</StyleRoot>
       </div>
     );
@@ -92,7 +84,7 @@ export default class Menu extends React.Component {
   toggleMenu() {
     const {trigger} = this.props;
 
-    if(trigger.indexOf('hover') !== -1) {
+    if(trigger.includes('hover')) {
       if(!this.isEnter)
         this.setState({isShown: !this.state.isShown});
     } else
@@ -100,6 +92,8 @@ export default class Menu extends React.Component {
   }
 
   showMenu() {
+    const {trigger} = this.props;
+
     clearInterval(this.interval);
 
     this.isEnter = true;
@@ -107,7 +101,8 @@ export default class Menu extends React.Component {
       this.isEnter = false;
     }, 500);
 
-    this.setState({isShown: true});
+    if(trigger.includes('hover'))
+      this.setState({isShown: true});
   }
 
   hideMenu() {
