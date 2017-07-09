@@ -10,7 +10,7 @@ import style from 'style/menu';
 export default class Menu extends React.Component {
   static propTypes ={
     children: PropTypes.element.isRequired,
-    menu: PropTypes.element.isRequired,
+    menu: PropTypes.func.isRequired,
     menuStyle: PropTypes.func,
     delay: PropTypes.number,
     trigger: PropTypes.arrayOf(
@@ -35,6 +35,7 @@ export default class Menu extends React.Component {
     this.toggleMenu = this.toggleMenu.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.hideMenu = this.hideMenu.bind(this);
+    this.hide = this.hide.bind(this);
     this.animationEnd = this.animationEnd.bind(this);
   }
 
@@ -76,9 +77,18 @@ export default class Menu extends React.Component {
           onAnimationEnd={this.animationEnd}
           onMouseEnter={this.showMenu}
           onMouseLeave={this.hideMenu}
-        >{menu}</StyleRoot>
+        >
+          {menu({
+            hide: this.hide
+          })}
+        </StyleRoot>
       </div>
     );
+  }
+
+  hide() {
+    this.isEnter = false;
+    this.setState({isShown: false});
   }
 
   toggleMenu() {

@@ -17,7 +17,7 @@ const menuStyle = () => ({
 export default class UseMenu extends React.Component {
   render() {
     return (
-      <Menu menu={<h4>Menu</h4>}
+      <Menu menu={() => <h4>Menu</h4>}
         menuStyle={menuStyle}
       >
         <MenuIcon style={style.menu} />
