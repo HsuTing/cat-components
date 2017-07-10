@@ -57,6 +57,11 @@ export default class Loading extends React.Component {
       });
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval.start);
+    clearInterval(this.interval.end);
+  }
+
   render() {
     const {outerRadius, ...props} = this.props;
     const {path, start, end} = this.state;
