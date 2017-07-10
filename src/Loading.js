@@ -39,6 +39,7 @@ export default class Loading extends React.Component {
       end: 0
     };
 
+    this.interval = {};
     this.animation = this.animation.bind(this);
   }
 
@@ -86,12 +87,13 @@ export default class Loading extends React.Component {
     const origin = this.state[name];
     const perTime = 1000 / fps;
     const func = typeof animation === 'string' ? eases[animation] : animation;
+    const realyName = name === 'start' ? 'end' : 'start';
     let count = 0;
 
-    const interval = setInterval(() => {
+    this.interval[realyName] = setInterval(() => {
       if(perTime * count > sec * 1000) {
-        this.animation(name === 'start' ? 'end' : 'start');
-        clearInterval(interval)
+        this.animation(realyName);
+        clearInterval(this.interval[realyName]);
       }
 
       const output = {};
