@@ -14,9 +14,9 @@ export default `
     - \`message(required)\`: This message will be pushed to \`error\` when value is incorrect.
     - \`options\`: This is the options of the \`validator\`.
     - \`not\`: If this is true, the value does not pass the \`validator\`, the message will be pushed to \`error\`.
-  - \`onChange\`: This function will be called when value is changed.
+  - \`value(required)\`: Give \`input\` a value.
+  - \`onChange(required)\`: This function will be called when value is changed.
   - \`onBlur\`: This function will be called when input is not focus.
-  - \`value\`: Give \`input\` a value. If this is set, you must write \`onChange\` function.
 
   The information of checking value will be given to \`onChange\` and \`onBlur\` as parameters. There will be an object and \`event\`. Object has \`value\`, \`isError\` and \`error\`. If you return a new object, this will use new object to \`input\`.
   - \`value\`: This is a value of this \`input\`.

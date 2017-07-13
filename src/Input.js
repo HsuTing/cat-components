@@ -3,7 +3,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
-import invariant from 'invariant';
 
 import style from 'style/input';
 import inputCheck from 'utils/inputCheck';
@@ -12,9 +11,9 @@ import inputCheck from 'utils/inputCheck';
 export default class Input extends React.Component {
   static propTypes = {
     type: PropTypes.string,
-    value: PropTypes.string,
+    value: PropTypes.string.isRequired,
     style: PropTypes.object,
-    onChange: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func,
     rules: PropTypes.arrayOf(
       PropTypes.shape({
@@ -41,13 +40,7 @@ export default class Input extends React.Component {
   }
 
   componentDidMount() {
-    const {value, onChange} = this.props;
-
-    if(value)
-      invariant(
-        onChange,
-        'If you give a "value", you must use a "onChange" function to update this value.'
-      );
+    const {value} = this.props;
 
     this.onChange({
       target: {
