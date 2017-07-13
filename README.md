@@ -5,6 +5,10 @@ Here are `react` components, decorators and a function to rendering `html` with 
 You can see [here](http://hsuting.github.io/cat-components) to learn how to use components and decorators.
 
 #### List
+###### Style
+- color
+- layout
+
 ###### Components
 - Accordion
 - Alert
