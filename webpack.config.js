@@ -13,6 +13,7 @@ module.exports = {
     common: [
       'radium',
       'radium-normalize',
+      'prop-types',
       'react',
       'react-dom'
     ]

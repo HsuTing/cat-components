@@ -53,8 +53,9 @@ class AlertTemplate extends React.Component {
           ...childrenProps.style,
           ...rootStyle
         }}
-        children={childrens}
-      />
+      >
+        {childrens}
+      </StyleRoot>
     );
   }
 

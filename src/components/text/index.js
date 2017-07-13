@@ -1,5 +1,6 @@
 'use strict';
 
+/* eslint-disable no-useless-escape */
 export default `
   # How to use
   #### Install package

@@ -16,7 +16,7 @@ nodeFs.readdirSync(path.resolve(__dirname, './color'))
     fs.read(path.resolve(__dirname, `./color/${name}`))
       .split(/\n/)
       .forEach(d => {
-        const [key, value] = d.split(/\#/);
+        const [key, value] = d.split(/\#/); // eslint-disable-line no-useless-escape
 
         if(!value)
           return;

@@ -1,53 +1,45 @@
 {
   "generator-cat": {
     "promptValues": {
-      "authorName": "hsuting",
-      "authorEmail": "hsuting0106@gmail.com",
-      "authorUrl": "http://hsuting.com",
-      "type": [
-        "website",
-        "npm",
-        "docs"
-      ],
-      "subject": "cat components",
-      "url": "http://hsuting.github.io/cat-components",
-      "other": [
-        "facebook"
-      ],
-      "router": false,
-      "redux": false,
-      "app_id": "1687681968184120",
-      "version": "v2.8",
       "website": true,
       "chooseType": "docs",
       "graphql": false,
       "plugins": [
+        "time tracker",
+        "test"
       ],
-      "otherSettings": []
+      "subject": "cat components",
+      "url": "https://hsuting.github.io/cat-components",
+      "otherSettings": [
+        "facebook_api"
+      ],
+      "facebook-app_id": "v2.8",
+      "facebook_api-api_version": "1687681968184120"
     },
     "plugins": [
+      "time tracker",
+      "test",
+      "docs",
+      "react"
     ],
-    "subject": "cat components",
-    "url": "http://hsuting.github.io/cat-components",
-    "extension": "cat-components/",
     "alias": {
       "public": "public",
       "components": "components",
       "componentsShare": "components/share",
-      "containers": "containers",
-      "reducers": "reducers",
-      "actions": "actions",
-      "stores": "stores",
       "utils": "utils"
-    },
-    "facebook": {
-      "app_id": "1687681968184120",
-      "version": "v2.8"
     },
     "template": {
       "subject": "cat components",
-      "url": "http://hsuting.github.io/cat-components",
-      "otherSettings": []
-    }
+      "url": "https://hsuting.github.io/cat-components",
+      "otherSettings": [
+        "facebook_api",
+        "facebook_api"
+      ],
+      "facebook_api": {
+        "app_id": "1687681968184120",
+        "api_version": "v2.8"
+      }
+    },
+    "cat": true
   }
 }

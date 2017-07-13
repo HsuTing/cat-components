@@ -1,5 +1,6 @@
 'use strict';
 
+/* eslint-disable no-useless-escape */
 export default `
   # [Accordion](./#Accordion)
   Use to make an accordion.
