@@ -16,6 +16,8 @@ import Button from './../Button';
 import Img from './../Img';
 import goToAnimation from './../goToAnimation';
 
+import UseLayout from './UseLayout';
+
 const components = [
   'Accordion',
   'Alert',
@@ -92,6 +94,12 @@ class Index extends React.Component {
           style={style.statusImage}
         />
 
+        <h4>Style</h4>
+        <div>
+          <Button onClick={() => goTo('#Layout')}
+          >layout</Button>
+        </div>
+
         <h4>Components</h4>
         <div>
           {components.map((component, index) => (
@@ -112,6 +120,14 @@ class Index extends React.Component {
 
         <div style={style.block}>
           <Markdown source={text} />
+        </div>
+
+        <div id='Layout'
+          style={style.block}
+        >
+          <Markdown source={require('./text/layout').default} />
+
+          <UseLayout />
         </div>
 
         {components.map((component, index) => (

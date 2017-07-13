@@ -11,6 +11,7 @@
       "root": ["./src"],
       "alias": {
         "style": "style",
+        "color": "color",
         "public": "public",
         "components": "components",
         "componentsShare": "components/share",

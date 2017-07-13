@@ -17,12 +17,21 @@
       "router": false,
       "redux": false,
       "app_id": "1687681968184120",
-      "version": "v2.8"
+      "version": "v2.8",
+      "website": true,
+      "chooseType": "docs",
+      "graphql": false,
+      "plugins": [
+        "build template",
+        "time tracker"
+      ],
+      "otherSettings": []
     },
     "plugins": [
-      "react",
-      "websiteNoServer",
-      "docs"
+      "build template",
+      "time tracker",
+      "docs",
+      "react"
     ],
     "subject": "cat components",
     "url": "http://hsuting.github.io/cat-components",
@@ -34,11 +43,17 @@
       "containers": "containers",
       "reducers": "reducers",
       "actions": "actions",
-      "stores": "stores"
+      "stores": "stores",
+      "utils": "utils"
     },
     "facebook": {
       "app_id": "1687681968184120",
       "version": "v2.8"
+    },
+    "template": {
+      "subject": "cat components",
+      "url": "http://hsuting.github.io/cat-components",
+      "otherSettings": []
     }
   }
 }
