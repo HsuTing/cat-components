@@ -2,7 +2,7 @@
 
 import radium from 'radium';
 
-import color from './color';
+import blue from 'color/blue';
 
 export default {
   root: outerRadius => ({
@@ -23,6 +23,6 @@ export default {
   }),
 
   circle: {
-    fill: color.blue
+    fill: blue
   }
 };

@@ -1,10 +1,11 @@
 'use strict';
 
-import color from 'style/color';
+import white from 'color/white';
+import blueGrey from 'color/blue-grey';
 
 export default {
   isClicked: {
-    color: color.white,
-    background: color.darkGrey
+    color: white,
+    background: blueGrey
   }
 };

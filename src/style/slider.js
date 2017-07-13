@@ -1,20 +1,24 @@
 'use strict';
 
-import color, {boxShadow} from './color';
+import * as grey from 'color/grey';
+import blue from 'color/blue';
+import lightBlue from 'color/light-blue';
+
+import {boxShadow} from './style';
 
 export default {
   root: {
     position: 'relative',
     maxWidth: '400px',
     height: '5px',
-    background: color.grey,
+    background: grey._200_,
     cursor: 'pointer'
   },
 
   bar: width => ({
     width,
     height: '100%',
-    background: color.lightBlue
+    background: lightBlue
   }),
 
   button: left => ({
@@ -24,7 +28,7 @@ export default {
     width: '20px',
     height: '20px',
     borderRadius: '50%',
-    background: color.blue,
+    background: blue,
     boxShadow
   })
 };

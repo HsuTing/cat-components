@@ -2,7 +2,9 @@
 
 import radium from 'radium';
 
-import color, {boxShadow} from './color';
+import white from 'color/white';
+
+import {boxShadow} from './style';
 
 const showStyle = {
   transform: 'scale(1)'
@@ -20,7 +22,7 @@ export default {
     width: '250px',
     height: '100px',
     padding: '30px',
-    background: color.white,
+    background: white,
     boxShadow,
     transformOrigin: '0px 0px',
     animation: 'x 0.5s ease-in-out',

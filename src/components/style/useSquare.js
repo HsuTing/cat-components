@@ -1,10 +1,10 @@
 'use strict';
 
-import color from 'style/color';
+import blue from 'color/blue';
 
 export default {
   root: {
     width: '30%',
-    background: color.blue
+    background: blue
   }
 };

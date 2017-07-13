@@ -1,7 +1,7 @@
 'use strict';
 
 export default `
-  # [Layout](./#Layout)
+  # [layout](./#layout)
   This is the style of \`layout\`.
 
   - \`grid\`: If you need to add \`padding\` to \`grid\`, add \`top\`, \`right\` and so on to argument.

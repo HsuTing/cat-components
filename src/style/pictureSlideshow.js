@@ -2,7 +2,7 @@
 
 import radium from 'radium';
 
-import color from './color';
+import black from 'color/black';
 
 export default {
   root: {
@@ -11,7 +11,7 @@ export default {
     height: '80vh',
     margin: '4px 2px',
     overflow: 'hidden',
-    background: color.black
+    background: black
   },
 
   img: {
@@ -28,7 +28,7 @@ export default {
     left: '0px',
     width: '100%',
     height: '100%',
-    background: color.black,
+    background: black,
     animation: 'x 1s ease-in-out'
   },
 

@@ -1,20 +1,25 @@
 'use strict';
 
-import color, {boxShadow} from './color';
+import white from 'color/white';
+import * as grey from 'color/grey';
+import blueGrey from 'color/blue-grey';
+import * as blue from 'color/blue';
+
+import {boxShadow} from './style';
 
 export default {
   root: {
     maxWidth: '300px',
     borderRadius: '5px',
-    background: color.white,
+    background: white,
     boxShadow,
-    color: color.darkGrey,
+    color: blueGrey,
     lineHeight: '30px'
   },
 
   block: {
     padding: '10px 15px',
-    border: `1px solid ${color.grey}`
+    border: `0.5px solid ${grey._200_}`
   },
 
   textBlock: {
@@ -32,12 +37,12 @@ export default {
     height: '200px',
     overflowY: 'scroll',
     textAlign: 'center',
-    border: `1px solid ${color.grey}`,
+    border: `0.5px solid ${grey._200_}`,
     cursor: 'pointer'
   },
 
   isChosenStyle: {
-    color: color.blue,
-    background: color.lightBlue
+    color: blue._500_,
+    background: blue._100_
   }
 };

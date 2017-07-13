@@ -2,7 +2,7 @@
 
 import radium from 'radium';
 
-import color from './color';
+import white from 'color/white';
 
 const showStyle = {
   left: '0px',
@@ -46,6 +46,6 @@ export default {
     left: '0px',
     width: '250px',
     height: '100%',
-    background: color.white
+    background: white
   }
 };

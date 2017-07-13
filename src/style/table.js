@@ -1,19 +1,22 @@
 'use strict';
 
-import color, {boxShadow} from './color';
+import white from 'color/white';
+import * as grey from 'color/grey';
+
+import {boxShadow} from './style';
 
 export default {
   table: {
     minWidth: '400px',
     textAlign: 'center',
-    background: color.white,
-    color: color.darkGrey,
+    background: white,
+    color: grey._500_,
     borderCollapse: 'collapse',
     boxShadow
   },
 
   tr: {
-    border: `1px solid ${color.grey}`
+    border: `1px solid ${grey._200_}`
   },
 
   th: {
@@ -26,7 +29,7 @@ export default {
 
   trHover: {
     ':hover': {
-      background: color.grey
+      background: grey._200_
     }
   }
 };

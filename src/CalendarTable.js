@@ -81,7 +81,7 @@ export default class CalendarTable extends React.Component {
         isAfter = true;
       if(now.format('YYYY M D') === defaultDate.format('YYYY M D'))
         isBefore = false;
-    } while(now.format('YYYY M D') !== end.format('YYYY M D') && count < 35);
+    } while(now.format('YYYY M D') !== end.format('YYYY M D') && count < 62);
 
     return output;
   }

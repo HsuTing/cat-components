@@ -2,7 +2,8 @@
 
 import radium from 'radium';
 
-import color from './color';
+import white from 'color/white';
+import blueGrey from 'color/blue-grey';
 
 const showStyle = {
   zIndex: '99',
@@ -29,8 +30,8 @@ export default {
     width: '200px',
     height: '200px',
     transformOrigin: '0px 0px',
-    background: color.white,
-    border: `1px solid ${color.darkGrey}`,
+    background: white,
+    border: `1px solid ${blueGrey}`,
     animation: 'x 0.5s ease-in-out'
   },
 

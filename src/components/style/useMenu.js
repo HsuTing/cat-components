@@ -1,13 +1,15 @@
 'use strict';
 
-import color, {boxShadow} from 'style/color';
+import {boxShadow} from 'style/style';
+import blue from 'color/blue';
+import white from 'color/white';
 
 export default {
   menu: {
     padding: '10px',
-    color: color.white,
+    color: white,
     cursor: 'pointer',
-    background: color.blue,
+    background: blue,
     borderRadius: '50%',
     boxShadow
   }

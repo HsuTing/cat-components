@@ -16,7 +16,22 @@ import Button from './../Button';
 import Img from './../Img';
 import goToAnimation from './../goToAnimation';
 
-import UseLayout from './UseLayout';
+const styles = [
+  'color',
+  'layout'
+].map(name => ({
+  name,
+  text: require(`./text/${name[0].toLowerCase() + name.slice(1)}`).default,
+  component: (name => {
+    switch(name) {
+      case 'color':
+        return false;
+
+      default:
+        return require(`./Use${name}`).default;
+    }
+  })(name)
+}));
 
 const components = [
   'Accordion',
@@ -55,7 +70,7 @@ const components = [
 
 const decorators = [
   'checkAPI',
-  'goToAnimation',
+  'goToAnimation'
 ].map(name => ({
   name,
   text: require(`./text/${name[0].toLowerCase() + name.slice(1)}`).default,
@@ -96,8 +111,11 @@ class Index extends React.Component {
 
         <h4>Style</h4>
         <div>
-          <Button onClick={() => goTo('#Layout')}
-          >layout</Button>
+          {styles.map((item, index) => (
+            <Button key={index}
+              onClick={() => goTo(`#${item.name}`)}
+            >{item.name}</Button>
+          ))}
         </div>
 
         <h4>Components</h4>
@@ -122,13 +140,15 @@ class Index extends React.Component {
           <Markdown source={text} />
         </div>
 
-        <div id='Layout'
-          style={style.block}
-        >
-          <Markdown source={require('./text/layout').default} />
-
-          <UseLayout />
-        </div>
+        {styles.map((item, index) => (
+          <div key={index}
+            id={item.name}
+            style={style.block}
+          >
+            <Markdown source={item.text} />
+            {item.component ? React.createElement(item.component) : null}
+          </div>
+        ))}
 
         {components.map((component, index) => (
           <div key={index}

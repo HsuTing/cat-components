@@ -1,6 +1,9 @@
 'use strict';
 
-import color, {boxShadow} from 'style/color';
+import {boxShadow} from 'style/style';
+import * as grey from 'color/grey';
+import white from 'color/white';
+import blue from 'color/blue';
 
 export default {
   root: {
@@ -10,7 +13,7 @@ export default {
   block: {
     margin: '40px 0px',
     padding: '30px',
-    border: `1px solid ${color.grey}`,
+    border: `1px solid ${grey._200_}`,
     borderRadius: '5px'
   },
 
@@ -37,9 +40,9 @@ export default {
     right: '20px',
     bottom: '20px',
     padding: '10px',
-    color: color.white,
+    color: white,
     cursor: 'pointer',
-    background: color.blue,
+    background: blue,
     borderRadius: '50%',
     boxShadow
   }

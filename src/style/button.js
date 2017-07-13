@@ -1,15 +1,18 @@
 'use strict';
 
-import color, {boxShadow} from './color';
+import white from 'color/white';
+import grey from 'color/grey';
+
+import {boxShadow} from './style';
 
 export default {
   root: {
     display: 'inline-block',
     padding: '5px 10px',
     margin: '4px 2px',
-    background: color.white,
+    background: white,
     borderRadius: '3px',
-    border: `1px solid ${color.darkGrey}`,
+    border: `0.5px solid ${grey}`,
     cursor: 'pointer',
     outline: '0px',
     fontWeight: 'normal',

@@ -22,16 +22,10 @@
       "chooseType": "docs",
       "graphql": false,
       "plugins": [
-        "build template",
-        "time tracker"
       ],
       "otherSettings": []
     },
     "plugins": [
-      "build template",
-      "time tracker",
-      "docs",
-      "react"
     ],
     "subject": "cat components",
     "url": "http://hsuting.github.io/cat-components",

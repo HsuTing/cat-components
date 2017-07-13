@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build-template": "node ./bin/build.js",
+    "build-color": "node ./bin/build-color.js",
     "test": "yarn test:babel && yarn test:static && istanbul cover _mocha -- -R spec test/**/*.js",
     "test:babel": "rm -rf ./lib/test ./lib/bin && babel src --out-dir lib --ignore components,public",
     "test:static": "node ./lib/bin/static.js ./test.config.js",
@@ -11,15 +11,15 @@
     "babel": "rm -rf ./lib && babel src --out-dir lib",
     "babel:watch": "rm -rf ./lib && babel -w src --out-dir lib",
     "prepublish": "yarn babel",
-    "build": "yarn babel && yarn static",
-    "prod": "export NODE_ENV=production && yarn babel && yarn static && yarn webpack",
+    "build": "yarn build-color && yarn babel && yarn static",
+    "prod": "export NODE_ENV=production && yarn build-color && yarn babel && yarn static && yarn webpack",
     "watch": "concurrently -c green \"yarn lint:watch\" \"yarn babel:watch\" \"yarn webpack-server\"",
     "postinstall": "rm -rf ./node_modules/radium/.babelrc",
     "static": "node ./lib/bin/static.js static.config.js"
   },
   "main": "./lib/index.js",
   "name": "cat-components",
-  "version": "1.3.12",
+  "version": "1.4.0",
   "description": "react components",
   "author": {
     "name": "hsuting",

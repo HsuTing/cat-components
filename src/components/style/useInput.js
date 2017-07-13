@@ -1,16 +1,16 @@
 'use strict';
 
-import color from 'style/color';
+import red from 'color/red';
 
 export default {
   inputError: {
-    color: color.red,
-    border: `1.5px solid ${color.red}`
+    color: red,
+    border: `0.5px solid ${red}`
   },
 
   error: {
     fontSize: '12px',
     lineHeight: '14px',
-    color: color.red
+    color: red
   }
 };

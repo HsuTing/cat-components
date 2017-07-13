@@ -2,14 +2,18 @@
 
 import radium from 'radium';
 
-import color, {boxShadow} from './color';
+import blue from 'color/blue';
+import lightBlue from 'color/light-blue';
+import * as grey from 'color/grey';
+
+import {boxShadow} from './style';
 
 export default {
   root: {
     display: 'inline-block',
     width: '25px',
     height: '25px',
-    color: color.blue,
+    color: blue,
     cursor: 'pointer'
   },
 
@@ -24,7 +28,7 @@ export default {
       width: '40px',
       height: '10px',
       borderRadius: '20px',
-      background: isClicked ? color.lightBlue : color.grey
+      background: isClicked ? lightBlue : grey._200_
     },
 
     button: {
@@ -34,7 +38,7 @@ export default {
       width: '15px',
       height: '15px',
       borderRadius: '50%',
-      background: isClicked ? color.blue : color.darkGrey,
+      background: isClicked ? blue : grey._500_,
       boxShadow,
       animation: 'x 0.1s ease-in-out',
       animationName: radium.keyframes({
