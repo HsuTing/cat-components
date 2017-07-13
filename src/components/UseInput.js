@@ -95,14 +95,6 @@ class UseRedux extends React.Component {
 
 export default () => ( // eslint-disable-line react/display-name
   <div>
-    <h5>Type: input</h5>
-    <Input rules={[]} />
-
-    <h5>Type: textare</h5>
-    <Input type='textarea'
-           rules={[]}
-    />
-
     <h5>Use default value</h5>
     <UseDefaultValue />
 
