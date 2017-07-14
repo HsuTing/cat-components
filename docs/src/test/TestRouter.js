@@ -3,8 +3,7 @@
 import React from 'react';
 import radium from 'radium';
 import {Route} from 'react-router-dom';
-
-import Wrapper from './../Wrapper';
+import Wrapper from 'cat-components/lib/wrapper';
 
 @radium
 class TestRouter extends React.Component {

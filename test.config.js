@@ -2,15 +2,15 @@
 
 const {combineReducers} = require('redux');
 
-const {testReducer} = require('./lib/test/TestRedux');
+const {testReducer} = require('./lib/docs/test/TestRedux');
 const useUrls = require('./lib/utils/useUrls').default;
 
 module.exports = [{ // test react
-  component: './lib/test/TestReact',
+  component: './lib/docs/test/TestReact',
   name: 'test/test-react',
   template: 'test.html'
 }, { // test redux
-  component: './lib/test/TestRedux',
+  component: './lib/docs/test/TestRedux',
   name: 'test/test-redux',
   template: 'test.html',
   props: {
@@ -19,7 +19,7 @@ module.exports = [{ // test react
     }
   }
 }, {
-  component: './lib/test/TestRedux',
+  component: './lib/docs/test/TestRedux',
   name: 'test/test-redux/preloadedState',
   template: 'test.html',
   props: {
@@ -29,7 +29,7 @@ module.exports = [{ // test react
     }
   }
 }].concat(useUrls(['/', '/about/'], { // test router
-  component: './lib/test/TestRouter',
+  component: './lib/docs/test/TestRouter',
   name: 'test/test-router',
   template: 'test.html'
 }));

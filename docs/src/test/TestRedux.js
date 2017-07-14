@@ -4,8 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
 import {connect} from 'react-redux';
-
-import Wrapper from './../Wrapper';
+import Wrapper from 'cat-components/lib/wrapper';
 
 export const testReducer = (state = 'origin state', {type}) => {
   return state;

@@ -1,6 +1,6 @@
 'use strict';
 
-import Input from './Input';
+import Input from './input';
 import connect from './input/connect';
 import check from './input/check';
 import {form as formReducer} from './input/reducer';

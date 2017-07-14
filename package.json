@@ -3,7 +3,7 @@
     "time-tracker": "time-tracker",
     "build-color": "node ./bin/build-color.js",
     "test": "yarn test:babel && yarn test:static && istanbul cover _mocha -- -R spec test/**/*.js",
-    "test:babel": "rm -rf ./lib && babel docs/src/test --out-dir lib/test && babel src --out-dir lib",
+    "test:babel": "yarn babel && BABEL_ENV=static babel docs/src/test --out-dir lib/docs/test",
     "test:static": "node ./lib/bin/static.js ./test.config.js",
     "webpack-server": "webpack-dev-server --content-base src --hot --inline",
     "webpack": "NODE_ENV=production webpack",

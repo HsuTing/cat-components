@@ -2,8 +2,7 @@
 
 import React from 'react';
 import radium from 'radium';
-
-import Wrapper from './../Wrapper';
+import Wrapper from 'cat-components/lib/wrapper';
 
 @radium
 class TestReact extends React.Component {
