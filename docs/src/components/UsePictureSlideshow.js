@@ -2,11 +2,10 @@
 
 import React from 'react';
 import radium from 'radium';
+import PictureSlideshow from 'cat-components/lib/picture-slideshow';
+import Button from 'cat-components/lib/button';
 
-import style from 'componentsStyle/usePictureSlideshow';
-
-import PictureSlideshow from './../PictureSlideshow';
-import Button from './../Button';
+import style from './style/usePictureSlideshow';
 
 const imgs = [{
   src: 'https://scontent-tpe1-1.cdninstagram.com/t51.2885-15/e35/17493450_397169997321386_4423519579884486656_n.jpg'

@@ -2,8 +2,7 @@
 
 import React from 'react';
 import radium from 'radium';
-
-import Img from './../Img';
+import Img from 'cat-components/lib/img';
 
 @radium
 export default class UseImg extends React.Component {

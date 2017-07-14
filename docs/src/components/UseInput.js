@@ -3,10 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
+import Input, {inputConnect} from 'cat-components/lib/input-redux';
 
-import style from 'componentsStyle/useInput';
-
-import Input, {inputConnect} from './../Input-Redux';
+import style from './style/useInput';
 
 const rules = [{
   validator: 'isEmpty',

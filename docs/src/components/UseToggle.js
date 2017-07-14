@@ -2,8 +2,7 @@
 
 import React from 'react';
 import radium from 'radium';
-
-import Toggle from './../Toggle';
+import Toggle from 'cat-components/lib/toggle';
 
 @radium
 export default class UseToggle extends React.Component {

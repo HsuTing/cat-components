@@ -5,7 +5,7 @@ const process = require('process');
 const webpack = require('webpack');
 
 const ENV = process.env.NODE_ENV === 'production';
-const src = './src/public';
+const src = './docs/src/public';
 
 module.exports = {
   entry: {

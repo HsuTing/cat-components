@@ -2,8 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import checkAPI from './../checkAPI';
+import checkAPI from 'cat-components/lib/checkAPI';
 
 @checkAPI('FB', () => FB)
 export default class UsecheckAPI extends React.Component {

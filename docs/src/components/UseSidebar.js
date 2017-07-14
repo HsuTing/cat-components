@@ -3,9 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
-
-import Button from './../Button';
-import Sidebar, {sidebarBuilder} from './../Sidebar';
+import Button from 'cat-components/lib/button';
+import Sidebar, {sidebarBuilder} from 'cat-components/lib/sidebar';
 
 @radium
 @sidebarBuilder

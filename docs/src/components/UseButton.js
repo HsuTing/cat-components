@@ -2,8 +2,7 @@
 
 import React from 'react';
 import radium from 'radium';
-
-import Button from './../Button';
+import Button from 'cat-components/lib/button';
 
 @radium
 export default class UseButton extends React.Component {

@@ -3,9 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
-
-import Button from './../Button';
-import Alert, {alertBuilder} from './../Alert';
+import Button from 'cat-components/lib/button';
+import Alert, {alertBuilder} from 'cat-components/lib/alert';
 
 @radium
 @alertBuilder

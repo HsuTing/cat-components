@@ -3,9 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
-
-import Button from './../Button';
-import {language} from './../I18n';
+import Button from 'cat-components/lib/button';
+import {language} from 'cat-components/lib/i18n';
 
 @radium
 @language

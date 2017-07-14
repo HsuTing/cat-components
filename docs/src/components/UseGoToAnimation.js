@@ -3,9 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
-
-import Button from './../Button';
-import goToAnimation from './../goToAnimation';
+import Button from 'cat-components/lib/button';
+import goToAnimation from 'cat-components/lib/goToAnimation';
 
 @radium
 @goToAnimation('body')

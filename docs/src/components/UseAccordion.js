@@ -2,8 +2,7 @@
 
 import React from 'react';
 import radium, {StyleRoot} from 'radium';
-
-import Accordion from './../Accordion';
+import Accordion from 'cat-components/lib/accordion';
 
 @radium
 export default class UseAccordion extends React.Component {

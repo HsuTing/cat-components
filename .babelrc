@@ -8,16 +8,12 @@
     "transform-decorators-legacy",
     "transform-object-assign",
     ["module-resolver", {
-      "root": ["./src"],
+      "root": ["./"],
       "alias": {
-        "style": "style",
-        "color": "color",
-        "public": "public",
-        "components": "components",
-        "componentsShare": "components/share",
-        "componentsStyle": "components/style",
-        "componentsText": "components/text",
-        "utils": "utils"
+        "cat-components/lib": "src",
+        "style": "src/style",
+        "color": "src/color",
+        "utils": "src/utils"
       }
     }]
   ]

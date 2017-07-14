@@ -2,8 +2,7 @@
 
 import React from 'react';
 import radium from 'radium';
-
-import {Table, Thead, Tbody, Tr, Td, Th} from './../Table';
+import {Table, Thead, Tbody, Tr, Td, Th} from 'cat-components/lib/table';
 
 @radium
 export default class UseTable extends React.Component {

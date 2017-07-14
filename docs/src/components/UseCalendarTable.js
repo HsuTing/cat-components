@@ -3,10 +3,9 @@
 import React from 'react';
 import radium, {StyleRoot} from 'radium';
 import moment from 'moment';
+import CalendarTable from 'cat-components/lib/calendar-table';
 
-import style from 'componentsStyle/useCalendarTable';
-
-import CalendarTable from './../CalendarTable';
+import style from './style/useCalendarTable';
 
 const now = moment();
 

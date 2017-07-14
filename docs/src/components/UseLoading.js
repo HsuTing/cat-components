@@ -2,8 +2,7 @@
 
 import React from 'react';
 import radium from 'radium';
-
-import Loading from './../Loading';
+import Loading from 'cat-components/lib/loading';
 
 @radium
 export default class UseLoading extends React.Component {

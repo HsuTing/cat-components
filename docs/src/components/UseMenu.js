@@ -3,10 +3,9 @@
 import React from 'react';
 import radium from 'radium';
 import MenuIcon from 'react-icons/lib/md/menu';
+import Menu from 'cat-components/lib/menu';
 
-import style from 'componentsStyle/useMenu';
-
-import Menu from './../Menu';
+import style from './style/useMenu';
 
 const menuStyle = () => ({
   top: '-230px',

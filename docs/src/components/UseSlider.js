@@ -2,8 +2,7 @@
 
 import React from 'react';
 import radium from 'radium';
-
-import Slider from './../Slider';
+import Slider from 'cat-components/lib/slider';
 
 @radium
 export default class UseSlider extends React.Component {

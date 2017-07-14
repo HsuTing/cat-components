@@ -10,7 +10,13 @@
       "note": "Modify Input",
       "tag": "component",
       "startTime": "2017-07-14T13:09:09.005Z",
-      "endTime": "2017-07-14T13:09:09.005Z"
+      "endTime": "2017-07-14T13:56:55.737Z"
+    },
+    "62f1d38c-2cb7-40aa-b5e4-69df1d8e0bdb": {
+      "note": "Modify project structure",
+      "tag": "normal",
+      "startTime": "2017-07-14T13:57:08.401Z",
+      "endTime": "2017-07-14T13:57:08.401Z"
     }
   }
 }
