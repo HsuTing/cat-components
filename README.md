@@ -57,7 +57,7 @@ You can use any name, but need to give this name as argument.
   - `name(required)`: The name of `html` is rendered.
   - `root(default: './views')`: This is the root folder of `views` which is  your `template` folder.
   - `template(default: './views/template.html')`: If you need, you can choose your template in `views`.
-  - `Props`: Give `props` to your component.
+  - `props`: Give `props` to your component.
   - You can add any option to your `template`.
 
 ## License

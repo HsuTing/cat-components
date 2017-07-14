@@ -7,7 +7,7 @@ const {form} = require('./lib/input-redux');
 
 module.exports = [{
   redux: true,
-  component: './docs/lib/components/Index',
+  component: './lib/docs/components/index/Index',
   js: 'index',
   name: 'docs',
   languageData: JSON.stringify(languageData),

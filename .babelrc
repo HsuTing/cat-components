@@ -1,4 +1,19 @@
 {
+  "env": {
+    "static": {
+      "plugins": [
+        ["module-resolver", {
+          "root": ["./"],
+          "alias": {
+            "cat-components/lib": "lib",
+            "style": "lib/style",
+            "color": "lib/color",
+            "utils": "lib/utils"
+          }
+        }]
+      ]
+    }
+  },
   "presets": [
     "react",
     "env",

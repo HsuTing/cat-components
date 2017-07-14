@@ -16,7 +16,7 @@
     "prod": "export NODE_ENV=production && yarn build-color && yarn babel && yarn static && yarn webpack",
     "watch": "concurrently -c green \"yarn lint:watch\" \"yarn webpack-server\"",
     "postinstall": "rm -rf ./node_modules/radium/.babelrc",
-    "static": "rm -rf ./docs/lib/ && babel --ignore test docs/src --out-dir docs/lib && node ./lib/bin/static.js static.config.js"
+    "static": "BABEL_ENV=static babel --ignore test docs/src --out-dir lib/docs && node ./lib/bin/static.js static.config.js"
   },
   "name": "cat-components",
   "version": "1.4.0",
