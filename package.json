@@ -3,7 +3,7 @@
     "time-tracker": "time-tracker",
     "build-color": "node ./bin/build-color.js",
     "test": "yarn test:babel && yarn test:static && istanbul cover _mocha -- -R spec test/**/*.js",
-    "test:babel": "rm -rf ./lib/test ./lib/bin && babel src --out-dir lib --ignore components,public",
+    "test:babel": "rm -rf ./lib && babel docs/src/test --out-dir lib/test && babel src/bin -- out-dir lib/bin",
     "test:static": "node ./lib/bin/static.js ./test.config.js",
     "webpack-server": "webpack-dev-server --content-base src --hot --inline",
     "webpack": "NODE_ENV=production webpack",
@@ -87,7 +87,6 @@
     "whatwg-fetch": "^2.0.3"
   },
   "dependencies": {
-    "cat-components": "^1.4.0",
     "chalk": "^2.0.1",
     "html-minifier": "^3.3.1",
     "invariant": "^2.2.2",

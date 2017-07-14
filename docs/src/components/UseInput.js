@@ -6,8 +6,7 @@ import radium from 'radium';
 
 import style from 'componentsStyle/useInput';
 
-import Input from './../Input';
-import inputConnect from './../inputConnect';
+import Input, {inputConnect} from './../Input-Redux';
 
 const rules = [{
   validator: 'isEmpty',

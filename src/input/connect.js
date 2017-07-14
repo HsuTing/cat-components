@@ -1,7 +1,8 @@
 'use strict';
 
 import {connect} from 'react-redux';
-import {changeValue} from 'utils/inputRedux';
+
+import {changeValue} from './reducer';
 
 export default formName => (
   mapStateToProps = () => {},

@@ -2,12 +2,12 @@
 
 export const changeValue = options => ({
   ...options,
-  type: 'CHANGE_VALUE'
+  type: 'CAT_INPUT_CHANGE_VALUE'
 });
 
 export const form = (state = {}, {type, formName, inputName, value}) => {
   switch(type) {
-    case 'CHANGE_VALUE': {
+    case 'CAT_INPUT_CHANGE_VALUE': {
       const form = {};
       const input = state[formName] ? {...state[formName]} : {};
 

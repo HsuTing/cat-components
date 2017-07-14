@@ -6,10 +6,11 @@ import {combineReducers} from 'redux';
 import {createLogger} from 'redux-logger';
 
 import Index from 'components/Index';
-import {form} from 'utils/inputRedux';
+
+import {form} from './../Input-Redux';
 
 const redux = {
-  reducer: combineReducers({form}),
+  reducer: combineReducers(form),
   enhancer: createLogger({collapsed: true})
 };
 

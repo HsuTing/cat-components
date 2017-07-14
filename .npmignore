@@ -9,6 +9,4 @@ test
 coverage
 docs
 views
-components
-public
 *.config.js

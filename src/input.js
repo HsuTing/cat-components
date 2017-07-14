@@ -5,7 +5,10 @@ import PropTypes from 'prop-types';
 import radium from 'radium';
 
 import style from 'style/input';
-import inputCheck from 'utils/inputCheck';
+
+import check from './input/check';
+
+export const inputCheck = check;
 
 @radium
 export default class Input extends React.Component {
@@ -85,7 +88,7 @@ export default class Input extends React.Component {
     return e => {
       const {rules} = this.props;
       const value = e.target.value;
-      const output = inputCheck(value, rules, e);
+      const output = check(value, rules, e);
       const newOutput = {...output, ...func(output, e)};
 
       this.setState(newOutput);
