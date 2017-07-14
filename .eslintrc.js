@@ -17,7 +17,8 @@ module.exports = {
     "Promise": true,
     "FB": true,
     "languageData": true,
-    "languageDir": true
+    "languageDir": true,
+    "data": true
   },
   "extends": [
     "google",

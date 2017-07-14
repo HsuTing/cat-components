@@ -61,12 +61,13 @@
   </body>
 
   <script>
+    var data = {{ data | safe }};
     var languageData = {{ languageData | safe }};
-    {% if ENV %}
+    {% if ENV -%}
     var languageDir = '/cat-components/public/i18n';
-    {% else %}
+    {% else -%}
     var languageDir = '/cat-components/docs/public/i18n';
-    {% endif %}
+    {% endif -%}
   </script>
 
   {% if ENV -%}

@@ -11,21 +11,25 @@ import style from './style/index';
 export default class Content extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
+    text: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.func
+    ]).isRequired,
     component: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.func
-    ]).isRequired
+    ]).isRequired,
+    example: PropTypes.string.isRequired
   }
 
   render() {
-    const {name, text, component} = this.props;
+    const {name, text, component, example} = this.props;
 
     return (
       <div id={name}
         style={style.block}
       >
-        <Markdown source={text} />
+        <Markdown source={typeof text === 'string' ? text : text(example)} />
 
         {
           !component ?

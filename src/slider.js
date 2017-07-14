@@ -4,7 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
 import invariant from 'invariant';
-import eventController from 'cat-utils/lib/event-controller';
+
+import eventController from 'utils/eventController';
 
 import style from 'style/slider';
 

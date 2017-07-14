@@ -11,14 +11,17 @@ const now = moment();
 
 /* eslint-disable react/prop-types */
 const Cell = ({year, month, date, isBefore, isAfter, sameMonth, ...props}) => {
-  let addStyle = {...style.default};
+  const addStyle = [
+    props.style,
+    style.default
+  ];
 
   if(!sameMonth)
-    addStyle = {...addStyle, ...style.notThisMonth};
+    addStyle.push(style.notThisMonth);
 
   return (
     <StyleRoot {...props}
-      style={[props.style, addStyle]}
+      style={addStyle}
     >
       <font style={!isBefore && !isAfter ? style.today : {}}>
         {`

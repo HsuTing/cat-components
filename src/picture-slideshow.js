@@ -4,13 +4,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 import uuid from 'uuid';
-import eventController from 'cat-utils/lib/event-controller';
-import imgResize from 'cat-utils/lib/imgResize';
 
+import eventController from 'utils/eventController';
+import imgResize from 'utils/imgResize';
 import style from 'style/pictureSlideshow';
 
 @radium
-export default class PictureSlideshowStyle extends React.Component {
+export default class PictureSlideshow extends React.Component {
   static propTypes = {
     index: PropTypes.number.isRequired,
     imgs: PropTypes.array.isRequired,

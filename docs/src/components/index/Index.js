@@ -22,11 +22,12 @@ import * as constants from './constants';
 @goToAnimation('body')
 class Index extends React.Component {
   static propTypes = {
+    data: PropTypes.object.isRequired,
     goTo: PropTypes.func.isRequired
   }
 
   render() {
-    const {goTo} = this.props;
+    const {data, goTo} = this.props;
 
     return (
       <div style={style.root}>
@@ -65,6 +66,7 @@ class Index extends React.Component {
           <div key={nameIndex}>
             {constants[name].map((item, itemIndex) => (
               <Content key={itemIndex}
+                example={data[`Use${item.name}`] || ''}
                 {...item}
               />
             ))}
@@ -80,14 +82,15 @@ class Index extends React.Component {
 }
 
 /* eslint-disable */
-export default ({redux, ...props}) => (
+export default ({redux, defaultData, dirPath, ...props}) => (
   <Wrapper redux={redux}
     modules={{redux: require('redux'), reactRedux: require('react-redux')}}
   >
-    <I18n {...props}
-      lang='en-us'
+    <I18n lang='en-us'
+      defaultData={defaultData}
+      dirPath={dirPath}
     >
-      <Index />
+      <Index {...props} />
     </I18n>
   </Wrapper>
 );

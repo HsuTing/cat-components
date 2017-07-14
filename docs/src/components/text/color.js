@@ -2,7 +2,7 @@
 
 export default `
   # [color](./#color)
-  This is the style of the color from [mdl](https://material.io/guidelines/style/color.html#color-color-palette).
+  This is the style of the color from [material design](https://material.io/guidelines/style/color.html#color-color-palette).
 
   #### Example
   \`\`\`js

@@ -17,6 +17,12 @@
       "tag": "normal",
       "startTime": "2017-07-14T13:57:08.401Z",
       "endTime": "2017-07-14T16:32:02.831Z"
+    },
+    "72fd6c6e-75c2-4a31-a38e-26635e2730d1": {
+      "note": "Write a loader to auto add example code",
+      "tag": "normal",
+      "startTime": "2017-07-14T18:24:03.684Z",
+      "endTime": "2017-07-14T18:24:03.684Z"
     }
   }
 }

@@ -4,7 +4,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
 import uuid from 'uuid';
-import eventController from 'cat-utils/lib/event-controller';
+
+import eventController from 'utils/eventController';
 
 @radium
 export default class Square extends React.Component {

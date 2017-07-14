@@ -2,7 +2,7 @@
 Here are `react` components, decorators and a function to rendering `html` with `react`. All components are build with [radium](https://github.com/FormidableLabs/radium).
 
 ## How to use it
-You can see [here](http://hsuting.github.io/cat-components) to learn how to use components and decorators.
+You can see [here](https://hsuting.github.io/cat-components) to learn how to use components and decorators.
 
 #### List
 ###### Style
@@ -10,29 +10,31 @@ You can see [here](http://hsuting.github.io/cat-components) to learn how to use 
 - layout
 
 ###### Components
-- Accordion
-- Alert
-- Button
-- Calendar
-- CalendarTable
-- Loading
-- I18n
-- Icon
-- Img
-- Input
-- Link
-- Menu
-- PictureSlideshow
-- Sidebar
-- Slider
-- Square
-- Table
-- Toggle
-- Wrapper
+- accordion
+- alert
+- button
+- calendar
+- calendar-table
+- loading
+- i18n
+- icon
+- img
+- input
+- input-redux
+- link
+- loading
+- menu
+- picture-slideshow
+- sidebar
+- slider
+- square
+- table
+- toggle
+- wrapper
 
 ###### Decorators
 - checkFBAPI
-- checkGAPI
+- goToAnimation
 
 ## Bin
 Use to render `HTML` with `react` and `nunjucks`.

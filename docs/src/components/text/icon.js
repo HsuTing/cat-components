@@ -1,22 +1,11 @@
 'use strict';
 
-export default `
-  # [Icon](./#Icon)
-  Make an icon.
+export default example => `
+# [Icon](./#Icon)
+Make an icon of this website.
 
-  #### Example
-  \`\`\`js
-  'use strict';
-
-  import React from 'react';
-  import Icon from 'cat-components/lib/Icon';
-
-  export default class Example extends React.Component {
-    render() {
-      return (
-        <Icon />
-      );
-    }
-  }
-  \`\`\`
+#### Example
+\`\`\`js
+${example}
+\`\`\`
 `;
