@@ -11,28 +11,22 @@ export default class UseTable extends React.Component {
       <Table>
         <Thead>
           <Tr>
-            {['list1', 'list2', 'list3'].map((data, index) => {
-              return (
-                <Th key={index}>{data}</Th>
-              );
-            })}
+            {['list1', 'list2', 'list3'].map((data, index) => (
+              <Th key={index}>{data}</Th>
+            ))}
           </Tr>
         </Thead>
         <Tbody>
           {[
             ['item1-1', 'item2-1', 'item3-1'],
             ['item1-2', 'item2-2', 'item3-2'],
-          ].map((list, listIndex) => {
-            return (
-              <Tr key={listIndex}>
-                {list.map((item, itemIndex) => {
-                  return (
-                    <Td key={itemIndex}>{item}</Td>
-                  );
-                })}
-              </Tr>
-            );
-          })}
+          ].map((list, listIndex) => (
+            <Tr key={listIndex}>
+              {list.map((item, itemIndex) => (
+                <Td key={itemIndex}>{item}</Td>
+              ))}
+            </Tr>
+          ))}
         </Tbody>
       </Table>
     );

@@ -19,7 +19,7 @@
     "static": "BABEL_ENV=static babel --ignore test docs/src --out-dir lib/docs && node ./lib/bin/static.js static.config.js"
   },
   "name": "cat-components",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "react components",
   "author": {
     "name": "hsuting",
@@ -57,7 +57,7 @@
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "cat-time-tracker": "^0.1.10",
+    "cat-time-tracker": "^0.1.13",
     "concurrently": "^3.5.0",
     "d3": "^4.7.4",
     "eases": "^1.0.8",

@@ -43,10 +43,22 @@
       "endTime": "2017-07-15T08:17:26.036Z"
     },
     "4750ecfb-cd71-4e5c-b18d-6fa780bf249e": {
-      "note": "Modify text",
+      "note": "Modify docs",
       "tag": "normal",
       "startTime": "2017-07-15T10:47:03.803Z",
       "endTime": "2017-07-15T13:10:46.700Z"
+    },
+    "0660e081-5086-489f-b9e0-b03acd0bb499": {
+      "note": "Add redux to Table",
+      "tag": "decorator",
+      "startTime": "2017-07-15T15:23:24.008Z",
+      "endTime": "2017-07-15T15:44:52.797Z"
+    },
+    "3ff6408d-3a91-47e1-8fdd-de9b1c63eb94": {
+      "note": "Add redux to Table",
+      "tag": "decorator",
+      "startTime": "2017-07-15T16:37:45.301Z",
+      "endTime": "2017-07-15T17:36:18.941Z"
     }
   }
 }

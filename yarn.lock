@@ -1248,9 +1248,9 @@ caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
 
-cat-time-tracker@^0.1.10:
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/cat-time-tracker/-/cat-time-tracker-0.1.10.tgz#ef0101bdd3a3a4bc3aec23491594a535a048a14f"
+cat-time-tracker@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/cat-time-tracker/-/cat-time-tracker-0.1.13.tgz#33486921d281f473c90dd69208d3fe25847b4136"
   dependencies:
     babel-polyfill "^6.23.0"
     chalk "^2.0.1"

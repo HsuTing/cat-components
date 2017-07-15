@@ -20,16 +20,14 @@ export default class UseAccordion extends React.Component {
 
     return (
       <Accordion index={index}>
-        {['1', '2', '3'].map((name, nameIndex) => {
-          return (
-            <StyleRoot key={nameIndex}
-              onClick={this.onClick(nameIndex)}
-            >
-              <h5 style={{cursor: 'pointer'}}>{`title${name}`}</h5>
-              <p>{`content${name}`}</p>
-            </StyleRoot>
-          );
-        })}
+        {['1', '2', '3'].map((name, nameIndex) => (
+          <StyleRoot key={nameIndex}
+            onClick={this.onClick(nameIndex)}
+          >
+            <h5 style={{cursor: 'pointer'}}>{`title${name}`}</h5>
+            <p>{`content${name}`}</p>
+          </StyleRoot>
+        ))}
       </Accordion>
     );
   }

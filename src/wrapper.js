@@ -9,7 +9,7 @@ export default class Wrapper extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
     redux: PropTypes.shape({
-      reducer: PropTypes.object.isRequired,
+      reducer: PropTypes.func.isRequired,
       preloadedState: PropTypes.object,
       enhancer: PropTypes.func
     }),

@@ -1,11 +1,11 @@
 'use strict';
 
 import Input from './input';
-import connect from './input/connect';
 import check from './input/check';
 import cat_forms from './input/reducer';
+import connect from './input/connect';
 
-export const inputConnect = connect;
+export default Input;
 export const inputCheck = check;
 export const formReducer = {cat_forms};
-export default Input;
+export const inputConnect = connect;

@@ -42,14 +42,12 @@ export default class UsePictureSlideshow extends React.Component {
           imgs={imgs}
         />
 
-        {imgs.map((img, imgIndex) => {
-          return (
-            <Button key={imgIndex}
-              style={imgIndex === index ? style.isClicked : {}}
-              onClick={this.onClick(imgIndex)}
-            >{imgIndex}</Button>
-          );
-        })}
+        {imgs.map((img, imgIndex) => (
+          <Button key={imgIndex}
+            style={imgIndex === index ? style.isClicked : {}}
+            onClick={this.onClick(imgIndex)}
+          >{imgIndex}</Button>
+        ))}
       </div>
     );
   }
