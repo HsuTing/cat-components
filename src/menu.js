@@ -55,8 +55,7 @@ export default class Menu extends React.Component {
     const {children, menu, menuStyle, trigger, ...props} = this.props;
     const {isShown, addStyle} = this.state;
     const newMenuStyle = [
-      style.menu,
-      style.style(isShown),
+      style.menu(isShown),
       menuStyle(isShown),
       addStyle
     ];
