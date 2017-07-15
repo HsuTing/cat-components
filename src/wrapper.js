@@ -8,8 +8,14 @@ import radium from 'radium';
 export default class Wrapper extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
-    redux: PropTypes.object,
-    router: PropTypes.object,
+    redux: PropTypes.shape({
+      reducer: PropTypes.object.isRequired,
+      preloadedState: PropTypes.object,
+      enhancer: PropTypes.func
+    }),
+    router: PropTypes.shape({
+      isServer: PropTypes.bool
+    }),
     modules: PropTypes.object
   }
 

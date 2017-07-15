@@ -24,7 +24,9 @@ export default class Input extends React.Component {
           PropTypes.string,
           PropTypes.func
         ]).isRequired,
-        message: PropTypes.string.isRequired
+        message: PropTypes.string.isRequired,
+        options: PropTypes.object,
+        not: PropTypes.bool
       })
     ).isRequired
   }

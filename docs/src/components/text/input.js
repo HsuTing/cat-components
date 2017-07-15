@@ -10,20 +10,66 @@ If you want to use \`input\` with \`redux\`, you just need to change \`input\` t
 - [validator](https://github.com/chriso/validator.js/)
 
 #### Props
-- \`type(default: text)\`: This can be all type of \`input\`, and it can be \`textarea\`.
-- \`rules(required)\`: This is an array of \`validator\` and \`message\`.
-  - \`validator(required)\`: Use to check value. You can use function from \`validator\` with giving a name or write a function to check value. The parameters of function are \`value\` and \`event\`. This function need to return \`true\` or \`false\` to show if value is correct.
-  - \`message(required)\`: This message will be pushed to \`error\` when value is incorrect.
-  - \`options\`: This is the options of the \`validator\`.
-  - \`not\`: If this is true, the value does not pass the \`validator\`, the message will be pushed to \`error\`.
-- \`value(required)\`: Give \`input\` a value.
-- \`onChange(required)\`: This function will be called when value is changed.
-- \`onBlur\`: This function will be called when input is not focus.
+- \`type\` [string, default: text]
 
-The information of checking value will be given to \`onChange\` and \`onBlur\` as parameters. There will be an object and \`event\`. Object has \`value\`, \`isError\` and \`error\`. If you return a new object, this will use new object to \`input\`.
-- \`value\`: This is a value of this \`input\`.
-- \`isError\`: This will be \`false\`, when \`value\` passes all test.
-- \`error\`: Messages will be pushed in \`error\` if \`value\` does not pass the test.
+  This can be the all type of \`input\` tag, and it can be \`textarea\`.
+
+- \`rules\` [array, required]
+
+  This will give to \`chcekInput\` to check if value is correct.
+
+  - \`validator(value, event)\` [func | string, required)
+
+    Use to check value. You can use function from \`validator\` with giving a name or write a function to check value. You just need to return \`true\` or \`false\` to show if value is correct.
+
+    - \`value\`
+
+      This is the value of the \`input\`.
+
+    - \`event\`
+
+      This is the event of the \`input\`.
+
+  - \`message\` [string, required]
+
+    This message will be pushed to \`error\` when value is incorrect.
+
+  - \`options\` [object]
+
+    You can add other options for \`validator\`.
+
+  - \`not\` [bool]
+
+    Use to reverse the result.
+
+- \`value\` [string, required]
+
+  Give the \`input\` a value.
+
+- \`onChange(data, event)\` [func, required]
+- \`onBlur(data, event)\` [func]
+
+  \`onChange\` will be called when the value of the \`input\` is changed. \`onBlur\` will be called when user is not focus on the \`input\`. Those functions can return an object like \`data\` and it will be added to the \`input\`.
+
+  - \`data\` [object]
+
+    This is the result of the \`inputCheck\` when a value give to the \`input\`.
+
+    - \`value\` [string]
+
+      This is a value of this \`input\`.
+
+    - \`isError\` [bool]
+
+      This is the result of the \`rules\`.
+
+    - \`error\` [array]
+
+      Here are the error messages when \`value\` does not pass the \`rules\`.
+
+  - \`event\` [object]
+
+    This is the event of the \`input\`.
 
 #### Decorators
 - inputConnect
@@ -36,15 +82,35 @@ The information of checking value will be given to \`onChange\` and \`onBlur\` a
     - [redux](https://github.com/reactjs/redux)
     - [react-redux](https://github.com/reactjs/react-redux)
   - Arguments
-    - \`formName(required)\`: Use to determine the form which should be used.
+    - \`formName\` [string, required]
+
+      Use to determine the form which should be used.
+
   - Props
-    - \`form\`: This is the data of the form.
-    - \`inputDispatch\`: Use this function in \`onChange\` function. The arguments of this function are a \`inputName\` and a data from \`onChange\`.
-    - \`submitDispatch(callback)\`
+    - \`form\` [object]
 
-      Use this function when you want to send the data to a server. Owing to \`isSubmited\` in \`form\`, this variable will change real \`isError\`. The reason why \`isSubmied\` change \`isError\` is that \`isError\` should not be true when \`value\` is empty before trying to send data to server.
+      This is the data of the form.
 
-      - \`callback(form)\`: This will be called after \`isSubmited\` is changed in \`form\`. This will get the real data of the form.
+    - \`inputDispatch(inputName, value)\` [func]
+
+      Use this function in the \`onChange\` function.
+
+      - \`inputName\` [string]
+
+        This is the name of the \`input\`. It will be used for \`redux\` to add \`value\` to \`form\`.
+
+      - \`value\` [object]
+
+        The value of the \`input\` is used to \`redux\`, and it will be like the result of the \`inputCheck\` which has \`value\`, \`isError\` and \`error\`.
+
+    - \`submitDispatch(callback)\` [func]
+
+      Owing to \`isSubmited\` in the \`form\`, you will not get the real \`isError\`. As a result, this is recommended that you should use this when you want to send the data to a server.
+
+      - \`callback(form)\` [func]
+
+        This will be called after \`isSubmited\` is changed in the \`form\`. This will get the real data of the \`form\`.
+        - \`form\` [object]
 
 #### Example
 \`\`\`js

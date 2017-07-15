@@ -8,7 +8,7 @@ Make a square \`DOM\`. Remember that you do not set \`height\` of children \`DOM
 - [uuid](https://www.npmjs.com/package/uuid)
 
 #### Props
-- \`children(required)\`
+- \`children\` [component, required]
 
 #### Example
 \`\`\`js

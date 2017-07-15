@@ -5,23 +5,41 @@ export default example => `
 Use to check if some api library can be used like \`FB\`, \`gapi\`.
 
 #### Arguments
-- \`name(required)\`: Use to identify api. You will get a bool as \`props\` with [name + CanUse] and you can use this to check if this library can be used.
-- \`func(required)\`: This must be a function which will return the global variable.
-- \`getData(default: callback => {})\`: This will be called when this library can be used. This argument is also a function and you can use this function to add some datas to \`props\`.
-  \`\`\`js
-  @checkAPI('FB', () => FB,
-    callback => {
-      FB.login(response => {
-        callback(response);
-      });
-    }
-  )
-  class ...
-  \`\`\`
-- \`defaultData(default: {})\`: This will be added to \`props\` in order to avoid error with \`propTyps\`.
+- \`name\` [string, required]
+
+  Use to identify api.
+
+- \`func()\` [func, required]
+
+  This must be a function which will return the global variable. For example, it will be like \`() => FB\`
+
+- \`getData(callback)\` [func, default: callback => callback({})]
+
+  This will be called when this library can be used.
+
+  - \`callback()\` [func]
+
+    If you want to add some data as \`props\`, you can give the data to \`callback\`. Here is the example:
+
+    \`\`\`js
+    @checkAPI('FB', () => FB,
+      callback => {
+        FB.login(response => {
+          callback(response);
+        });
+      }
+    )
+    class ...
+    \`\`\`
+
+- \`defaultData\` [object, default: {}]
+
+  This will be added to \`props\` in order to avoid the error with \`propTypes\` when you use \`callback\` in \`getData\`.
 
 #### Props
-- \`[name]CanUse\`: Show if this library can be used.
+- \`[name]CanUse\` [bool]
+
+  Show if this library can be used.
 
 #### Example
 \`\`\`js

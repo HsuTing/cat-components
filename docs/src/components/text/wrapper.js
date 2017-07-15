@@ -5,9 +5,21 @@ export default `
 This is a component for using server side rendering with \`radium\`. It can alos render \`react-redux\` and \`react-router-dom\`. Use this component as the root component.
 
 #### Props
-- \`modules\`: Add the modules here. If you install other packages, you must add packages here because this component does not require those modules in component. The reason why this component does not require the modules is that the not using modules will not be added in \`js\`.
-- \`redux\`: This is an object. You can give \`reducer(required)\`, \`preloadedState\` and \`enhancer\`. This is used like \`createStore\` in \`redux\`. You need to install \`redux\` and \`react-redux\`.
-- \`router\`: This is an object. You can give \`isServer\` to choose \`StaticRouter\` or \`BrowserRouter\`. When \`isServer\` is \`true\`. you need to give an object like \`{location: '/', context: {}}\`. You need to install \`react-router-dom\`.
+- \`modules\` [object]
+
+  Add the modules here. If you install other packages, you must add packages here because this \`Wrapper\` does not include those modules. The reason why this component does not include those modules is that the not using modules will not be added in javascript.
+
+- \`redux\` [object]
+
+  You can give \`reducer(required)\`, \`preloadedState\` and \`enhancer\`. This is used like \`createStore\` in \`redux\`.
+
+  You need to install \`redux\`, \`react-redux\` and include in \`modules\`.
+
+- \`router\` [object]
+
+  You can give \`isServer\` to choose \`StaticRouter\` or \`BrowserRouter\`. When \`isServer\` is \`true\`. you need to give an object like \`{location: '/', context: {}}\`.
+
+  You need to install \`react-router-dom\` and include in \`modules\`.
 
 #### Example
 \`\`\`js

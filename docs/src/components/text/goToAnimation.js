@@ -8,16 +8,22 @@ Use to scroll main \`DOM\` to target \`DOM\` or top of window.
 - [eases](https://www.npmjs.com/package/eases)
 
 #### Arguments
-- \`main(required)\`: This is main \`DOM\` which is controlled.
-- \`options(default = {})\`
-  - \`sec(default: 2)\`: This is the duration of this animation.
-  - \`fps(default: 60)\`: This is the fps of this animation.
-  - \`animation(default: 'quartInOut')\`: This is function of animation. It can be a name of [eases](https://www.npmjs.com/package/eases) or a function.
+- \`main\` [string, required]
+
+  This is main \`DOM\` which is controlled. This is used to \`querySelector\` to find the \`DOM\`. As a result, you can use like \`#main\`.
+
+- \`options\` [object, default = {sec: 2, fps: 60, animation: 'quartInOut'}]
+
+  You can add \`sec\`, \`fps\` and \`animation\`. \`sec\` is the duration of this animation. \`fps\` is the fps of this animation. \`animation\` can be a name of [eases](https://www.npmjs.com/package/eases) or a function.
 
 #### Props
-- \`goTo\`: This is the function to srcoll the main \`DOM\`. The argument of this function is \`target\`, and this is used to find the target \`DOM\`. If \`target\` is not set, this function will scroll to top of main \`DOM\`.
+- \`goTo(target)\` [func]
 
-\`main\` and \`target\` must be a string. This component uses those string with \`document.querySelector\` to get \`DOM\`.
+  This is the function to srcoll the main \`DOM\`.
+
+  - \`target\` [string, required]
+
+    This is alse used to \`querySelector\` to find the target \`DOM\`. If \`target\` is not set, this function will scroll to the top of the main \`DOM\`.
 
 #### Example
 \`\`\`js

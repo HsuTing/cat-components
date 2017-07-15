@@ -2,12 +2,23 @@
 
 export default example => `
 # [Accordion](./#Accordion)
-Use to make an accordion.
 
 #### Props
-- \`children(required)\`: This children should be an array of \`StyleRoot\` in \`radium\`, and \`StyleRoot\` can only have two childrens which are shown as \`title\` and \`content\`.
-- \`index(required)\`: This is the index of \`accordion\`. Use to choose whose item should be shown.
-- \`contentStyle\`: Use to modify style when the component is clicked. It is a function and the parameter is a boolean to show if the component is clicked. Then, you need to return a object to modify style.
+- \`children\` [array of component, required]
+
+  This children should be an array of \`StyleRoot\` in \`radium\`, and \`StyleRoot\` can only have two childrens.
+
+- \`index\` [index, required]
+
+  This is the index of \`accordion\`. Use to choose the children component which should be shown.
+
+- \`contentStyle(isClicked)\` [func]
+
+  Use to modify style when the children component is clicked.
+
+  - \`isClicked\` [bool]
+
+    If the children component is clicked, this will be \`true\`. You can use this to decide the style of the children component.
 
 #### Example
 \`\`\`js

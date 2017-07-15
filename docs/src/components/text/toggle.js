@@ -2,19 +2,40 @@
 
 export default example => `
 # [Toggle](./#Toggle)
-Use to make a Toggle.
 
 #### Other packages
 - [react-icons](https://gorangajic.github.io/react-icons/fa.html)
 
 #### Props
-- \`rootStyle\`: Use to modify style when the component is clicked. It is a function and the parameter is a boolean to show if the component is clicked. Then, you need to return a object to modify style.
-- \`checked\`: Use to set default clicked.
-- \`icons\`: You can use this to change icons. You need to give a object like \`{default: IconOne, clicked: IconTwo}\`.
-- \`type(default: 'checkbox')\`: Use to choose type of the component.
-  - \`checkbox\`
-  - \`radio\`: You should add \`clicked\` to \`props\` in order that the value of the component will be only one value.
-  - \`switch\`: You can add \`buttonStyle\` to \`props\` when you want to modify style of button. This is the same as \`style\`.
+- \`rootStyle(isClicked)\` [func]
+
+  Use to modify the style of the \`toggle\`. You need to return an object to modify the style.
+
+  - \`isClicked\` [bool]
+
+    This will be \`true\` when the \`toggle\` is clicked.
+
+- \`checked\` [bool]
+
+  Use to set default clicked.
+
+- \`icons\` [object]
+
+  You can use this to change icons. For example, it will be \`{default: IconOne, clicked: IconTwo}\`.
+
+- \`type\` [string, default: 'checkbox']
+
+  Use to choose the type of the component. It can be \`checkbox\`, \`radio\` and \`switch\`.
+
+  - \`radio\`
+    - Props
+      - \`clicked\` [bool, required]
+
+  - \`switch\`
+    - Props
+      - \`buttonStyle\` [object]
+
+        Use to modify the style of the button.
 
 #### Example
 \`\`\`js

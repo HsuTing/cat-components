@@ -5,8 +5,13 @@ export default example => `
 Combine \`a\` tag and \`img\` tag in one component.
 
 #### Props
-- \`link\`: If you do not give a link, it will render a normal \`img\`.
-- \`target\`: This is used to \`a\` tag.
+- \`link\` [string]
+
+  If you do not give a link, it will render a normal \`img\`.
+
+- \`target\` [string]
+
+  This is used for \`a\` tag.
 
 #### Example
 \`\`\`js

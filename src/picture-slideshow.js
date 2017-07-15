@@ -14,7 +14,10 @@ export default class PictureSlideshow extends React.Component {
   static propTypes = {
     index: PropTypes.number.isRequired,
     imgs: PropTypes.array.isRequired,
-    type: PropTypes.string,
+    type: PropTypes.oneOf([
+      'img',
+      'div'
+    ]),
     hideStyle: PropTypes.shape({
       left: PropTypes.object.isRequired,
       right: PropTypes.object.isRequired
@@ -26,6 +29,7 @@ export default class PictureSlideshow extends React.Component {
   }
 
   static defaultProps = {
+    type: 'div',
     hideStyle: style.hideStyle,
     showStyle: style.showStyle
   }

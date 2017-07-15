@@ -2,15 +2,34 @@
 
 export default example => `
 # [Slider](./#Slider)
-Use to make a slider.
 
 #### Props
-- \`onChange\`: Use to get \`value\`.
-- \`value\`: This is the value of this component.
-- \`max(default: 100)\`: This is the max of \`value\`.
-- \`min(default: 0)\`: This is the min of \`value\`.
-- \`buttonStyle\`: Use to modify the style of the button. This is a function and the parameter is a number which is the percentage of \`value\`. You need to return a object of the style. If you modify the size of the button, this percentage is important to help you modify \`left\` like \`percentage => ({left: 'calc(' + percentage * 100 + '% - 10px)'})\`.
-- \`barStyle\`: Use to modify the style of the bar. This is a function and the parameter is a number which is the percentage of \`value\`. You need to return a object of the style. If you modify the size of the bar, this percentage is important to help you modify \`left\` like \`percentage => ({left: 'calc(' + percentage * 100 + '% - 10px)'})\`.
+- \`onChange(value)\` [func]
+
+  Use to get \`value\`.
+
+  - \`value\` [int]
+
+- \`value\` [int]
+
+  This is the value of this component.
+
+- \`max\` [int, default: 100]
+
+  This is the max of the value.
+
+- \`min\` [int, default: 0]
+
+  This is the min of the value.
+
+- \`buttonStyle(percentage)\` [func]
+- \`barStyle(percentage)\` [func]
+
+  Use to modify the style of the button and use to modify the style of the bar. You need to return an object of the style to modify the style.
+
+  - \`percentage\` [float]
+
+    If you modify the size of the button, this percentage is important to help you modify \`left\`. For example, it will be \`percentage => ({left: 'calc(' + percentage * 100 + '% - 10px)'})\`.
 
 #### Example
 \`\`\`js
