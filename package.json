@@ -57,7 +57,7 @@
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "cat-time-tracker": "^0.1.8",
+    "cat-time-tracker": "^0.1.10",
     "concurrently": "^3.5.0",
     "d3": "^4.7.4",
     "eases": "^1.0.8",

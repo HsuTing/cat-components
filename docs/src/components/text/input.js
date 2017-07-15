@@ -40,6 +40,11 @@ The information of checking value will be given to \`onChange\` and \`onBlur\` a
   - Props
     - \`form\`: This is the data of the form.
     - \`inputDispatch\`: Use this function in \`onChange\` function. The arguments of this function are a \`inputName\` and a data from \`onChange\`.
+    - \`submitDispatch(callback)\`
+
+      Use this function when you want to send the data to a server. Owing to \`isSubmited\` in \`form\`, this variable will change real \`isError\`. The reason why \`isSubmied\` change \`isError\` is that \`isError\` should not be true when \`value\` is empty before trying to send data to server.
+
+      - \`callback(form)\`: This will be called after \`isSubmited\` is changed in \`form\`. This will get the real data of the form.
 
 #### Example
 \`\`\`js

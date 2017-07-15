@@ -3,9 +3,9 @@
 import Input from './input';
 import connect from './input/connect';
 import check from './input/check';
-import {form} from './input/reducer';
+import cat_forms from './input/reducer';
 
 export const inputConnect = connect;
 export const inputCheck = check;
-export const formReducer = {form};
+export const formReducer = {cat_forms};
 export default Input;

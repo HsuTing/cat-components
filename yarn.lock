@@ -1248,13 +1248,14 @@ caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
 
-cat-time-tracker@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/cat-time-tracker/-/cat-time-tracker-0.1.8.tgz#73dea83f528d0d20aa372cc2fe3786e600e6cb73"
+cat-time-tracker@^0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/cat-time-tracker/-/cat-time-tracker-0.1.10.tgz#ef0101bdd3a3a4bc3aec23491594a535a048a14f"
   dependencies:
     babel-polyfill "^6.23.0"
     chalk "^2.0.1"
     git-config "^0.0.7"
+    gitlog "^2.4.0"
     inquirer "^3.1.1"
     mem-fs "^1.1.3"
     mem-fs-editor "^3.0.2"
@@ -1841,7 +1842,7 @@ debug@2.6.7:
   dependencies:
     ms "2.0.0"
 
-debug@2.6.8, debug@^2.1.1, debug@^2.2.0, debug@^2.6.3, debug@^2.6.8:
+debug@2.6.8, debug@^2.1.1, debug@^2.1.3, debug@^2.2.0, debug@^2.6.3, debug@^2.6.8:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
   dependencies:
@@ -2592,6 +2593,13 @@ git-config@^0.0.7:
   resolved "https://registry.yarnpkg.com/git-config/-/git-config-0.0.7.tgz#a9c8a3ef07a776c3d72261356d8b727b62202b28"
   dependencies:
     iniparser "~1.0.5"
+
+gitlog@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/gitlog/-/gitlog-2.4.0.tgz#f6034dbdd9eadc3bab9315a373bc3641bf387ead"
+  dependencies:
+    debug "^2.1.3"
+    lodash.assign "^4.2.0"
 
 glob-base@^0.3.0:
   version "0.3.0"

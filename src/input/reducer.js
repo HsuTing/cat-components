@@ -5,24 +5,40 @@ export const changeValue = options => ({
   type: 'CAT_INPUT_CHANGE_VALUE'
 });
 
-export const form = (state = {}, {type, formName, inputName, value}) => {
+export const submit = options => ({
+  ...options,
+  type: 'CAT_INPUT_SUBMIT'
+});
+
+export default (state = {}, {type, formName, ...action}) => {
+  const formRoot = {...state};
+  const form = formRoot[formName] ? {...formRoot[formName]} : {isSubmited: false};
+
   switch(type) {
     case 'CAT_INPUT_CHANGE_VALUE': {
-      const form = {};
-      const input = state[formName] ? {...state[formName]} : {};
+      const {inputName, value} = action;
 
-      input[inputName] = {
-        ...input[inputName],
+      form[inputName] = {
+        ...form[inputName],
         ...value
       };
-      form[formName] = input;
-      return {
-        ...state,
-        ...form
-      };
+      break;
     }
 
-    default:
-      return state;
+    case 'CAT_INPUT_SUBMIT': {
+      const {callback} = action;
+      const output = {...form};
+      form.isSubmited = true;
+
+      delete output.isSubmited;
+
+      callback(output);
+      break;
+    }
   }
+
+  if(formName)
+    formRoot[formName] = form;
+
+  return formRoot;
 };

@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
+import Button from 'cat-components/lib/button';
 import Input, {inputConnect} from 'cat-components/lib/input-redux';
 
 import style from './style/useInput';
@@ -18,6 +19,16 @@ const rules = [{
   validator: value => value !== 'hsuting0106@gmail.com',
   message: 'This email must be "hsuting0106@gmail.com".'
 }];
+
+const errorMessage = (isError, error) => (
+  !isError ?
+    null :
+    (error || []).map((err, index) => (
+      <p key={index}
+        style={style.error}
+      >{err}</p>
+    ))
+);
 
 @radium
 class UseDefaultValue extends React.Component {
@@ -43,13 +54,7 @@ class UseDefaultValue extends React.Component {
           onChange={this.onChange}
         />
 
-        {error.map((err, index) => {
-          return (
-            <p key={index}
-              style={style.error}
-            >{err}</p>
-          );
-        })}
+        {errorMessage(isError, error)}
       </div>
     );
   }
@@ -79,15 +84,48 @@ class UseRedux extends React.Component {
           onChange={data => inputDispatch('test_input', data)}
         />
 
-        {(error || []).map((err, index) => {
-          return (
-            <p key={index}
-              style={style.error}
-            >{err}</p>
-          );
-        })}
+        {errorMessage(isError, error)}
       </div>
     );
+  }
+}
+
+@radium
+@inputConnect('test_form')()
+class UseReduxWithNoDefaultValue extends React.Component {
+  static propTypes = {
+    form: PropTypes.object.isRequired,
+    inputDispatch: PropTypes.func.isRequired,
+    submitDispatch: PropTypes.func.isRequired
+  }
+
+  constructor(props) {
+    super(props);
+    this.submit = this.submit.bind(this);
+  }
+
+  render() {
+    const {form, inputDispatch, submitDispatch} = this.props;
+    const {value, isError, error} = form.test_input_no_default_value || {};
+
+    return (
+      <div>
+        <Input style={isError ? style.inputError : {}}
+          rules={rules}
+          value={value === undefined ? '' : value}
+          onChange={data => inputDispatch('test_input_no_default_value', data)}
+        />
+
+        {errorMessage(isError, error)}
+
+        <Button onClick={() => submitDispatch(this.submit)}
+        >Submit</Button>
+      </div>
+    );
+  }
+
+  submit(form) {
+    alert(JSON.stringify(form, null, 2));
   }
 }
 
@@ -98,5 +136,8 @@ export default () => ( // eslint-disable-line react/display-name
 
     <h5>Use redux</h5>
     <UseRedux />
+
+    <h5>Use redux with no default value</h5>
+    <UseReduxWithNoDefaultValue />
   </div>
 );

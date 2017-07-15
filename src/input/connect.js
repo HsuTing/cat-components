@@ -2,7 +2,7 @@
 
 import {connect} from 'react-redux';
 
-import {changeValue} from './reducer';
+import {changeValue, submit} from './reducer';
 
 export default formName => (
   mapStateToProps = () => {},
@@ -10,10 +10,33 @@ export default formName => (
   mergeProps,
   options
 ) => connect(
-  (state, ownProps) => ({
-    ...mapStateToProps(state, ownProps),
-    form: state.form[formName] || {}
-  }),
+  (state, ownProps) => {
+    const form = {};
+    const origin_form = state.cat_forms[formName] || {};
+    const {isSubmited} = origin_form
+
+    Object.keys(origin_form)
+      .forEach(key => {
+        if(key === 'isSubmited')
+          return;
+
+        const value = origin_form[key];
+
+        form[key] = {
+          ...value,
+          isError: (
+            value.value === '' && !isSubmited ?
+              false :
+              (value.isError || false)
+          )
+        };
+      });
+
+    return {
+      ...mapStateToProps(state, ownProps),
+      form
+    };
+  },
   (dispatch, ownProps) => ({
     ...mapDispatchToProps(dispatch, ownProps),
     inputDispatch: (inputName, value) => {
@@ -21,6 +44,12 @@ export default formName => (
         formName,
         inputName,
         value
+      }));
+    },
+    submitDispatch: callback => {
+      dispatch(submit({
+        formName,
+        callback
       }));
     }
   }), mergeProps, options
