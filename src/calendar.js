@@ -16,7 +16,16 @@ export default class Calendar extends React.Component {
     format: PropTypes.string,
     isChosenStyle: PropTypes.object,
     getDate: PropTypes.func,
-    defaultDate: PropTypes.object
+    date: PropTypes.shape({
+      year: PropTypes.number,
+      month: PropTypes.number,
+      date: PropTypes.number
+    }),
+    defaultDate: PropTypes.shape({
+      year: PropTypes.number,
+      month: PropTypes.number,
+      date: PropTypes.number
+    })
   }
 
   static defaultProps = {
@@ -57,10 +66,19 @@ export default class Calendar extends React.Component {
     const {getDate, defaultDate} = this.props;
     const {date} = this.state;
 
-    getDate({
-      ...date,
-      month: date.month + 1
-    });
+    getDate(date);
+  }
+
+  componentDidUpdate() {
+    const {format, date} = this.props;
+
+    if(date &&
+      moment(date).format(format) !== 'Invalid date' &&
+      JSON.stringify(date) !== JSON.stringify(this.state.date)
+    )
+      this.setState({
+        date
+      });
   }
 
   render() {
@@ -69,6 +87,7 @@ export default class Calendar extends React.Component {
 
     delete props.getDate;
     delete props.defaultDate;
+    delete props.date;
 
     return (
       <div {...props}
@@ -122,10 +141,7 @@ export default class Calendar extends React.Component {
 
       date.date = date.date > maxDate ? maxDate : date.date;
       choices.date = this.getChoice(maxDate);
-      getDate({
-        ...date,
-        month: date.month + 1
-      });
+      getDate(date);
       this.setState({date});
     };
   }

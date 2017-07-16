@@ -2,6 +2,7 @@
 
 export default example => `
 # [Calendar](./#Calendar)
+Because this component uses \`moment\`, the month which you give and you get is equal to the real month minus one.
 
 #### Other packages
 - [moment](http://momentjs.com/)
@@ -34,6 +35,10 @@ export default example => `
 - \`defaultDate\` [object]
 
   Give a default date to \`Calendar\`. For example, it can be \`{year: 2017}\`.
+
+- \`date\` [object]
+
+  Give a date when you want to change the date which is chosen. For example, it can be \`{year: 2017}\`.
 
 #### Example
 \`\`\`js

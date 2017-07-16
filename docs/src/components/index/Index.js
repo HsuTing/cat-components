@@ -3,20 +3,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
-import Markdown from 'react-markdown';
+import {Switch, Route} from 'react-router-dom';
 import ArrowUpward from 'react-icons/lib/md/arrow-upward';
 import Wrapper from 'cat-components/lib/wrapper';
+import Button from 'cat-components/lib/button';
+import Link from 'cat-components/lib/link';
 import I18n from 'cat-components/lib/i18n';
 import Img from 'cat-components/lib/img';
 import goToAnimation from 'cat-components/lib/goToAnimation';
 
 import Normalize from './../share/Normalize';
 import style from './style/index';
-import text from './../text/index';
 
-import Buttons from './Buttons';
-import Content from './Content';
-import * as constants from './constants';
+import Simple from './Simple';
+import Multiple from './Multiple';
 
 @radium
 @goToAnimation('body')
@@ -41,7 +41,14 @@ class Index extends React.Component {
             <Img src='https://hsuting.github.io/img/icon.svg'
               style={style.icon}
             />
-            <h1 style={style.title}>Cat components</h1>
+            <h1 style={style.title}>
+              Cat components
+
+              <Route path='/multiple/'
+                render={() => <font> [Multiple]</font>}
+                exact
+              />
+            </h1>
           </a>
         </div>
 
@@ -51,27 +58,28 @@ class Index extends React.Component {
           style={style.statusImage}
         />
 
-        {Object.keys(constants).map((name, nameIndex) => (
-          <Buttons key={nameIndex}
-            title={name}
-            items={constants[name]}
+        <Route path='/multiple/'
+          render={() => (
+            <div>
+              <Link to='/'>
+                <Button>Go back</Button>
+              </Link>
+            </div>
+          )}
+          exact
+        />
+
+        <Switch>
+          <Route path='/'
+            render={() => <Simple data={data} />}
+            exact
           />
-        ))}
 
-        <div style={style.block}>
-          <Markdown source={text} />
-        </div>
-
-        {Object.keys(constants).map((name, nameIndex) => (
-          <div key={nameIndex}>
-            {constants[name].map((item, itemIndex) => (
-              <Content key={itemIndex}
-                example={data[`Use${item.name}`] || ''}
-                {...item}
-              />
-            ))}
-          </div>
-        ))}
+          <Route path='/multiple/'
+            render={() => <Multiple data={data} />}
+            exact
+          />
+        </Switch>
 
         <ArrowUpward style={style.arrowUpward}
           onClick={() => goTo()}
@@ -82,9 +90,14 @@ class Index extends React.Component {
 }
 
 /* eslint-disable */
-export default ({redux, defaultData, dirPath, ...props}) => (
+export default ({redux, router, defaultData, dirPath, ...props}) => (
   <Wrapper redux={redux}
-    modules={{redux: require('redux'), reactRedux: require('react-redux')}}
+    router={router}
+    modules={{
+      redux: require('redux'),
+      reactRedux: require('react-redux'),
+      reactRouterDom: require('react-router-dom')
+    }}
   >
     <I18n lang='en-us'
       defaultData={defaultData}

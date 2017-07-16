@@ -49,16 +49,34 @@
       "endTime": "2017-07-15T13:10:46.700Z"
     },
     "0660e081-5086-489f-b9e0-b03acd0bb499": {
-      "note": "Add redux to Table",
+      "note": "(deprecate) Add redux to Table",
       "tag": "decorator",
       "startTime": "2017-07-15T15:23:24.008Z",
       "endTime": "2017-07-15T15:44:52.797Z"
     },
     "3ff6408d-3a91-47e1-8fdd-de9b1c63eb94": {
-      "note": "Add redux to Table",
+      "note": "(deprecate) Add redux to Table",
       "tag": "decorator",
       "startTime": "2017-07-15T16:37:45.301Z",
       "endTime": "2017-07-15T17:36:18.941Z"
+    },
+    "9d89cd27-038b-462e-8d72-51a49858afaa": {
+      "note": "Add multiple",
+      "tag": "component",
+      "startTime": "2017-07-15T20:05:40.833Z",
+      "endTime": "2017-07-15T20:38:27.904Z"
+    },
+    "09d950a5-78c1-456a-98fd-5dbbf8dd81b7": {
+      "note": "Add date of input",
+      "tag": "component",
+      "startTime": "2017-07-16T02:14:15.328Z",
+      "endTime": "2017-07-16T03:29:54.591Z"
+    },
+    "bc3b8867-0204-4e0f-a50c-e96a139a73c8": {
+      "note": "Add date of input",
+      "tag": "component",
+      "startTime": "2017-07-16T06:27:27.065Z",
+      "endTime": "2017-07-16T09:14:08.854Z"
     }
   }
 }

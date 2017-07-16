@@ -13,12 +13,22 @@ const redux = {
   enhancer: createLogger({collapsed: true})
 };
 
+const router = {
+  isServer: false,
+  basename: (
+    process.env.NODE_ENV === 'production' ?
+      '/cat-components/' :
+      '/cat-components/docs/'
+  )
+};
+
 (() => {
   ReactDOM.render(
-    <Index defaultData={languageData}
+    <Index data={data}
+      defaultData={languageData}
       dirPath={languageDir}
       redux={redux}
-      data={data}
+      router={router}
     />,
     document.getElementById('root')
   );

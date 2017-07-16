@@ -4,25 +4,37 @@ const fs = require('fs');
 const path = require('path');
 const {combineReducers} = require('redux');
 
+const useUrls = require('./lib/utils/useUrls').default;
+
 const languageData = require('./docs/public/i18n/en-us.json');
 const {formReducer} = require('./lib/input-redux');
 
-const data = {};
-const folderPath = path.resolve(__dirname, './docs/src/components/');
-fs.readdirSync(folderPath)
-  .forEach(file => {
-    if((/Use/).test(file))
-      data[file.replace(/.js/, '')] = fs.readFileSync(
-        path.resolve(folderPath, file),
-        {encoding: 'utf-8'}
-      );
-  });
+const getCode = relativePath => {
+  const data = {};
+  const folderPath = path.resolve(__dirname, relativePath);
 
-module.exports = [{
-  redux: true,
-  component: './lib/docs/components/index/Index',
-  js: 'index',
+  fs.readdirSync(folderPath)
+    .forEach(file => {
+      if((/Use/).test(file))
+        data[file.replace(/.js/, '')] = fs.readFileSync(
+          path.resolve(folderPath, file),
+          {encoding: 'utf-8'}
+        );
+    });
+
+  return data;
+};
+
+const data = Object.assign({},
+  getCode('./docs/src/components/'),
+  getCode('./docs/src/components/multiple')
+);
+
+module.exports = useUrls(['/', '/multiple/'], {
   name: 'docs',
+  component: './lib/docs/components/index/Index',
+  redux: true,
+  js: 'index',
   languageData: JSON.stringify(languageData),
   data: JSON.stringify(data),
   props: {
@@ -32,4 +44,4 @@ module.exports = [{
       reducer: combineReducers(formReducer)
     }
   }
-}];
+});

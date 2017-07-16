@@ -14,7 +14,8 @@ export default {
     background: white,
     boxShadow,
     color: blueGrey,
-    lineHeight: '30px'
+    lineHeight: '30px',
+    userSelect: 'none'
   },
 
   block: {

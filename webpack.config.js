@@ -15,7 +15,10 @@ module.exports = {
       'radium-normalize',
       'prop-types',
       'react',
-      'react-dom'
+      'react-dom',
+      'redux',
+      'react-redux',
+      'react-router-dom'
     ]
   },
   output: {
