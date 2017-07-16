@@ -11,10 +11,11 @@
       "subject": "cat components",
       "url": "https://hsuting.github.io/cat-components",
       "otherSettings": [
+        "facebook",
         "facebook_api"
       ],
-      "facebook-app_id": "v2.8",
-      "facebook_api-api_version": "1687681968184120"
+      "facebook-app_id": "1687681968184120",
+      "facebook_api-api_version": "v2.5"
     },
     "plugins": [
       "time tracker",
@@ -32,12 +33,15 @@
       "subject": "cat components",
       "url": "https://hsuting.github.io/cat-components",
       "otherSettings": [
-        "facebook_api",
+        "facebook",
         "facebook_api"
       ],
       "facebook_api": {
         "app_id": "1687681968184120",
-        "api_version": "v2.8"
+        "api_version": "v2.5"
+      },
+      "facebook": {
+        "app_id": "1687681968184120"
       }
     },
     "cat": true
