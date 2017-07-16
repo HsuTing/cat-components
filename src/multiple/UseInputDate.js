@@ -25,6 +25,7 @@ export default class InputDate extends React.Component {
     };
 
     this.key = '';
+    this.getMomentDate = this.getMomentDate.bind(this);
     this.enter = this.enter.bind(this);
     this.onChange = this.onChange.bind(this);
     this.getDate = this.getDate.bind(this);
@@ -33,7 +34,6 @@ export default class InputDate extends React.Component {
 
   render() {
     const {value, isError, error} = this.state;
-    const [year, month, date] = value.split('-');
 
     return (
       <div style={style.root}>
@@ -41,8 +41,7 @@ export default class InputDate extends React.Component {
           maxLength={10}
           value={value}
           rules={[{
-            validator: 'isISO8601',
-            not: true,
+            validator: value => moment(this.getMomentDate(value)).format(format) === 'Invalid date',
             message: 'This is not a date.'
           }]}
           onChange={this.onChange}
@@ -68,11 +67,7 @@ export default class InputDate extends React.Component {
                     month: now.month(),
                     date: now.date()
                   }}
-                  date={{
-                    year: year ? parseInt(year) : now.year(),
-                    month: month ? parseInt(month) - 1 : 0,
-                    date: date ? parseInt(date) : 1
-                  }}
+                  date={this.getMomentDate(value)}
                 />
               </div>
             )}
@@ -83,6 +78,16 @@ export default class InputDate extends React.Component {
         </div>
       </div>
     );
+  }
+
+  getMomentDate(value) {
+    const [year, month, date] = value.split('-');
+
+    return {
+      year: year ? parseInt(year) : now.year(),
+      month: month ? parseInt(month) - 1 : 0,
+      date: date ? parseInt(date) : 1
+    };
   }
 
   enter(e) {

@@ -75,10 +75,21 @@ export default class Calendar extends React.Component {
     if(date &&
       moment(date).format(format) !== 'Invalid date' &&
       JSON.stringify(date) !== JSON.stringify(this.state.date)
-    )
+    ) {
+      const {year, month} = this.state;
+      const choices = {...this.state.choices};
+      const maxDate = moment({
+        year: date.year || year,
+        month: date.month || month
+      }).endOf('month').date();
+
+      date.date = date.date > maxDate ? maxDate : date.date;
+      choices.date = this.getChoice(maxDate);
       this.setState({
-        date
+        date,
+        choices
       });
+    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -104,29 +115,28 @@ export default class Calendar extends React.Component {
         <div style={[style.block, style.textBlock]}>
           {moment(date).format(format)}
         </div>
+
         <div style={style.choiceBlock}
           ref={node => (this.node = node)}
         >
-          {Object.keys(choices).map((key, index) => {
-            return (
-              <div key={index}
-                style={style.choice}
-              >
-                {choices[key].map((data, dataIndex) => {
-                  const value = key === 'month' ? date[key] + 1 : date[key];
-                  const choiceStyle = data === value ? isChosenStyle : {};
+          {Object.keys(choices).map((key, index) => (
+            <div key={index}
+              style={style.choice}
+            >
+              {choices[key].map((data, dataIndex) => {
+                const value = key === 'month' ? date[key] + 1 : date[key];
+                const choiceStyle = data === value ? isChosenStyle : {};
 
-                  return (
-                    <div key={dataIndex}
-                      style={choiceStyle}
-                      onClick={this.choose(key, key === 'month' ? data - 1 : data)}
-                      id={data === value ? 'is-chosen' : ''}
-                    >{data}</div>
-                  );
-                })}
-              </div>
-            );
-          })}
+                return (
+                  <div key={dataIndex}
+                    style={choiceStyle}
+                    onClick={this.choose(key, key === 'month' ? data - 1 : data)}
+                    id={data === value ? 'is-chosen' : ''}
+                  >{data}</div>
+                );
+              })}
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -140,7 +150,7 @@ export default class Calendar extends React.Component {
   choose(key, value) {
     return () => {
       const date = {...this.state.date};
-      const {choices} = {...this.state};
+      const choices = {...this.state.choices};
       date[key] = value;
       const maxDate = moment({
         year: date.year,
@@ -149,7 +159,7 @@ export default class Calendar extends React.Component {
 
       date.date = date.date > maxDate ? maxDate : date.date;
       choices.date = this.getChoice(maxDate);
-      this.setState({date});
+      this.setState({date, choices});
     };
   }
 
