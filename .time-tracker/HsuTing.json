@@ -83,6 +83,12 @@
       "tag": "normal",
       "startTime": "2017-07-16T11:20:27.291Z",
       "endTime": "2017-07-16T11:54:38.448Z"
+    },
+    "0449d907-5d31-4e31-b019-e24415567c4b": {
+      "note": "Check react lifecycle",
+      "tag": "normal",
+      "startTime": "2017-07-16T15:32:43.926Z",
+      "endTime": "2017-07-16T16:35:44.604Z"
     }
   }
 }

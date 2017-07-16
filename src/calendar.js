@@ -69,8 +69,8 @@ export default class Calendar extends React.Component {
     getDate(date);
   }
 
-  componentDidUpdate() {
-    const {format, date} = this.props;
+  componentWillReceiveProps(nextProps) {
+    const {format, date} = nextProps;
 
     if(date &&
       moment(date).format(format) !== 'Invalid date' &&
@@ -79,6 +79,14 @@ export default class Calendar extends React.Component {
       this.setState({
         date
       });
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return JSON.stringify(nextState.date) !== JSON.stringify(this.state.date);
+  }
+
+  componentDidUpdate() {
+    this.props.getDate(this.state.date);
   }
 
   render() {
@@ -130,9 +138,9 @@ export default class Calendar extends React.Component {
   }
 
   choose(key, value) {
-    return e => {
-      const {getDate} = this.props;
-      const {choices, date} = this.state;
+    return () => {
+      const date = {...this.state.date};
+      const {choices} = {...this.state};
       date[key] = value;
       const maxDate = moment({
         year: date.year,
@@ -141,7 +149,6 @@ export default class Calendar extends React.Component {
 
       date.date = date.date > maxDate ? maxDate : date.date;
       choices.date = this.getChoice(maxDate);
-      getDate(date);
       this.setState({date});
     };
   }

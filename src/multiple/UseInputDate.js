@@ -20,13 +20,15 @@ export default class InputDate extends React.Component {
     this.state = {
       value: now.format(format),
       isError: false,
-      error: []
+      error: [],
+      type: 'input'
     };
 
     this.key = '';
     this.enter = this.enter.bind(this);
     this.onChange = this.onChange.bind(this);
     this.getDate = this.getDate.bind(this);
+    this.onMouseMove = this.onMouseMove.bind(this);
   }
 
   render() {
@@ -58,19 +60,21 @@ export default class InputDate extends React.Component {
         <div style={style.iconRoot}>
           <Menu menuStyle={() => style.menu}
             menu={() => (
-              <Calendar getDate={this.getDate}
-                format={format}
-                defaultDate={{
-                  year: now.year(),
-                  month: now.month(),
-                  date: now.date()
-                }}
-                date={{
-                  year: year ? parseInt(year) : now.year(),
-                  month: month ? parseInt(month) - 1 : 0,
-                  date: date ? parseInt(date) : 1
-                }}
-              />
+              <div onMouseMove={this.onMouseMove}>
+                <Calendar getDate={this.getDate}
+                  format={format}
+                  defaultDate={{
+                    year: now.year(),
+                    month: now.month(),
+                    date: now.date()
+                  }}
+                  date={{
+                    year: year ? parseInt(year) : now.year(),
+                    month: month ? parseInt(month) - 1 : 0,
+                    date: date ? parseInt(date) : 1
+                  }}
+                />
+              </div>
             )}
             delay={0.1}
           >
@@ -105,15 +109,30 @@ export default class InputDate extends React.Component {
     this.setState({
       value: newValue,
       isError,
-      error
+      error,
+      type: 'input'
     });
   }
 
-  getDate(date) {
-    const newDate = moment(date).format(format);
+  onMouseMove() {
+    const {type} = this.state;
 
+    if(type === 'calendar')
+      return;
+
+    this.setState({type: 'calendar'});
+  }
+
+  getDate(date) {
+    const {type} = this.state;
+
+    if(type === 'input')
+      return;
+
+    const newDate = moment(date).format(format);
     this.setState({
-      value: newDate
+      value: newDate,
+      type: 'calendar'
     });
   }
 }
