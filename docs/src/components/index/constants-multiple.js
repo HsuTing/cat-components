@@ -16,5 +16,6 @@ ${example}
 
 export const input = output([
   'InputDate',
-  'InputSelect'
+  'InputSelect',
+  'InputTags'
 ]);

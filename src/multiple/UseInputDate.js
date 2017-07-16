@@ -26,7 +26,7 @@ export default class InputDate extends React.Component {
 
     this.key = '';
     this.getMomentDate = this.getMomentDate.bind(this);
-    this.enter = this.enter.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
     this.onChange = this.onChange.bind(this);
     this.getDate = this.getDate.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -45,7 +45,7 @@ export default class InputDate extends React.Component {
             message: 'This is not a date.'
           }]}
           onChange={this.onChange}
-          onKeyDown={this.enter}
+          onKeyDown={this.onKeyDown}
         />
 
         {
@@ -90,7 +90,7 @@ export default class InputDate extends React.Component {
     };
   }
 
-  enter(e) {
+  onKeyDown(e) {
     this.key = e.key;
   }
 

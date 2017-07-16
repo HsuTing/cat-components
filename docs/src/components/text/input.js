@@ -2,7 +2,7 @@
 
 export default example => `
 # [Input](./#Input)
-This is \`input\` tag with using \`validator\` to check value. For checking value in the server, you can use \`import {chcekInput} from 'cat-components/lib/input';\` and give this function \`value\` and \`rules\`.
+This is \`input\` tag with using \`validator\` to check value. For checking value in the server, you can use \`import {inputCheck} from 'cat-components/lib/input';\` and give this function \`value\` and \`rules\`.
 
 If you want to use \`input\` with \`redux\`, you just need to change \`input\` to \`input-redux\`. You can see the example to know how to use it.
 
@@ -16,7 +16,7 @@ If you want to use \`input\` with \`redux\`, you just need to change \`input\` t
 
 - \`rules\` [array, required]
 
-  This will give to \`chcekInput\` to check if value is correct.
+  This will give to \`inputCheck\` to check if value is correct.
 
   - \`validator(value, event)\` [func | string, required)
 

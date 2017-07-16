@@ -7,7 +7,7 @@ export const changeValue = options => ({
 
 export const submit = options => ({
   ...options,
-  type: 'CAT_INPUT_SUBMIT'
+  type: 'CAT_FORM_SUBMIT'
 });
 
 export default (state = {}, {type, formName, ...action}) => {
@@ -25,7 +25,7 @@ export default (state = {}, {type, formName, ...action}) => {
       break;
     }
 
-    case 'CAT_INPUT_SUBMIT': {
+    case 'CAT_FORM_SUBMIT': {
       const {callback} = action;
       const output = {...form};
       form.isSubmited = true;
