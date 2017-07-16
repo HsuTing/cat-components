@@ -19,7 +19,7 @@
     "static": "BABEL_ENV=static babel --ignore test docs/src --out-dir lib/docs && node ./lib/bin/static.js static.config.js"
   },
   "name": "cat-components",
-  "version": "1.5.0",
+  "version": "1.5.1-beta",
   "description": "react components",
   "author": {
     "name": "hsuting",
