@@ -8,7 +8,7 @@ export default {
   },
 
   menu: {
-    top: '-260px',
+    top: '34px',
     left: 'initial',
     right: '0px',
     padding: '0px',
@@ -16,7 +16,7 @@ export default {
     height: 'initial',
     border: '0px',
     background: 'rgba(0, 0, 0, 0)',
-    transformOrigin: '100% 100%'
+    transformOrigin: '100% 0px'
   },
 
   input: isError => ({

@@ -57,7 +57,7 @@ export default class InputDate extends React.Component {
 
         <div style={style.iconRoot}>
           <Menu menuStyle={() => style.menu}
-            menu={hide => (
+            menu={() => (
               <Calendar getDate={this.getDate}
                 format={format}
                 defaultDate={{
