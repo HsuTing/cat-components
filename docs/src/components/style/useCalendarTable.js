@@ -1,8 +1,8 @@
 'use strict';
 
-import * as grey from 'color/grey';
-import red from 'color/red';
-import white from 'color/white';
+import * as grey from 'cat-components/lib/color/grey';
+import red from 'cat-components/lib/color/red';
+import white from 'cat-components/lib/color/white';
 
 export default {
   default: {

@@ -25,7 +25,7 @@ export default class Simple extends React.Component {
 
     return (
       <div>
-        {Object.keys(constants).slice(1).map((name, nameIndex) => (
+        {Object.keys(constants).map((name, nameIndex) => (
           <Buttons key={nameIndex}
             title={name}
             items={constants[name]}
@@ -39,7 +39,7 @@ export default class Simple extends React.Component {
           </Link>
         </div>
 
-        {Object.keys(constants).slice(1).map((name, nameIndex) => (
+        {Object.keys(constants).map((name, nameIndex) => (
           <div key={nameIndex}>
             {constants[name].map((item, itemIndex) => (
               <Content key={itemIndex}

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import radium from 'radium';
 import moment from 'moment';
 
-import style from 'style/calendar';
+import style from './style/calendar';
 
 @radium
 export default class Calendar extends React.Component {

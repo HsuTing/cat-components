@@ -1,16 +1,15 @@
 'use strict';
 
-export const output = (
+const output = (
   names = [],
   excludeName = [],
-  additionalPath = ''
 ) => names.map(name => ({
   name,
-  text: require(`./../text/${additionalPath}${name[0].toLowerCase() + name.slice(1)}`).default,
+  text: require(`./../text/${name[0].toLowerCase() + name.slice(1)}`).default,
   component: (() => {
     if(excludeName.includes(name))
       return false;
-    return require(`./../${additionalPath}Use${name}`).default;
+    return require(`./../Use${name}`).default;
   })()
 }));
 

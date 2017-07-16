@@ -1,7 +1,7 @@
 'use strict';
 
-import * as grey from 'color/grey';
-import black from 'color/black';
+import * as grey from 'cat-components/lib/color/grey';
+import black from 'cat-components/lib/color/black';
 
 export default {
   col: num => ({

@@ -8,13 +8,13 @@ import Menu from 'cat-components/lib/menu';
 import Calendar from 'cat-components/lib/calendar';
 import Input from 'cat-components/lib/input';
 
-import style from './style/useDate';
+import style from './style/inputDate';
 
 const format = 'YYYY-MM-DD';
 const now = moment();
 
 @radium
-export default class UseDate extends React.Component {
+export default class InputDate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

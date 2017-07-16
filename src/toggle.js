@@ -9,7 +9,7 @@ import CheckBoxOutlineIcon from 'react-icons/lib/md/check-box-outline-blank';
 import RadioButtonCheckedIcon from 'react-icons/lib/md/radio-button-checked';
 import RadioButtonUnchecked from 'react-icons/lib/md/radio-button-unchecked';
 
-import style from 'style/toggle';
+import style from './style/toggle';
 
 @radium
 class Switch extends React.Component {

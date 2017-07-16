@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
 
-import style from 'style/table';
+import style from './style/table';
 
 @radium
 export class Table extends React.Component {

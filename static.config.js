@@ -27,7 +27,7 @@ const getCode = relativePath => {
 
 const data = Object.assign({},
   getCode('./docs/src/components/'),
-  getCode('./docs/src/components/multiple')
+  getCode('./src/multiple')
 );
 
 module.exports = useUrls(['/', '/multiple/'], {

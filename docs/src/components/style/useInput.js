@@ -1,6 +1,6 @@
 'use strict';
 
-import red from 'color/red';
+import red from 'cat-components/lib/color/red';
 
 export default {
   inputError: {

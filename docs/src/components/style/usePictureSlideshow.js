@@ -1,7 +1,7 @@
 'use strict';
 
-import white from 'color/white';
-import blueGrey from 'color/blue-grey';
+import white from 'cat-components/lib/color/white';
+import blueGrey from 'cat-components/lib/color/blue-grey';
 
 export default {
   isClicked: {

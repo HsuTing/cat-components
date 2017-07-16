@@ -1,9 +1,9 @@
 'use strict';
 
-import {boxShadow} from 'style/style';
-import * as grey from 'color/grey';
-import white from 'color/white';
-import blue from 'color/blue';
+import {boxShadow} from 'cat-components/lib/style/style';
+import * as grey from 'cat-components/lib/color/grey';
+import white from 'cat-components/lib/color/white';
+import blue from 'cat-components/lib/color/blue';
 
 export default {
   root: {

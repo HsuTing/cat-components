@@ -4,8 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
 
-import style from 'style/input';
-
+import style from './style/input';
 import check from './input/check';
 
 export const inputCheck = check;

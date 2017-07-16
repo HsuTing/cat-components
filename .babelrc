@@ -5,10 +5,7 @@
         ["module-resolver", {
           "root": ["./"],
           "alias": {
-            "cat-components/lib": "lib",
-            "style": "lib/style",
-            "color": "lib/color",
-            "utils": "lib/utils"
+            "cat-components/lib": "lib"
           }
         }]
       ]
@@ -26,7 +23,6 @@
       "root": ["./"],
       "alias": {
         "cat-components/lib": "src",
-        "style": "src/style",
         "color": "src/color",
         "utils": "src/utils"
       }

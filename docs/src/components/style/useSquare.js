@@ -1,6 +1,6 @@
 'use strict';
 
-import blue from 'color/blue';
+import blue from 'cat-components/lib/color/blue';
 
 export default {
   root: {

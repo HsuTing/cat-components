@@ -1,8 +1,8 @@
 'use strict';
 
-import {boxShadow} from 'style/style';
-import blue from 'color/blue';
-import white from 'color/white';
+import {boxShadow} from 'cat-components/lib/style/style';
+import blue from 'cat-components/lib/color/blue';
+import white from 'cat-components/lib/color/white';
 
 export default {
   menu: {

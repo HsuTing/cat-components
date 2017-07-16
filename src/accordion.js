@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 
-import style from 'style/accordion';
+import style from './style/accordion';
 
 @radium
 export default class Accordion extends React.Component {

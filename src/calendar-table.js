@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import radium from 'radium';
 import moment from 'moment';
 
-import style from 'style/calendarTable';
+import style from './style/calendarTable';
 
 @radium
 export default class CalendarTable extends React.Component {
