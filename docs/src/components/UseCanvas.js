@@ -3,16 +3,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
-import Canvas, {canvasController} from 'cat-components/lib/canvas';
+import Canvas from 'cat-components/lib/canvas';
 
 @radium
-@canvasController
 class UseCanvas extends React.Component {
   static propTypes = {
     ctx: PropTypes.object
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     const {ctx} = this.props;
 
     if(ctx) {
