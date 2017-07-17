@@ -131,6 +131,12 @@
       "tag": "component",
       "startTime": "2017-07-17T17:16:11.873Z",
       "endTime": "2017-07-17T17:39:47.407Z"
+    },
+    "350bdb1b-f960-468e-adb0-f92838abd598": {
+      "note": "Add drawing",
+      "tag": "component",
+      "startTime": "2017-07-17T18:09:38.410Z",
+      "endTime": "2017-07-17T18:43:43.367Z"
     }
   }
 }

@@ -6,6 +6,9 @@ import radium from 'radium';
 
 /* eslint-disable object-curly-spacing */
 export CanvasRect from './canvas/rect';
+
+// plugins
+export CanvasDraw from './canvas/draw';
 /* eslint-enable object-curly-spacing */
 
 @radium
@@ -18,13 +21,19 @@ export default class Canvas extends React.Component {
     children: PropTypes.oneOfType([
       PropTypes.element,
       PropTypes.arrayOf(PropTypes.element)
-    ])
+    ]),
+    onMouseMove: PropTypes.func,
+    onMouseDown: PropTypes.func,
+    onMouseUp: PropTypes.func
   }
 
   static defaultProps = {
     type: 'canvas',
     style: {},
-    checkSupport: () => {}
+    checkSupport: () => {},
+    onMouseMove: () => {},
+    onMouseDown: () => {},
+    onMouseUp: () => {}
   }
 
   constructor(props) {
@@ -39,6 +48,9 @@ export default class Canvas extends React.Component {
     this.renderSvg = this.renderSvg.bind(this);
     this.getCanvas = this.getCanvas.bind(this);
     this.checkSupport = this.checkSupport.bind(this);
+    this.onMouseMove = this.onMouseMove.bind(this);
+    this.onMouseDown = this.onMouseDown.bind(this);
+    this.onMouseUp = this.onMouseUp.bind(this);
   }
 
   componentDidMount() {
@@ -70,6 +82,9 @@ export default class Canvas extends React.Component {
       <div style={rootStyle}>
         <canvas {...props}
           ref={node => (this.canvasNode = node)}
+          onMouseMove={this.onMouseMove}
+          onMouseDown={this.onMouseDown}
+          onMouseUp={this.onMouseUp}
         />
 
         {
@@ -125,5 +140,17 @@ export default class Canvas extends React.Component {
       this.init = false;
 
     return true;
+  }
+
+  onMouseMove(e) {
+    this.props.onMouseMove(e, this.state);
+  }
+
+  onMouseDown(e) {
+    this.props.onMouseDown(e, this.state);
+  }
+
+  onMouseUp(e) {
+    this.props.onMouseUp(e, this.state);
   }
 }
