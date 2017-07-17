@@ -125,6 +125,12 @@
       "tag": "component",
       "startTime": "2017-07-17T14:21:28.140Z",
       "endTime": "2017-07-17T14:54:07.435Z"
+    },
+    "6e430f4a-41a3-4e03-8ee9-789db0d69409": {
+      "note": "Modify menu",
+      "tag": "component",
+      "startTime": "2017-07-17T17:16:11.873Z",
+      "endTime": "2017-07-17T17:39:47.407Z"
     }
   }
 }

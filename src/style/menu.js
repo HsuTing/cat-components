@@ -22,6 +22,10 @@ export default {
     position: 'relative'
   },
 
+  init: {
+    animation: ''
+  },
+
   menu: isShown => ({
     position: 'absolute',
     top: '45px',

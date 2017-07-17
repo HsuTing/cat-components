@@ -31,6 +31,7 @@ export default class Menu extends React.Component {
       addStyle: {}
     };
 
+    this.init = true;
     this.isEnter = false;
     this.toggleMenu = this.toggleMenu.bind(this);
     this.showMenu = this.showMenu.bind(this);
@@ -59,6 +60,9 @@ export default class Menu extends React.Component {
       menuStyle(isShown),
       addStyle
     ];
+
+    if(this.init)
+      newMenuStyle.push(style.init);
 
     delete props.delay;
 
@@ -93,6 +97,7 @@ export default class Menu extends React.Component {
   toggleMenu() {
     const {trigger} = this.props;
 
+    this.init = false;
     if(trigger.includes('hover')) {
       if(!this.isEnter)
         this.setState({isShown: !this.state.isShown});
@@ -105,6 +110,7 @@ export default class Menu extends React.Component {
 
     clearInterval(this.interval);
 
+    this.init = false;
     this.isEnter = true;
     this.interval = setInterval(() => {
       this.isEnter = false;
