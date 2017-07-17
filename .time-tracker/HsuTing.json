@@ -113,6 +113,18 @@
       "tag": "normal",
       "startTime": "2017-07-17T12:21:45.283Z",
       "endTime": "2017-07-17T13:26:14.222Z"
+    },
+    "aff054a9-4958-41b0-a31f-49402d1fa093": {
+      "note": "Modify Canvas",
+      "tag": "normal",
+      "startTime": "2017-07-17T14:21:22.156Z",
+      "endTime": "2017-07-17T14:21:24.759Z"
+    },
+    "88289f07-fb41-47c7-9cdd-1f609a1b41f3": {
+      "note": "Modify Canvas",
+      "tag": "component",
+      "startTime": "2017-07-17T14:21:28.140Z",
+      "endTime": "2017-07-17T14:54:07.435Z"
     }
   }
 }
