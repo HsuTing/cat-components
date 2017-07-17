@@ -28,7 +28,8 @@ export default class Draw extends React.Component {
     return React.cloneElement(this.props.children, {
       onMouseDown: this.startPaint,
       onMouseUp: this.stopPaint,
-      onMouseMove: this.paint
+      onMouseMove: this.paint,
+      onMouseOut: this.stopPaint
     });
   }
 

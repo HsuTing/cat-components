@@ -24,7 +24,8 @@ export default class Canvas extends React.Component {
     ]),
     onMouseMove: PropTypes.func,
     onMouseDown: PropTypes.func,
-    onMouseUp: PropTypes.func
+    onMouseUp: PropTypes.func,
+    onMouseOut: PropTypes.func
   }
 
   static defaultProps = {
@@ -33,7 +34,8 @@ export default class Canvas extends React.Component {
     checkSupport: () => {},
     onMouseMove: () => {},
     onMouseDown: () => {},
-    onMouseUp: () => {}
+    onMouseUp: () => {},
+    onMouseOut: () => {}
   }
 
   constructor(props) {
@@ -51,6 +53,7 @@ export default class Canvas extends React.Component {
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
+    this.onMouseOut = this.onMouseOut.bind(this);
   }
 
   componentDidMount() {
@@ -85,6 +88,7 @@ export default class Canvas extends React.Component {
           onMouseMove={this.onMouseMove}
           onMouseDown={this.onMouseDown}
           onMouseUp={this.onMouseUp}
+          onMouseOut={this.onMouseOut}
         />
 
         {
@@ -152,5 +156,9 @@ export default class Canvas extends React.Component {
 
   onMouseUp(e) {
     this.props.onMouseUp(e, this.state);
+  }
+
+  onMouseOut(e) {
+    this.props.onMouseOut(e, this.state);
   }
 }
