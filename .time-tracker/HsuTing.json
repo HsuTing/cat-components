@@ -101,6 +101,12 @@
       "tag": "normal",
       "startTime": "2017-07-16T19:19:59.402Z",
       "endTime": "2017-07-16T19:19:59.402Z"
+    },
+    "229c4d0b-189a-43d4-878b-ca61d5d67993": {
+      "note": "Add canvas",
+      "tag": "component",
+      "startTime": "2017-07-17T08:04:31.610Z",
+      "endTime": "2017-07-17T08:21:04.706Z"
     }
   }
 }

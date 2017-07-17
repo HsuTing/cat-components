@@ -26,6 +26,7 @@ export const components = output([
   'Button',
   'Calendar',
   'CalendarTable',
+  'Canvas',
   'Loading',
   'I18n',
   'Icon',
