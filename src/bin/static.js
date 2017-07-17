@@ -46,7 +46,7 @@ const render = (component, options, props) => {
     if(err)
       throw new Error(err);
 
-    console.log(chalk.green('rendered ') + chalk.cyan(filename));
+    console.log(chalk.green('build ') + chalk.cyan(filename));
   });
 };
 

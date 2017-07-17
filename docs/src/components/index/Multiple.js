@@ -3,6 +3,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
+import Markdown from 'react-markdown';
+
+import style from './style/index';
+import text from './../text/multiple';
 
 import Buttons from './Buttons';
 import Content from './Content';
@@ -25,6 +29,10 @@ export default class Multiple extends React.Component {
             items={constants[name]}
           />
         ))}
+
+        <div style={style.block}>
+          <Markdown source={text} />
+        </div>
 
         {Object.keys(constants).map((name, nameIndex) => (
           <div key={nameIndex}>

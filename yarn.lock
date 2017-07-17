@@ -2932,7 +2932,7 @@ inline-style-prefixer@^2.0.5:
     bowser "^1.0.0"
     hyphenate-style-name "^1.0.1"
 
-inquirer@^3.0.6, inquirer@^3.1.1:
+inquirer@^3.0.6, inquirer@^3.1.1, inquirer@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-3.2.0.tgz#45b44c2160c729d7578c54060b3eed94487bb42b"
   dependencies:

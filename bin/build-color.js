@@ -39,5 +39,5 @@ fs.commit(err => {
   if(err)
     throw new Error(err);
 
-  console.log(chalk.green('build done'));
+  console.log(chalk.green('build color done'));
 });

@@ -11,5 +11,7 @@ docs
 views
 *.config.js
 .time-tracker
-bin
-!lib
+bin/build-color.js
+bin/color
+bin/templates
+lib/multiple
