@@ -29,7 +29,10 @@ export default class Draw extends React.Component {
       onMouseDown: this.startPaint,
       onMouseUp: this.stopPaint,
       onMouseMove: this.paint,
-      onMouseOut: this.stopPaint
+      onMouseOut: this.stopPaint,
+      onTouchStart: this.startPaint,
+      onTouchMove: this.paint,
+      onTouchEnd: this.stopPaint
     });
   }
 
