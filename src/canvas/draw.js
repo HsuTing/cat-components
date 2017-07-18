@@ -5,7 +5,24 @@ import PropTypes from 'prop-types';
 
 export default class Draw extends React.Component {
   static propTypes = {
+    onMouseDown: PropTypes.func,
+    onMouseUp: PropTypes.func,
+    onMouseMove: PropTypes.func,
+    onMouseOut: PropTypes.func,
+    onTouchStart: PropTypes.func,
+    onTouchMove: PropTypes.func,
+    onTouchEnd: PropTypes.func,
     children: PropTypes.element.isRequired
+  }
+
+  static defaultProps = {
+    onMouseDown: () => {},
+    onMouseUp: () => {},
+    onMouseMove: () => {},
+    onMouseOut: () => {},
+    onTouchStart: () => {},
+    onTouchMove: () => {},
+    onTouchEnd: () => {}
   }
 
   constructor(props) {
@@ -44,6 +61,11 @@ export default class Draw extends React.Component {
   }
 
   startPaint(e, {ctx}) {
+    const {onMouseDown, onTouchStart} = this.props;
+
+    onMouseDown(e);
+    onTouchStart(e);
+
     if(!ctx)
       return;
 
@@ -55,6 +77,12 @@ export default class Draw extends React.Component {
   }
 
   stopPaint(e, {ctx}) {
+    const {onMouseUp, onMouseOut, onTouchEnd} = this.props;
+
+    onMouseUp(e);
+    onMouseOut(e);
+    onTouchEnd(e);
+
     if(!ctx)
       return;
 
@@ -63,7 +91,11 @@ export default class Draw extends React.Component {
   }
 
   paint(e, {ctx}) {
+    const {onMouseMove, onTouchMove} = this.props;
     const {isPainted} = this.state;
+
+    onMouseMove(e);
+    onTouchMove(e);
 
     if(isPainted && ctx) {
       this.getMousePosition(e);

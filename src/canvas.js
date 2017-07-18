@@ -6,6 +6,7 @@ import radium from 'radium';
 
 /* eslint-disable object-curly-spacing */
 export CanvasRect from './canvas/rect';
+export CanvasText from './canvas/text';
 
 // plugins
 export CanvasDraw from './canvas/draw';

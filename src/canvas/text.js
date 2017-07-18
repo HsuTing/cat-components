@@ -4,21 +4,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
 
-import mergeArrayStyle from 'utils/mergeArrayStyle';
-
 import {render} from './utils';
 
 @radium
-export default class CanvasRect extends React.Component {
+export default class CanvasText extends React.Component {
   static propTypes = {
     type: PropTypes.string,
     ctx: PropTypes.object,
-    children: PropTypes.element,
+    children: PropTypes.string,
     x: PropTypes.string,
     y: PropTypes.string,
-    width: PropTypes.string,
-    height: PropTypes.string,
-    style: PropTypes.object
   }
 
   constructor(props) {
@@ -30,23 +25,20 @@ export default class CanvasRect extends React.Component {
     this.draw();
   }
 
-  componentDidUpdate() {
+  componentDidupdate() {
     this.draw();
   }
 
   render() {
-    return render('rect', this.props);
+    return render('text', this.props);
   }
 
   draw() {
-    const {type, ctx, x, y, width, height, style} = this.props;
+    const {type, ctx, children, x, y} = this.props;
 
     if(type === 'svg')
       return;
 
-    const {fill} = mergeArrayStyle(style);
-
-    ctx.fillStyle = fill;
-    ctx.fillRect(x, y, width, height);
+    ctx.fillText(children, x, y);
   }
 }

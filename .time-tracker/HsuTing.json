@@ -143,6 +143,12 @@
       "tag": "style",
       "startTime": "2017-07-18T09:29:57.178Z",
       "endTime": "2017-07-18T09:42:17.035Z"
+    },
+    "81957ed9-4ade-4399-966e-8c6309f19bab": {
+      "note": "Add text to canvas",
+      "tag": "component",
+      "startTime": "2017-07-18T17:31:23.318Z",
+      "endTime": "2017-07-18T18:26:43.578Z"
     }
   }
 }
