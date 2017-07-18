@@ -137,6 +137,12 @@
       "tag": "component",
       "startTime": "2017-07-17T18:09:38.410Z",
       "endTime": "2017-07-17T18:43:43.367Z"
+    },
+    "39d67cbb-4ffc-4db6-94e5-ba47ff6822dc": {
+      "note": "Add other size of the layout",
+      "tag": "style",
+      "startTime": "2017-07-18T09:29:57.178Z",
+      "endTime": "2017-07-18T09:42:17.035Z"
     }
   }
 }

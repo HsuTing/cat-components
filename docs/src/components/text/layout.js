@@ -16,9 +16,17 @@ This is the style of \`layout\`.
 
   Add this style in the \`grid\`.
 
+- \`col_tablet(num, padding)\` [func]
+
+  Add this style in the \`grid\` when \`max-width\` is smaller then \`839px\`.
+
+- \`col_phone(num, padding)\` [func]
+
+  Add this style in the \`grid\` when \`max-width\` is smaller then \`479px\`.
+
   - \`num\` [int, required]
 
-    Set the column size for the cell, from 0 to 12.
+    Set the column size for the cell. The \`num\` in the \`col\` is from 0 to 12. The \`num\` in the \`col_tablet\` is from 0 to 8. The \`num\` in the \`col_phone\` is from 0 to 4.
 
   - \`padding\` [object]
 

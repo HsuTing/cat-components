@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import radium from 'radium';
+import radium, {StyleRoot} from 'radium';
 import * as layoutStyle from 'cat-components/lib/layout';
 
 import style from './style/useLayout';
@@ -41,6 +41,28 @@ export default class UseLayout extends React.Component {
             >
               <div style={style.col(numIndex)}>1</div>
             </div>
+          ))}
+        </div>
+
+        <h5>Col tablet</h5>
+        <div style={layoutStyle.grid()}>
+          {[].constructor.apply(this, new Array(8)).map((num, numIndex) => (
+            <StyleRoot key={numIndex}
+              style={[layoutStyle.col(1), layoutStyle.col_tablet(1)]}
+            >
+              <div style={style.col(numIndex)}>1</div>
+            </StyleRoot>
+          ))}
+        </div>
+
+        <h5>Col phone</h5>
+        <div style={layoutStyle.grid()}>
+          {[].constructor.apply(this, new Array(4)).map((num, numIndex) => (
+            <StyleRoot key={numIndex}
+              style={[layoutStyle.col(1), layoutStyle.col_phone(1)]}
+            >
+              <div style={style.col(numIndex)}>1</div>
+            </StyleRoot>
           ))}
         </div>
       </div>
