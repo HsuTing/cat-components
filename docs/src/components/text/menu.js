@@ -6,7 +6,7 @@ Use to make a menu.
 
 #### Props
 - \`children\` [component, required]
-- \`menu(hide)\` [func, required]
+- \`menu({hide})\` [func, required]
 
   You need to return a component as a \`menu\`.
 
