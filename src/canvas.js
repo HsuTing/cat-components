@@ -17,6 +17,7 @@ export default class Canvas extends React.Component {
     type: PropTypes.string,
     checkSupport: PropTypes.func,
     rootStyle: PropTypes.object,
+    setting: PropTypes.func,
     style: PropTypes.object,
     children: PropTypes.oneOfType([
       PropTypes.element,
@@ -30,6 +31,7 @@ export default class Canvas extends React.Component {
 
   static defaultProps = {
     type: 'canvas',
+    setting: () => {},
     style: {},
     checkSupport: () => {},
     onMouseMove: () => {},
@@ -80,6 +82,7 @@ export default class Canvas extends React.Component {
     const {canvas} = this.state;
 
     delete props.checkSupport;
+    delete props.setting;
 
     return (
       <div style={rootStyle}>
@@ -109,6 +112,7 @@ export default class Canvas extends React.Component {
     const {children, rootStyle, ...props} = this.props;
 
     delete props.checkSupport;
+    delete props.setting;
 
     return (
       <div style={rootStyle}>
@@ -124,12 +128,16 @@ export default class Canvas extends React.Component {
   }
 
   getCanvas() {
-    const canvas = this.canvasNode;
+    const {setting} = this.props;
+    const canvas = this.canvasNode || null;
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    const output = {
+      canvas,
+      ctx
+    };
 
-    this.setState({
-      canvas: canvas || null,
-      ctx: canvas ? canvas.getContext('2d') : null
-    });
+    setting(output);
+    this.setState(output);
   }
 
   checkSupport(type) {
