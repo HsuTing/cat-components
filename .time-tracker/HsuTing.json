@@ -155,6 +155,30 @@
       "tag": "style",
       "startTime": "2017-07-19T04:40:17.417Z",
       "endTime": "2017-07-19T04:49:54.887Z"
+    },
+    "95477b70-8834-444c-8e2c-24479a5653c1": {
+      "note": "Fix bug in mobile",
+      "tag": "style",
+      "startTime": "2017-07-19T04:53:06.058Z",
+      "endTime": "2017-07-19T05:10:27.728Z"
+    },
+    "67e6e712-b896-4a78-8b2a-e128ca7494b6": {
+      "note": "Fix bug in safari about alert and sidebar",
+      "tag": "component",
+      "startTime": "2017-07-19T05:38:35.208Z",
+      "endTime": "2017-07-19T06:37:57.948Z"
+    },
+    "a7538122-e1cf-48b1-b88f-f8bd00d5964d": {
+      "note": "Fix bug in safari about alert and sidebar",
+      "tag": "component",
+      "startTime": "2017-07-19T07:39:21.096Z",
+      "endTime": "2017-07-19T07:54:47.549Z"
+    },
+    "fb86b757-c0f4-436a-8a8f-b9df2f84005e": {
+      "note": "Fix bug in safari about alert and sidebar",
+      "tag": "component",
+      "startTime": "2017-07-19T09:07:15.629Z",
+      "endTime": "2017-07-19T10:30:01.624Z"
     }
   }
 }

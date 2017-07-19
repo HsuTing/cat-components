@@ -71,6 +71,7 @@ export default class InputSelect extends React.Component {
         )}
         delay={0.1}
         trigger={['click']}
+        animationStyles={[style.menuHideStyle, style.menuShowStyle]}
       >
         <div style={[layoutStyle.grid(), style.root]}>
           <div style={[inputStyle.input, style.input(choice === '')]}>

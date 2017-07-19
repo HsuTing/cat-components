@@ -23,6 +23,10 @@ You need to add \`Sidebar\` before you use \`sidebarBuilder\`.
 
   Use to modify the style of the background component.
 
+- \`animationStyles\` [array]
+
+  Use to modify the animation of showing or hiding the \`sidebar\`. It must be an array like \`[hideStyle, ..., showStyle]\`. You can use many styles in this array.
+
 #### Decorators
 - sidebarBuilder
   - Props

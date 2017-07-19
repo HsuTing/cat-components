@@ -15,6 +15,10 @@ You need to add \`Alert\` before you use \`alertBuilder\`.
 
   Use to set style of \`close icon\`.
 
+- \`animationStyles\` [array]
+
+  Use to modify the animation of showing or hiding the \`alert\`. It must be an array like \`[hideStyle, ..., showStyle]\`. You can use many styles in this array.
+
 #### Decorators
 - alertBuilder
   - Props

@@ -1,20 +1,18 @@
 'use strict';
 
-import radium from 'radium';
-
 import white from 'color/white';
 
 import {boxShadow} from './style';
 
-const showStyle = {
+export const showStyle = {
   transform: 'scale(1)'
 };
 
-const hideStyle = {
+export const hideStyle = {
   transform: 'scale(0)'
 };
 
-export const root = isShown => ({
+export const root = {
   position: 'fixed',
   top: 'calc(50% - 80px)',
   left: 'calc(50% - 155px)',
@@ -24,13 +22,8 @@ export const root = isShown => ({
   background: white,
   boxShadow,
   transformOrigin: '0px 0px',
-  animation: 'x 0.5s ease-in-out',
-  animationName: radium.keyframes({
-    '0%': isShown ? hideStyle : showStyle,
-    '100%': isShown ? showStyle : hideStyle
-  }),
-  ...(isShown ? showStyle : hideStyle)
-});
+  animation: 'x 0.5s ease-in-out'
+};
 
 export const icon = {
   position: 'absolute',

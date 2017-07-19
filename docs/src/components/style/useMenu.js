@@ -13,7 +13,7 @@ export const menu = {
   boxShadow
 };
 
-export const menuStyle = () => ({
+export const menuStyle = {
   top: '-230px',
   transformOrigin: '0px 100%'
-});
+};

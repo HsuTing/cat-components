@@ -4,6 +4,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 
+import toggleStyle from 'utils/toggleStyle';
+import loadAnimation from 'utils/loadAnimation';
+
 import * as style from './style/menu';
 
 export const menuStyle = style;
@@ -13,17 +16,21 @@ export default class Menu extends React.Component {
   static propTypes ={
     children: PropTypes.element.isRequired,
     menu: PropTypes.func.isRequired,
-    menuStyle: PropTypes.func,
+    menuStyle: PropTypes.object,
     delay: PropTypes.number,
     trigger: PropTypes.arrayOf(
       PropTypes.oneOf(['click', 'hover'])
+    ),
+    animationStyles: PropTypes.arrayOf(
+      PropTypes.object
     )
   }
 
   static defaultProps = {
     menuStyle: () => {},
     delay: 1,
-    trigger: ['click', 'hover']
+    trigger: ['click', 'hover'],
+    animationStyles: [style.hideStyle, style.showStyle]
   }
 
   constructor(props) {
@@ -35,6 +42,8 @@ export default class Menu extends React.Component {
 
     this.init = true;
     this.isEnter = false;
+    this.showStyle = toggleStyle(true, props.animationStyles);
+    this.hideStyle = toggleStyle(false, props.animationStyles);
     this.toggleMenu = this.toggleMenu.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.hideMenu = this.hideMenu.bind(this);
@@ -58,8 +67,9 @@ export default class Menu extends React.Component {
     const {children, menu, menuStyle, trigger, ...props} = this.props;
     const {isShown, addStyle} = this.state;
     const newMenuStyle = [
-      style.menu(isShown),
-      menuStyle(isShown),
+      style.menu,
+      menuStyle,
+      isShown ? this.showStyle : this.hideStyle,
       addStyle
     ];
 
@@ -67,6 +77,7 @@ export default class Menu extends React.Component {
       newMenuStyle.push(style.init);
 
     delete props.delay;
+    delete props.animationStyles;
 
     return (
       <div {...props}
@@ -77,6 +88,8 @@ export default class Menu extends React.Component {
           onMouseEnter: this.showMenu,
           onMouseLeave: this.hideMenu
         })}
+
+        {loadAnimation([this.showStyle, this.hideStyle])}
 
         <StyleRoot style={newMenuStyle}
           onAnimationEnd={this.animationEnd}

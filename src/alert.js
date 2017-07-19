@@ -3,99 +3,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import radium, {StyleRoot} from 'radium';
-import CloseIcon from 'react-icons/lib/md/close';
 
+import toggleStyle from 'utils/toggleStyle';
+
+import Template from './alert/template';
+import builder from './alert/builder';
 import * as style from './style/alert';
 
 export const alertStyle = style;
-
-@radium
-class AlertTemplate extends React.Component {
-  static propTypes = {
-    children: PropTypes.element.isRequired,
-    rootStyle: PropTypes.object,
-    iconStyle: PropTypes.object,
-    isShown: PropTypes.bool,
-    hideAlert: PropTypes.func.isRequired
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      isShown: true
-    };
-
-    this.hide = this.hide.bind(this);
-    this.animationEnd = this.animationEnd.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.isShown !== this.state.isShown)
-      this.setState({isShown: nextProps.isShown});
-  }
-
-  render() {
-    const {children, rootStyle, iconStyle} = this.props;
-    const {isShown} = this.state;
-    const childrenProps = children.props;
-    const childrens = React.Children.toArray(childrenProps.children)
-      .concat([
-        <CloseIcon key='icon'
-          style={{...style.icon, ...iconStyle}}
-          onClick={this.hide}
-        />
-      ]);
-
-    return (
-      <StyleRoot {...childrenProps}
-        onAnimationEnd={this.animationEnd}
-        style={{
-          ...style.root(isShown),
-          ...childrenProps.style,
-          ...rootStyle
-        }}
-      >
-        {childrens}
-      </StyleRoot>
-    );
-  }
-
-  hide() {
-    this.setState({isShown: false});
-  }
-
-  animationEnd() {
-    if(!this.state.isShown)
-      this.props.hideAlert();
-  }
-}
-
-export const alertBuilder = Component => class extends React.Component { // eslint-disable-line react/display-name
-  static contextTypes = {
-    alert: PropTypes.func.isRequired,
-    hideAlert: PropTypes.func.isRequired
-  }
-
-  render() {
-    return (
-      <Component {...this.state}
-        {...this.props}
-        {...this.context}
-      />
-    );
-  }
-}
+export const alertBuilder = builder;
 
 export default class Alert extends React.Component {
   static propTypes = {
     id: PropTypes.string,
     iconStyle: PropTypes.object,
-    children: PropTypes.element.isRequired
+    children: PropTypes.element.isRequired,
+    animationStyles: PropTypes.arrayOf(
+      PropTypes.object.isRequired
+    )
   }
 
   static defaultProps ={
-    id: 'alert'
+    id: 'alert',
+    animationStyles: [style.hideStyle, style.showStyle]
   }
 
   static childContextTypes = {
@@ -107,6 +37,8 @@ export default class Alert extends React.Component {
     super(props);
 
     this.isShown =  false;
+    this.showStyle = toggleStyle(true, props.animationStyles);
+    this.hideStyle = toggleStyle(false, props.animationStyles);
     this.alert = this.alert.bind(this);
     this.hideAlert = this.hideAlert.bind(this);
   }
@@ -133,10 +65,12 @@ export default class Alert extends React.Component {
     this.isShown = true;
     this.component = component;
     ReactDOM.render(
-      <AlertTemplate iconStyle={iconStyle}
+      <Template iconStyle={iconStyle}
+        showStyle={this.showStyle}
+        hideStyle={this.hideStyle}
         hideAlert={this.hideAlert}
         isShown={true}
-      >{component}</AlertTemplate>,
+      >{component}</Template>,
       document.getElementById(id)
     );
   }
@@ -146,10 +80,12 @@ export default class Alert extends React.Component {
 
     this.isShown = false;
     ReactDOM.render(
-      <AlertTemplate iconStyle={iconStyle}
+      <Template iconStyle={iconStyle}
+        showStyle={this.showStyle}
+        hideStyle={this.hideStyle}
         hideAlert={this.hideAlert}
         rootStyle={{display: 'none'}}
-      >{this.component}</AlertTemplate>,
+      >{this.component}</Template>,
       document.getElementById(id)
     );
   }

@@ -30,6 +30,10 @@ Use to make a menu.
 
   Determine that will trigger the animation of \`show\` and \`hide\`. \`trigger\` must be one of \`click\` or \`hover\`.
 
+- \`animationStyles\` [array]
+
+  Use to modify the animation of showing or hiding the \`menu\`. It must be an array like \`[hideStyle, ..., showStyle]\`. You can use many styles in this array.
+
 #### Example
 \`\`\`js
 ${example}

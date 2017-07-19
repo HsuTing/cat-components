@@ -1,18 +1,17 @@
 'use strict';
 
-import radium from 'radium';
 import * as grey from 'cat-components/lib/color/grey';
 import black from 'cat-components/lib/color/black';
 import white from 'cat-components/lib/color/white';
 import blue from 'cat-components/lib/color/blue';
 
-const menuShowStyle = {
+export const menuShowStyle = {
   zIndex: '99',
   transform: 'scale(1, 1)',
   opacity: '1'
 };
 
-const menuHideStyle = {
+export const menuHideStyle = {
   zIndex: '99',
   transform: 'scale(1, 0)',
   opacity: '0'
@@ -31,20 +30,15 @@ export const input = isSelected => ({
   userSelect: 'none'
 });
 
-export const menu = isShown => ({
+export const menu = {
   top: '39px',
   padding: '0px',
   marginBottom: '50px',
   width: 'calc(100% - 2px)',
   height: 'auto',
   border: '0px',
-  boxShadow: 'rgba(0, 0, 0, 0.3) 1px 0px 6px',
-  ...(isShown ? menuShowStyle : menuHideStyle),
-  animationName: radium.keyframes({
-    '0%': isShown ? menuHideStyle : menuShowStyle,
-    '100%': isShown ? menuShowStyle : menuHideStyle
-  })
-});
+  boxShadow: 'rgba(0, 0, 0, 0.3) 1px 0px 6px'
+};
 
 export const icon = {
   height: '34px',

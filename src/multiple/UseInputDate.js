@@ -57,7 +57,7 @@ export default class InputDate extends React.Component {
         }
 
         <div style={style.iconRoot}>
-          <Menu menuStyle={() => style.menu}
+          <Menu menuStyle={style.menu}
             menu={() => (
               <div onMouseMove={this.onMouseMove}>
                 <Calendar getDate={this.getDate}
