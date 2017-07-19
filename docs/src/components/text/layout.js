@@ -32,6 +32,16 @@ This is the style of \`layout\`.
 
     This is an object of top, right, bottom and left. For example it can be \`{left: 10}\`.
 
+- \`tablet(style)\` [func]
+
+  Add style to \`tablet size\`.
+
+- \`phone(style)\` [func]
+
+  Add style to \`phone size\`.
+
+  - \`style\` [object]
+
 #### Example
 \`\`\`js
 ${example}
