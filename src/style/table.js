@@ -5,31 +5,29 @@ import * as grey from 'color/grey';
 
 import {boxShadow} from './style';
 
-export default {
-  table: {
-    minWidth: '400px',
-    textAlign: 'center',
-    background: white,
-    color: grey._500_,
-    borderCollapse: 'collapse',
-    boxShadow
-  },
+export const table = {
+  minWidth: '400px',
+  textAlign: 'center',
+  background: white,
+  color: grey._500_,
+  borderCollapse: 'collapse',
+  boxShadow
+};
 
-  tr: {
-    border: `1px solid ${grey._200_}`
-  },
+export const tr = {
+  border: `1px solid ${grey._200_}`
+};
 
-  th: {
-    padding: '10px 15px'
-  },
+export const th = {
+  padding: '10px 15px'
+};
 
-  td: {
-    padding: '10px 15px'
-  },
+export const td = {
+  padding: '10px 15px'
+};
 
-  trHover: {
-    ':hover': {
-      background: grey._200_
-    }
+export const trHover = {
+  ':hover': {
+    background: grey._200_
   }
 };

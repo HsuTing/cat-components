@@ -17,34 +17,32 @@ const hideStyle = {
   opacity: '0'
 };
 
-export default {
-  root: {
-    position: 'relative'
-  },
+export const root = {
+  position: 'relative'
+};
 
-  init: {
-    animation: ''
-  },
+export const init = {
+  animation: ''
+};
 
-  menu: isShown => ({
-    position: 'absolute',
-    top: '45px',
-    left: '0px',
-    padding: '10px',
-    width: '200px',
-    height: '200px',
-    transformOrigin: '0px 0px',
-    background: white,
-    border: `1px solid ${blueGrey}`,
-    animation: 'x 0.5s ease-in-out',
-    ...(isShown ? showStyle : hideStyle),
-    animationName: radium.keyframes({
-      '0%': isShown ? hideStyle : showStyle,
-      '100%': isShown ? showStyle : hideStyle
-    })
-  }),
+export const menu = isShown => ({
+  position: 'absolute',
+  top: '45px',
+  left: '0px',
+  padding: '10px',
+  width: '200px',
+  height: '200px',
+  transformOrigin: '0px 0px',
+  background: white,
+  border: `1px solid ${blueGrey}`,
+  animation: 'x 0.5s ease-in-out',
+  ...(isShown ? showStyle : hideStyle),
+  animationName: radium.keyframes({
+    '0%': isShown ? hideStyle : showStyle,
+    '100%': isShown ? showStyle : hideStyle
+  })
+});
 
-  hide: {
-    zIndex: '-1'
-  }
+export const hide = {
+  zIndex: '-1'
 };

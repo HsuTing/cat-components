@@ -4,7 +4,7 @@ import React from 'react';
 import radium, {StyleRoot} from 'radium';
 import * as layoutStyle from 'cat-components/lib/layout';
 
-import style from './style/useLayout';
+import * as style from './style/useLayout';
 
 @radium
 export default class UseLayout extends React.Component {

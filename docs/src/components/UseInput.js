@@ -6,7 +6,7 @@ import radium from 'radium';
 import Button from 'cat-components/lib/button';
 import Input, {inputConnect} from 'cat-components/lib/input-redux';
 
-import style from './style/useInput';
+import * as style from './style/useInput';
 
 const rules = [{
   validator: 'isEmpty',

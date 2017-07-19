@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import radium, {StyleRoot} from 'radium';
 
-import style from './style/sidebar';
+import * as style from './style/sidebar';
+
+export const sidebarStyle = style;
 
 @radium
 class SidebarTemplate extends React.Component {

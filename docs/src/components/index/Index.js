@@ -13,7 +13,7 @@ import Img from 'cat-components/lib/img';
 import goToAnimation from 'cat-components/lib/goToAnimation';
 
 import Normalize from './../share/Normalize';
-import style from './style/index';
+import * as style from './style/index';
 
 import Simple from './Simple';
 import Multiple from './Multiple';

@@ -7,7 +7,7 @@ import Markdown from 'react-markdown';
 import Button from 'cat-components/lib/button';
 import Link from 'cat-components/lib/link';
 
-import style from './style/index';
+import * as style from './style/index';
 import text from './../text/index';
 
 import Buttons from './Buttons';

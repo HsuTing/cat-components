@@ -9,7 +9,9 @@ import CheckBoxOutlineIcon from 'react-icons/lib/md/check-box-outline-blank';
 import RadioButtonCheckedIcon from 'react-icons/lib/md/radio-button-checked';
 import RadioButtonUnchecked from 'react-icons/lib/md/radio-button-unchecked';
 
-import style from './style/toggle';
+import * as style from './style/toggle';
+
+export const toggleStyle = style;
 
 @radium
 class Switch extends React.Component {
@@ -26,7 +28,7 @@ class Switch extends React.Component {
   render() {
     const {buttonStyle, isClicked, ...props} = this.props;
     const newStyle = [
-      style.switch(isClicked).button,
+      style.switchStyle(isClicked).button,
       buttonStyle(isClicked)
     ];
 
@@ -94,7 +96,7 @@ export default class Toggle extends React.Component {
     const Icon = this.getIcons(isClicked);
     const iconStyle = {
       ...style.root,
-      ...(type === 'switch' ? style.switch(isClicked).bar : {}),
+      ...(type === 'switch' ? style.switchStyle(isClicked).bar : {}),
       ...props.rootStyle(isClicked)
     };
 

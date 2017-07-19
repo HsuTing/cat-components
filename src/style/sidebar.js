@@ -16,36 +16,34 @@ const hideStyle = {
   background: 'rgba(0, 0, 0, 0)'
 };
 
-export default {
-  root: isShown => ({
-    position: 'fixed',
-    top: '0px',
-    left: '0px',
-    width: '100vw',
-    height: '100vh',
-    animation: 'x 1s ease-in-out',
-    animationName: radium.keyframes({
-      '0%': isShown ? hideStyle : showStyle,
-      '100%': isShown ? showStyle : hideStyle
-    }),
-    ...(isShown ? showStyle : hideStyle)
+export const root = isShown => ({
+  position: 'fixed',
+  top: '0px',
+  left: '0px',
+  width: '100vw',
+  height: '100vh',
+  animation: 'x 1s ease-in-out',
+  animationName: radium.keyframes({
+    '0%': isShown ? hideStyle : showStyle,
+    '100%': isShown ? showStyle : hideStyle
   }),
+  ...(isShown ? showStyle : hideStyle)
+});
 
-  background: {
-    position: 'absolute',
-    top: '0px',
-    left: '0px',
-    width: '100%',
-    height: '100%',
-    cursor: 'pointer'
-  },
+export const background = {
+  position: 'absolute',
+  top: '0px',
+  left: '0px',
+  width: '100%',
+  height: '100%',
+  cursor: 'pointer'
+};
 
-  menu: {
-    position: 'absolute',
-    top: '0px',
-    left: '0px',
-    width: '250px',
-    height: '100%',
-    background: white
-  }
+export const menu = {
+  position: 'absolute',
+  top: '0px',
+  left: '0px',
+  width: '250px',
+  height: '100%',
+  background: white
 };

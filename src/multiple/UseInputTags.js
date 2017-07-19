@@ -4,10 +4,9 @@ import React from 'react';
 import radium from 'radium';
 import HighlightRemoveIcon from 'react-icons/lib/md/highlight-remove';
 import Button from 'cat-components/lib/button';
-import Input, {inputCheck} from 'cat-components/lib/input';
-import inputStyle from 'cat-components/lib/style/input';
+import Input, {inputCheck, inputStyle} from 'cat-components/lib/input';
 
-import style from './style/inputTags';
+import * as style from './style/inputTags';
 
 const rules = [{
   validator: 'isEmail',

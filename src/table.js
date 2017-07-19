@@ -4,7 +4,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
 
-import style from './style/table';
+import * as style from './style/table';
+
+export const tableStyle = style;
 
 @radium
 export class Table extends React.Component {

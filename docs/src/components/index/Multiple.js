@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import radium from 'radium';
 import Markdown from 'react-markdown';
 
-import style from './style/index';
+import * as style from './style/index';
 import text from './../text/multiple';
 
 import Buttons from './Buttons';

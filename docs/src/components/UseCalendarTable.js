@@ -5,7 +5,7 @@ import radium, {StyleRoot} from 'radium';
 import moment from 'moment';
 import CalendarTable from 'cat-components/lib/calendar-table';
 
-import style from './style/useCalendarTable';
+import * as style from './style/useCalendarTable';
 
 const now = moment();
 
@@ -13,7 +13,7 @@ const now = moment();
 const Cell = ({year, month, date, isBefore, isAfter, sameMonth, ...props}) => {
   const addStyle = [
     props.style,
-    style.default
+    style.root
   ];
 
   if(!sameMonth)

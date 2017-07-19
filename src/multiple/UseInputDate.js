@@ -8,7 +8,7 @@ import Menu from 'cat-components/lib/menu';
 import Calendar from 'cat-components/lib/calendar';
 import Input from 'cat-components/lib/input';
 
-import style from './style/inputDate';
+import * as style from './style/inputDate';
 
 const format = 'YYYY-MM-DD';
 const now = moment();

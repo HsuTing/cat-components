@@ -143,6 +143,18 @@
       "tag": "style",
       "startTime": "2017-07-18T09:29:57.178Z",
       "endTime": "2017-07-18T09:42:17.035Z"
+    },
+    "22c258c1-4209-4c4c-87e0-f4be886f4479": {
+      "note": "Change style to export const, not export object",
+      "tag": "style",
+      "startTime": "2017-07-19T04:12:26.598Z",
+      "endTime": "2017-07-19T04:40:04.483Z"
+    },
+    "2198a626-a6cc-4cfb-b8a8-fb9f7badc487": {
+      "note": "Change style in docs",
+      "tag": "style",
+      "startTime": "2017-07-19T04:40:17.417Z",
+      "endTime": "2017-07-19T04:49:54.887Z"
     }
   }
 }

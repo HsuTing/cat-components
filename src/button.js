@@ -4,7 +4,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
 
-import style from './style/button';
+import * as style from './style/button';
+
+export const buttonStyle = style;
 
 @radium
 export default class Button extends React.Component {

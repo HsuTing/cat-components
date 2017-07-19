@@ -6,7 +6,9 @@ import ReactDOM from 'react-dom';
 import radium, {StyleRoot} from 'radium';
 import CloseIcon from 'react-icons/lib/md/close';
 
-import style from './style/alert';
+import * as style from './style/alert';
+
+export const alertStyle = style;
 
 @radium
 class AlertTemplate extends React.Component {

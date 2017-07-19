@@ -2,41 +2,39 @@
 
 import red from 'cat-components/lib/color/red';
 
-export default {
-  root: {
-    position: 'relative'
-  },
+export const root = {
+  position: 'relative'
+};
 
-  menu: {
-    top: '34px',
-    left: 'initial',
-    right: '0px',
-    padding: '0px',
-    width: '300px',
-    height: 'initial',
-    border: '0px',
-    background: 'rgba(0, 0, 0, 0)',
-    transformOrigin: '100% 0px'
-  },
+export const menu = {
+  top: '34px',
+  left: 'initial',
+  right: '0px',
+  padding: '0px',
+  width: '300px',
+  height: 'initial',
+  border: '0px',
+  background: 'rgba(0, 0, 0, 0)',
+  transformOrigin: '100% 0px'
+};
 
-  input: isError => ({
-    color: isError ? red : 'initial'
-  }),
+export const input = isError => ({
+  color: isError ? red : 'initial'
+});
 
-  errorMessages: {
-    fontSize: '12px',
-    color: red
-  },
+export const errorMessages = {
+  fontSize: '12px',
+  color: red
+};
 
-  iconRoot: {
-    position: 'absolute',
-    top: '5px',
-    right: '0px',
-    cursor: 'pointer'
-  },
+export const iconRoot = {
+  position: 'absolute',
+  top: '5px',
+  right: '0px',
+  cursor: 'pointer'
+};
 
-  icon: {
-    width: '34px',
-    height: '34px',
-  }
+export const icon = {
+  width: '34px',
+  height: '34px',
 };

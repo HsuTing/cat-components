@@ -6,9 +6,9 @@ import radium from 'radium';
 import ArrowDropDownIcon from 'react-icons/lib/md/arrow-drop-down';
 import Menu from 'cat-components/lib/menu';
 import * as layoutStyle from 'cat-components/lib/layout';
-import inputStyle from 'cat-components/lib/style/input';
+import {inputStyle} from 'cat-components/lib/input';
 
-import style from './style/inputSelect';
+import * as style from './style/inputSelect';
 
 const items = [
   'option 1',
