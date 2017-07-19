@@ -67,6 +67,6 @@ You can use any name, but need to give this name as argument.
 MIT © [hsuting](http://hsuting.com)
 
 [npm-image]: https://badge.fury.io/js/cat-components.svg
-[npm-url]: https://npmjs.org/package/cat-components
+[npm-url]: https://www.npmjs.com/package/cat-components
 [travis-image]: https://travis-ci.org/HsuTing/cat-components.svg?branch=master
 [travis-url]: https://travis-ci.org/HsuTing/cat-components
