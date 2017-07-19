@@ -35,7 +35,7 @@ Here are some functions you can use. Use them with \`import [util name] from 'ca
 
 - \`loadAnimation(styles)\` [func]
 
-  This will return an array of \`<StyleRoot />\`. Owing to some problem with \`radium.keyframes\`, you can use this to load some keyframes which you add after the components are mounted.
+  This will return an array of \`<StyleRoot />\`. Owing to some problems with \`radium.keyframes\`, you can use this to load some keyframes which you add after the components are mounted.
 
   - \`styles\` [array, default: []]
 

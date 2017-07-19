@@ -1,6 +1,8 @@
 language: node_js
 node_js:
   - "node"
+before_install:
+  - yarn add react react-dom
 script:
   - yarn run prod
   - yarn run lint
