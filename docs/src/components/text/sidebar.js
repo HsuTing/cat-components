@@ -30,11 +30,9 @@ You need to add \`Sidebar\` before you use \`sidebarBuilder\`.
 #### Decorators
 - sidebarBuilder
   - Props
-    - \`sidebar(component)\`
+    - \`sidebar()\`
 
       This is the function to build \`sidebar\`.
-
-      - \`component\` [component, required]
 
     - \`hideSidebar()\`
 
