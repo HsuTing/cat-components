@@ -4,8 +4,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 
-import loadAnimation from 'utils/loadAnimation';
-
 import * as style from './../style/sidebar';
 
 @radium
@@ -44,8 +42,6 @@ export default class Template extends React.Component {
       <StyleRoot style={[style.root, rootStyle, isShown ? showStyle : hideStyle]}
         onAnimationEnd={this.animationEnd}
       >
-        {loadAnimation([showStyle, hideStyle])}
-
         <div style={[style.background, backgroundStyle]}
           onClick={this.hide}
         />

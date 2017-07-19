@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 import CloseIcon from 'react-icons/lib/md/close';
 
-import loadAnimation from 'utils/loadAnimation';
-
 import * as style from './../style/alert';
 
 @radium
@@ -58,7 +56,6 @@ export default class Template extends React.Component {
           isShown ? showStyle : hideStyle
         ]}
       >
-        {loadAnimation([showStyle, hideStyle])}
         {childrens}
       </StyleRoot>
     );

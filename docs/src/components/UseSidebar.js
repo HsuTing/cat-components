@@ -20,9 +20,9 @@ class UseSidebar extends React.Component {
   }
 }
 
-const menu = (
+const menu = ({hide}) => ( // eslint-disable-line react/prop-types
   <div>
-    <h4>Item1</h4>
+    <h4 onClick={hide}>Item1</h4>
     <h4>Item2</h4>
     <h4>Item3</h4>
   </div>

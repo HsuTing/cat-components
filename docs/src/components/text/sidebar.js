@@ -2,22 +2,20 @@
 
 export default example => `
 # [Sidebar](./#Sidebar)
-This use \`ReactDOM.render\` to make an sidebar. As a result, you need to add a \`DOM\` whose \`id\` is \`sidebar\` like \`<div id='sidebar' />\` in \`html\`. You can also use \`id\` to set a new id for sidebar.
-
 You need to add \`Sidebar\` before you use \`sidebarBuilder\`.
 
 #### Props
-- \`id\` [string]
-
-  Use to set \`id\` for rendering \`sidebar\`.
-
-- \`menu\` [component, required]
+- \`menu({hide})\` [func, required]
 
   This is uesd to build the menu of the \`sidebar\`.
 
+  - \`hide()\` [func]
+
+    You can give this function to your \`menu\` as \`props\` and use this to hide the \`menu\`.
+
 - \`rootStyle\` [object]
 
-  Use to modify the style of the root component.
+  Use to modify the root style of the \`menu\`.
 
 - \`backgroundStyle\` [object]
 

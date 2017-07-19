@@ -2,9 +2,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 
 import toggleStyle from 'utils/toggleStyle';
+import loadAnimation from 'utils/loadAnimation';
 
 import Template from './sidebar/template';
 import builder from './sidebar/builder';
@@ -15,9 +15,8 @@ export const sidebarBuilder = builder;
 
 export default class Sidebar extends React.Component {
   static propTypes = {
-    id: PropTypes.string,
     children: PropTypes.element.isRequired,
-    menu: PropTypes.element.isRequired,
+    menu: PropTypes.func.isRequired,
     rootStyle: PropTypes.object,
     backgroundStyle: PropTypes.object,
     animationStyles: PropTypes.arrayOf(
@@ -26,7 +25,6 @@ export default class Sidebar extends React.Component {
   }
 
   static defaultProps ={
-    id: 'sidebar',
     animationStyles: [style.hideStyle, style.showStyle]
   }
 
@@ -37,10 +35,15 @@ export default class Sidebar extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      isShown: false,
+      rootStyle: {display: 'none'}
+    };
 
-    this.isShown =  false;
     this.showStyle = toggleStyle(true, props.animationStyles);
     this.hideStyle = toggleStyle(false, props.animationStyles);
+
+    this.hide = this.hide.bind(this);
     this.sidebar = this.sidebar.bind(this);
     this.hideSidebar = this.hideSidebar.bind(this);
   }
@@ -53,42 +56,50 @@ export default class Sidebar extends React.Component {
   }
 
   render() {
-    return React.Children.only(
-      this.props.children
+    const {children, menu, backgroundStyle, ...props} = this.props;
+    const {isShown, rootStyle} = this.state;
+
+    delete props.animationStyles;
+    delete props.rootStyle;
+
+    return (
+      <div {...props}>
+        {loadAnimation([this.showStyle, this.hideStyle])}
+
+        {children}
+
+        <Template rootStyle={rootStyle}
+          isShown={isShown}
+          backgroundStyle={backgroundStyle}
+          showStyle={this.showStyle}
+          hideStyle={this.hideStyle}
+          hideSidebar={this.hideSidebar}
+        >{menu({hide: this.hide})}</Template>
+      </div>
     );
+  }
+
+  hide() {
+    this.setState({
+      isShown: false,
+      rootStyle: this.props.rootStyle
+    });
   }
 
   sidebar() {
-    if(this.isShown)
+    if(this.state.isShown)
       return;
 
-    const {id, menu, rootStyle, backgroundStyle} = this.props;
-
-    this.isShown = true;
-    ReactDOM.render(
-      <Template rootStyle={rootStyle}
-        showStyle={this.showStyle}
-        hideStyle={this.hideStyle}
-        backgroundStyle={backgroundStyle}
-        hideSidebar={this.hideSidebar}
-        isShown={true}
-      >{menu}</Template>,
-      document.getElementById(id)
-    );
+    this.setState({
+      isShown: true,
+      rootStyle: this.props.rootStyle
+    });
   }
 
   hideSidebar() {
-    const {id, menu, backgroundStyle} = this.props;
-
-    this.isShown = false;
-    ReactDOM.render(
-      <Template rootStyle={{display: 'none'}}
-        showStyle={this.showStyle}
-        hideStyle={this.hideStyle}
-        backgroundStyle={backgroundStyle}
-        hideSidebar={this.hideSidebar}
-      >{menu}</Template>,
-      document.getElementById(id)
-    );
+    this.setState({
+      isShown: false,
+      rootStyle: {display: 'none'}
+    });
   }
 }
