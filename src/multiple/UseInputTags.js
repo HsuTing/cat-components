@@ -173,6 +173,8 @@ class InputTags extends React.Component {
   }
 }
 
+
+// TODO: remove
 export default () => ( // eslint-disable-line react/display-name
   <InputTags tags={[]}
     onChange={data => console.log(data)}

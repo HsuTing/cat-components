@@ -175,6 +175,8 @@ class InputDate extends React.Component {
 
 const now = moment();
 
+
+// TODO: remove
 export default () => ( // eslint-disable-line react/display-name
   <InputDate value={now.format(format)}
     onChange={data => console.log(data)}

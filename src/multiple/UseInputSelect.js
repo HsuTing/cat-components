@@ -122,6 +122,8 @@ class InputSelect extends React.Component {
   }
 }
 
+
+// TODO: remove
 export default () => ( // eslint-disable-line react/display-name
   <InputSelect value=''
     rules={[]}

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import radium from 'radium';
 
 @radium
-export default class Button extends React.Component {
+export default class Img extends React.Component {
   static propTypes = {
     link: PropTypes.string,
     target: PropTypes.string
