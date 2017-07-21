@@ -1,38 +1,82 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium from 'radium';
 import moment from 'moment';
 import ArrowDropDownIcon from 'react-icons/lib/md/arrow-drop-down';
 import Menu from 'cat-components/lib/menu';
 import Calendar from 'cat-components/lib/calendar';
-import Input from 'cat-components/lib/input';
+import Input, {inputCheck} from 'cat-components/lib/input';
 
 import * as style from './style/inputDate';
 
 const format = 'YYYY-MM-DD';
-const now = moment();
+const getMomentDate = value => {
+  const [year, month, date] = value.split('-');
+
+  return {
+    year: year ? parseInt(year) : now.year(),
+    month: month ? parseInt(month) - 1 : 0,
+    date: date ? parseInt(date) : 1
+  };
+};
+
 
 @radium
-export default class InputDate extends React.Component {
+class InputDate extends React.Component {
+  static propTypes = {
+    value: PropTypes.string.isRequired,
+    rules: PropTypes.array,
+    onChange: PropTypes.func.isRequired
+  }
+
   constructor(props) {
     super(props);
     this.state = {
-      value: now.format(format),
-      isError: false,
-      error: [],
-      type: 'input'
+      ...inputCheck(props.value, props.rules),
+      value: props.value,
+      type: 'input',
     };
 
     this.key = '';
-    this.getMomentDate = this.getMomentDate.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onChange = this.onChange.bind(this);
     this.getDate = this.getDate.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
   }
 
+  componentDidMount() {
+    const {value, isError, error} = this.state;
+
+    this.props.onChange({
+      value,
+      isError,
+      error
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.value !== this.state.value)
+      this.onChange(inputCheck(nextProps.value));
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.value !== nextState.value;
+  }
+
+  componentDidUpdate() {
+    const {value, isError, error} = this.state;
+
+    this.props.onChange({
+      value,
+      isError,
+      error
+    });
+  }
+
   render() {
+    const {rules} = this.props;
     const {value, isError, error} = this.state;
 
     return (
@@ -40,10 +84,7 @@ export default class InputDate extends React.Component {
         <Input style={style.input(isError)}
           maxLength={10}
           value={value}
-          rules={[{
-            validator: value => moment(this.getMomentDate(value)).format(format) === 'Invalid date',
-            message: 'This is not a date.'
-          }]}
+          rules={rules}
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}
         />
@@ -67,7 +108,7 @@ export default class InputDate extends React.Component {
                     month: now.month(),
                     date: now.date()
                   }}
-                  date={this.getMomentDate(value)}
+                  date={getMomentDate(value)}
                 />
               </div>
             )}
@@ -80,21 +121,11 @@ export default class InputDate extends React.Component {
     );
   }
 
-  getMomentDate(value) {
-    const [year, month, date] = value.split('-');
-
-    return {
-      year: year ? parseInt(year) : now.year(),
-      month: month ? parseInt(month) - 1 : 0,
-      date: date ? parseInt(date) : 1
-    };
-  }
-
   onKeyDown(e) {
     this.key = e.key;
   }
 
-  onChange({value, isError, error}, e) {
+  onChange({value, isError, error}) {
     let newValue = value;
 
     if(this.key === 'Backspace') {
@@ -141,3 +172,15 @@ export default class InputDate extends React.Component {
     });
   }
 }
+
+const now = moment();
+
+export default () => ( // eslint-disable-line react/display-name
+  <InputDate value={now.format(format)}
+    onChange={data => console.log(data)}
+    rules={[{
+      validator: value => moment(getMomentDate(value)).format(format) === 'Invalid date',
+      message: 'This is not a date.'
+    }]}
+  />
+);

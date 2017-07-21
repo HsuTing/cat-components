@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import radium from 'radium';
 import HighlightRemoveIcon from 'react-icons/lib/md/highlight-remove';
 import Button from 'cat-components/lib/button';
@@ -8,18 +9,18 @@ import Input, {inputCheck, inputStyle} from 'cat-components/lib/input';
 
 import * as style from './style/inputTags';
 
-const rules = [{
-  validator: 'isEmail',
-  not: true,
-  message: 'This is not an email.'
-}];
-
 @radium
-export default class InputTags extends React.Component {
+class InputTags extends React.Component {
+  static propTypes = {
+    tags: PropTypes.array.isRequired,
+    onChange: PropTypes.func.isRequired,
+    rules: PropTypes.array.isRequired
+  }
+
   constructor(props) {
     super(props);
     this.state = {
-      tags: [],
+      tags: props.tags,
       value: '',
       isError: false,
       error: []
@@ -30,7 +31,35 @@ export default class InputTags extends React.Component {
     this.removeTag = this.removeTag.bind(this);
   }
 
+  componentDidMount() {
+    const {tags, isError, error} = this.state;
+
+    this.props.onChange({
+      value: tags,
+      isError,
+      error
+    });
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      JSON.stringify(this.state.tags) !== JSON.stringify(nextState.tags) ||
+      this.state.value !== nextState.value
+    );
+  }
+
+  componentDidUpdate() {
+    const {tags, isError, error} = this.state;
+
+    this.props.onChange({
+      value: tags,
+      isError,
+      error
+    });
+  }
+
   render() {
+    const {rules} = this.props;
     const {tags, value, isError, error} = this.state;
 
     return (
@@ -68,6 +97,8 @@ export default class InputTags extends React.Component {
   }
 
   onKeyDown(e) {
+    const {rules} = this.props;
+
     switch(e.key) {
       case ' ':
         this.key = 'add';
@@ -111,6 +142,7 @@ export default class InputTags extends React.Component {
   }
 
   onChange(data) {
+    const {rules} = this.props;
     const tags = [...this.state.tags];
     let output = {...data};
 
@@ -140,3 +172,14 @@ export default class InputTags extends React.Component {
     };
   }
 }
+
+export default () => ( // eslint-disable-line react/display-name
+  <InputTags tags={[]}
+    onChange={data => console.log(data)}
+    rules={[{
+      validator: 'isEmail',
+      not: true,
+      message: 'This is not an email.'
+    }]}
+  />
+);

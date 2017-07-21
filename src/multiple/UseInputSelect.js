@@ -6,37 +6,34 @@ import radium from 'radium';
 import ArrowDropDownIcon from 'react-icons/lib/md/arrow-drop-down';
 import Menu from 'cat-components/lib/menu';
 import * as layoutStyle from 'cat-components/lib/layout';
-import {inputStyle} from 'cat-components/lib/input';
+import {inputStyle, inputCheck} from 'cat-components/lib/input';
 
 import * as style from './style/inputSelect';
-
-const items = [
-  'option 1',
-  'optoin 2',
-  'option 3'
-];
 
 @radium
 class Options extends React.Component {
   static propTypes = {
     choose: PropTypes.func.isRequired,
-    choice: PropTypes.oneOf(items.concat('')).isRequired,
-    hide: PropTypes.func.isRequired
+    choice: PropTypes.string.isRequired,
+    hide: PropTypes.func.isRequired,
+    options: PropTypes.arrayOf(
+      PropTypes.string
+    ).isRequired
   }
 
   render() {
-    const {choose, choice, hide} = this.props;
+    const {choose, choice, hide, options} = this.props;
 
     return (
       <div>
-        {items.map((item, itemIndex) => (
-          <div key={itemIndex}
-            style={style.option(itemIndex === items.length - 1, choice === item)}
+        {options.map((option, optionIndex) => (
+          <div key={optionIndex}
+            style={style.option(optionIndex === options.length - 1, choice === option)}
             onClick={() => {
               hide();
-              choose(item);
+              choose(option);
             }}
-          >{item}</div>
+          >{option}</div>
         ))}
       </div>
     );
@@ -44,28 +41,62 @@ class Options extends React.Component {
 }
 
 @radium
-export default class InputSelect extends React.Component {
+class InputSelect extends React.Component {
+  static propTypes = {
+    options: PropTypes.arrayOf(
+      PropTypes.string
+    ).isRequired,
+    placeholder: PropTypes.string,
+    rules: PropTypes.array.isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired
+  }
+
   constructor(props) {
     super(props);
-    this.state = {
-      choice: ''
-    };
-
+    this.state = inputCheck(props.value, props.rules);
     this.choose = this.choose.bind(this);
   }
 
   componentDidMount() {
-    this.choose('');
+    const {value, isError, error} = this.state;
+
+    this.props.onChange({
+      value,
+      isError,
+      error
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.value !== this.state.value)
+      this.choose(nextProps.value);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.value !== nextState.value;
+  }
+
+  componentDidUpdate() {
+    const {value, isError, error} = this.state;
+
+    this.props.onChange({
+      value,
+      isError,
+      error
+    });
   }
 
   render() {
-    const {choice} = this.state;
+    const {options, placeholder} = this.props;
+    const {value} = this.state;
 
     return (
       <Menu menuStyle={style.menu}
         menu={({hide}) => (
           <Options choose={this.choose}
-            choice={choice}
+            options={options}
+            choice={value}
             hide={hide}
           />
         )}
@@ -74,8 +105,8 @@ export default class InputSelect extends React.Component {
         animationStyles={[style.menuHideStyle, style.menuShowStyle]}
       >
         <div style={[layoutStyle.grid(), style.root]}>
-          <div style={[inputStyle.input, style.input(choice === '')]}>
-            {choice === '' ? 'Choose a option' : choice}
+          <div style={[inputStyle.input, style.input(value === '')]}>
+            {value === '' ? placeholder : value}
           </div>
 
           <ArrowDropDownIcon style={style.icon} />
@@ -85,6 +116,21 @@ export default class InputSelect extends React.Component {
   }
 
   choose(choice) {
-    this.setState({choice});
+    const {rules} = this.props;
+
+    this.setState(inputCheck(choice, rules));
   }
 }
+
+export default () => ( // eslint-disable-line react/display-name
+  <InputSelect value=''
+    rules={[]}
+    onChange={data => console.log(data)}
+    placeholder='Choose a option'
+    options={[
+      'optino 1',
+      'option 2',
+      'option 3'
+    ]}
+  />
+);
