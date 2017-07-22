@@ -18,6 +18,10 @@ export default class Multiple extends React.Component {
     data: PropTypes.object.isRequired
   }
 
+  shouldComponentUpdate(nextProps) {
+    return false;
+  }
+
   render() {
     const {data} = this.props;
 

@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "copy:mult": "rm -rf ./templates && cp -r ./src/multiple ./templates",
+    "copy:multiple": "rm -rf ./templates-multiple && cp -r ./src/multiple ./templates-multiple",
+    "copy:templates": "rm -rf ./templates-templates && cp -r ./src/templates ./templates-templates",
     "time-tracker": "time-tracker",
     "build-color": "node ./bin/build-color.js",
     "test": "yarn test:babel && yarn test:static && istanbul cover _mocha -- -R spec test/**/*.js",
@@ -12,14 +13,14 @@
     "lint:watch": "esw --cache ./src ./bin/*.js ./docs/src --ext .js -w --color",
     "babel": "rm -rf ./lib && babel src --out-dir lib",
     "babel:watch": "rm -rf ./lib && babel -w src --out-dir lib",
-    "prepublish": "yarn babel && yarn copy:mult",
+    "prepublish": "yarn babel && yarn copy:multiple && yarn copy:templates",
     "build": "yarn build-color && yarn babel && yarn static",
     "prod": "export NODE_ENV=production && yarn build-color && yarn babel && yarn static && yarn webpack",
     "watch": "concurrently -c green \"yarn lint:watch\" \"yarn babel:watch\" \"yarn webpack-server\"",
     "static": "BABEL_ENV=static babel --ignore test docs/src --out-dir lib/docs && node ./lib/bin/static.js static.config.js"
   },
   "name": "cat-components",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "react components",
   "author": {
     "name": "hsuting",
@@ -73,6 +74,8 @@
     "moment": "^2.18.1",
     "pre-commit": "^1.2.2",
     "radium-normalize": "^2.0.5",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-icons": "^2.2.3",
     "react-markdown": "^2.5.0",
     "react-redux": "^5.0.5",

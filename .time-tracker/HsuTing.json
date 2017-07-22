@@ -191,6 +191,18 @@
       "tag": "component",
       "startTime": "2017-07-22T06:11:56.769Z",
       "endTime": "2017-07-22T06:29:00.692Z"
+    },
+    "a18a73f4-ad80-418b-9789-1f7e44b69ae2": {
+      "note": "Move multiple",
+      "tag": "normal",
+      "startTime": "2017-07-22T06:53:19.294Z",
+      "endTime": "2017-07-22T07:10:53.941Z"
+    },
+    "d1bf30af-a2e1-4b5f-b09b-354251bf01d2": {
+      "note": "Add templates",
+      "tag": "component",
+      "startTime": "2017-07-22T07:11:00.613Z",
+      "endTime": "2017-07-22T08:19:09.159Z"
     }
   }
 }

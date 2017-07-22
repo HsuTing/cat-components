@@ -6,6 +6,7 @@ import radium from 'radium';
 import Markdown from 'react-markdown';
 import Button from 'cat-components/lib/button';
 import Link from 'cat-components/lib/link';
+import {language} from 'cat-components/lib/i18n';
 
 import * as style from './style/index';
 import text from './../text/index';
@@ -15,9 +16,15 @@ import Content from './Content';
 import * as constants from './constants';
 
 @radium
+@language
 export default class Simple extends React.Component {
   static propTypes = {
+    translate: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return JSON.stringify(nextProps.translate) !== JSON.stringify(this.props.translate);
   }
 
   render() {

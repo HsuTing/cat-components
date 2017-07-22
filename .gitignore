@@ -6,4 +6,4 @@ node_modules
 coverage
 lib
 test/test-*
-templates
+templates-*

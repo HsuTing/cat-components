@@ -37,6 +37,11 @@ You can see [here](https://hsuting.github.io/cat-components) to learn how to use
 - checkFBAPI
 - goToAnimation
 
+## Templates
+You can use `yarn copy` to copy the `tempalates`.
+
+- [login](https://hsuting.github.io/cat-components/login/)
+
 ## Bin
 Use to render `HTML` with `react` and `nunjucks`.
 ```

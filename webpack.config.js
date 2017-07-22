@@ -10,6 +10,7 @@ const src = './docs/src/public';
 module.exports = {
   entry: {
     index: path.resolve(src, './index.js'),
+    login: path.resolve(src, './templates/login.js'),
     common: [
       'radium',
       'radium-normalize',

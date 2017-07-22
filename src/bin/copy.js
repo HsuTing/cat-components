@@ -3,6 +3,7 @@
 
 import 'babel-polyfill';
 import nodeFs from 'fs';
+import process from 'process';
 import memFs from 'mem-fs';
 import editor from 'mem-fs-editor';
 import path from 'path';
@@ -11,66 +12,110 @@ import chalk from 'chalk';
 
 const store = memFs.create();
 const fs = editor.create(store);
-const templateRoot = path.resolve(__dirname, './../../templates');
+const templateMultipleRoot = path.resolve(__dirname, './../../templates-multiple');
+const templateTemplateRoot = path.resolve(__dirname, './../../templates-templates');
 
 (async () => {
   try {
-    const {root, components} = await inquirer.prompt([{
+    const {components} = await inquirer.prompt([{
       name: 'root',
       message: 'Root folder',
-      default: './src/components/share',
+      default: './src/components',
       validate: path => nodeFs.existsSync(path) ? true : 'The folder does not exist.'
     }, {
       type: 'checkbox',
       name: 'components',
       message: 'Choose the components',
-      choices: nodeFs.readdirSync(templateRoot)
+      choices: ({root}) => nodeFs.readdirSync(templateMultipleRoot)
         .filter(file => file !== 'style')
-        .map(file => file.replace(/.js/, '').replace(/Use/, ''))
+        .map(file => {
+          const name = file.replace(/.js/, '');
+          const styleName = name[0].toLowerCase() + name.slice(1);
+
+          return {
+            name,
+            value: {
+              root: path.resolve(root, './share'),
+              name,
+              styleName,
+              templateComponentPath: path.resolve(templateMultipleRoot, `${name}.js`),
+              templateStylePath: path.resolve(templateMultipleRoot, './style', `${styleName}.js`)
+            }
+          }
+        })
+        .concat(
+          nodeFs.readdirSync(templateTemplateRoot)
+            .filter(file => file !== 'style')
+            .map(file => {
+              const name = file.replace(/.js/, '');
+              const styleName = name[0].toLowerCase() + name.slice(1);
+
+              return {
+                name,
+                value: {
+                  root,
+                  name,
+                  styleName,
+                  templateComponentPath: path.resolve(templateTemplateRoot, `${name}.js`),
+                  templateStylePath: path.resolve(templateTemplateRoot, './style', `${styleName}.js`)
+                }
+              }
+            })
+        )
     }]);
 
-    components.forEach(async component => {
-      try {
-        const styleName = component[0].toLowerCase() + component.slice(1);
-        const templateComponentPath = path.resolve(templateRoot, `Use${component}.js`);
-        const templateStylePath = path.resolve(templateRoot, './style', `${styleName}.js`);
-        const componentPath = path.resolve(root, `${component}.js`);
-        const stylePath = path.resolve(root, './style', `${styleName}.js`);
+    let index = 0;
+    while(index < components.length) {
+      const {
+        root,
+        name,
+        styleName,
+        templateComponentPath,
+        templateStylePath
+      } = components[index];
 
-        const result = await inquirer.prompt([{
-          type: 'confirm',
-          name: 'addComponent',
-          message: `Component: ${component} exist. Are you sue?`,
-          when: fs.exists(componentPath)
-        }, {
-          type: 'confirm',
-          name: 'addStyle',
-          message: `Style: ${styleName} exist. Are you sue?`,
-          when: fs.exists(stylePath)
-        }]);
+      const componentPath = path.resolve(root, `${name}.js`);
+      const stylePath = path.resolve(root, './style', `${styleName}.js`);
 
-        const addComponent = result.addComponent === undefined || result.addComponent;
-        const addStyle = result.addStyle === undefined || result.addStyle;
+      const result = await inquirer.prompt([{
+        type: 'confirm',
+        name: 'addComponent',
+        message: `Component: ${name} exist. Are you sue?`,
+        when: fs.exists(componentPath)
+      }, {
+        type: 'confirm',
+        name: 'addStyle',
+        message: `Style: ${styleName} exist. Are you sue?`,
+        when: fs.exists(stylePath)
+      }]);
 
-        if(addComponent)
-          fs.copy(templateComponentPath, componentPath);
-        if(addStyle)
-          fs.copy(templateStylePath, stylePath);
+      const addComponent = result.addComponent === undefined || result.addComponent;
+      const addStyle = result.addStyle === undefined || result.addStyle;
 
+      if(addComponent)
+        fs.copy(templateComponentPath, componentPath);
+      if(addStyle)
+        fs.copy(templateStylePath, stylePath);
+
+      await new Promise((resolve, reject) => {
         fs.commit(err => {
           if(err)
-            throw new Error(err);
+            reject(err);
 
           if(addComponent)
-            console.log(chalk.green('copy ') + chalk.cyan(`${component}.js`));
+            console.log(chalk.green('copy ') + chalk.cyan(`${name}.js`));
           if(addStyle)
             console.log(chalk.green('copy ') + chalk.cyan(`style/${styleName}.js`));
+
+          return resolve();
         });
-      } catch(e) {
-        console.log(e);
-      }
-    });
+      });
+
+      index = index + 1;
+    }
   } catch(e) {
     console.log(e);
   }
+
+  process.exit();
 })();
