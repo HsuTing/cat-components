@@ -1,10 +1,10 @@
 'use strict';
 
 export default example => `
-# [layout](./#layout) [1.7.X deprecation]
+# [layout](./#layout)
 This is the style of \`layout\`.
 
-- \`grid(padding)\` [func]
+-  [1.7.X deprecation] \`grid(padding)\` [func]
 
   This is a root of the \`layout\`. You can add \`padding\` to \`grid\`.
 
@@ -12,15 +12,15 @@ This is the style of \`layout\`.
 
     This is an object of top, right, bottom and left. For example, it can be \`{left: 10}\`.
 
-- \`col(num, padding)\` [func]
+-  [1.7.X deprecation] \`col(num, padding)\` [func]
 
   Add this style in the \`grid\`.
 
-- \`col_tablet(num, padding)\` [func]
+-  [1.7.X deprecation] \`col_tablet(num, padding)\` [func]
 
   Add this style in the \`grid\` when \`max-width\` is smaller then \`839px\`.
 
-- \`col_phone(num, padding)\` [func]
+-  [1.7.X deprecation] \`col_phone(num, padding)\` [func]
 
   Add this style in the \`grid\` when \`max-width\` is smaller then \`479px\`.
 

@@ -2,23 +2,25 @@
 
 import React from 'react';
 import Wrapper from 'cat-components/lib/wrapper';
-import LoginComponent from 'cat-components/lib/templates/Login';
+import Login from 'cat-components/lib/templates/Login';
 
 import Normalize from './../share/Normalize';
 
 /* eslint-disable react/display-name, react/prop-types */
-export default ({radiumConfig, redux, ...props}) => (
+export default ({radiumConfig, redux, router, ...props}) => (
   <Wrapper radiumConfig={radiumConfig}
+    redux={redux}
+    router={router}
     modules={{
       redux: require('redux'),
-      reactRedux: require('react-redux')
+      reactRedux: require('react-redux'),
+      reactRouterDom: require('react-router-dom')
     }}
-    redux={redux}
   >
     <div>
       <Normalize />
 
-      <LoginComponent {...props} />
+      <Login {...props} />
     </div>
   </Wrapper>
 );

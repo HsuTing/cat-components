@@ -1,16 +1,25 @@
 'use strict';
 
 import red from 'cat-components/lib/color/red';
+import * as layoutStyle from 'cat-components/lib/layout';
 
 export const root = {
-  margin: '0px auto',
+  display: 'grid',
+  width: '100vw',
+  height: '100vh',
+  gridTemplateColumns: '30% auto 30%',
+  ...layoutStyle.tablet({
+    gridTemplateColumns: '10% auto 10%'
+  })
+};
+
+export const content = {
   width: '100%',
-  maxWidth: '400px'
+  maxWidth: '400px',
+  margin: '50px auto'
 };
 
 export const iconRoot = {
-  width: '400px',
-  height: '200px',
   textAlign: 'center'
 };
 

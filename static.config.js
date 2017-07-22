@@ -44,8 +44,8 @@ module.exports = useUrls(['/', '/multiple/'], {
       reducer: combineReducers(formReducer)
     }
   }
-}).concat([{
-  name: 'docs/login',
+}).concat(useUrls(['/login/', '/register/'], {
+  name: 'docs',
   component: './lib/docs/components/templates/Login',
   js: 'login',
   props: {
@@ -53,4 +53,4 @@ module.exports = useUrls(['/', '/multiple/'], {
       reducer: combineReducers(formReducer)
     }
   }
-}]);
+}));

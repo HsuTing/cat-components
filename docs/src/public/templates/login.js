@@ -13,9 +13,20 @@ const redux = {
   enhancer: createLogger({collapsed: true})
 };
 
+const router = {
+  isServer: false,
+  basename: (
+    process.env.NODE_ENV === 'production' ?
+      '/cat-components/' :
+      '/cat-components/docs/'
+  )
+};
+
 (() => {
   ReactDOM.render(
-    <Login redux={redux} />,
+    <Login redux={redux}
+      router={router}
+    />,
     document.getElementById('root')
   );
 })();
