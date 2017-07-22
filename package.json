@@ -16,11 +16,10 @@
     "build": "yarn build-color && yarn babel && yarn static",
     "prod": "export NODE_ENV=production && yarn build-color && yarn babel && yarn static && yarn webpack",
     "watch": "concurrently -c green \"yarn lint:watch\" \"yarn babel:watch\" \"yarn webpack-server\"",
-    "postinstall": "rm -rf ./node_modules/radium/.babelrc",
     "static": "BABEL_ENV=static babel --ignore test docs/src --out-dir lib/docs && node ./lib/bin/static.js static.config.js"
   },
   "name": "cat-components",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "react components",
   "author": {
     "name": "hsuting",
@@ -97,7 +96,7 @@
     "mem-fs-editor": "^3.0.2",
     "nunjucks": "^3.0.1",
     "prop-types": "^15.5.10",
-    "radium": "^0.19.1"
+    "radium": "^0.19.4"
   },
   "peerDependencies": {
     "react": ">= 15.6.1",

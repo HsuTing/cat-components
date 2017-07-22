@@ -185,6 +185,12 @@
       "tag": "component",
       "startTime": "2017-07-21T15:55:15.836Z",
       "endTime": "2017-07-21T16:22:32.882Z"
+    },
+    "7f973246-9e98-48fe-bbe6-823e3875fd6d": {
+      "note": "Modify icon",
+      "tag": "component",
+      "startTime": "2017-07-22T06:11:56.769Z",
+      "endTime": "2017-07-22T06:29:00.692Z"
     }
   }
 }
