@@ -5,7 +5,6 @@ import red from 'cat-components/lib/color/red';
 import white from 'cat-components/lib/color/white';
 
 export const root = {
-  width: 'calc(100% / 7 - 2px - 5px * 2)',
   padding: '5px',
   border: `0.5px solid ${grey._200_}`,
   color: grey._500_,

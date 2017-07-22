@@ -44,11 +44,7 @@ export default class CalendarTable extends React.Component {
         {this.getData().map((d, dIndex) => (
           React.cloneElement(children, {
             key: dIndex,
-            ...d,
-            style: {
-              ...style.col,
-              ...children.props.style
-            }
+            ...d
           })
         ))}
       </div>

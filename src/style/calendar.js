@@ -28,12 +28,12 @@ export const textBlock = {
 };
 
 export const choiceBlock = {
-  display: 'flex'
+  display: 'grid',
+  gridTemplateColumns: 'calc(100% / 3) calc(100% / 3) calc(100% / 3)'
 };
 
 export const choice = {
   position: 'relative',
-  width: 'calc(100% / 3)',
   height: '200px',
   overflowY: 'scroll',
   textAlign: 'center',

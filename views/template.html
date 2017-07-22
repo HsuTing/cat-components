@@ -70,8 +70,12 @@
   </body>
 
   <script>
+    {% if data -%}
     var data = {{ data | safe }};
+    {% endif -%}
+    {% if languageData -%}
     var languageData = {{ languageData | safe }};
+    {% endif -%}
     {% if ENV -%}
     var languageDir = '/cat-components/public/i18n';
     {% else -%}

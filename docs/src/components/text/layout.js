@@ -1,7 +1,7 @@
 'use strict';
 
 export default example => `
-# [layout](./#layout)
+# [layout](./#layout) [1.7.X deprecation]
 This is the style of \`layout\`.
 
 - \`grid(padding)\` [func]

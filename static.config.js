@@ -15,7 +15,7 @@ const getCode = relativePath => {
 
   fs.readdirSync(folderPath)
     .forEach(file => {
-      if((/Use/).test(file))
+      if((/.js/).test(file))
         data[file.replace(/.js/, '')] = fs.readFileSync(
           path.resolve(folderPath, file),
           {encoding: 'utf-8'}

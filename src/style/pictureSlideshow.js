@@ -21,7 +21,6 @@ export const img = {
 };
 
 export const item = {
-  display: 'flex',
   position: 'absolute',
   top: '0px',
   left: '0px',
@@ -31,41 +30,56 @@ export const item = {
   animation: 'x 1s ease-in-out'
 };
 
-export const hideStyle = {
+export const position = {
+  left: {
+    opacity: '0',
+    transform: 'translateX(-100%)'
+  },
+  center: {
+    opacity: '1',
+    transform: 'translateX(0)'
+  },
   right: {
-    left: '100%',
+    opacity: '0',
+    transform: 'translateX(100%)'
+  }
+};
+
+export const hideStyle = position => ({
+  right: {
+    ...position.right,
     animationName: radium.keyframes({
-      '0%': {left: '0px'},
-      '100%': {left: '100%'}
+      '0%': position.center,
+      '100%': position.right
     })
   },
 
   left: {
-    left: '-100%',
+    ...position.left,
     animationName: radium.keyframes({
-      '0%': {left: '0px'},
-      '100%': {left: '-100%'}
+      '0%': position.center,
+      '100%': position.left
     })
   }
-};
+});
 
-export const showStyle = {
+export const showStyle = position => ({
   right: {
-    left: '0px',
+    ...position.center,
     animationName: radium.keyframes({
-      '0%': {left: '-100%'},
-      '100%': {left: '0px'}
+      '0%': position.left,
+      '100%': position.center
     })
   },
 
   left: {
-    left: '0px',
+    ...position.center,
     animationName: radium.keyframes({
-      '0%': {left: '100%'},
-      '100%': {left: '0px'}
+      '0%': position.right,
+      '100%': position.center
     })
   }
-};
+});
 
 export const hide = {
   display: 'none'

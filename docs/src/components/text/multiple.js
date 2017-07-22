@@ -2,7 +2,7 @@
 
 export default `
 # How to use
-Those components are not include in the package. As a result, you can use the command to copy the components to your project. This is recommended to add those components to a sharing folder of the components. The default folder is \`./src/components/share/\`, but you can change the root folder.
+Those components are not include in the package. As a result, you can use the command to copy the components to your project. This is recommended to add those components to a sharing folder of the components. The default folder is \`./src/components/\`, but you can change the root folder.
 
 \`\`\`js
 yarn copy

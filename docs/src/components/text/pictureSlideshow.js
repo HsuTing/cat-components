@@ -20,10 +20,12 @@ Use to make a picture slideshow.
 
   Choose the type of \`image\`. If \`type\` is \`img\`, this component will use \`img\` tag as \`image\`. If it is not, this component will use \`div\` tag as \`image\`.
 
-- \`showStyle\` [object]
-- \`hideStyle\` [object]
+- \`position\` [object]
+  - \`left\` [object]
+  - \`center\` [object]
+  - \`right\` [object]
 
-  Those are the animations of showing and hiding \`image\`. Both of them need to have \`left\` and \`right\` to make the different animations when \`image\` moves to \`left\` and \`right\`.
+  Those are the position of the \`image\`. This is recommended to use \`transform: 'translateX(x)'\` to set the position of the \`image\`.
 
 #### Example
 \`\`\`js

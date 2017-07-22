@@ -7,6 +7,7 @@ import uuid from 'uuid';
 
 import eventController from 'utils/eventController';
 import imgResize from 'utils/imgResize';
+import loadAnimation from 'utils/loadAnimation';
 
 import * as style from './style/pictureSlideshow';
 
@@ -21,20 +22,16 @@ export default class PictureSlideshow extends React.Component {
       'img',
       'div'
     ]),
-    hideStyle: PropTypes.shape({
+    position: PropTypes.shape({
       left: PropTypes.object.isRequired,
-      right: PropTypes.object.isRequired
-    }),
-    showStyle: PropTypes.shape({
-      left: PropTypes.object.isRequired,
+      center: PropTypes.object.isRequired,
       right: PropTypes.object.isRequired
     })
   }
 
   static defaultProps = {
     type: 'div',
-    hideStyle: style.hideStyle,
-    showStyle: style.showStyle
+    position: style.position
   }
 
   constructor(props) {
@@ -47,6 +44,8 @@ export default class PictureSlideshow extends React.Component {
     };
     this.eventId = [];
 
+    this.showStyle = style.showStyle(props.position);
+    this.hideStyle = style.hideStyle(props.position);
     this.resize = this.resize.bind(this);
     this.resizeAll = this.resizeAll.bind(this);
   }
@@ -73,13 +72,11 @@ export default class PictureSlideshow extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    const {index, imgs, hideStyle, showStyle} = this.props;
+    const {index, imgs} = this.props;
 
     return (
       nextProps.index !== index ||
-      nextProps.imgs !== imgs ||
-      nextProps.hideStyle !== hideStyle ||
-      nextProps.showStyle !== showStyle
+      nextProps.imgs !== imgs
     );
   }
 
@@ -97,23 +94,31 @@ export default class PictureSlideshow extends React.Component {
   }
 
   render() {
-    const {imgs, type, hideStyle, showStyle, ...props} = this.props;
+    const {imgs, type, ...props} = this.props;
     const {direction, index, preIndex} = this.state;
 
     delete props.index;
+    delete props.position;
 
     return (
       <div {...props}
         style={[style.root, props.style]}
         ref={node => (this.node = node)}
       >
+        {loadAnimation([
+          this.hideStyle.left,
+          this.hideStyle.right,
+          this.showStyle.left,
+          this.showStyle.right
+        ])}
+
         {imgs.map((img, imgIndex) => {
           let animation = style.hide;
 
           if(imgIndex === index)
-            animation = showStyle[direction];
+            animation = this.showStyle[direction];
           else if(imgIndex === preIndex)
-            animation = hideStyle[direction];
+            animation = this.hideStyle[direction];
 
           if(type === 'img')
             return (
@@ -131,6 +136,7 @@ export default class PictureSlideshow extends React.Component {
           const picture = {
             background: `url(${src}) center / cover`
           };
+
           return (
             <StyleRoot key={imgIndex}
               {...imgProps}

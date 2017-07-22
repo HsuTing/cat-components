@@ -12,7 +12,6 @@ const now = moment();
 /* eslint-disable react/prop-types */
 const Cell = ({year, month, date, isBefore, isAfter, sameMonth, ...props}) => {
   const addStyle = [
-    props.style,
     style.root
   ];
 
