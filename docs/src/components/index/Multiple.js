@@ -42,7 +42,7 @@ export default class Multiple extends React.Component {
           <div key={nameIndex}>
             {constants[name].map((item, itemIndex) => (
               <Content key={itemIndex}
-                example={data[`Use${item.name}`] || ''}
+                example={data[item.name] || ''}
                 {...item}
               />
             ))}
