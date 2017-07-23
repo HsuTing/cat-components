@@ -20,7 +20,7 @@ export const root = {
   left: '0px',
   width: '100vw',
   height: '100vh',
-  animation: 'x 1s ease-in-out'
+  animation: 'x 0.5s ease-in-out'
 };
 
 export const background = {

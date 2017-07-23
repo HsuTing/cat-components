@@ -27,7 +27,7 @@ export const item = {
   width: '100%',
   height: '100%',
   background: black,
-  animation: 'x 1s ease-in-out'
+  animation: 'x 0.5s ease-in-out'
 };
 
 export const position = {

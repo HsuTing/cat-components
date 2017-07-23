@@ -9,9 +9,54 @@ import eventController from 'utils/eventController';
 import imgResize from 'utils/imgResize';
 import loadAnimation from 'utils/loadAnimation';
 
+import Img from './img';
 import * as style from './style/pictureSlideshow';
 
 export const pictureSlideshowStyle = style;
+
+@radium
+class Picture extends React.Component {
+  constructor(props) {
+    super(props);
+    this.id = null;
+    this.onload = this.onload.bind(this);
+  }
+
+  componentDidUpdate() {
+    this.resize();
+  }
+
+  componentWillUnmount() {
+    eventController.removeEvent = {
+      name: 'resize',
+      id: this.id
+    };
+  }
+
+  render() {
+    return (
+      <Img {...this.props}
+        onLoad={this.onload}
+      />
+    );
+  }
+
+  onload(e) {
+    const id = uuid.v4();
+    const target = e.target;
+    this.resize = () => {
+      imgResize(target);
+    };
+
+    eventController.addEvent = {
+      name: 'resize',
+      id,
+      event: this.resize
+    };
+    this.resize();
+    this.id = id;
+  }
+}
 
 @radium
 export default class PictureSlideshow extends React.Component {
@@ -42,12 +87,9 @@ export default class PictureSlideshow extends React.Component {
       direction: 'right',
       isAnimation: true
     };
-    this.eventId = [];
 
     this.showStyle = style.showStyle(props.position);
     this.hideStyle = style.hideStyle(props.position);
-    this.resize = this.resize.bind(this);
-    this.resizeAll = this.resizeAll.bind(this);
   }
 
   componentDidMount() {
@@ -80,19 +122,6 @@ export default class PictureSlideshow extends React.Component {
     );
   }
 
-  componentDidUpdate() {
-    this.resizeAll();
-  }
-
-  componentWillUnmount() {
-    this.eventId.forEach(id => {
-      eventController.removeEvent = {
-        name: 'resize',
-        id
-      };
-    });
-  }
-
   render() {
     const {imgs, type, ...props} = this.props;
     const {direction, index, preIndex} = this.state;
@@ -101,7 +130,7 @@ export default class PictureSlideshow extends React.Component {
     delete props.position;
 
     return (
-      <div {...props}
+      <StyleRoot {...props}
         style={[style.root, props.style]}
         ref={node => (this.node = node)}
       >
@@ -125,50 +154,22 @@ export default class PictureSlideshow extends React.Component {
               <StyleRoot key={imgIndex}
                 style={[style.item, img.style, animation]}
               >
-                <img {...img}
+                <Picture {...img}
                   style={style.img}
-                  onLoad={this.resize}
+                  type={type}
                 />
               </StyleRoot>
             );
 
-          const {src, ...imgProps} = img;
-          const picture = {
-            background: `url(${src}) center / cover`
-          };
-
           return (
-            <StyleRoot key={imgIndex}
-              {...imgProps}
-              style={[style.item, picture, img.style, animation]}
+            <Img key={imgIndex}
+              {...img}
+              type={type}
+              style={[style.item, img.style, animation]}
             />
           );
         })}
-      </div>
+      </StyleRoot>
     );
-  }
-
-  resize(e) {
-    const id = uuid.v4();
-    const target = e.target;
-    const resize = () => {
-      imgResize(target);
-    };
-
-    resize();
-    eventController.addEvent = {
-      name: 'resize',
-      id,
-      event: resize
-    };
-    this.eventId.push(id);
-  }
-
-  resizeAll() {
-    const {type} = this.props;
-
-    if(type === 'img')
-      this.node.querySelectorAll('img')
-        .forEach(imgResize);
   }
 }
