@@ -21,7 +21,7 @@ export default class Img extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      src: ''
+      src: null
     };
   }
 
@@ -39,7 +39,13 @@ export default class Img extends React.Component {
     const {type, link, target, ...props} = this.props;
     const {src} = this.state;
     delete props.src;
-    const component = type === 'div' && src !== '' ?
+
+    if(!src)
+      return (
+        <StyleRoot {...props} />
+      );
+
+    const component = type === 'div' ?
       <StyleRoot {...props}
         style={[props.style, style.div(src)]}
       /> :
