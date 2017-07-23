@@ -39,53 +39,76 @@ const registerFields = [{
 @radium
 class Field extends React.Component {
   static propTypes = {
-    type: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    rules: PropTypes.array.isRequired,
-    form: PropTypes.object.isRequired,
-    inputDispatch: PropTypes.func.isRequired
-  }
-
-  render() {
-    const {type, name, rules, form, inputDispatch} = this.props;
-    const {value, isError, error} = form[name] || {};
-
-    return (
-      <div style={style.inputRoot}>
-        <h4 style={style.title}>{name}</h4>
-
-        <Input type={type || 'text'}
-          rules={rules}
-          value={value || ''}
-          onChange={data => inputDispatch(name, data)}
-        />
-
-        {
-          !isError ?
-            null :
-            <p style={style.error}>{(error || []).join(' ,')}</p>
-        }
-      </div>
-    );
-  }
-}
-
-@inputConnect('login')()
-@radium
-class Submit extends React.Component {
-  static propTypes = {
     type: PropTypes.string.isRequired,
+    form: PropTypes.object.isRequired,
+    inputDispatch: PropTypes.func.isRequired,
     submitDispatch: PropTypes.func.isRequired
   }
 
+  constructor(props) {
+    super(props);
+    this.fields = props.type === 'login' ?
+      [...fields] :
+      [...fields].concat(registerFields);
+    this.enter = this.enter.bind(this);
+    this.submit = this.submit.bind(this);
+  }
+
   render() {
-    const {type, submitDispatch} = this.props;
-    console.log(type);
+    const {type, form, inputDispatch} = this.props;
 
     return (
-      <Button onClick={() => submitDispatch(data => alert(JSON.stringify(data, null, 2)))}
-      >submit</Button>
+      <div style={style.field}>
+        {this.fields.map(({type, name, rules}, index) => {
+          const {value, isError, error} = form[name] || {};
+
+          return (
+            <div key={index}
+              style={style.inputRoot}
+            >
+              <h4 style={style.title}>{name}</h4>
+
+              <Input type={type || 'text'}
+                rules={rules}
+                value={value || ''}
+                onChange={data => inputDispatch(name, data)}
+                onKeyDown={this.enter}
+              />
+
+              {
+                !isError ?
+                  null :
+                  <p style={style.error}>{(error || []).join(' ,')}</p>
+              }
+            </div>
+          );
+        })}
+
+        <div style={style.buttonRoot}>
+          <Button onClick={this.submit}
+          >submit</Button>
+
+          <br />
+
+          <Link style={style.link}
+            to={type === 'login' ? '/register/' : '/login/'}
+          >{type === 'login' ? 'register' : 'cancel'}</Link>
+        </div>
+      </div>
     );
+  }
+
+  enter(e) {
+    if(e.key === 'Enter')
+      this.submit();
+  }
+
+  submit() {
+    const {submitDispatch} = this.props;
+
+    submitDispatch(data => {
+      alert(JSON.stringify(data, null, 2))
+    });
   }
 }
 
@@ -101,57 +124,17 @@ export default class Login extends React.Component {
             <Icon />
           </div>
 
-          {fields.map((field, fieldIndex) => (
-            <Field key={fieldIndex}
-              {...field}
-            />
-          ))}
-
           <Switch>
-            <Route path='/register/'
+            <Route path='/login/'
+              component={() => <Field type='login' />}
               exact
-            >
-              <div>
-                {registerFields.map((field, fieldIndex) => (
-                  <Field key={fieldIndex}
-                    {...field}
-                  />
-                ))}
-              </div>
-            </Route>
+            />
+
+            <Route path='/register/'
+              component={() => <Field type='register' />}
+              exact
+            />
           </Switch>
-
-          <div style={style.buttonRoot}>
-            <Switch>
-              <Route path='/login/'
-                exact
-              >
-                <div>
-                  <Submit type='login' />
-
-                  <br/>
-
-                  <Link style={style.register}
-                    to='/register/'
-                  >register</Link>
-                </div>
-              </Route>
-
-              <Route path='/register/'
-                exact
-              >
-                <div>
-                  <Submit type='register' />
-
-                  <br/>
-
-                  <Link style={style.register}
-                    to='/login/'
-                  >cancel</Link>
-                </div>
-              </Route>
-            </Switch>
-          </div>
         </div>
 
         <div />
