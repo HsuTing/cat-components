@@ -78,7 +78,7 @@ export const menu = {
 
 export const header = {
   padding: '0px 16px',
-  width: '100%',
+  width: 'calc(100% - 16px * 2)',
   height: '56px',
   color: grey._600_,
   fontSize: '20px',
