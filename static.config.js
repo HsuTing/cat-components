@@ -53,4 +53,8 @@ module.exports = useUrls(['/', '/multiple/'], {
       reducer: combineReducers(formReducer)
     }
   }
+})).concat(useUrls(['/', '/page1/', '/page2/'], {
+  name: 'docs/dashboard',
+  component: './lib/docs/components/templates/Dashboard',
+  js: 'dashboard'
 }));

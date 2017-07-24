@@ -11,6 +11,7 @@ module.exports = {
   entry: {
     index: path.resolve(src, './index.js'),
     login: path.resolve(src, './templates/login.js'),
+    dashboard: path.resolve(src, './templates/dashboard.js'),
     common: [
       'radium',
       'radium-normalize',

@@ -41,6 +41,7 @@ You can see [here](https://hsuting.github.io/cat-components) to learn how to use
 You can use `yarn copy` to copy the `tempalates`.
 
 - [login](https://hsuting.github.io/cat-components/login/)
+- [dashboard](https://hsuting.github.io/cat-components/dashboard/)
 
 ## Bin
 Use to render `HTML` with `react` and `nunjucks`.
