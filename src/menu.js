@@ -27,7 +27,6 @@ export default class Menu extends React.Component {
   }
 
   static defaultProps = {
-    menuStyle: () => {},
     delay: 1,
     trigger: ['click', 'hover'],
     animationStyles: [style.hideStyle, style.showStyle]
