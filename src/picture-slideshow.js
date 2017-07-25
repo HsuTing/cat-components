@@ -16,6 +16,14 @@ export const pictureSlideshowStyle = style;
 
 @radium
 class Picture extends React.Component {
+  static propTypes = {
+    onLoad: PropTypes.func
+  }
+
+  static defaultProps = {
+    onLoad: () => {}
+  }
+
   constructor(props) {
     super(props);
     this.id = null;
@@ -42,11 +50,14 @@ class Picture extends React.Component {
   }
 
   onload(e) {
+    const {onLoad} = this.props;
     const id = uuid.v4();
     const target = e.target;
     this.resize = () => {
       imgResize(target);
     };
+
+    onLoad(e);
 
     eventController.addEvent = {
       name: 'resize',
