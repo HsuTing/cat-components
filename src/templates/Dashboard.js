@@ -11,17 +11,6 @@ import Sidebar, {sidebarBuilder} from 'cat-components/lib/sidebar';
 
 import * as style from './style/dashboard';
 
-const pages = [{
-  title: 'Home',
-  path: '/'
-}, {
-  title: 'Page 1',
-  path: '/page1/'
-}, {
-  title: 'Page 2',
-  path: '/page2/'
-}];
-
 const buttons = (
   path,
   title,
@@ -127,6 +116,17 @@ class Dashboard extends React.Component {
 
 
 // TODO: revmoe
+const pages = [{
+  title: 'Home',
+  path: '/'
+}, {
+  title: 'Page 1',
+  path: '/page1/'
+}, {
+  title: 'Page 2',
+  path: '/page2/'
+}];
+
 export default () => ( // eslint-disable-line react/display-name
   <Sidebar menu={({hide}) => (
     <div>

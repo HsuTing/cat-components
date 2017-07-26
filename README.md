@@ -30,6 +30,7 @@ You can see [here](https://hsuting.github.io/cat-components) to learn how to use
 - slider
 - square
 - table
+- timeline
 - toggle
 - wrapper
 

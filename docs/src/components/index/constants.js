@@ -39,6 +39,7 @@ export const components = output([
   'Slider',
   'Square',
   'Table',
+  'Timeline',
   'Toggle',
   'Wrapper'
 ], [

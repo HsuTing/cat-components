@@ -24,7 +24,7 @@ export default class Buttons extends React.Component {
 
     return (
       <div>
-        <h4>{title[0].toUpperCase() + title.slice(1)}</h4>
+        <h4>{(title[0].toUpperCase() + title.slice(1)).replace(/_/g, ' ')}</h4>
         <div>
           {items.map(({name}, itemIndex) => (
             <Button key={itemIndex}
