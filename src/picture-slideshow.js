@@ -163,7 +163,7 @@ export default class PictureSlideshow extends React.Component {
           if(type === 'img')
             return (
               <StyleRoot key={imgIndex}
-                style={[style.item, img.style, animation]}
+                style={[style.item, style.imgRoot, img.style, animation]}
               >
                 <Picture {...img}
                   style={style.img}

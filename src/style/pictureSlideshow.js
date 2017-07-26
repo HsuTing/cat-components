@@ -13,6 +13,10 @@ export const root = {
   background: black
 };
 
+export const imgRoot = {
+  display: 'flex'
+};
+
 export const img = {
   display: 'block',
   margin: 'auto',
