@@ -15,7 +15,12 @@ export default class Img extends React.Component {
     ]),
     link: PropTypes.string,
     target: PropTypes.string,
-    src: PropTypes.string.isRequired
+    src: PropTypes.string.isRequired,
+    onLoad: PropTypes.func
+  }
+
+  static defaultProps = {
+    onLoad: () => {}
   }
 
   constructor(props) {
@@ -26,10 +31,13 @@ export default class Img extends React.Component {
   }
 
   componentDidMount() {
-    const {src} = this.props;
+    const {type, src, onLoad} = this.props;
     const img = new Image();
 
     img.onload = () => {
+      if(type === 'div')
+        onLoad();
+
       this.setState({src});
     };
     img.src = src;
