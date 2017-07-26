@@ -76,13 +76,14 @@ export const menu = {
   })
 };
 
+const headerHeight = 56;
 export const header = {
   padding: '0px 16px',
   width: 'calc(100% - 16px * 2)',
-  height: '56px',
+  height: `${headerHeight}px`,
   color: grey._600_,
   fontSize: '20px',
-  lineHeight: '56px',
+  lineHeight: `${headerHeight}px`,
   boxShadow: '1px 0 5px rgba(0, 0, 0, 0.7)'
 };
 
@@ -99,4 +100,11 @@ export const menuIcon = {
   padding: '12px',
   cursor: 'pointer',
   transform: 'translateX(-16px)'
+};
+
+export const content = {
+  padding: '50px',
+  width: 'calc(100% - 50px * 2)',
+  height: `calc(100vh - 50px * 2 - ${headerHeight}px)`,
+  overflow: 'scroll'
 };

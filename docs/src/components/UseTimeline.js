@@ -8,13 +8,13 @@ import Timeline from 'cat-components/lib/timeline';
 const format = 'MMMM Do YYYY';
 const time = [{
   date: moment().format(format),
-  content: 'Content 1'
+  content: <div>Content 1</div>
 }, {
   date: moment().subtract(1, 'days').format(format),
-  content: 'Content 2'
+  content: <div>Content 2</div>
 }, {
   date: moment().subtract(2, 'days').format(format),
-  content: 'Content 3'
+  content: <div>Content 3</div>
 }];
 
 @radium

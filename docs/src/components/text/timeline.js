@@ -10,17 +10,13 @@ export default example => `
 
     The \`date\` of the time is shown.
 
-  - \`content\` [string, required]
+  - \`content\` [component, required]
 
     The \`content\` of the time is shown.
 
 - \`color\` [string, default: '#2196f3']
 
   Change the color of the bar.
-
-- \`contentStyle\` [object]
-
-  Modify the style of the \`content\`.
 
 - \`dateStyle\` [object]
 

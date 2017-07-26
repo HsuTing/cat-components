@@ -13,10 +13,9 @@ import * as layoutStyle from './layout';
 class Item extends React.Component {
   static propTypes = {
     date: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
+    content: PropTypes.element.isRequired,
     inverted: PropTypes.bool.isRequired,
     type: PropTypes.string.isRequired,
-    contentStyle: PropTypes.object,
     dateStyle: PropTypes.object
   }
 
@@ -24,7 +23,7 @@ class Item extends React.Component {
     const {date, content, inverted, type, ...props} = this.props;
     const check = inverted ? type !== 'left' : type === 'left';
     const dateStyle = check ? props.dateStyle : style.hide;
-    const contentStyle = check ? style.hide : props.contentStyle;
+    const contentStyle = check ? style.hide : content.props.style || {};
     const tabletStyle = type === 'left' ? style.hide : style.init;
 
     return (
@@ -32,8 +31,9 @@ class Item extends React.Component {
         <StyleRoot style={[style.date(type), dateStyle, layoutStyle.tablet(tabletStyle)]}
         >{date}</StyleRoot>
 
-        <StyleRoot style={[style.content(type), contentStyle, layoutStyle.tablet(tabletStyle)]}
-        >{content}</StyleRoot>
+        <StyleRoot {...content.props}
+          style={[style.content(type), contentStyle, layoutStyle.tablet(tabletStyle)]}
+        />
       </div>
     );
   }
@@ -44,7 +44,6 @@ export default class Timeline extends React.Component {
   static propTypes = {
     time: PropTypes.array.isRequired,
     color: PropTypes.string,
-    contentStyle: PropTypes.object,
     dateStyle: PropTypes.object
   }
 

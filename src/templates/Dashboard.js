@@ -95,15 +95,21 @@ class Dashboard extends React.Component {
                 path={path}
                 exact
                 component={() => (
-                  <header style={style.header}>
-                    <StyleRoot style={style.menuIconRoot}>
-                      <MenuIcon style={style.menuIcon}
-                        onClick={() => sidebar()}
-                      />
-                    </StyleRoot>
+                  <div>
+                    <header style={style.header}>
+                      <StyleRoot style={style.menuIconRoot}>
+                        <MenuIcon style={style.menuIcon}
+                          onClick={() => sidebar()}
+                        />
+                      </StyleRoot>
 
-                    {title}
-                  </header>
+                      {title}
+                    </header>
+
+                    <div style={style.content}>
+                      content
+                    </div>
+                  </div>
                 )}
               />
             ))}
