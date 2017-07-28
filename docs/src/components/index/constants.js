@@ -31,6 +31,7 @@ export const components = output([
   'I18n',
   'Icon',
   'Img',
+  'ImgZoom',
   'Input',
   'Link',
   'Menu',

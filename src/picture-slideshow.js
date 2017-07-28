@@ -3,10 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
-import uuid from 'uuid';
 
-import eventController from 'utils/eventController';
-import imgResize from 'utils/imgResize';
+import ImgResize from 'share/ImgResize';
 import loadAnimation from 'utils/loadAnimation';
 
 import Img from './img';
@@ -15,62 +13,7 @@ import * as style from './style/pictureSlideshow';
 export const pictureSlideshowStyle = style;
 
 @radium
-class Picture extends React.Component {
-  static propTypes = {
-    onLoad: PropTypes.func
-  }
-
-  static defaultProps = {
-    onLoad: () => {}
-  }
-
-  constructor(props) {
-    super(props);
-    this.id = null;
-    this.onload = this.onload.bind(this);
-  }
-
-  componentDidUpdate() {
-    this.resize();
-  }
-
-  componentWillUnmount() {
-    eventController.removeEvent = {
-      name: 'resize',
-      id: this.id
-    };
-  }
-
-  render() {
-    return (
-      <Img {...this.props}
-        onLoad={this.onload}
-      />
-    );
-  }
-
-  onload(e) {
-    const {onLoad} = this.props;
-    const id = uuid.v4();
-    const target = e.target;
-    this.resize = () => {
-      imgResize(target);
-    };
-
-    onLoad(e);
-
-    eventController.addEvent = {
-      name: 'resize',
-      id,
-      event: this.resize
-    };
-    this.resize();
-    this.id = id;
-  }
-}
-
-@radium
-export default class PictureSlideshow extends React.Component {
+export default class ImgResizeSlideshow extends React.Component {
   static propTypes = {
     index: PropTypes.number.isRequired,
     imgs: PropTypes.array.isRequired,
@@ -165,7 +108,7 @@ export default class PictureSlideshow extends React.Component {
               <StyleRoot key={imgIndex}
                 style={[style.item, style.imgRoot, img.style, animation]}
               >
-                <Picture {...img}
+                <ImgResize {...img}
                   style={style.img}
                   type={type}
                 />
