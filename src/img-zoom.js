@@ -3,7 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
+import uuid from 'uuid';
 
+import eventController from 'utils/eventController';
 import imgResize from 'utils/imgResize';
 import toggleStyle from 'utils/toggleStyle';
 import loadAnimation from 'utils/loadAnimation';
@@ -55,6 +57,11 @@ export default class ImgZoom extends React.Component {
     };
   }
 
+  componentDidUpdate() {
+    if(this.state.imgAnimationEnd && this.resize)
+      this.resize();
+  }
+
   render() {
     const {children, rootStyle, imgBackgroundStyle, imgStyle, ...props} = this.props;
     const {src, addStyle, imgAnimation, imgAnimationEnd, isZoom} = this.state;
@@ -81,8 +88,7 @@ export default class ImgZoom extends React.Component {
                     style.img,
                     imgStyle,
                     imgAnimation.length === 2 && !imgAnimationEnd ?
-                      toggleStyle(isZoom, imgAnimation) :
-                      imgAnimationEnd ? imgAnimationEnd : {}
+                      toggleStyle(isZoom, imgAnimation) : {}
                   ]}
                   onLoad={this.onLoad}
                   onAnimationEnd={this.onImgAnimationEnd}
@@ -142,16 +148,31 @@ export default class ImgZoom extends React.Component {
   }
 
   onImgAnimationEnd(e) {
-    this.setState({
-      imgAnimationEnd: imgResize(e.target)
-    });
+    const target = e.target;
+    const id = uuid.v4();
+
+    this.id = id;
+    this.resize = () => {
+      imgResize(target);
+    };
+    eventController.addEvent = {
+      name: 'resize',
+      id,
+      event: this.resize
+    };
+    this.setState({imgAnimationEnd: true});
 
     const {isZoom} = this.state;
 
-    if(!isZoom)
+    if(!isZoom) {
+      eventController.removeEvent = {
+        name: 'resize',
+        id: this.id
+      };
       this.setState({
         addStyle: {display: 'none'},
         src: null
       });
+    }
   }
 }

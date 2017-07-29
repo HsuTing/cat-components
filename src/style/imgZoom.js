@@ -24,7 +24,8 @@ export const imgBackground = {
 };
 
 export const img = {
-  margin: '0px auto',
+  display: 'block',
+  margin: 'auto',
   background: white,
   animation: 'x 0.5s ease-in-out'
 };
