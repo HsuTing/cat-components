@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, withRouter} from 'react-router-dom';
 import MenuIcon from 'react-icons/lib/md/menu';
 import Img from 'cat-components/lib/img';
 import Link from 'cat-components/lib/link';
@@ -69,13 +69,21 @@ class DashboardMenu extends React.Component {
   }
 }
 
+@withRouter
 @sidebarBuilder
 @radium
 class Dashboard extends React.Component {
   static propTypes = {
     img: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
-    sidebar: PropTypes.func.isRequired
+    sidebar: PropTypes.func.isRequired,
+    location: PropTypes.object.isRequired
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return (
+      JSON.stringify(this.props.location) !== JSON.stringify(nextProps.location)
+    );
   }
 
   render() {

@@ -20,6 +20,7 @@ You can see [here](https://hsuting.github.io/cat-components) to learn how to use
 - i18n
 - icon
 - img
+- img-zoom
 - input
 - input-redux
 - link
@@ -37,6 +38,7 @@ You can see [here](https://hsuting.github.io/cat-components) to learn how to use
 ###### Decorators
 - checkFBAPI
 - goToAnimation
+- timer
 
 ## Templates
 You can use `yarn copy` to copy the `tempalates`.

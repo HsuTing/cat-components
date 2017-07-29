@@ -50,5 +50,6 @@ export const components = output([
 
 export const decorators = output([
   'CheckAPI',
-  'GoToAnimation'
+  'GoToAnimation',
+  'Timer'
 ]);

@@ -3,6 +3,9 @@
 export default example => `
 # [ImgZoom](./#ImgZoom)
 
+#### Other packages
+- [uuid](https://www.npmjs.com/package/uuid)
+
 #### Props
 - \`rootStyle(isZoom)\` [func]
 
