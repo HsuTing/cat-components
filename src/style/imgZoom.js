@@ -2,22 +2,17 @@
 
 import white from 'color/white';
 
-export const rootZoom = [{
-  background: 'rgba(0, 0, 0, 0)'
-}, {
-  background: 'rgba(0, 0, 0, 0.8)'
-}];
-export const root = {
+export const root = isZoom => ({
   display: 'flex',
   position: 'fixed',
   top: '0px',
   left: '0px',
   width: '100vw',
   height: '100vh',
-  animation: 'x 0.3s ease-in-out',
+  background: isZoom ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0)',
   cursor: 'pointer',
   zIndex: '99'
-};
+});
 
 export const imgBackground = {
   display: 'flex',
@@ -31,5 +26,5 @@ export const imgBackground = {
 export const img = {
   margin: '0px auto',
   background: white,
-  animation: 'x 0.3s ease-in-out'
+  animation: 'x 0.5s ease-in-out'
 };

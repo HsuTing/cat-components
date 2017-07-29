@@ -4,10 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 
-import ImgResize from 'share/ImgResize';
 import loadAnimation from 'utils/loadAnimation';
 
 import Img from './img';
+import ImgResize from './picture-slideshow/ImgResize';
 import * as style from './style/pictureSlideshow';
 
 export const pictureSlideshowStyle = style;

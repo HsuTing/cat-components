@@ -4,10 +4,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 
-import ImgResize from 'share/ImgResize';
+import imgResize from 'utils/imgResize';
 import toggleStyle from 'utils/toggleStyle';
 import loadAnimation from 'utils/loadAnimation';
 
+import Img from './img';
 import * as style from './style/imgZoom';
 import add from './img-zoom/add';
 
@@ -16,7 +17,14 @@ export const addZoom = add;
 @radium
 export default class ImgZoom extends React.Component {
   static propTypes = {
+    rootStyle: PropTypes.func,
+    imgBackgroundStyle: PropTypes.object,
+    imgStyle: PropTypes.object,
     children: PropTypes.element.isRequired
+  }
+
+  static defaultProps = {
+    rootStyle: () => {}
   }
 
   static childContextTypes = {
@@ -38,7 +46,6 @@ export default class ImgZoom extends React.Component {
     this.zoomOut = this.zoomOut.bind(this);
     this.onLoad = this.onLoad.bind(this);
     this.onImgAnimationEnd = this.onImgAnimationEnd.bind(this);
-    this.onAnimationEnd = this.onAnimationEnd.bind(this);
   }
 
   getChildContext() {
@@ -49,14 +56,13 @@ export default class ImgZoom extends React.Component {
   }
 
   render() {
-    const {children, ...props} = this.props;
+    const {children, rootStyle, imgBackgroundStyle, imgStyle, ...props} = this.props;
     const {src, addStyle, imgAnimation, imgAnimationEnd, isZoom} = this.state;
 
     return (
       <div {...props}
         ref={node => (this.node = node)}
       >
-        {loadAnimation([true, false].map(bool => toggleStyle(bool, style.rootZoom)))}
         {
           imgAnimation.length !== 2 ?
             null :
@@ -66,18 +72,17 @@ export default class ImgZoom extends React.Component {
         {
           !src ?
             null :
-            <StyleRoot style={[style.root, addStyle]}
+            <StyleRoot style={[style.root(isZoom), rootStyle(isZoom), addStyle]}
               onClick={this.zoomOut}
-              onAnimationEnd={this.onAnimationEnd}
             >
-              <div style={style.imgBackground}>
-                <ImgResize id='big-img'
-                  src={src}
+              <div style={[style.imgBackground, imgBackgroundStyle]}>
+                <Img src={src}
                   style={[
                     style.img,
+                    imgStyle,
                     imgAnimation.length === 2 && !imgAnimationEnd ?
                       toggleStyle(isZoom, imgAnimation) :
-                      {}
+                      imgAnimationEnd ? imgAnimationEnd : {}
                   ]}
                   onLoad={this.onLoad}
                   onAnimationEnd={this.onImgAnimationEnd}
@@ -104,7 +109,6 @@ export default class ImgZoom extends React.Component {
 
   zoomOut() {
     this.setState({
-      addStyle: toggleStyle(false, style.rootZoom),
       imgAnimationEnd: false,
       isZoom: false
     });
@@ -121,6 +125,7 @@ export default class ImgZoom extends React.Component {
   }
 
   onLoad(e) {
+    imgResize(e.target);
     const clientRect = e.target.getBoundingClientRect();
     const {imgAnimation} = this.state;
     const animation = [{
@@ -130,19 +135,17 @@ export default class ImgZoom extends React.Component {
     }];
 
     this.setState({
-      addStyle: toggleStyle(true, style.rootZoom),
+      addStyle: {opacity: '1'},
       imgAnimation: animation,
       imgAnimationEnd: false
     });
   }
 
-  onImgAnimationEnd() {
+  onImgAnimationEnd(e) {
     this.setState({
-      imgAnimationEnd: true
+      imgAnimationEnd: imgResize(e.target)
     });
-  }
 
-  onAnimationEnd() {
     const {isZoom} = this.state;
 
     if(!isZoom)

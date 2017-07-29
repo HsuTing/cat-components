@@ -24,8 +24,7 @@
       "alias": {
         "cat-components/lib": "src",
         "color": "src/color",
-        "utils": "src/utils",
-        "share": "src/share"
+        "utils": "src/utils"
       }
     }]
   ]
