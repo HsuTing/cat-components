@@ -21,6 +21,10 @@ export default (
     this.getTime = this.getTime.bind(this);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   render() {
     const {isRunning, ...state} = this.state;
 
