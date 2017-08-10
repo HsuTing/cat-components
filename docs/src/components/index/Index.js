@@ -38,7 +38,7 @@ class Index extends React.Component {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <Img src='https://hsuting.github.io/img/icon.svg'
+            <Img src='https://hsuting.github.io/public/img/icon.svg'
               style={style.icon}
             />
             <h1 style={style.title}>

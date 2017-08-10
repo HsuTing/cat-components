@@ -17,8 +17,8 @@ class UseImgZoom extends React.Component {
     const {zoomIn} = this.props;
 
     return (
-      <Img src='https://hsuting.github.io/img/icon.svg'
-        onClick={e => zoomIn('https://hsuting.github.io/img/icon.svg', e)}
+      <Img src='https://hsuting.github.io/public/img/icon.svg'
+        onClick={e => zoomIn('https://hsuting.github.io/public/img/icon.svg', e)}
       />
     );
   }
