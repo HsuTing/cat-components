@@ -20,7 +20,7 @@ export default class VideoSubtitle extends React.Component {
         content: PropTypes.func.isRequired
       })
     ).isRequired,
-    now: PropTypes.shape(timeTypes)
+    now: PropTypes.shape(timeTypes).isRequired
   }
 
   constructor(props) {
