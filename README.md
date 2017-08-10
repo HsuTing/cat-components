@@ -34,6 +34,7 @@ You can see [here](https://hsuting.github.io/cat-components) to learn how to use
 - timeline
 - toggle
 - wrapper
+- video-subtitle
 
 ###### Decorators
 - checkFBAPI

@@ -10,7 +10,6 @@ coverage
 docs
 views
 *.config.js
-.time-tracker
 bin/build-color.js
 bin/color
 bin/templates

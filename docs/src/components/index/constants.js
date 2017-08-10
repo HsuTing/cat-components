@@ -42,7 +42,8 @@ export const components = output([
   'Table',
   'Timeline',
   'Toggle',
-  'Wrapper'
+  'Wrapper',
+  'VideoSubtitle'
 ], [
   'Link',
   'Wrapper'
