@@ -145,14 +145,14 @@ export default () => ( // eslint-disable-line react/display-name
   <Sidebar menu={({hide}) => (
     <div>
       <DashboardMenu email='hsuting0106@gmail.com'
-        img='https://hsuting.github.io/img/icon.svg'
+        img='https://hsuting.github.io/public/img/icon.svg'
         hide={hide}
       />
     </div>
   )}
   >
     <Dashboard email='hsuting0106@gmail.com'
-      img='https://hsuting.github.io/img/icon.svg'
+      img='https://hsuting.github.io/public/img/icon.svg'
     />
   </Sidebar>
 );

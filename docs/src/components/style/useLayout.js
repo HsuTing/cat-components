@@ -1,11 +1,19 @@
-'use strict';
+'use stirct';
 
-import * as grey from 'cat-components/lib/color/grey';
-import black from 'cat-components/lib/color/black';
+import grey from 'cat-components/lib/color/grey';
+import red from 'cat-components/lib/color/red';
+import blue from 'cat-components/lib/color/blue';
 
-export const col = num => ({
-  textAlign: 'center',
-  lineHeight: '45px',
-  color: black,
-  background: num % 2 ? grey._200_ : grey._50_
-});
+export const root = {
+  width: '100%',
+  height: '50px',
+  background: grey
+};
+
+export const tablet = {
+  background: red
+};
+
+export const phone = {
+  background: blue
+};

@@ -4,6 +4,7 @@ import * as grey from 'cat-components/lib/color/grey';
 import black from 'cat-components/lib/color/black';
 import white from 'cat-components/lib/color/white';
 import blue from 'cat-components/lib/color/blue';
+import {inputStyle} from 'cat-components/lib/input';
 
 export const menuShowStyle = {
   zIndex: '99',
@@ -18,13 +19,18 @@ export const menuHideStyle = {
 };
 
 export const root = {
+  display: 'grid',
+  gridTemplateColumns: 'auto 34px',
+  border: `0.5px solid ${grey._500_}`,
+  borderRadius: inputStyle.input.borderRadius,
   cursor: 'pointer'
 };
 
 export const input = isSelected => ({
   margin: '0px',
-  width: 'calc(100% - 56px)',
-  border: `0.5px solid ${grey._500_}`,
+  width: 'calc(100% - 10px * 2)',
+  height: 'calc(100% - 5px * 2)',
+  border: '0px',
   borderRadius: '0px',
   color: isSelected ? grey._500_ : black,
   userSelect: 'none'

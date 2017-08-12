@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import radium from 'radium';
 import ArrowDropDownIcon from 'react-icons/lib/md/arrow-drop-down';
 import Menu from 'cat-components/lib/menu';
-import * as layoutStyle from 'cat-components/lib/layout';
 import {inputStyle, inputCheck} from 'cat-components/lib/input';
 
 import * as style from './style/inputSelect';
@@ -104,7 +103,7 @@ class InputSelect extends React.Component {
         trigger={['click']}
         animationStyles={[style.menuHideStyle, style.menuShowStyle]}
       >
-        <div style={[layoutStyle.grid(), style.root]}>
+        <div style={style.root}>
           <div style={[inputStyle.input, style.input(value === '')]}>
             {value === '' ? placeholder : value}
           </div>
