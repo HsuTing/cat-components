@@ -23,6 +23,7 @@ export default example => `
   - \`hours\` [int]
   - \`minutes\` [int]
   - \`seconds\` [int]
+  - \`milliseconds\` [int]
 
 - \`timerStart(timer)\` [func]
 

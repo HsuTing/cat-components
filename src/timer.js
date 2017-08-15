@@ -98,7 +98,8 @@ export default (
     return {
       hours: diffTime.days() * 24 + diffTime.hours(),
       minutes: diffTime.minutes(),
-      seconds: diffTime.seconds()
+      seconds: diffTime.seconds(),
+      milliseconds: diffTime.milliseconds()
     };
   }
 }

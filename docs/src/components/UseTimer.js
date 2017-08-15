@@ -19,7 +19,7 @@ export default class UseTimer extends React.Component {
 
   render() {
     const {isRunning, timer, timerStart, timerStop, timerReset} = this.props;
-    const {hours, minutes, seconds} = timer;
+    const {hours, minutes, seconds, milliseconds} = timer;
 
     return (
       <div>
@@ -32,7 +32,7 @@ export default class UseTimer extends React.Component {
           <Button onClick={() => timerReset()}>reset</Button>
         </div>
 
-        {`${hours} hr ${minutes} min ${seconds} sec`}
+        {`${hours} hr ${minutes} min ${seconds} sec ${milliseconds} millsec`}
       </div>
     );
   }
