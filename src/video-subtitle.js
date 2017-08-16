@@ -8,7 +8,8 @@ import moment from 'moment';
 const timeTypes = {
   hour: PropTypes.number,
   minute: PropTypes.number,
-  second: PropTypes.number
+  second: PropTypes.number,
+  millisecond: PropTypes.number
 };
 
 @radium

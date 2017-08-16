@@ -32,7 +32,7 @@ export default class UseTimer extends React.Component {
           <Button onClick={() => timerReset()}>reset</Button>
         </div>
 
-        {`${hours} hr ${minutes} min ${seconds} sec ${milliseconds} millsec`}
+        {`${hours} hr ${minutes} min ${seconds} sec ${milliseconds} ms`}
       </div>
     );
   }

@@ -14,6 +14,7 @@ export default example => `
   - \`hour\` [number]
   - \`minute\` [number]
   - \`second\` [number]
+  - \`millisecond\` [number]
   - \`content(now)\` [func, required]
 
     This function should return a react component.
