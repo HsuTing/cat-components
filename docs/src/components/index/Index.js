@@ -10,13 +10,13 @@ import Button from 'cat-components/lib/button';
 import Link from 'cat-components/lib/link';
 import I18n from 'cat-components/lib/i18n';
 import Img from 'cat-components/lib/img';
-import Bundle from 'cat-components/lib/bundle';
+import Bundle, {load} from 'cat-components/lib/bundle';
 import goToAnimation from 'cat-components/lib/goToAnimation';
 
 import Normalize from './../share/Normalize';
 import * as style from './style/index';
 
-import Multiple from './Multiple';
+const ENV = process.env.NODE_ENV === 'production' && process.env.TYPE === 'client';
 
 @radium
 @goToAnimation('body')
@@ -71,25 +71,30 @@ class Index extends React.Component {
 
         <Switch>
           <Route path='/'
-            render={() => {
-              if(process.env.TYPE === 'client')
-                return (
-                  <Bundle load={require('bundle-loader?lazy&name=simple!./Simple')}>
-                    {Simple => <Simple data={data} />}
-                  </Bundle>
-                );
-
-              const Simple = require('./Simple').default;
-
-              return (
-                <Simple data={data} />
-              );
-            }}
+            render={() => (
+              <Bundle load={
+                ENV ?
+                  require('bundle-loader?lazy&name=simple!./Simple') :
+                  load(require('./Simple'))
+              }
+              >
+                {Simple => <Simple data={data} />}
+              </Bundle>
+            )}
             exact
           />
 
           <Route path='/multiple/'
-            render={() => <Multiple data={data} />}
+            render={() => (
+              <Bundle load={
+                ENV ?
+                  require('bundle-loader?lazy&name=simple!./Multiple') :
+                  load(require('./Multiple'))
+              }
+              >
+                {Multiple => <Multiple data={data} />}
+              </Bundle>
+            )}
             exact
           />
         </Switch>

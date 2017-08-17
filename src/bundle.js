@@ -4,6 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
 
+export const load = mod => (callback = () => {}) => {
+  callback(mod);
+};
+
 @radium
 export default class Bundle extends React.Component {
   static propTypes = {
