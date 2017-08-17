@@ -24,6 +24,7 @@ export const components = output([
   'Accordion',
   'Alert',
   'Button',
+  'Bundle',
   'Calendar',
   'CalendarTable',
   'Canvas',
@@ -45,6 +46,7 @@ export const components = output([
   'Wrapper',
   'VideoSubtitle'
 ], [
+  'Bundle',
   'Link',
   'Wrapper'
 ]);
