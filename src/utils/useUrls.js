@@ -11,7 +11,8 @@ export default (
     router: {
       isServer: true,
       location: url,
-      context: {}
+      context: {},
+      ...((props || {}).router || {})
     }
   }
 }));
