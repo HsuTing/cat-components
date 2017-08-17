@@ -6,10 +6,11 @@ Make a component with [bundle loader](https://github.com/webpack-contrib/bundle-
 
 #### Example
 \`\`\`js
+'use strict';
 import Bundle, {load} from 'cat-components/lib/bundle';
 
 <Bundle load={
-  process.env.NODE_ENV === 'production' && process.env.TYPE === 'client' ?
+  process.env.TYPE === 'client' ?
     require('bundle-loader?lazy&name=simple!./Component') :
     load(require('./Component'))
 }
