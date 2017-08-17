@@ -10,12 +10,12 @@ import Button from 'cat-components/lib/button';
 import Link from 'cat-components/lib/link';
 import I18n from 'cat-components/lib/i18n';
 import Img from 'cat-components/lib/img';
+import Bundle from 'cat-components/lib/bundle';
 import goToAnimation from 'cat-components/lib/goToAnimation';
 
 import Normalize from './../share/Normalize';
 import * as style from './style/index';
 
-import Simple from './Simple';
 import Multiple from './Multiple';
 
 @radium
@@ -45,7 +45,7 @@ class Index extends React.Component {
               Cat components
 
               <Route path='/multiple/'
-                render={() => <font> [Multiple]</font>}
+                render={() => <font>[Multiple]</font>}
                 exact
               />
             </h1>
@@ -71,7 +71,20 @@ class Index extends React.Component {
 
         <Switch>
           <Route path='/'
-            render={() => <Simple data={data} />}
+            render={() => {
+              if(process.env.TYPE === 'client')
+                return (
+                  <Bundle load={require('bundle-loader?lazy&name=simple!./Simple')}>
+                    {Simple => <Simple data={data} />}
+                  </Bundle>
+                );
+
+              const Simple = require('./Simple').default;
+
+              return (
+                <Simple data={data} />
+              );
+            }}
             exact
           />
 

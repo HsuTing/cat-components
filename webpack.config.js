@@ -25,6 +25,7 @@ module.exports = {
   },
   output: {
     filename: ENV ? '[name].min.js' : '[name].js',
+    chunkFilename: ENV ? '[name].min.js' : '[name].js',
     publicPath: '/assets/',
     path: path.resolve(__dirname, './docs/public/js')
   },
@@ -34,11 +35,17 @@ module.exports = {
     ]
   },
   plugins: ENV ? [
-    new webpack.DefinePlugin({'process.env': {NODE_ENV: JSON.stringify('production')}}),
+    new webpack.DefinePlugin({'process.env': {
+      NODE_ENV: JSON.stringify('production'),
+      TYPE: 'client'
+    }}),
     new webpack.optimize.CommonsChunkPlugin({name: 'common', filename: 'common.min.js'}),
     new webpack.optimize.UglifyJsPlugin({sourceMap: true}),
     new webpack.LoaderOptionsPlugin({minimize: true, debug: true})
   ] : [
+    new webpack.DefinePlugin({'process.env': {
+      TYPE: 'client'
+    }}),
     new webpack.optimize.CommonsChunkPlugin({name: 'common', filename: 'common.js'}),
     new webpack.HotModuleReplacementPlugin()
   ]

@@ -12,6 +12,7 @@ You can see [here](https://hsuting.github.io/cat-components) to learn how to use
 ###### Components
 - accordion
 - alert
+- bundle
 - button
 - calendar
 - calendar-table
