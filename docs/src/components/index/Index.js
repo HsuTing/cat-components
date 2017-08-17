@@ -16,8 +16,6 @@ import goToAnimation from 'cat-components/lib/goToAnimation';
 import Normalize from './../share/Normalize';
 import * as style from './style/index';
 
-const ENV = process.env.NODE_ENV === 'production' && process.env.TYPE === 'client';
-
 @radium
 @goToAnimation('body')
 class Index extends React.Component {
@@ -73,7 +71,7 @@ class Index extends React.Component {
           <Route path='/'
             render={() => (
               <Bundle load={
-                ENV ?
+                process.env.NODE_ENV === 'production' && process.env.TYPE === 'client' ?
                   require('bundle-loader?lazy&name=simple!./Simple') :
                   load(require('./Simple'))
               }
@@ -87,8 +85,8 @@ class Index extends React.Component {
           <Route path='/multiple/'
             render={() => (
               <Bundle load={
-                ENV ?
-                  require('bundle-loader?lazy&name=simple!./Multiple') :
+                process.env.NODE_ENV === 'production' && process.env.TYPE === 'client' ?
+                  require('bundle-loader?lazy&name=multiple!./Multiple') :
                   load(require('./Multiple'))
               }
               >
