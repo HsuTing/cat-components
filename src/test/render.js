@@ -1,12 +1,13 @@
 'use strict';
 
-const path = require('path');
-const should = require('should');
-const memFs = require('mem-fs');
-const editor = require('mem-fs-editor');
+import path from 'path';
+import should from 'should'; // eslint-disable-line no-unused-vars
+import memFs from 'mem-fs';
+import editor from 'mem-fs-editor';
 
 const store = memFs.create();
 const fs = editor.create(store);
+const root = path.resolve(__dirname, './../../test-build');
 
 const renderContent = content => (
   `<main id="root">${content}</main>\n`
@@ -15,7 +16,7 @@ const renderContent = content => (
 describe('render', () => {
   it('# test react', () => {
     fs.read(
-      path.resolve(__dirname, './test-react/index.html')
+      path.resolve(root, './test-react/index.html')
     ).should.equal(
       renderContent('<div>test react</div>')
     );
@@ -24,7 +25,7 @@ describe('render', () => {
   describe('# test redux', () => {
     it('## just reducer', () => {
       fs.read(
-        path.resolve(__dirname, './test-redux/index.html')
+        path.resolve(root, './test-redux/index.html')
       ).should.equal(
         renderContent('<div>test redux(origin state)</div>')
       );
@@ -32,7 +33,7 @@ describe('render', () => {
 
     it('## add preloadedState', () => {
       fs.read(
-        path.resolve(__dirname, './test-redux/preloadedState/index.html')
+        path.resolve(root, './test-redux/preloadedState/index.html')
       ).should.equal(
         renderContent('<div>test redux(preloaded state)</div>')
       );
@@ -42,7 +43,7 @@ describe('render', () => {
   describe('# test router', () => {
     it('## render \'/\'', () => {
       fs.read(
-        path.resolve(__dirname, './test-router/index.html')
+        path.resolve(root, './test-router/index.html')
       ).should.equal(
         renderContent('<div data-radium="true"><div>router render index</div></div>')
       );
@@ -50,7 +51,7 @@ describe('render', () => {
 
     it('## render \'/about/\'', () => {
       fs.read(
-        path.resolve(__dirname, './test-router/about/index.html')
+        path.resolve(root, './test-router/about/index.html')
       ).should.equal(
         renderContent('<div data-radium="true"><div>router render about</div></div>')
       );

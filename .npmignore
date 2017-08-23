@@ -6,7 +6,9 @@ yarn.lock
 .yo-rc.json
 .travis.yml
 test
+.nycrc
 coverage
+.nyc_output
 docs
 views
 *.config.js
