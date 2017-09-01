@@ -5,6 +5,3 @@ node_modules
 *.log
 coverage
 lib
-test-build
-templates-*
-.nyc_output

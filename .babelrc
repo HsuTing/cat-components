@@ -20,11 +20,11 @@
     "transform-decorators-legacy",
     "transform-object-assign",
     ["module-resolver", {
-      "root": ["./"],
+      "root": ["./", "./src"],
       "alias": {
         "cat-components/lib": "src",
-        "color": "src/color",
-        "utils": "src/utils"
+        "color": "color",
+        "utils": "utils"
       }
     }]
   ]

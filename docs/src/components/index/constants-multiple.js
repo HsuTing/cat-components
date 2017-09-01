@@ -11,7 +11,7 @@ const output = (
 ${example}
 \`\`\`
   `,
-  component: require(`./../../../../lib/multiple/${name}`).default
+  component: require(`./../multiple/${name}`).default
 }));
 
 export const input = output([

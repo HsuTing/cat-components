@@ -28,7 +28,7 @@ module.exports = {
     }
   },
   "env": {
-    "mocha": true,
+    "jest": true,
     "browser": true,
     "node": true
   },

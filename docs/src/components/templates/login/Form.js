@@ -2,14 +2,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import radium, {StyleRoot} from 'radium';
-import {Switch, Route} from 'react-router-dom';
-import Icon from 'cat-components/lib/icon';
+import radium from 'radium';
 import Button from 'cat-components/lib/button';
 import Link from 'cat-components/lib/link';
 import Input, {inputConnect} from 'cat-components/lib/input-redux';
 
-import * as style from './style/login';
+import * as style from './style/form';
 
 const fields = [{
   name: 'email',
@@ -37,7 +35,7 @@ const registerFields = [{
 
 @inputConnect('login')()
 @radium
-class Field extends React.Component {
+export default class Field extends React.Component {
   static propTypes = {
     type: PropTypes.string.isRequired,
     form: PropTypes.object.isRequired,
@@ -58,7 +56,7 @@ class Field extends React.Component {
     const {type, form, inputDispatch} = this.props;
 
     return (
-      <div style={style.field}>
+      <div style={style.root}>
         {this.fields.map(({type, name, rules}, index) => {
           const {value, isError, error} = form[name] || {};
 
@@ -109,36 +107,5 @@ class Field extends React.Component {
     submitDispatch(data => {
       alert(JSON.stringify(data, null, 2))
     });
-  }
-}
-
-@radium
-export default class Login extends React.Component {
-  render() {
-    return (
-      <StyleRoot style={style.root}>
-        <div />
-
-        <div style={style.content}>
-          <div style={style.iconRoot}>
-            <Icon />
-          </div>
-
-          <Switch>
-            <Route path='/login/'
-              component={() => <Field type='login' />}
-              exact
-            />
-
-            <Route path='/register/'
-              component={() => <Field type='register' />}
-              exact
-            />
-          </Switch>
-        </div>
-
-        <div />
-      </StyleRoot>
-    );
   }
 }

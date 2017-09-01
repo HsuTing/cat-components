@@ -27,7 +27,7 @@ const getCode = relativePath => {
 
 const data = Object.assign({},
   getCode('./docs/src/components/'),
-  getCode('./src/multiple')
+  getCode('./docs/src/components/multiple')
 );
 
 module.exports = useUrls(['/', '/multiple/'], {
@@ -46,7 +46,7 @@ module.exports = useUrls(['/', '/multiple/'], {
   }
 }).concat(useUrls(['/login/', '/register/'], {
   name: 'docs',
-  component: './lib/docs/components/templates/Login',
+  component: './lib/docs/components/templates/login/Login',
   js: 'login',
   props: {
     redux: {
@@ -55,6 +55,6 @@ module.exports = useUrls(['/', '/multiple/'], {
   }
 })).concat(useUrls(['/', '/page1/', '/page2/'], {
   name: 'docs/dashboard',
-  component: './lib/docs/components/templates/Dashboard',
+  component: './lib/docs/components/templates/dashboard/Dashboard',
   js: 'dashboard'
 }));
