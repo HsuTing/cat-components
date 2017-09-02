@@ -1,7 +1,7 @@
 'use strict';
 
 export default (
-  urls = [],
+  urls,
   {name, props, ...options}
 ) => urls.map(url => ({
   ...options,

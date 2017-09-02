@@ -1,11 +1,14 @@
 {
   "scripts": {
+    "test": "jest --silent",
+    "test:watch": "yarn test -- --watchAll",
+    "build-color": "node ./lib/bin/build-color.js",
     "webpack-server": "webpack-dev-server --content-base src --hot --inline",
     "webpack": "cross-env NODE_ENV=production webpack",
     "lint": "eslint --cache ./src ./docs/src --ext .js",
     "lint:watch": "esw --cache ./src ./docs/src --ext .js -w --color",
-    "babel": "rm -rf ./lib && babel src --out-dir lib --ignore __tests__",
-    "babel:watch": "rm -rf ./lib && babel -w src --out-dir lib --ignore __tests__",
+    "babel": "rm -rf ./lib && babel src --out-dir lib",
+    "babel:watch": "rm -rf ./lib && babel -w src --out-dir lib",
     "babel:static": "rm -rf ./lib/docs && cross-env BABEL_ENV=static babel docs/src --out-dir lib/docs",
     "prepublish": "yarn babel",
     "build": "yarn babel && yarn static",
@@ -81,7 +84,6 @@
     "whatwg-fetch": "^2.0.3"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0",
     "chalk": "^2.1.0",
     "html-minifier": "^3.5.3",
     "inquirer": "^3.2.2",
