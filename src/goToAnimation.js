@@ -6,6 +6,9 @@ import eases from 'eases';
 const findTop = element => {
   let top = 0;
 
+  if(!element)
+    return top;
+
   do {
     top += element.offsetTop  || 0;
     element = element.offsetParent;

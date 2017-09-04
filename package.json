@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "copy": "rm -rf ./temp && mkdir temp && cp -r ./docs/src/components/multiple ./temp/multiple && cp -r ./docs/src/components/templates ./temp/templates",
     "test": "jest --silent",
     "test:watch": "yarn test -- --watchAll",
     "build-color": "node ./lib/bin/build-color.js",
@@ -10,7 +11,7 @@
     "babel": "rm -rf ./lib && babel src --out-dir lib",
     "babel:watch": "rm -rf ./lib && babel -w src --out-dir lib",
     "babel:static": "rm -rf ./lib/docs && cross-env BABEL_ENV=static babel docs/src --out-dir lib/docs",
-    "prepublish": "yarn babel",
+    "prepublish": "yarn babel && yarn copy",
     "build": "yarn babel && yarn static",
     "prod": "yarn babel && cross-env NODE_ENV=production yarn static && yarn webpack",
     "watch": "concurrently -c green \"yarn lint:watch\" \"yarn babel:watch\" \"yarn webpack-server\"",
@@ -32,6 +33,7 @@
     "lint"
   ],
   "bin": {
+    "copy": "./lib/bin/copy.js",
     "static": "./lib/bin/static.js"
   },
   "homepage": "https://github.com/HsuTing/cat-components/",
@@ -60,12 +62,14 @@
     "cross-env": "^5.0.5",
     "d3": "^4.10.0",
     "eases": "^1.0.8",
+    "enzyme": "^2.9.1",
     "eslint": "^4.5.0",
     "eslint-config-google": "^0.9.1",
     "eslint-import-resolver-babel-module": "^3.0.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-react": "^7.3.0",
     "eslint-watch": "^3.1.2",
+    "fetch-everywhere": "^1.0.5",
     "moment": "^2.18.1",
     "pre-commit": "^1.2.2",
     "radium-normalize": "^2.0.5",
@@ -75,15 +79,16 @@
     "react-markdown": "^2.5.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "react-test-renderer": "^15.6.1",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "uuid": "^3.0.1",
     "validator": "^8.1.0",
     "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1",
-    "whatwg-fetch": "^2.0.3"
+    "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "chalk": "^2.1.0",
     "html-minifier": "^3.5.3",
     "inquirer": "^3.2.2",

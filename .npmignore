@@ -5,7 +5,7 @@ yarn.lock
 .eslint*
 .yo-rc.json
 .travis.yml
-__tests__
+lib/__tests__
 jest.config.js
 coverage
 docs

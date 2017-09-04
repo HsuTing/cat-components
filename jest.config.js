@@ -9,7 +9,13 @@ module.exports = {
     'src/**/*.js',
     'docs/src/**/*.js',
     '!**/node_modules/**',
-    '!src/bin/*.js'
+    '!**/public/**',
+    '!src/bin/*.js',
+    '!src/color/**',
+    // TODO
+    '!**/canvas.js',
+    '!**/canvas/**',
+    '!**/UseCanvas.js'
   ],
   coverageDirectory: 'coverage',
   coverageReporters: [

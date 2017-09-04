@@ -1,8 +1,6 @@
 'use strict';
 
-const output = (
-  names = []
-) => names.map(name => ({
+const output = names => names.map(name => ({
   name,
   text: example => `
 # [${name}](./#${name})

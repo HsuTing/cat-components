@@ -5,7 +5,7 @@ export default example => `
 This uses to build several languages in website with \`fetch\`. This will try to get new json file when you change language.
 
 #### Other packages
-- [whatwg-fetch](https://github.com/github/fetch)
+- [fetch-everywhere](https://github.com/lucasfeliciano/fetch-everywhere)
 
 #### Props
 - \`lang\` [string, required]
@@ -16,9 +16,9 @@ This uses to build several languages in website with \`fetch\`. This will try to
 
   The data of the language is used at first. For example, it can be \`{hello: "Hello world"}\`.
 
-- \`dirPath\` [string, default: '/public/i18n']
+- \`basename\` [string, default: '/public/i18n/']
 
-  This is the path of the file folder which has the files, like \`en-us.json\`, \`zh-tw.json\`.
+  This is the basename of the url which has those files, like \`en-us.json\`, \`zh-tw.json\`.
 
 #### Decorators
 - language

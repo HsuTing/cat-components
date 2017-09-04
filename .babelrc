@@ -24,7 +24,8 @@
       "alias": {
         "cat-components/lib": "src",
         "color": "color",
-        "utils": "utils"
+        "utils": "utils",
+        "test-components": "docs/src/components"
       }
     }]
   ]

@@ -86,7 +86,6 @@ export default class ImgResizeSlideshow extends React.Component {
     return (
       <StyleRoot {...props}
         style={[style.root, props.style]}
-        ref={node => (this.node = node)}
       >
         {loadAnimation([
           this.hideStyle.left,

@@ -1,7 +1,6 @@
 'use strict';
 
-import 'whatwg-fetch';
-import path from 'path';
+import 'fetch-everywhere';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -25,12 +24,12 @@ export default class I18n extends React.Component {
   static propTypes = {
     lang: PropTypes.string.isRequired,
     defaultData: PropTypes.object.isRequired,
-    dirPath: PropTypes.string,
+    basename: PropTypes.string,
     children: PropTypes.element.isRequired
   }
 
   static defaultProps = {
-    dirPath: '/public/i18n'
+    basename: '/public/i18n/'
   }
 
   static childContextTypes = {
@@ -42,7 +41,7 @@ export default class I18n extends React.Component {
     super(props);
     const state = {
       lang: props.lang,
-      dirPath: props.dirPath
+      basename: props.basename
     };
 
     state[props.lang] = props.defaultData;
@@ -67,14 +66,14 @@ export default class I18n extends React.Component {
 
   changeLanguage(lang) {
     return () => {
-      const {dirPath, ...data} = this.state;
+      const {basename, ...data} = this.state;
 
       if(data[lang]) {
         this.setState({lang});
         return;
       }
 
-      fetch(path.resolve(dirPath, `${lang}.json`))
+      fetch(`${basename.slice(-1) === '/' ? basename : `${basename}/`}${lang}.json`)
         .then(response => response.json())
         .then(languageData => {
           data[lang] = languageData;

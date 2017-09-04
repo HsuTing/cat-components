@@ -67,9 +67,7 @@ export default class ImgZoom extends React.Component {
     const {src, addStyle, imgAnimation, imgAnimationEnd, isZoom} = this.state;
 
     return (
-      <div {...props}
-        ref={node => (this.node = node)}
-      >
+      <div {...props}>
         {
           imgAnimation.length !== 2 ?
             null :

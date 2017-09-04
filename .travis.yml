@@ -5,7 +5,8 @@ before_install:
   - yarn add react react-dom
 script:
   - yarn run prod
-  - yarn build-color
+  - yarn run build-color
+  - yarn run copy
   - yarn run lint
   - yarn run test
 branches:

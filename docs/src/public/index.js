@@ -11,7 +11,7 @@ import redux from './../utils/redux';
   ReactDOM.render(
     <Index data={data}
       defaultData={languageData}
-      dirPath={languageDir}
+      basename={languageDir}
       redux={redux}
       router={router}
     />,

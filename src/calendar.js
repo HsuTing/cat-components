@@ -167,7 +167,7 @@ export default class Calendar extends React.Component {
 
   scroll() {
     Array.from(this.node.childNodes)
-      .map(node => {
+      .forEach(node => {
         const childNode = node.querySelector('#is-chosen');
 
         node.scrollTop = childNode.offsetTop - (node.offsetHeight / 2) + (childNode.offsetHeight / 2);

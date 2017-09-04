@@ -71,6 +71,7 @@ class Index extends React.Component {
           <Route path='/'
             render={() => (
               <Bundle load={
+                /* istanbul ignore next */
                 process.env.NODE_ENV === 'production' && process.env.TYPE === 'client' ?
                   require('bundle-loader?lazy&name=simple!./Simple') :
                   load(require('./Simple'))
@@ -85,6 +86,7 @@ class Index extends React.Component {
           <Route path='/multiple/'
             render={() => (
               <Bundle load={
+                /* istanbul ignore next */
                 process.env.NODE_ENV === 'production' && process.env.TYPE === 'client' ?
                   require('bundle-loader?lazy&name=multiple!./Multiple') :
                   load(require('./Multiple'))
@@ -106,7 +108,7 @@ class Index extends React.Component {
 }
 
 /* eslint-disable */
-export default ({redux, router, defaultData, dirPath, ...props}) => (
+export default ({redux, router, defaultData, basename, ...props}) => (
   <Wrapper redux={redux}
     router={router}
     modules={{
@@ -117,7 +119,7 @@ export default ({redux, router, defaultData, dirPath, ...props}) => (
   >
     <I18n lang='en-us'
       defaultData={defaultData}
-      dirPath={dirPath}
+      basename={basename}
     >
       <Index {...props} />
     </I18n>

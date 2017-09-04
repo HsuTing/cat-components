@@ -1,7 +1,7 @@
 'use strict';
 
 const output = (
-  names = [],
+  names,
   excludeName = [],
 ) => names.map(name => ({
   name,
@@ -27,7 +27,7 @@ export const components = output([
   'Bundle',
   'Calendar',
   'CalendarTable',
-  'Canvas',
+  //TODO: 'Canvas',
   'Loading',
   'I18n',
   'Icon',

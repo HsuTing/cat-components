@@ -9,35 +9,19 @@ import {inputStyle, inputCheck} from 'cat-components/lib/input';
 
 import * as style from './style/inputSelect';
 
-@radium
-class Options extends React.Component {
-  static propTypes = {
-    choose: PropTypes.func.isRequired,
-    choice: PropTypes.string.isRequired,
-    hide: PropTypes.func.isRequired,
-    options: PropTypes.arrayOf(
-      PropTypes.string
-    ).isRequired
-  }
-
-  render() {
-    const {choose, choice, hide, options} = this.props;
-
-    return (
-      <div>
-        {options.map((option, optionIndex) => (
-          <div key={optionIndex}
-            style={style.option(optionIndex === options.length - 1, choice === option)}
-            onClick={() => {
-              hide();
-              choose(option);
-            }}
-          >{option}</div>
-        ))}
-      </div>
-    );
-  }
-}
+const Options = radium(({choose, choice, hide, options}) => (
+  <div>
+    {options.map((option, optionIndex) => (
+      <div key={optionIndex}
+        style={style.option(optionIndex === options.length - 1, choice === option)}
+        onClick={() => {
+          hide();
+          choose(option);
+        }}
+      >{option}</div>
+    ))}
+  </div>
+));
 
 @radium
 class InputSelect extends React.Component {
