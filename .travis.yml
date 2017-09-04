@@ -8,7 +8,7 @@ script:
   - yarn run build-color
   - yarn run copy
   - yarn run lint
-  - yarn run test
+  - yarn run test -- -u
 branches:
 only:
   - master
