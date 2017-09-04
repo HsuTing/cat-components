@@ -7,7 +7,7 @@ import Button from 'cat-components/lib/button';
 import goToAnimation from 'cat-components/lib/goToAnimation';
 
 @radium
-@goToAnimation('body')
+@goToAnimation('#body')
 export default class UseGoTo extends React.Component {
   static propTypes = {
     goTo: PropTypes.func.isRequired
@@ -18,8 +18,8 @@ export default class UseGoTo extends React.Component {
 
     return (
       <div>
-        <Button onClick={() => goTo()}>Go Top</Button>
-        <Button onClick={() => goTo('#Input')}>Go To Input</Button>
+        <Button onClick={/* istanbul ignore next */ () => goTo()}>Go Top</Button>
+        <Button onClick={/* istanbul ignore next */ () => goTo('#Input')}>Go To Input</Button>
       </div>
     );
   }

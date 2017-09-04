@@ -17,7 +17,7 @@ import Normalize from './../share/Normalize';
 import * as style from './style/index';
 
 @radium
-@goToAnimation('body')
+@goToAnimation('#body')
 class Index extends React.Component {
   static propTypes = {
     data: PropTypes.object.isRequired,
@@ -28,7 +28,9 @@ class Index extends React.Component {
     const {data, goTo} = this.props;
 
     return (
-      <div style={style.root}>
+      <div id='body'
+        style={style.root}
+      >
         <Normalize />
 
         <div style={style.titleRoot}>
@@ -100,7 +102,7 @@ class Index extends React.Component {
         </Switch>
 
         <ArrowUpward style={style.arrowUpward}
-          onClick={() => goTo()}
+          onClick={/* istanbul ignore next */ () => goTo()}
         />
       </div>
     );

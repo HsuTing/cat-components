@@ -7,7 +7,7 @@ import Button from 'cat-components/lib/button';
 import goToAnimation from 'cat-components/lib/goToAnimation';
 
 @radium
-@goToAnimation('body')
+@goToAnimation('#body')
 export default class Buttons extends React.Component {
   static propTypes = {
     goTo: PropTypes.func.isRequired,
@@ -28,7 +28,7 @@ export default class Buttons extends React.Component {
         <div>
           {items.map(({name}, itemIndex) => (
             <Button key={itemIndex}
-              onClick={() => goTo(`#${name}`)}
+              onClick={/* istanbul ignore next */ () => goTo(`#${name}`)}
             >{name}</Button>
           ))}
         </div>

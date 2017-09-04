@@ -6,7 +6,11 @@ import white from 'cat-components/lib/color/white';
 import blue from 'cat-components/lib/color/blue';
 
 export const root = {
-  margin: '30px 10%'
+  padding: '30px 10vw',
+  width: '80vw',
+  height: 'calc(100vh - 30px * 2)',
+  overflowY: 'scroll',
+  overflowX: 'hidden'
 };
 
 export const block = {

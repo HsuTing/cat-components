@@ -1,11 +1,7 @@
 'use strict';
 
-import {mount} from 'enzyme';
-
-export default component => {
-  it('# i18n', async () => {
-    const wrapper = mount(component);
-
+export default wrapper => {
+  it('# I18n', async () => {
     expect(
       wrapper.find('UseI18n').children().find('div').text()
     ).toBe('Hello world');
@@ -17,7 +13,7 @@ export default component => {
         resolve(
           wrapper.find('UseI18n').children().find('div').text()
         );
-      }, 1000);
+      }, 2000);
     })).toBe('你好');
   });
 };

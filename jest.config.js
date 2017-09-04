@@ -12,6 +12,7 @@ module.exports = {
     '!**/public/**',
     '!src/bin/*.js',
     '!src/color/**',
+    '!src/goToAnimation.js',
     // TODO
     '!**/canvas.js',
     '!**/canvas/**',
