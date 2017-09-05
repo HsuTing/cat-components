@@ -19,19 +19,16 @@ describe('index', () => {
       redux
     }
   }).forEach(({props}) => {
-    describe(`# '${props.router.location}'`, () => {
-      const wrapper = mount(
-        <Index {...props} />
-      );
+    const wrapper = mount(
+      <Index {...props} />
+    );
 
-      switch(props.router.location) {
-        case '/': {
-          describe(`# '/'`, () => {
-            testComponents(wrapper, 'index');
-          });
-          break;
-        }
-      }
-    });
+    switch(props.router.location) {
+      case '/':
+        describe(`# '/'`, () => {
+          testComponents(wrapper, 'index');
+        });
+        break;
+    }
   });
 });

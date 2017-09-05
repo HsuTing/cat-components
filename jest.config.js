@@ -10,6 +10,7 @@ module.exports = {
     'docs/src/**/*.js',
     '!**/node_modules/**',
     '!**/public/**',
+    '!**/docs/src/utils/router.js',
     '!src/bin/*.js',
     '!src/color/**',
     '!src/goToAnimation.js',
