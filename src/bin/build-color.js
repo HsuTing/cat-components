@@ -22,6 +22,6 @@ core().map(({name, options}) => {
     if(err)
       throw new Error(err);
 
-    console.log(chalk.green('build color done'));
+    console.log(chalk.green(`build color:${name} done`));
   });
 });

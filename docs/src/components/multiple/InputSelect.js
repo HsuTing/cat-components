@@ -12,13 +12,13 @@ import * as style from './style/inputSelect';
 const Options = radium(({choose, choice, hide, options}) => (
   <div>
     {options.map((option, optionIndex) => (
-      <div key={optionIndex}
+      <option key={optionIndex}
         style={style.option(optionIndex === options.length - 1, choice === option)}
         onClick={() => {
           hide();
           choose(option);
         }}
-      >{option}</div>
+      >{option}</option>
     ))}
   </div>
 ));
@@ -52,6 +52,7 @@ class InputSelect extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    /* istanbul ignore next */
     if(nextProps.value !== this.state.value)
       this.choose(nextProps.value);
   }
@@ -107,15 +108,34 @@ class InputSelect extends React.Component {
 
 
 // TODO: remove
-export default () => ( // eslint-disable-line react/display-name
-  <InputSelect value=''
-    rules={[]}
-    onChange={data => console.log(data)}
-    placeholder='Choose a option'
-    options={[
-      'optino 1',
-      'option 2',
-      'option 3'
-    ]}
-  />
-);
+export default class Temp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        value: ''
+      }
+    };
+
+    this.change = data => {
+      this.setState({data});
+    };
+  }
+
+  render() {
+    const {data} = this.state;
+
+    return (
+      <InputSelect value={data.value}
+        rules={[]}
+        onChange={this.change}
+        placeholder='Choose a option'
+        options={[
+          'option 1',
+          'option 2',
+          'option 3'
+        ]}
+      />
+    );
+  }
+}

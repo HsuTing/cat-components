@@ -16,7 +16,7 @@ const getMomentDate = value => {
   const [year, month, date] = value.split('-');
 
   return {
-    year: year ? parseInt(year) : now.year(),
+    year: parseInt(year),
     month: month ? parseInt(month) - 1 : 0,
     date: date ? parseInt(date) : 1
   };
@@ -57,6 +57,7 @@ class InputDate extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    /* istanbul ignore if */
     if(nextProps.value !== this.state.value)
       this.onChange(inputCheck(nextProps.value));
   }
@@ -177,12 +178,31 @@ const now = moment();
 
 
 // TODO: remove
-export default () => ( // eslint-disable-line react/display-name
-  <InputDate value={now.format(format)}
-    onChange={data => console.log(data)}
-    rules={[{
-      validator: value => moment(getMomentDate(value)).format(format) === 'Invalid date',
-      message: 'This is not a date.'
-    }]}
-  />
-);
+export default class Temp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        value: now.format(format)
+      }
+    };
+
+    this.change = data => {
+      this.setState({data});
+    };
+  }
+
+  render() {
+    const {data} = this.state;
+
+    return (
+      <InputDate value={data.value}
+        onChange={this.change}
+        rules={[{
+          validator: value => moment(getMomentDate(value)).format(format) === 'Invalid date',
+          message: 'This is not a date.'
+        }]}
+      />
+    );
+  }
+}

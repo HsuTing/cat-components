@@ -76,7 +76,7 @@ export default class Field extends React.Component {
               {
                 !isError ?
                   null :
-                  <p style={style.error}>{(error || /* istanbul ignore next */ []).join(' ,')}</p>
+                  <p style={style.error}>{error.join(' ,')}</p>
               }
             </div>
           );

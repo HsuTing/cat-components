@@ -23,7 +23,7 @@ const rules = [{
 const errorMessage = (isError, error) => (
   !isError ?
     null :
-    (error || []).map((err, index) => (
+    error.map((err, index) => (
       <p key={index}
         style={style.error}
       >{err}</p>
@@ -52,6 +52,7 @@ class UseDefaultValue extends React.Component {
           rules={rules}
           value={value}
           onChange={this.onChange}
+          type='textarea'
         />
 
         {errorMessage(isError, error)}

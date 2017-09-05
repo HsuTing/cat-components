@@ -29,7 +29,7 @@ export default class UseSlider extends React.Component {
     );
   }
 
-  change(value) {
+  /* istanbul ignore next */ change(value) {
     this.setState({value});
   }
 }
