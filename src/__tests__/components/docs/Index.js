@@ -29,6 +29,12 @@ describe('index', () => {
           testComponents(wrapper, 'index');
         });
         break;
+
+      case '/multiple/':
+        describe(`# '/multiple/'`, () => {
+          testComponents(wrapper, 'multiple');
+        });
+        break;
     }
   });
 });

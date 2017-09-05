@@ -14,16 +14,16 @@ describe('[templates] Dashboard', () => {
   );
 
   it('# show menu', () => {
-    const getDisplay = wrapper => {
+    const getDisplay = () => {
       return (new JSDOM(wrapper.find('aside').parent().html()))
         .window.document.querySelector('div').style.display;
     };
 
-    expect(getDisplay(wrapper)).toBe('none');
+    expect(getDisplay()).toBe('none');
 
     wrapper.find('header').find('svg').simulate('click');
 
-    expect(getDisplay(wrapper)).toBe('');
+    expect(getDisplay()).toBe('');
   });
 
   it('# Link click', () => {

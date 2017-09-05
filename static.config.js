@@ -19,7 +19,7 @@ const getCode = relativePath => {
         data[file.replace(/.js/, '')] = fs.readFileSync(
           path.resolve(folderPath, file),
           {encoding: 'utf-8'}
-        );
+        ).replace(/[ ]*\/\*.*\*\/[ ||\n]/g, '');
     });
 
   return data;
