@@ -6,19 +6,15 @@ export default example => `
 #### Props
 - \`children\` [array of component, required]
 
-  This children should be an array of \`StyleRoot\` in \`radium\`, and \`StyleRoot\` can only have two childrens.
+  Each children must only have two childrens.
 
 - \`index\` [index, required]
 
   This is the index of \`accordion\`. Use to choose the children component which should be shown.
 
-- \`contentStyle(isClicked)\` [func]
+- \`animationStyles\` [array]
 
-  Use to modify style when the children component is clicked.
-
-  - \`isClicked\` [bool]
-
-    If the children component is clicked, this will be \`true\`. You can use this to decide the style of the children component.
+  Use to modify the animation of showing or hiding the \`accordion\`. It must be an array like \`[hideStyle, ..., showStyle]\`. You can use many styles in this array.
 
 #### Example
 \`\`\`js

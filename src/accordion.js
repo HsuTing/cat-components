@@ -4,6 +4,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 
+import toggleStyle from 'utils/toggleStyle';
+import loadAnimation from 'utils/loadAnimation';
+
 import * as style from './style/accordion';
 
 export const accordionStyle = style;
@@ -13,11 +16,6 @@ export default class Accordion extends React.Component {
   static propTypes = {
     children: PropTypes.arrayOf(
       (propValue, key) => {
-        if(propValue[key].type !== StyleRoot)
-          return new Error(
-            'The childrens of "Accordion" should be "StyleRoot" in "radium".'
-          );
-
         if(React.Children.count(propValue[key].props.children) !== 2)
           return new Error(
             'The childrens of "Accordion" can only have two childrens.'
@@ -25,32 +23,46 @@ export default class Accordion extends React.Component {
       }
     ).isRequired,
     index: PropTypes.number.isRequired,
-    contentStyle: PropTypes.func
+    animationStyles: PropTypes.arrayOf(
+      PropTypes.object
+    )
   }
 
   static defaultProps = {
-    contentStyle: () => {}
+    animationStyles: [style.hideStyle, style.showStyle]
+  }
+
+  constructor(props) {
+    super(props);
+    this.showStyle = toggleStyle(true, props.animationStyles);
+    this.hideStyle = toggleStyle(false, props.animationStyles);
   }
 
   render() {
-    const {index, children, contentStyle, ...props} = this.props;
+    const {index, children, ...props} = this.props;
+
+    delete props.animationStyles;
 
     return (
       <div {...props}>
+        {loadAnimation([this.showStyle, this.hideStyle])}
+
         {React.Children.map(children, (item, itemIndex) => {
           const [title, content] = item.props.children;
           const newContentStyle = {
-            ...style.content,
+            ...style.root,
             ...content.props.style,
-            ...style.style(index === itemIndex),
-            ...contentStyle(index === itemIndex)
+            ...(index === itemIndex ? this.showStyle : this.hideStyle)
           };
 
-          return React.cloneElement(item, {},
-            title,
-            React.cloneElement(content, {
-              style: newContentStyle
-            })
+          return (
+            <StyleRoot {...item.props}>
+              {title}
+
+              {React.cloneElement(content, {
+                style: newContentStyle
+              })}
+            </StyleRoot>
           );
         })}
       </div>
