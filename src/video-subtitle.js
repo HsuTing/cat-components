@@ -30,6 +30,7 @@ export default class VideoSubtitle extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    /* istanbul ignore if */
     if(JSON.stringify(nextProps.subtitle) !== JSON.stringify(this.props.subtitle))
       this.subtitle = this.sortSubtitle(nextProps.subtitle);
   }
@@ -45,7 +46,7 @@ export default class VideoSubtitle extends React.Component {
         {this.subtitle.map(({content, time}, index) => (
           React.cloneElement(content(
             nowTime === time ||
-            (nowTime > time && nowTime < (this.subtitle[index + 1] || {}).time)
+            (nowTime > time && nowTime < (this.subtitle[index + 1] || /* istanbul ignore next */ {}).time)
           ), {
             key: index
           })

@@ -4,8 +4,8 @@ import React from 'react';
 import {mount} from 'enzyme';
 import {JSDOM} from 'jsdom';
 
-import Dashboard from 'test-components/templates/dashboard/Dashboard';
 import useUrls from 'cat-components/lib/utils/useUrls';
+import Dashboard from 'test-components/templates/dashboard/Dashboard';
 
 describe('[templates] Dashboard', () => {
   const {props} = useUrls(['/'], {})[0];

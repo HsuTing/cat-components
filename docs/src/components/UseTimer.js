@@ -10,7 +10,6 @@ import Button from 'cat-components/lib/button';
 @timer()
 export default class UseTimer extends React.Component {
   static propTypes = {
-    isRunning: PropTypes.bool.isRequired,
     timer: PropTypes.object.isRequired,
     timerStart: PropTypes.func.isRequired,
     timerStop: PropTypes.func.isRequired,
@@ -18,17 +17,14 @@ export default class UseTimer extends React.Component {
   }
 
   render() {
-    const {isRunning, timer, timerStart, timerStop, timerReset} = this.props;
+    const {timer, timerStart, timerStop, timerReset} = this.props;
     const {hours, minutes, seconds, milliseconds} = timer;
 
     return (
       <div>
         <div>
-          {
-            !isRunning ?
-              <Button onClick={() => timerStart()}>start</Button> :
-              <Button onClick={() => timerStop()}>stop</Button>
-          }
+          <Button onClick={() => timerStart()}>start</Button>
+          <Button onClick={() => timerStop()}>stop</Button>
           <Button onClick={() => timerReset()}>reset</Button>
         </div>
 

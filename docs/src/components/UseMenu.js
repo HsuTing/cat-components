@@ -11,11 +11,36 @@ import * as style from './style/useMenu';
 export default class UseMenu extends React.Component {
   render() {
     return (
-      <Menu menu={() => <h4>Menu</h4>}
-        menuStyle={style.menuStyle}
-      >
-        <MenuIcon style={style.menu} />
-      </Menu>
+      <div>
+        <h5>default trigger</h5>
+        <div>
+          <Menu menu={() => <h4>Menu</h4>}
+            menuStyle={style.menuStyle}
+          >
+            <MenuIcon style={style.menu} />
+          </Menu>
+        </div>
+
+        <h5>{`trigger: ['click']`}</h5>
+        <div>
+          <Menu menu={() => <h4>Menu</h4>}
+            menuStyle={style.menuStyle}
+            trigger={['click']}
+          >
+            <MenuIcon style={style.menu} />
+          </Menu>
+        </div>
+
+        <h5>{`trigger: ['hover']`}</h5>
+        <div>
+          <Menu menu={() => <h4>Menu</h4>}
+            menuStyle={style.menuStyle}
+            trigger={['hover']}
+          >
+            <MenuIcon style={style.menu} />
+          </Menu>
+        </div>
+      </div>
     );
   }
 }

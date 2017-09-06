@@ -27,7 +27,10 @@ class TestRedux extends React.Component {
 /* eslint-disable */
 export default ({redux}) => (
   <Wrapper redux={redux}
-    modules={{redux: require('redux'), reactRedux: require('react-redux')}}
+    modules={{
+      redux: require('redux'),
+      reactRedux: require('react-redux')
+    }}
   >
     <TestRedux />
   </Wrapper>

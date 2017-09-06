@@ -73,6 +73,7 @@ export default class I18n extends React.Component {
         return;
       }
 
+      /* istanbul ignore next */
       fetch(`${basename.slice(-1) === '/' ? basename : `${basename}/`}${lang}.json`)
         .then(response => response.json())
         .then(languageData => {

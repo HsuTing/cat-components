@@ -19,11 +19,13 @@ export default wrapper => {
       });
 
       expect(getBorderColor()).toBe('#f44336');
+    });
 
+    it('### submit', () => {
       wrapper.find('UseReduxWithNoDefaultValue').find('Button').simulate('click');
     });
 
-    it('### test blur', () => {
+    it('### blur', () => {
       wrapper.find('UseDefaultValue').find('Input').simulate('blur');
     });
   });

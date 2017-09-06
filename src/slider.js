@@ -23,7 +23,7 @@ export default class Slider extends React.Component {
   }
 
   static defaultProps = {
-    onChange: () => {},
+    onChange: /* istanbul ignore next */ () => {},
     min: 0,
     max: 100,
     value: 0,
@@ -48,6 +48,7 @@ export default class Slider extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    /* istanbul ignore if */
     if(nextProps.value !== this.props.value)
       this.setState({value: nextProps.value});
   }
@@ -96,7 +97,7 @@ export default class Slider extends React.Component {
 
   click(e) {
     const {max, min} = this.props;
-    const interval = this.node.offsetWidth;
+    const interval = this.node.offsetWidth || 100;
 
     this.change(
       (e.pageX - this.findLeft(this.node)) / interval * (max - min),
@@ -127,7 +128,7 @@ export default class Slider extends React.Component {
   }
 
   setValue(start) {
-    const interval = this.node.offsetWidth;
+    const interval = this.node.offsetWidth || 100;
     const originValue = this.state.value;
 
     return e => {

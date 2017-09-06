@@ -72,7 +72,7 @@ describe('static', () => {
       }])
     });
 
-    it('## add preloadedState', () => {
+    describe('## add preloadedState', () => {
       expect(renderStatic([{
         component: './lib/__tests__/utils/TestRedux',
         name: 'index',
@@ -85,7 +85,7 @@ describe('static', () => {
         }
       }])).toMatchObject([{
         content: renderContent('<div>test redux(preloaded state)</div>')
-      }])
+      }]);
     });
   });
 

@@ -96,13 +96,9 @@ export class Tbody extends React.Component {
         style={[style.tbody, this.props.style]}
       >
         {React.Children.map(this.props.children, node => {
-          const component = React.cloneElement(node);
-          if(component.type === Tr)
-            return React.cloneElement(node, {
-              style: style.trHover
-            });
-
-          return component;
+          return React.cloneElement(node, {
+            style: style.trHover
+          });
         })}
       </tbody>
     );

@@ -15,8 +15,13 @@ class UseAlert extends React.Component {
 
   render() {
     return (
-      <Button onClick={() => this.props.alert(({hide}) => <div onClick={hide}>Alert</div>)}
-      >Alert</Button>
+      <div>
+        <Button onClick={() => this.props.alert()}
+        >Default Alert</Button>
+
+        <Button onClick={() => this.props.alert(({hide}) => <div onClick={hide}>Alert</div>)}
+        >Custom Alert</Button>
+      </div>
     );
   }
 }

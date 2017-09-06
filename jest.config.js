@@ -14,6 +14,7 @@ module.exports = {
     '!src/bin/*.js',
     '!src/color/**',
     '!src/goToAnimation.js',
+    '!src/bundle.js',
     // TODO
     '!**/canvas.js',
     '!**/canvas/**',

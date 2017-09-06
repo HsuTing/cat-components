@@ -2,7 +2,14 @@
 
 import React from 'react';
 import radium from 'radium';
+import CheckCircleIcon from 'react-icons/lib/md/check-circle';
+import LensIcon from 'react-icons/lib/md/lens';
 import Toggle from 'cat-components/lib/toggle';
+
+const icons = {
+  default: LensIcon,
+  clicked: CheckCircleIcon
+};
 
 @radium
 export default class UseToggle extends React.Component {
@@ -46,6 +53,14 @@ export default class UseToggle extends React.Component {
         </div>
         <div>
           <Toggle type='switch' />
+        </div>
+
+        <h5>Type: custom</h5>
+        <div>
+          <Toggle icons={icons}
+            checked
+          />
+          <Toggle icons={icons} />
         </div>
       </div>
     );

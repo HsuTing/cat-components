@@ -11,10 +11,13 @@ export default class UseImg extends React.Component {
   render() {
     return (
       <div>
-        <Img src='https://hsuting.github.io/public/img/icon.svg' />
+        <Img src='https://hsuting.github.io/public/img/icon.svg'
+          link='https://github.com/HsuTing/cat-components'
+        />
 
         <Img style={style.div}
           src='https://hsuting.github.io/public/img/icon.svg'
+          link='https://github.com/HsuTing/cat-components'
           type='div'
         />
       </div>

@@ -3,7 +3,10 @@
 import radium from 'radium';
 import invariant from 'invariant';
 
-export default (status = true, styles = []) => {
+export default (
+  /* istanbul ignore next */ status = true,
+  /* istanbul ignore next */ styles = []
+) => {
   invariant(
     styles.length >= 2,
     'Here are needed at least two styles.'

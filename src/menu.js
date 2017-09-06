@@ -135,12 +135,14 @@ export default class Menu extends React.Component {
   }
 
   hideMenu() {
-    const {delay} = this.props;
+    const {trigger, delay} = this.props;
 
     this.isEnter = false;
-    this.interval = setInterval(() => {
-      this.setState({isShown: false});
-    }, delay * 1000);
+
+    if(trigger.includes('hover'))
+      this.interval = setInterval(() => {
+        this.setState({isShown: false});
+      }, delay * 1000);
   }
 
   animationEnd(e) {

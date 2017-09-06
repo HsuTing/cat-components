@@ -8,7 +8,16 @@ import Button from 'cat-components/lib/button';
 export default class UseButton extends React.Component {
   render() {
     return (
-      <Button>button</Button>
+      <div>
+        <Button>button</Button>
+
+        <Button link='https://github.com/HsuTing/cat-components'
+        >button with a link</Button>
+
+        <Button link='https://github.com/HsuTing/cat-components'
+          target='_blank'
+        >button with a link(target: _blank)</Button>
+      </div>
     );
   }
 }

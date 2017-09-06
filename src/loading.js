@@ -50,6 +50,7 @@ export default class Loading extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    /* istanbul ignore if */
     if(nextProps.innerRadius !== this.props.innerRadius ||
       nextProps.outerRadius !== this.props.outerRadius)
       this.setState({
@@ -93,7 +94,7 @@ export default class Loading extends React.Component {
     const {fps, sec, diff, animation} = this.props;
     const origin = this.state[name];
     const perTime = 1000 / fps;
-    const func = typeof animation === 'string' ? eases[animation] : animation;
+    const func = typeof animation === 'string' ? eases[animation] : /* istanbul ignore next */ animation;
     const realyName = name === 'start' ? 'end' : 'start';
     let count = 0;
 

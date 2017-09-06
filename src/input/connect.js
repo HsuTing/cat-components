@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import {changeValue, submit} from './reducer';
 
-export default (formName = '') => (
+export default formName => (
   mapStateToProps = () => {},
   mapDispatchToProps = () => {},
   mergeProps,
@@ -27,7 +27,7 @@ export default (formName = '') => (
           isError: (
             value.value === '' && !isSubmited ?
               false :
-              (value.isError || false)
+              (value.isError || /* istanbul ignore next */ false)
           )
         };
       });

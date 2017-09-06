@@ -3,9 +3,9 @@
 import React from 'react';
 import {mount} from 'enzyme';
 
+import useUrls from 'cat-components/lib/utils/useUrls';
 import Login from 'test-components/templates/login/Login';
 import redux from 'test-components/./../utils/redux';
-import useUrls from 'cat-components/lib/utils/useUrls';
 
 describe('[templates] Login', () => {
   useUrls(['/login/', '/register/'], {

@@ -73,7 +73,7 @@ export default class Wrapper extends React.Component {
     ];
 
     return (
-      <Router {...(routerProps || {})}>
+      <Router {...routerProps}>
         {component}
       </Router>
     );

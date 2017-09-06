@@ -62,6 +62,7 @@ export default class Calendar extends React.Component {
   componentDidMount() {
     this.scroll();
 
+    /* istanbul ignore if */
     if(defaultDate)
       return;
 
@@ -74,6 +75,7 @@ export default class Calendar extends React.Component {
   componentWillReceiveProps(nextProps) {
     const {format, date} = nextProps;
 
+    /* istanbul ignore if */
     if(date &&
       moment(date).format(format) !== 'Invalid date' &&
       JSON.stringify(date) !== JSON.stringify(this.state.date)

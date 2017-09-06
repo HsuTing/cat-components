@@ -3,14 +3,18 @@
 import React from 'react';
 import {mount} from 'enzyme';
 
+import useUrls from 'cat-components/lib/utils/useUrls';
 import Index from 'test-components/index/Index';
 import redux from 'test-components/./../utils/redux';
 import languageData from 'test-components/./../../public/i18n/en-us.json';
-import useUrls from 'cat-components/lib/utils/useUrls';
 
 import testComponents from './utils/testComponents';
 
-describe('index', () => {
+setTimeout(() => {
+  global.FB = {};
+}, 500);
+
+describe('docs', () => {
   useUrls(['/', '/multiple/'], {
     props: {
       defaultData: languageData,
@@ -27,12 +31,20 @@ describe('index', () => {
       case '/':
         describe(`# '/'`, () => {
           testComponents(wrapper, 'index');
+
+          afterAll(() => {
+            wrapper.unmount();
+          });
         });
         break;
 
       case '/multiple/':
         describe(`# '/multiple/'`, () => {
           testComponents(wrapper, 'multiple');
+
+          afterAll(() => {
+            wrapper.unmount();
+          });
         });
         break;
     }
