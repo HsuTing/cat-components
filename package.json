@@ -18,7 +18,7 @@
     "static": "yarn babel:static && node ./lib/bin/static.js static.config.js"
   },
   "name": "cat-components",
-  "version": "1.8.3",
+  "version": "1.8.5",
   "description": "react components",
   "author": {
     "name": "hsuting",

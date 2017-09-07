@@ -33,17 +33,18 @@ export default class Img extends React.Component {
   }
 
   componentDidMount() {
-    this.load();
+    this.load(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
     if(this.props.src !== nextProps.src)
-      this.load();
+      this.load(nextProps);
   }
 
   render() {
     const {type, link, target, ...props} = this.props;
     const {src} = this.state;
+
     delete props.src;
 
     if(!src)
@@ -71,8 +72,8 @@ export default class Img extends React.Component {
     return component;
   }
 
-  load() {
-    const {type, src, onLoad} = this.props;
+  load(props) {
+    const {type, src, onLoad} = props;
     const img = new Image();
 
     img.onload = () => {
