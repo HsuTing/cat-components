@@ -19,7 +19,7 @@ const resize = DOM => {
 
 export default DOMs => {
   if(DOMs instanceof Array)
-    return DOMs.forEach(resize);
+    return DOMs.map(resize);
   else
     return resize(DOMs);
 };

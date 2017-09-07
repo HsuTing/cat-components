@@ -33,7 +33,7 @@ class Controller {
     return this.events;
   }
 
-  runEvent(callback = () => {}) {
+  runEvent(/* istanbul ignore next */ callback = () => {}) {
     const events = this.events;
     Object.keys(events)
       .forEach(key => {

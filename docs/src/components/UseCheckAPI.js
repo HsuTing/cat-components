@@ -16,7 +16,7 @@ export default class UsecheckAPI extends React.Component {
         {
           this.props.FBCanUse ?
             'Can use "FB.api".' :
-            'Can not use "FB.api."'
+            'Can not use "FB.api".'
         }
       </div>
     );

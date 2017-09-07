@@ -10,10 +10,6 @@ import languageData from 'test-components/./../../public/i18n/en-us.json';
 
 import testComponents from './utils/testComponents';
 
-setTimeout(() => {
-  global.FB = {};
-}, 500);
-
 describe('docs', () => {
   useUrls(['/', '/multiple/'], {
     props: {

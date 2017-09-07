@@ -8,11 +8,15 @@ class Check {
 
   add(name, getValue, updateState) {
     const value = this.getValue(getValue);
+    const updateStateArray = this.variables[name] ?
+      [updateState].concat(this.variables[name].updateState) :
+      [updateState];
+
 
     this.variables[name] = {
       value,
       getValue,
-      updateState
+      updateState: updateStateArray
     };
 
     if(value)
@@ -30,29 +34,30 @@ class Check {
   }
 
   check() {
+    /* istanbul ignore if */
     if(this.interval)
       clearInterval(this.interval);
 
     this.interval = setInterval(() => {
-      const names = Object.keys(this.variables);
-      let check = true;
-
-      names.forEach(name => {
+      const check = Object.keys(this.variables).reduce((result, name) => {
         const variable = this.variables[name];
 
+        /* istanbul ignore next */
         if(!variable.value) {
           variable.value = this.getValue(variable.getValue);
 
           if(variable.value)
-            variable.updateState();
+            variable.updateState.forEach(update => update());
           else
-            check = false;
+            result = false;
         }
-      });
+
+        return result;
+      }, true);
 
       if(check)
         clearInterval(this.interval);
-    }, 1000);
+    }, 100);
   }
 }
 
