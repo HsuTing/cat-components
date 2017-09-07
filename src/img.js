@@ -28,19 +28,17 @@ export default class Img extends React.Component {
     this.state = {
       src: null
     };
+
+    this.load = this.load.bind(this);
   }
 
   componentDidMount() {
-    const {type, src, onLoad} = this.props;
-    const img = new Image();
+    this.load();
+  }
 
-    img.onload = () => {
-      if(type === 'div')
-        onLoad();
-
-      this.setState({src});
-    };
-    img.src = src;
+  componentWillReceiveProps(nextProps) {
+    if(this.props.src !== nextProps.src)
+      this.load();
   }
 
   render() {
@@ -71,5 +69,18 @@ export default class Img extends React.Component {
       );
 
     return component;
+  }
+
+  load() {
+    const {type, src, onLoad} = this.props;
+    const img = new Image();
+
+    img.onload = () => {
+      if(type === 'div')
+        onLoad();
+
+      this.setState({src});
+    };
+    img.src = src;
   }
 }
