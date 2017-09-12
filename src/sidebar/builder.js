@@ -17,4 +17,4 @@ export default Component => class extends React.Component { // eslint-disable-li
       />
     );
   }
-}
+};

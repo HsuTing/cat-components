@@ -36,5 +36,5 @@ export const iconRoot = {
 
 export const icon = {
   width: '34px',
-  height: '34px',
+  height: '34px'
 };

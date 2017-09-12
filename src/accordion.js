@@ -17,10 +17,11 @@ export default class Accordion extends React.Component {
     children: PropTypes.arrayOf(
       (propValue, key) => {
         /* istanbul ignore if */
-        if(React.Children.count(propValue[key].props.children) !== 2)
+        if(React.Children.count(propValue[key].props.children) !== 2) {
           return new Error(
             'The childrens of "Accordion" can only have two childrens.'
           );
+        }
       }
     ).isRequired,
     index: PropTypes.number.isRequired,

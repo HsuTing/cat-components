@@ -9,7 +9,7 @@ export const root = {
   height: '100vh',
   gridTemplateColumns: '240px auto',
   ...layoutStyle.tablet({
-    gridTemplateColumns: 'auto',
+    gridTemplateColumns: 'auto'
   })
 };
 

@@ -36,7 +36,7 @@ class InputDate extends React.Component {
     this.state = {
       ...inputCheck(props.value, props.rules),
       value: props.value,
-      type: 'input',
+      type: 'input'
     };
 
     this.key = '';

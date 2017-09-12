@@ -1,10 +1,10 @@
 'use strict';
 
 import Input from './input';
-import cat_forms from './input/reducer';
+import catForms from './input/reducer';
 
 export default Input;
-export const formReducer = {cat_forms};
+export const formReducer = {catForms};
 
 /* eslint-disable object-curly-spacing */
 export inputCheck from './input/check';

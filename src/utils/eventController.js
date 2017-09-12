@@ -12,8 +12,7 @@ class Controller {
     if(!this.events[data.name][data.id]) {
       this.events[data.name][data.id] = data.event;
       this.runEvent();
-    }
-    else
+    } else
       throw new Error(`"${data.id}" already exists in "${data.name}".`);
   }
 
@@ -24,8 +23,7 @@ class Controller {
     if(this.events[data.name][data.id]) {
       delete this.events[data.name][data.id];
       this.runEvent();
-    }
-    else
+    } else
       throw new Error(`"${data.id}" does not exist in "${data.name}".`);
   }
 

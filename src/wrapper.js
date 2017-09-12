@@ -49,8 +49,7 @@ export default class Wrapper extends React.Component {
         store = createStore(reducer, preloadedState, applyMiddleware(enhancer));
       else
         store = createStore(reducer, preloadedState);
-    }
-    else if(enhancer)
+    } else if(enhancer)
       store = createStore(reducer, applyMiddleware(enhancer));
     else
       store = createStore(reducer);

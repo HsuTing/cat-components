@@ -19,7 +19,7 @@ export default class UseTable extends React.Component {
         <Tbody>
           {[
             ['item1-1', 'item2-1', 'item3-1'],
-            ['item1-2', 'item2-2', 'item3-2'],
+            ['item1-2', 'item2-2', 'item3-2']
           ].map((list, listIndex) => (
             <Tr key={listIndex}>
               {list.map((item, itemIndex) => (

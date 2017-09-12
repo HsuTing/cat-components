@@ -49,7 +49,7 @@ export default class Input extends React.Component {
 
     this.onChange({
       target: {
-        value: value || '',
+        value: value || ''
       }
     });
   }
@@ -57,12 +57,13 @@ export default class Input extends React.Component {
   componentWillUpdate(nextProps, nextState) {
     const value = nextProps.value || '';
 
-    if(value !== nextState.value)
+    if(value !== nextState.value) {
       this.onChange({
         target: {
           value
         }
       });
+    }
   }
 
   render() {

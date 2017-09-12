@@ -31,7 +31,7 @@ export default class CalendarTable extends React.Component {
   }
 
   render() {
-    const {children, ...props} =  this.props;
+    const {children, ...props} = this.props;
 
     delete props.year;
     delete props.month;

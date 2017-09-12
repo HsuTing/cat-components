@@ -7,7 +7,7 @@ import radium from 'radium';
 export default class Icon extends React.Component {
   render() {
     return (
-      <svg style={{width: '200px',height: '200px'}}
+      <svg style={{width: '200px', height: '200px'}}
         {...this.props}
         viewBox='0 0 500 500'
       >

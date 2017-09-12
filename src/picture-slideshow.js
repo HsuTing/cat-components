@@ -63,7 +63,7 @@ export default class ImgResizeSlideshow extends React.Component {
         index: nextProps.index,
         preIndex: index,
         direction: nextProps.index > index ? 'left' : 'right'
-      })
+      });
     }
   }
 
@@ -102,7 +102,7 @@ export default class ImgResizeSlideshow extends React.Component {
           else if(imgIndex === preIndex)
             animation = this.hideStyle[direction];
 
-          if(type === 'img')
+          if(type === 'img') {
             return (
               <StyleRoot key={imgIndex}
                 style={[style.item, style.imgRoot, img.style, animation]}
@@ -113,6 +113,7 @@ export default class ImgResizeSlideshow extends React.Component {
                 />
               </StyleRoot>
             );
+          }
 
           return (
             <Img key={imgIndex}

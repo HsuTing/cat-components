@@ -26,7 +26,7 @@ describe('static', () => {
       }])).toMatchObject([{
         filename: 'index.html',
         content: renderContent('<div>test react</div>')
-      }])
+      }]);
     });
 
     it('## test/index.html', () => {
@@ -37,7 +37,7 @@ describe('static', () => {
       }])).toMatchObject([{
         filename: 'test/index.html',
         content: renderContent('<div>test react</div>')
-      }])
+      }]);
     });
   });
 
@@ -53,7 +53,7 @@ describe('static', () => {
           ENV: false
         }
       ))
-    }])
+    }]);
   });
 
   describe('# render redux', () => {
@@ -69,7 +69,7 @@ describe('static', () => {
         }
       }])).toMatchObject([{
         content: renderContent('<div>test redux(origin state)</div>')
-      }])
+      }]);
     });
 
     describe('## add preloadedState', () => {
@@ -95,7 +95,7 @@ describe('static', () => {
     useUrls(urls, {
       component: './lib/__tests__/utils/TestRouter',
       name: 'index',
-      template: 'test.html',
+      template: 'test.html'
     }).forEach((config, index) => {
       it(`## render '${urls[index]}'`, () => {
         expect(renderStatic([config]))

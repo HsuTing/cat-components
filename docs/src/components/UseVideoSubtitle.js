@@ -28,7 +28,7 @@ const subtitle = [{
       {moment({
         hour,
         minute,
-        second,
+        second
       }).format('HH : mm : ss')}
     </div>
   )

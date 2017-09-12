@@ -18,7 +18,7 @@ export default class Button extends React.Component {
   render() {
     const {link, target, ...props} = this.props;
 
-    if(link)
+    if(link) {
       return (
         <a href={link}
           target={target ? target : '_self'}
@@ -28,6 +28,7 @@ export default class Button extends React.Component {
           ></button>
         </a>
       );
+    }
 
     return (
       <button {...props}

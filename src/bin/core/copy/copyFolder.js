@@ -5,17 +5,18 @@ import path from 'path';
 
 import filter from './filter';
 
-const getFiles = (now_path, templatePath) => fs.readdirSync(now_path)
+const getFiles = (nowPath, templatePath) => fs.readdirSync(nowPath)
   .reduce((result, file) => {
-    const childFilePath = path.resolve(now_path, file);
+    const childFilePath = path.resolve(nowPath, file);
     const stats = fs.lstatSync(childFilePath);
 
     if(stats.isDirectory())
       return result.concat(getFiles(childFilePath, templatePath));
-    else
+    else {
       result.push(
         childFilePath.replace(`${templatePath}/`, './')
       );
+    }
 
     return result;
   }, []);

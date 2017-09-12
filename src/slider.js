@@ -88,7 +88,7 @@ export default class Slider extends React.Component {
     let left = 0;
 
     do {
-      left += element.offsetLeft  || 0;
+      left += element.offsetLeft || 0;
       element = element.offsetParent;
     } while(element);
 

@@ -47,20 +47,23 @@ export default class Img extends React.Component {
 
     delete props.src;
 
-    if(!src)
+    if(!src) {
       return (
         <StyleRoot {...props} />
       );
+    }
 
-    const component = type === 'div' ?
-      <StyleRoot {...props}
-        style={[props.style, style.div(src)]}
-      /> :
-      <img {...props}
-        src={src}
-      />
+    const component = (
+      type === 'div' ?
+        <StyleRoot {...props}
+          style={[props.style, style.div(src)]}
+        /> :
+        <img {...props}
+          src={src}
+        />
+    );
 
-    if(link)
+    if(link) {
       return (
         <a href={link}
           target={target ? target : '_self'}
@@ -68,6 +71,7 @@ export default class Img extends React.Component {
           {component}
         </a>
       );
+    }
 
     return component;
   }

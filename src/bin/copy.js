@@ -29,7 +29,7 @@ const templateFolder = path.resolve(__dirname, './../../temp');
                 if(['style', 'temp'].includes(itemName))
                   return items;
 
-                return items.concat([`[${folderName}] ${itemName}`])
+                return items.concat([`[${folderName}] ${itemName}`]);
               }, [])
           );
         }, [])
@@ -44,7 +44,7 @@ const templateFolder = path.resolve(__dirname, './../../temp');
       ),
       filter: target => path.resolve(targetRootPath, target)
 
-    }])
+    }]);
 
     const result = await core(template, targetPath);
 

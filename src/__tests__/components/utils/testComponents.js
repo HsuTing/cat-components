@@ -5,13 +5,13 @@ import path from 'path';
 
 export default (
   wrapper,
-  now_path
-) => fs.readdirSync(path.resolve(__dirname, now_path))
-  .forEach(file_path => {
-    if((/.swp/g).test(file_path))
+  nowPath
+) => fs.readdirSync(path.resolve(__dirname, nowPath))
+  .forEach(filePath => {
+    if((/.swp/g).test(filePath))
       return;
 
     require(
-      path.resolve(__dirname, now_path, file_path)
+      path.resolve(__dirname, nowPath, filePath)
     ).default(wrapper);
   });

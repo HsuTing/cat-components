@@ -31,10 +31,11 @@ export default class CanvasRect extends React.Component {
   render() {
     const {type, ...props} = this.props;
 
-    if(type === 'svg')
+    if(type === 'svg') {
       return (
         <rect {...props} />
       );
+    }
 
     return null;
   }

@@ -27,7 +27,7 @@ export const components = output([
   'Bundle',
   'Calendar',
   'CalendarTable',
-  //TODO: 'Canvas',
+  // TODO: 'Canvas',
   'Loading',
   'I18n',
   'Icon',

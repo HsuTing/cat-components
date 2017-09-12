@@ -17,7 +17,7 @@ export default class UseToggle extends React.Component {
     super(props);
     this.state = {
       value: '1'
-    }
+    };
 
     this.click = this.click.bind(this);
   }
@@ -72,6 +72,6 @@ export default class UseToggle extends React.Component {
         this.setState({value});
       else
         this.setState({value: ''});
-    }
+    };
   }
 }

@@ -7,7 +7,7 @@ const findTop = element => {
   let top = 0;
 
   do {
-    top += element.offsetTop  || 0;
+    top += element.offsetTop || 0;
     element = element.offsetParent;
   } while(element);
 
@@ -31,17 +31,17 @@ const goTo = (main, options) => {
 
     const interval = setInterval(() => {
       const t = ((1000 / fps) * count) / (sec * 1000);
-      let next_position = total * (1 - func(t)) + end;
+      let nextPosition = total * (1 - func(t)) + end;
 
-      if(total > 0 && next_position <= end ||
-        total < 0 && next_position >= end ||
+      if(total > 0 && nextPosition <= end ||
+        total < 0 && nextPosition >= end ||
         total === 0
       ) {
-        next_position = end;
+        nextPosition = end;
         clearInterval(interval);
       }
 
-      dom.scrollTop = next_position;
+      dom.scrollTop = nextPosition;
       count = count + 1;
     }, (1000 / fps));
   };

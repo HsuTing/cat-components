@@ -9,7 +9,7 @@ export const root = {
   display: 'grid',
   gridTemplateColumns: 'calc(50% - 5px) 10px calc(50% - 5px)',
   ...layoutStyle.tablet({
-    gridTemplateColumns: '0px 10px calc(100% - 10px)',
+    gridTemplateColumns: '0px 10px calc(100% - 10px)'
   })
 };
 

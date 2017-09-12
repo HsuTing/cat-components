@@ -5,7 +5,7 @@ import process from 'process';
 
 import copy from './../bin/core/copy';
 
-const getPath = new_path => path.resolve(process.cwd(), new_path);
+const getPath = newPath => path.resolve(process.cwd(), newPath);
 
 describe('copy', () => {
   it('# copy file', async () => {
@@ -14,9 +14,9 @@ describe('copy', () => {
         [
           'InputDate.js',
           'style/inputDate.js'
-        ].map(file_path => ({
-          target: getPath(`./${file_path}`),
-          template: getPath(`./temp/multiple/${file_path}`)
+        ].map(filePath => ({
+          target: getPath(`./${filePath}`),
+          template: getPath(`./temp/multiple/${filePath}`)
         }))
       );
   });
@@ -29,9 +29,9 @@ describe('copy', () => {
           'Menu.js',
           'style/dashboard.js',
           'style/menu.js'
-        ].map(file_path => ({
-          target: getPath(`./dashboard/${file_path}`),
-          template: getPath(`./temp/templates/dashboard/${file_path}`)
+        ].map(filePath => ({
+          target: getPath(`./dashboard/${filePath}`),
+          template: getPath(`./temp/templates/dashboard/${filePath}`)
         }))
       );
   });

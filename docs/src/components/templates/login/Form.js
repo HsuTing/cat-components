@@ -105,7 +105,7 @@ export default class Field extends React.Component {
     const {submitDispatch} = this.props;
 
     submitDispatch(data => {
-      alert(JSON.stringify(data, null, 2))
+      alert(JSON.stringify(data, null, 2));
     });
   }
 }

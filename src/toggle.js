@@ -71,11 +71,12 @@ export default class Toggle extends React.Component {
       )
     };
 
-    if(props.type === 'radio')
+    if(props.type === 'radio') {
       invariant(
         !(props.clicked === undefined),
         'If you use "radio", you should use "clicked" to make sure that the value of "radio" will be only one value.'
       );
+    }
 
     this.getIcons = this.getIcons.bind(this);
     this.click = this.click.bind(this);

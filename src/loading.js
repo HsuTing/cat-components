@@ -52,12 +52,13 @@ export default class Loading extends React.Component {
   componentWillReceiveProps(nextProps) {
     /* istanbul ignore if */
     if(nextProps.innerRadius !== this.props.innerRadius ||
-      nextProps.outerRadius !== this.props.outerRadius)
+      nextProps.outerRadius !== this.props.outerRadius) {
       this.setState({
         path: d3.arc()
           .innerRadius(nextProps.innerRadius)
           .outerRadius(nextProps.outerRadius)
       });
+    }
   }
 
   componentWillUnmount() {

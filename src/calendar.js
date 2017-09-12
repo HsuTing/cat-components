@@ -147,7 +147,7 @@ export default class Calendar extends React.Component {
   }
 
   getChoice(length, offset = 1) {
-    return Array.apply(null, {length})
+    return Array.apply({}, {length})
       .map((data, index) => (index + offset));
   }
 

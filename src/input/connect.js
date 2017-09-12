@@ -12,15 +12,15 @@ export default formName => (
 ) => connect(
   (state, ownProps) => {
     const form = {};
-    const origin_form = state.cat_forms[formName] || {};
-    const {isSubmited} = origin_form
+    const originForm = state.catForms[formName] || {};
+    const {isSubmited} = originForm;
 
-    Object.keys(origin_form)
+    Object.keys(originForm)
       .forEach(key => {
         if(key === 'isSubmited')
           return;
 
-        const value = origin_form[key];
+        const value = originForm[key];
 
         form[key] = {
           ...value,
