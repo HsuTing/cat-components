@@ -2,7 +2,7 @@
   "scripts": {
     "copy": "rm -rf ./temp && mkdir temp && cp -r ./docs/src/components/multiple ./temp/multiple && cp -r ./docs/src/components/templates ./temp/templates",
     "test": "jest --silent",
-    "test:watch": "yarn test -- --watchAll",
+    "test:watch": "yarn test --watchAll",
     "build-color": "node ./lib/bin/build-color.js",
     "webpack-server": "webpack-dev-server --content-base src --hot --inline",
     "webpack": "cross-env NODE_ENV=production webpack",
