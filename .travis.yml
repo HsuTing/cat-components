@@ -9,7 +9,4 @@ script:
   - yarn run copy
   - yarn run lint
   - yarn run test
-branches:
-only:
-  - master
 yarn: true
