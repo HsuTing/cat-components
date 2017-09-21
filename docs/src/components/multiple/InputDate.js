@@ -11,6 +11,7 @@ import Input, {inputCheck} from 'cat-components/lib/input';
 
 import * as style from './style/inputDate';
 
+const now = moment();
 const format = 'YYYY-MM-DD';
 const getMomentDate = value => {
   const [year, month, date] = value.split('-');
@@ -63,7 +64,11 @@ class InputDate extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.value !== nextState.value;
+    return (
+      this.state.value !== nextState.value ||
+      this.state.isError !== nextState.isError ||
+      JSON.stringify(this.state.error) !== JSON.stringify(nextState.error)
+    );
   }
 
   componentDidUpdate() {
@@ -173,8 +178,6 @@ class InputDate extends React.Component {
     });
   }
 }
-
-const now = moment();
 
 
 // TODO: remove
