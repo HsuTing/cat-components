@@ -10,7 +10,6 @@ You can see [here](https://hsuting.github.io/cat-components) to learn how to use
 - layout
 
 ###### Components
-- accordion
 - alert
 - bundle
 - button

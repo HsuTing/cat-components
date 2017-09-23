@@ -21,7 +21,6 @@ export const styles = output([
 ]);
 
 export const components = output([
-  'Accordion',
   'Alert',
   'Button',
   'Bundle',
