@@ -41,6 +41,10 @@ export default class Img extends React.Component {
       this.load(nextProps);
   }
 
+  componentWillUnmount() {
+    this.unmount = true;
+  }
+
   render() {
     const {type, link, target, ...props} = this.props;
     const {src} = this.state;
@@ -84,7 +88,9 @@ export default class Img extends React.Component {
       if(type === 'div')
         onLoad();
 
-      this.setState({src});
+      /* istanbul ignore next */
+      if(!this.unmount)
+        this.setState({src});
     };
     img.src = src;
   }
