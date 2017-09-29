@@ -60,7 +60,7 @@ class InputDate extends React.Component {
   componentWillReceiveProps(nextProps) {
     /* istanbul ignore if */
     if(nextProps.value !== this.state.value)
-      this.onChange(inputCheck(nextProps.value));
+      this.onChange(inputCheck(nextProps.value, nextProps.rules));
   }
 
   shouldComponentUpdate(nextProps, nextState) {
