@@ -18,7 +18,7 @@
     "static": "yarn babel:static && node ./lib/bin/static.js static.config.js"
   },
   "name": "cat-components",
-  "version": "1.8.6",
+  "version": "1.9.0",
   "description": "react components",
   "author": {
     "name": "hsuting",
@@ -62,7 +62,8 @@
     "cross-env": "^5.0.5",
     "d3": "^4.10.2",
     "eases": "^1.0.8",
-    "enzyme": "^2.9.1",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
     "eslint": "^4.6.1",
     "eslint-config-cat": "https://github.com/HsuTing/eslint-config-cat.git",
     "eslint-config-google": "^0.9.1",
@@ -76,17 +77,17 @@
     "moment": "^2.18.1",
     "pre-commit": "^1.2.2",
     "radium-normalize": "^2.0.5",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-icons": "^2.2.3",
     "react-markdown": "^2.5.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "react-test-renderer": "^15.6.1",
+    "react-test-renderer": "^16.0.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "uuid": "^3.0.1",
-    "validator": "^8.2.0",
+    "validator": "^9.0.0",
     "webpack": "^3.5.6",
     "webpack-dev-server": "^2.7.1"
   },
@@ -103,7 +104,7 @@
     "radium": "^0.19.4"
   },
   "peerDependencies": {
-    "react": ">= 15.6.1",
-    "react-dom": ">= 15.6.1"
+    "react": ">= 16.0.0",
+    "react-dom": ">= 16.0.0"
   }
 }

@@ -42,10 +42,10 @@ export default wrapper => {
     });
 
     it('### Use calendar to choose date', () => {
-      wrapper.find('InputDate').find('Calendar').parent().simulate('mouseMove');
-      wrapper.find('InputDate').find('Calendar').parent().simulate('mouseMove');
+      wrapper.find('InputDate').find('Calendar').parents().first().simulate('mouseMove');
+      wrapper.find('InputDate').find('Calendar').parents().first().simulate('mouseMove');
       wrapper.find('InputDate').find('Calendar').find('#is-chosen')
-        .first().parent().childAt(0).simulate('click');
+        .first().parents().first().childAt(0).simulate('click');
 
       expect(
         wrapper.find('InputDate').find('Input').prop('value')

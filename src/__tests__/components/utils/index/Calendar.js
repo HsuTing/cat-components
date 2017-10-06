@@ -7,11 +7,11 @@ const format = 'MMM D YYYY';
 export default wrapper => {
   describe('## Calendar', () => {
     const getDate = () => {
-      return wrapper.find('UseCalendar').find('Calendar').childAt(0).text();
+      return wrapper.find('UseCalendar').find('Calendar').childAt(0).childAt(0).text();
     };
     const choose = (type, index) => {
       wrapper.find('UseCalendar').find('Calendar').find('#is-chosen')
-        .at(type).parent()
+        .at(type).parents().first()
         .childAt(index).simulate('click');
     };
 

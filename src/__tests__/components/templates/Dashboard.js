@@ -15,7 +15,7 @@ describe('[templates] Dashboard', () => {
 
   it('# show menu', () => {
     const getDisplay = () => {
-      return (new JSDOM(wrapper.find('aside').parent().html()))
+      return (new JSDOM(wrapper.find('aside').parents().first().html()))
         .window.document.querySelector('div').style.display;
     };
 

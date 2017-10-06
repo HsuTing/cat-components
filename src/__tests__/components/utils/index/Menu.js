@@ -9,12 +9,12 @@ export default wrapper => {
     [0, 1, 2].forEach(index => {
       describe(`### item ${index}`, () => {
         const getOpacity = () => {
-          return (new JSDOM(wrapper.find('UseMenu').find('Menu').at(index).children().last().html()))
+          return (new JSDOM(wrapper.find('UseMenu').find('Menu').at(index).children().last().children().last().html()))
             .window.document.querySelector('div').style.opacity;
         };
         const click = () => {
           wrapper.find('UseMenu').find('Menu').at(index).find('svg').simulate('click');
-          wrapper.find('UseMenu').find('Menu').at(index).children().last().simulate('animationEnd');
+          wrapper.find('UseMenu').find('Menu').at(index).children().last().children().last().simulate('animationEnd');
         };
 
         expect(getOpacity()).toBe('0');
@@ -32,8 +32,8 @@ export default wrapper => {
         });
 
         it('#### mouseEnter and mouseLeave', async () => {
-          wrapper.find('UseMenu').find('Menu').at(index).children().last().simulate('mouseEnter');
-          wrapper.find('UseMenu').find('Menu').at(index).children().last().simulate('mouseLeave');
+          wrapper.find('UseMenu').find('Menu').at(index).children().last().children().last().simulate('mouseEnter');
+          wrapper.find('UseMenu').find('Menu').at(index).children().last().children().last().simulate('mouseLeave');
           expect(getOpacity()).toBe(
             [0, 2].includes(index) ? '1' : '0'
           );
@@ -45,7 +45,7 @@ export default wrapper => {
 
         if(index === 0) {
           it('#### mouseEnter and hide with click', async () => {
-            wrapper.find('UseMenu').find('Menu').at(index).children().last().simulate('mouseEnter');
+            wrapper.find('UseMenu').find('Menu').at(index).children().last().children().last().simulate('mouseEnter');
             click();
             expect(getOpacity()).toBe('1');
 

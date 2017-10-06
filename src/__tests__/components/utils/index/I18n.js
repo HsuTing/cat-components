@@ -5,7 +5,7 @@ import timer from './../timer';
 export default wrapper => {
   describe('## I18n', () => {
     expect(
-      wrapper.find('UseI18n').children().find('div').text()
+      wrapper.find('UseI18n').children().last().children().last().text()
     ).toBe('Hello world');
 
     it('### change to a new language', async () => {
@@ -14,14 +14,14 @@ export default wrapper => {
       await timer(3000);
 
       expect(
-        wrapper.find('UseI18n').children().find('div').text()
+        wrapper.find('UseI18n').children().last().children().last().text()
       ).toBe('你好');
     });
 
     it('### change to an old language', () => {
       wrapper.find('UseI18n').find('Button').last().simulate('click');
       expect(
-        wrapper.find('UseI18n').children().find('div').text()
+        wrapper.find('UseI18n').children().last().children().last().text()
       ).toBe('Hello world');
     });
   });

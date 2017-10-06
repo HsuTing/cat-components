@@ -22,7 +22,7 @@ export default wrapper => {
     });
 
     it('### chose value with drag', () => {
-      wrapper.find('UseSlider').find('Slider').last().childAt(1).simulate('mouseDown', {
+      wrapper.find('UseSlider').find('Slider').last().children().childAt(1).simulate('mouseDown', {
         pageX: 0
       });
 

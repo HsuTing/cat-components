@@ -1,29 +1,27 @@
 'use strict';
 
-import {JSDOM} from 'jsdom';
-
 export default wrapper => {
   describe('## Alert', () => {
-    const getDisplay = () => {
-      return (new JSDOM(wrapper.find('Alert').children().last().html()))
-        .window.document.querySelector('div').style.display;
+    const getDisplay = object => {
+      expect(
+        wrapper.find('Alert').find('Template').prop('rootStyle')
+      ).toMatchObject(object);
     };
     const click = index => {
       wrapper.find('Alert').find('Button').at(index).simulate('click');
-      wrapper.find('Alert').children().last().simulate('animationEnd');
+      wrapper.find('Alert').find('Template').simulate('animationEnd');
     };
     const testHide = () => {
       wrapper.find('Alert').find('svg').simulate('click');
-      wrapper.find('Alert').children().last().simulate('animationEnd');
-      expect(getDisplay()).toBe('none');
+      wrapper.find('Alert').find('Template').simulate('animationEnd');
+      getDisplay({display: 'none'});
     };
 
     describe('### default alert', () => {
-      expect(getDisplay()).toBe('none');
-
       it('#### show', () => {
+        getDisplay({display: 'none'});
         click(0);
-        expect(getDisplay()).toBe('');
+        getDisplay({});
       });
 
       it('#### hide', () => {
@@ -32,12 +30,11 @@ export default wrapper => {
     });
 
     describe('### custom alert', () => {
-      expect(getDisplay()).toBe('none');
-
       it('#### show', () => {
+        getDisplay({display: 'none'});
         click(1);
         click(1);
-        expect(getDisplay()).toBe('');
+        getDisplay({});
       });
 
       it('#### hide', () => {

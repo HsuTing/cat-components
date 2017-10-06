@@ -18,12 +18,15 @@ describe('[templates] Login', () => {
     );
 
     it('# form value error', () => {
+      expect(wrapper.find('input').first().prop('value')).toBe('');
+
       wrapper.find('input').first().simulate('change', {
         target: {
           value: 'hsuting0106'
         }
       });
 
+      expect(wrapper.find('input').first().prop('value')).toBe('hsuting0106');
       expect(wrapper.find('p').text()).toBe('This is not an email.');
     });
 

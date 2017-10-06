@@ -5,7 +5,7 @@ import {JSDOM} from 'jsdom';
 export default wrapper => {
   describe('## Sidebar', () => {
     const getDisplay = () => {
-      return (new JSDOM(wrapper.find('Sidebar').children().last().html()))
+      return (new JSDOM(wrapper.find('Sidebar').children().last().children().last().html()))
         .window.document.querySelector('div').style.display;
     };
 
@@ -14,13 +14,13 @@ export default wrapper => {
     it('### show', () => {
       wrapper.find('Sidebar').find('Button').simulate('click');
       wrapper.find('Sidebar').find('Button').simulate('click');
-      wrapper.find('Sidebar').children().last().simulate('animationEnd');
+      wrapper.find('Sidebar').children().last().children().last().simulate('animationEnd');
       expect(getDisplay()).toBe('');
     });
 
     it('### hide', () => {
       wrapper.find('Sidebar').find('h4').first().simulate('click');
-      wrapper.find('Sidebar').children().last().simulate('animationEnd');
+      wrapper.find('Sidebar').children().last().children().last().simulate('animationEnd');
       expect(getDisplay()).toBe('none');
     });
 
@@ -28,12 +28,12 @@ export default wrapper => {
       expect(getDisplay()).toBe('none');
 
       wrapper.find('Sidebar').find('Button').simulate('click');
-      wrapper.find('Sidebar').children().last().simulate('animationEnd');
+      wrapper.find('Sidebar').children().last().children().last().simulate('animationEnd');
 
       expect(getDisplay()).toBe('');
 
-      wrapper.find('Sidebar').find('aside').parent().childAt(0).simulate('click');
-      wrapper.find('Sidebar').children().last().simulate('animationEnd');
+      wrapper.find('Sidebar').find('aside').parents().first().childAt(0).simulate('click');
+      wrapper.find('Sidebar').children().last().children().last().simulate('animationEnd');
 
       expect(getDisplay()).toBe('none');
     });
