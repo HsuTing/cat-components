@@ -1,5 +1,5 @@
 module.exports = {
-  setupFiles: ['./jest.setup.js'],
+  setupFiles: ['cat-jest'],
   testPathIgnorePatterns: [
     '/node_modules/',
     '/lib/',
