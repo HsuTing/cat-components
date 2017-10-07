@@ -14,21 +14,6 @@ export default wrapper => {
       ).toBe('2017-01-01');
     });
 
-    it('### use keydown', () => {
-      wrapper.find('InputDate').find('Input').simulate('keydown', {
-        key: 'Backspace'
-      });
-      wrapper.find('InputDate').find('Input').simulate('change', {
-        target: {
-          value: '2017-01-'
-        }
-      });
-
-      expect(
-        wrapper.find('InputDate').find('Input').prop('value')
-      ).toBe('2017-01');
-    });
-
     it('### date type error', () => {
       wrapper.find('InputDate').find('Input').simulate('change', {
         target: {

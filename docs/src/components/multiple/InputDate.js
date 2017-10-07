@@ -40,8 +40,6 @@ class InputDate extends React.Component {
       type: 'input'
     };
 
-    this.key = '';
-    this.onKeyDown = this.onKeyDown.bind(this);
     this.onChange = this.onChange.bind(this);
     this.getDate = this.getDate.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -127,26 +125,14 @@ class InputDate extends React.Component {
     );
   }
 
-  onKeyDown(e) {
-    this.key = e.key;
-  }
-
   onChange({value, isError, error}) {
-    let newValue = value;
-
-    if(this.key === 'Backspace') {
-      if(value[value.length - 1] === '-')
-        newValue = value.slice(0, value.length - 1);
-    } else {
-      const tempValue = value.replace(/-/g, '');
-
-      newValue = ([
-        tempValue.slice(0, 4),
-        tempValue.slice(4, 6),
-        tempValue.slice(6, 8)
-      ]).filter(time => time !== '')
-        .join('-');
-    }
+    const tempValue = value.replace(/-/g, '');
+    const newValue = ([
+      tempValue.slice(0, 4),
+      tempValue.slice(4, 6),
+      tempValue.slice(6, 8)
+    ]).filter(time => time !== '')
+      .join('-');
 
     this.setState({
       value: newValue,
