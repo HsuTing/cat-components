@@ -15,11 +15,7 @@ module.exports = {
     '!src/bin/*.js',
     '!src/color/**',
     '!src/goToAnimation.js',
-    '!src/bundle.js',
-    // TODO
-    '!**/canvas.js',
-    '!**/canvas/**',
-    '!**/UseCanvas.js'
+    '!src/bundle.js'
   ],
   coverageDirectory: 'coverage',
   coverageReporters: [

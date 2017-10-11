@@ -15,7 +15,6 @@ You can see [here](https://hsuting.github.io/cat-components) to learn how to use
 - button
 - calendar
 - calendar-table
-- canvas
 - loading
 - i18n
 - icon
