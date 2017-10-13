@@ -30,12 +30,12 @@ describe('[templates] Login', () => {
       expect(wrapper.find('p').text()).toBe('This is not an email.');
     });
 
-    it('# keydown enter', () => {
-      wrapper.find('input').first().simulate('keydown', {
+    it('# keypress enter', () => {
+      wrapper.find('input').first().simulate('keypress', {
         key: 'a'
       });
 
-      wrapper.find('input').first().simulate('keydown', {
+      wrapper.find('input').first().simulate('keypress', {
         key: 'Enter'
       });
     });

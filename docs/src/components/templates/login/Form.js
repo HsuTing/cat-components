@@ -70,7 +70,7 @@ export default class Field extends React.Component {
                 rules={rules}
                 value={value || ''}
                 onChange={data => inputDispatch(name, data)}
-                onKeyDown={this.enter}
+                onKeyPress={this.enter}
               />
 
               {
