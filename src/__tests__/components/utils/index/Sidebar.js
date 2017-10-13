@@ -1,17 +1,13 @@
 'use strict';
 
-import {JSDOM} from 'jsdom';
-
 export default wrapper => {
   describe('## Sidebar', () => {
-    const getDisplay = () => {
-      return (new JSDOM(wrapper.find('Sidebar').children().last().children().last().html()))
-        .window.document.querySelector('div').style.display;
-    };
-
-    expect(getDisplay()).toBe('none');
+    const getDisplay = () => (wrapper.find('Sidebar')
+      .find('Template')
+      .prop('rootStyle') || {display: ''}).display;
 
     it('### show', () => {
+      expect(getDisplay()).toBe('none');
       wrapper.find('Sidebar').find('Button').simulate('click');
       wrapper.find('Sidebar').find('Button').simulate('click');
       wrapper.find('Sidebar').children().last().children().last().simulate('animationEnd');

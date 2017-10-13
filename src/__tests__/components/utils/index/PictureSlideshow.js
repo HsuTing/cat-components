@@ -1,15 +1,13 @@
 'use strict';
 
-import {JSDOM} from 'jsdom';
+import blueGrey from 'cat-components/lib/color/blue-grey';
 
 export default wrapper => {
   describe('## PictureSlideshow', () => {
-    const getBackground = index => {
-      return (new JSDOM(wrapper.find('UsePictureSlideshow').find('Button').at(index).html()))
-        .window.document.querySelector('button').style.background;
-    };
+    const getBackground = index => wrapper.find('UsePictureSlideshow')
+      .find('Button').at(index).prop('style').background || 'rgb(255, 255, 255)';
 
-    expect(getBackground(0)).toBe('rgb(96, 125, 139)');
+    expect(getBackground(0)).toBe(blueGrey);
     expect(getBackground(1)).toBe('rgb(255, 255, 255)');
 
     wrapper.find('UsePictureSlideshow').find('Img').forEach(n => n.simulate('load', {
@@ -28,14 +26,14 @@ export default wrapper => {
       wrapper.find('UsePictureSlideshow').find('Button').at(1).simulate('click');
 
       expect(getBackground(0)).toBe('rgb(255, 255, 255)');
-      expect(getBackground(1)).toBe('rgb(96, 125, 139)');
+      expect(getBackground(1)).toBe(blueGrey);
     });
 
     it('### click item 0', () => {
       wrapper.find('UsePictureSlideshow').find('Button').at(0).simulate('click');
 
       expect(getBackground(1)).toBe('rgb(255, 255, 255)');
-      expect(getBackground(0)).toBe('rgb(96, 125, 139)');
+      expect(getBackground(0)).toBe(blueGrey);
     });
   });
 };

@@ -1,17 +1,19 @@
 'use strict';
 
-import {JSDOM} from 'jsdom';
-
 import timer from './../timer';
 
 export default wrapper => {
   describe('## Menu', () => {
     [0, 1, 2].forEach(index => {
       describe(`### item ${index}`, () => {
-        const getOpacity = () => {
-          return (new JSDOM(wrapper.find('UseMenu').find('Menu').at(index).children().last().children().last().html()))
-            .window.document.querySelector('div').style.opacity;
-        };
+        const getOpacity = () => wrapper.find('UseMenu').find('Menu').at(index)
+          .children().last()
+          .children().last()
+          .prop('style')
+          .reduce((result, style) => ({
+            ...result,
+            ...style
+          }), {}).opacity || '0';
         const click = () => {
           wrapper.find('UseMenu').find('Menu').at(index).find('svg').simulate('click');
           wrapper.find('UseMenu').find('Menu').at(index).children().last().children().last().simulate('animationEnd');
@@ -39,6 +41,7 @@ export default wrapper => {
           );
 
           await timer(1000);
+          wrapper.find('UseMenu').find('Menu').at(index).children().last().children().last().simulate('animationEnd');
 
           expect(getOpacity()).toBe('0');
         });

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import {mount} from 'enzyme';
-import {JSDOM} from 'jsdom';
 
 import useUrls from 'cat-components/lib/utils/useUrls';
 import Dashboard from 'test-components/templates/dashboard/Dashboard';
@@ -14,10 +13,7 @@ describe('[templates] Dashboard', () => {
   );
 
   it('# show menu', () => {
-    const getDisplay = () => {
-      return (new JSDOM(wrapper.find('aside').parents().first().html()))
-        .window.document.querySelector('div').style.display;
-    };
+    const getDisplay = () => wrapper.find('aside').parents().first().prop('style').display || '';
 
     expect(getDisplay()).toBe('none');
 

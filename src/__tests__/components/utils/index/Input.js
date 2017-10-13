@@ -1,16 +1,14 @@
 'use strict';
 
-import {JSDOM} from 'jsdom';
+import red from 'cat-components/lib/color/red';
 
 export default wrapper => {
   describe('## Input', () => {
     it('### add value', () => {
-      const getBorderColor = () => {
-        return (new JSDOM(wrapper.find('UseReduxWithNoDefaultValue').find('Input').html()))
-          .window.document.querySelector('Input').style.borderColor;
-      };
+      const getBorderColor = () => wrapper.find('UseReduxWithNoDefaultValue')
+        .find('Input').prop('style').border || '';
 
-      expect(getBorderColor()).toBe('#000000');
+      expect(getBorderColor()).toBe('');
 
       wrapper.find('UseReduxWithNoDefaultValue').find('Input').simulate('change', {
         target: {
@@ -18,7 +16,7 @@ export default wrapper => {
         }
       });
 
-      expect(getBorderColor()).toBe('#f44336');
+      expect(getBorderColor()).toBe(`0.5px solid ${red}`);
     });
 
     it('### submit', () => {
