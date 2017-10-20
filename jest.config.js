@@ -1,5 +1,8 @@
 module.exports = {
-  setupFiles: ['cat-jest'],
+  setupFiles: [
+    'raf/polyfill',
+    'cat-jest'
+  ],
   testPathIgnorePatterns: [
     '/node_modules/',
     '/lib/',
