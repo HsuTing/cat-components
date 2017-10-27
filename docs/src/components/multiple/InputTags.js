@@ -45,6 +45,7 @@ class InputTags extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
     return (
       !areEqual(this.state.tags, nextState.tags) ||
+      !areEqual(this.state._radiumStyleState, nextState._radiumStyleState) ||
       this.state.value !== nextState.value
     );
   }
