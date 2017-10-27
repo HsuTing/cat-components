@@ -25,7 +25,7 @@ export default formName => (
         form[key] = {
           ...value,
           isError: (
-            value.value === '' && !isSubmited ?
+            (value.value === '' || value.value.length === 0) && !isSubmited ?
               false :
               (value.isError || /* istanbul ignore next */ false)
           )
