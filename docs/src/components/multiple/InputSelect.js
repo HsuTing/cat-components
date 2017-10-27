@@ -53,12 +53,14 @@ class InputSelect extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     /* istanbul ignore next */
-    if(nextProps.value !== this.state.value)
+    if(this.state.value !== nextProps.value)
       this.choose(nextProps.value);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.value !== nextState.value;
+    return (
+       this.state.value !== nextState.value
+    );
   }
 
   componentDidUpdate() {

@@ -83,12 +83,14 @@ export default class Toggle extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.clicked !== this.props.clicked)
+    if(this.props.clicked !== nextProps.clicked)
       this.setState({isClicked: nextProps.clicked});
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextState.isClicked !== this.state.isClicked;
+    return (
+      this.state.isClicked !== nextState.isClicked
+    );
   }
 
   render() {

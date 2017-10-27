@@ -51,8 +51,8 @@ export default class Loading extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     /* istanbul ignore if */
-    if(nextProps.innerRadius !== this.props.innerRadius ||
-      nextProps.outerRadius !== this.props.outerRadius) {
+    if(this.props.innerRadius !== nextProps.innerRadius ||
+      this.props.outerRadius !== nextProps.outerRadius) {
       this.setState({
         path: d3.arc()
           .innerRadius(nextProps.innerRadius)

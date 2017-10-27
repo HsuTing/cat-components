@@ -58,7 +58,7 @@ export default class ImgResizeSlideshow extends React.Component {
   componentWillReceiveProps(nextProps) {
     const {index} = this.props;
 
-    if(nextProps.index !== index) {
+    if(index !== nextProps.index) {
       this.setState({
         index: nextProps.index,
         preIndex: index,
@@ -68,11 +68,9 @@ export default class ImgResizeSlideshow extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    const {index, imgs} = this.props;
-
     return (
-      nextProps.index !== index ||
-      nextProps.imgs !== imgs
+      this.props.index !== nextProps.index ||
+      this.props.imgs !== nextProps.imgs
     );
   }
 

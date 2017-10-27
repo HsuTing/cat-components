@@ -50,20 +50,20 @@ class InputTags extends React.Component {
   }
 
   componentDidUpdate() {
-    const {tags, isError, error} = this.state;
+    const {tags, value, isError, error} = this.state;
 
     if(value !== '') {
       this.props.onChange({
         value: tags,
         isError,
         error
-      }); 
+      });
     } else {
       this.props.onChange({
         value: tags,
         isError: false,
         error: []
-      }); 
+      });
     }
   }
 

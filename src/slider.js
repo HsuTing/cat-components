@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
+import areEqual from 'fbjs/lib/areEqual';
 import invariant from 'invariant';
 
 import eventController from 'utils/eventController';
@@ -49,12 +50,14 @@ export default class Slider extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     /* istanbul ignore if */
-    if(nextProps.value !== this.props.value)
+    if(!areEqual(this.props.value, nextProps.value))
       this.setState({value: nextProps.value});
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextState.value !== this.state.value;
+    return (
+      this.state.value !== nextState.value
+    );
   }
 
   componentDidUpdate() {

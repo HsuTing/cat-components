@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
+import areEqual from 'fbjs/lib/areEqual';
 
 import * as style from './../style/sidebar';
 
@@ -29,7 +30,7 @@ export default class Template extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.isShown !== this.state.isShown)
+    if(!areEqual(this.state.isShown, nextProps.isShown))
       this.setState({isShown: nextProps.isShown});
   }
 

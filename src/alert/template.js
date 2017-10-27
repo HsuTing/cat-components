@@ -30,7 +30,7 @@ export default class Template extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.isShown !== this.state.isShown)
+    if(this.state.isShown !== nextProps.isShown)
       this.setState({isShown: nextProps.isShown});
   }
 
