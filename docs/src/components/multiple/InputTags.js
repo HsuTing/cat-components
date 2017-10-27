@@ -51,20 +51,20 @@ class InputTags extends React.Component {
   }
 
   componentDidUpdate() {
-    const {tags, value, isError, error} = this.state;
-    const {tagsRules} = this.props;
+    const {value, tags, isError, error} = this.state;
+    const {tagsRules, onChange} = this.props;
+    const tagsCheck = inputCheck(tags, tagsRules);
 
     if(value !== '') {
-      this.props.onChange({
+      onChange({
         value: tags,
-        isError,
-        error
+        isError: isError || tagsCheck.isError,
+        error: [...error].concat(
+          tagsCheck.isError ? tagsCheck.error : []
+        )
       });
-    } else {
-      this.props.onChange(
-        inputCheck(tags, tagsRules)
-      );
-    }
+    } else
+      onChange(tagsCheck);
   }
 
   render() {
