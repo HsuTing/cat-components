@@ -22,7 +22,7 @@ export default wrapper => {
       });
 
       expect(
-        wrapper.find('InputDate').find('span').text()
+        wrapper.find('Temp').find('span').at(0).text()
       ).toBe('This is not a date.');
     });
 

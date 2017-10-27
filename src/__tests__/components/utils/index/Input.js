@@ -20,7 +20,19 @@ export default wrapper => {
     });
 
     it('### submit', () => {
-      wrapper.find('UseReduxWithNoDefaultValue').find('Button').simulate('click');
+      wrapper.find('UseReduxWithNoDefaultValue').find('Button').at(0).simulate('click');
+    });
+
+    it('### reset', () => {
+      wrapper.find('UseReduxWithNoDefaultValue').find('Button').at(1).simulate('click');
+
+      expect(
+        wrapper.find('UseRedux').find('Input').prop('value')
+      ).toBe('');
+
+      expect(
+        wrapper.find('UseReduxWithNoDefaultValue').find('Input').prop('value')
+      ).toBe('');
     });
 
     it('### blur', () => {
