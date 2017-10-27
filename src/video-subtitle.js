@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
+import areEqual from 'fbjs/lib/areEqual';
 import moment from 'moment';
 
 const timeTypes = {
@@ -31,7 +32,7 @@ export default class VideoSubtitle extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     /* istanbul ignore if */
-    if(JSON.stringify(nextProps.subtitle) !== JSON.stringify(this.props.subtitle))
+    if(!areEqual(this.props.subtitle, nextProps.subtitle))
       this.subtitle = this.sortSubtitle(nextProps.subtitle);
   }
 

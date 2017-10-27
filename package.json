@@ -94,6 +94,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "chalk": "^2.1.0",
+    "fbjs": "^0.8.16",
     "html-minifier": "^3.5.4",
     "inquirer": "^3.2.3",
     "invariant": "^2.2.2",

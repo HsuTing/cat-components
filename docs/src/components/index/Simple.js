@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
+import areEqual from 'fbjs/lib/areEqual';
 import Markdown from 'react-markdown';
 import Button from 'cat-components/lib/button';
 import Link from 'cat-components/lib/link';
@@ -24,7 +25,9 @@ export default class Simple extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return JSON.stringify(nextProps.translate) !== JSON.stringify(this.props.translate);
+    return (
+      !areEqual(this.props.translate, nextProps.translate)
+    );
   }
 
   render() {

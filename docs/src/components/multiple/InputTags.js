@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import areEqual from 'fbjs/lib/areEqual';
 import radium from 'radium';
 import HighlightRemoveIcon from 'react-icons/lib/md/highlight-remove';
 import Button from 'cat-components/lib/button';
@@ -43,7 +44,7 @@ class InputTags extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      JSON.stringify(this.state.tags) !== JSON.stringify(nextState.tags) ||
+      !areEqual(this.state.tags, nextState.tags) ||
       this.state.value !== nextState.value
     );
   }

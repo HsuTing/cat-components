@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
+import areEqual from 'fbjs/lib/areEqual';
 import moment from 'moment';
 
 import * as style from './style/calendar';
@@ -78,7 +79,7 @@ export default class Calendar extends React.Component {
     /* istanbul ignore if */
     if(date &&
       moment(date).format(format) !== 'Invalid date' &&
-      JSON.stringify(date) !== JSON.stringify(this.state.date)
+      !areEqual(this.state.date, date)
     ) {
       const {year, month} = this.state;
       const choices = {...this.state.choices};
@@ -97,7 +98,9 @@ export default class Calendar extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return JSON.stringify(nextState.date) !== JSON.stringify(this.state.date);
+    return (
+      !areEqual(this.state.date, nextState.date)
+    );
   }
 
   componentDidUpdate() {

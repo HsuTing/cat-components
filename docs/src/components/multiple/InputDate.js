@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
+import areEqual from 'fbjs/lib/areEqual';
 import moment from 'moment';
 import ArrowDropDownIcon from 'react-icons/lib/md/arrow-drop-down';
 import Menu from 'cat-components/lib/menu';
@@ -57,7 +58,7 @@ class InputDate extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     /* istanbul ignore if */
-    if(nextProps.value !== this.state.value)
+    if(this.state.value !== nextProps.value)
       this.onChange(inputCheck(nextProps.value, nextProps.rules));
   }
 
@@ -65,7 +66,7 @@ class InputDate extends React.Component {
     return (
       this.state.value !== nextState.value ||
       this.state.isError !== nextState.isError ||
-      JSON.stringify(this.state.error) !== JSON.stringify(nextState.error)
+      !areEqual(this.state.error, nextState.error)
     );
   }
 

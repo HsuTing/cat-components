@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
+import areEqual from 'fbjs/lib/areEqual';
 import {Switch, Route, withRouter} from 'react-router-dom';
 import MenuIcon from 'react-icons/lib/md/menu';
 import Wrapper from 'cat-components/lib/wrapper';
@@ -26,7 +27,7 @@ class Dashboard extends React.Component {
 
   shouldComponentUpdate(nextProps) {
     return (
-      JSON.stringify(this.props.location) !== JSON.stringify(nextProps.location)
+      !areEqual(this.props.location, nextProps.location)
     );
   }
 

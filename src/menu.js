@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
+import areEqual from 'fbjs/lib/areEqual';
 
 import toggleStyle from 'utils/toggleStyle';
 import loadAnimation from 'utils/loadAnimation';
@@ -52,9 +53,9 @@ export default class Menu extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return (
-      nextProps.children !== this.props.children ||
+      this.props.children !== nextProps.children ||
       this.state.isShown !== nextState.isShown ||
-      JSON.stringify(this.state.addStyle) !== JSON.stringify(nextState.addStyle)
+      !areEqual(this.state.addStyle, nextState.addStyle)
     );
   }
 
