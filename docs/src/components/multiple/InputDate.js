@@ -82,7 +82,7 @@ class InputDate extends React.Component {
 
   render() {
     const {rules} = this.props;
-    const {value, isError, error} = this.state;
+    const {value, isError} = this.state;
 
     return (
       <div style={style.root}>
@@ -93,14 +93,6 @@ class InputDate extends React.Component {
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}
         />
-
-        {
-          !isError ?
-            null :
-            <span style={style.errorMessages}>
-              {error.join(' ,')}
-            </span>
-        }
 
         <div style={style.iconRoot}>
           <Menu menuStyle={style.menu}
@@ -172,27 +164,32 @@ export default class Temp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {
-        value: now.format(format)
-      }
+      value: now.format(format),
+      isError: false,
+      error: []
     };
 
-    this.change = data => {
-      this.setState({data});
-    };
+    this.change = data => this.setState(data);
   }
 
   render() {
-    const {data} = this.state;
+    const {value, isError, error} = this.state;
 
-    return (
-      <InputDate value={data.value}
+    return [
+      <InputDate key='input'
+        value={value}
         onChange={this.change}
         rules={[{
           validator: value => moment(getMomentDate(value)).format(format) === 'Invalid date',
           message: 'This is not a date.'
         }]}
-      />
-    );
+      />, (
+        !isError ?
+          null :
+          <span key='message'
+            style={style.errorMessages}
+          >{error.join(' ,')}</span>
+      )
+    ];
   }
 }

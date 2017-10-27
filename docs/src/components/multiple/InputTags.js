@@ -15,7 +15,8 @@ class InputTags extends React.Component {
   static propTypes = {
     tags: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired,
-    rules: PropTypes.array.isRequired
+    rules: PropTypes.array.isRequired,
+    tagsRules: PropTypes.array.isRequired
   }
 
   constructor(props) {
@@ -33,13 +34,12 @@ class InputTags extends React.Component {
   }
 
   componentDidMount() {
-    const {tags, isError, error} = this.state;
+    const {tags} = this.state;
+    const {tagsRules} = this.props;
 
-    this.props.onChange({
-      value: tags,
-      isError,
-      error
-    });
+    this.props.onChange(
+      inputCheck(tags, tagsRules)
+    );
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -52,6 +52,7 @@ class InputTags extends React.Component {
 
   componentDidUpdate() {
     const {tags, value, isError, error} = this.state;
+    const {tagsRules} = this.props;
 
     if(value !== '') {
       this.props.onChange({
@@ -60,47 +61,35 @@ class InputTags extends React.Component {
         error
       });
     } else {
-      this.props.onChange({
-        value: tags,
-        isError: false,
-        error: []
-      });
+      this.props.onChange(
+        inputCheck(tags, tagsRules)
+      );
     }
   }
 
   render() {
     const {rules} = this.props;
-    const {tags, value, isError, error} = this.state;
+    const {tags, value} = this.state;
 
     return (
-      <div>
-        <div style={[inputStyle.input, style.root]}>
-          {tags.map((tag, tagIndex) => (
-            <Button key={tagIndex}
-              onClick={this.removeTag(tagIndex)}
-            >
-              {tag}
+      <div style={[inputStyle.input, style.root]}>
+        {tags.map((tag, tagIndex) => (
+          <Button key={tagIndex}
+            onClick={this.removeTag(tagIndex)}
+          >
+            {tag}
 
-              <HighlightRemoveIcon style={style.removeIcon} />
-            </Button>
-          ))}
+            <HighlightRemoveIcon style={style.removeIcon} />
+          </Button>
+        ))}
 
-          <Input style={style.input}
-            value={value}
-            rules={rules}
-            placeholder='Use whitespace or enter to add tag'
-            onKeyDown={this.onKeyDown}
-            onChange={this.onChange}
-          />
-        </div>
-
-        {
-          !isError ?
-            null :
-            <span style={style.errorMessages}>
-              {error.join(' ,')}
-            </span>
-        }
+        <Input style={style.input}
+          value={value}
+          rules={rules}
+          placeholder='Use whitespace or enter to add tag'
+          onKeyDown={this.onKeyDown}
+          onChange={this.onChange}
+        />
       </div>
     );
   }
@@ -184,13 +173,41 @@ class InputTags extends React.Component {
 
 
 // TODO: remove
-export default () => ( // eslint-disable-line react/display-name
-  <InputTags tags={[]}
-    onChange={data => console.log(data)}
-    rules={[{
-      validator: 'isEmail',
-      not: true,
-      message: 'This is not an email.'
-    }]}
-  />
-);
+export default class Temp extends React.Component { // eslint-disable-line react/display-name
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: [],
+      isError: false,
+      error: []
+    };
+
+    this.onChange = data => this.setState(data);
+  }
+
+  render() {
+    const {value, isError, error} = this.state;
+
+    return [
+      <InputTags key='input'
+        tags={value}
+        onChange={this.onChange}
+        rules={[{
+          validator: 'isEmail',
+          not: true,
+          message: 'This is not an email.'
+        }]}
+        tagsRules={[{
+          validator: value => !(value.length > 1),
+          message: 'This must have two tags at least.'
+        }]}
+      />, (
+        !isError ?
+          null :
+          <span key='message'
+            style={style.errorMessages}
+          >{error.join(' ,')}</span>
+      )
+    ];
+  }
+}
