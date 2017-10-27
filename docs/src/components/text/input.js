@@ -91,6 +91,10 @@ If you want to use \`input\` with \`redux\`, you just need to change \`input\` t
 
       This is the data of the form.
 
+    - \`isSubmited\` [bool]
+
+      Check if form is submited.
+
     - \`inputDispatch(inputName, value)\` [func]
 
       Use this function in the \`onChange\` function.
@@ -110,7 +114,18 @@ If you want to use \`input\` with \`redux\`, you just need to change \`input\` t
       - \`callback(form)\` [func]
 
         This will be called after \`isSubmited\` is changed in the \`form\`. This will get the real data of the \`form\`.
+
         - \`form\` [object]
+
+    - \`resetDispatch(callback)\` [func]
+
+       Use to reset form.
+
+       - \`callback(data)\` [func]
+
+         - \`data\` [object]
+
+           This is the data of the form. Use to determine how to reset form.
 
 #### Example
 \`\`\`js

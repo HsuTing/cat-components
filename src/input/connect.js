@@ -2,7 +2,7 @@
 
 import {connect} from 'react-redux';
 
-import {changeValue, submit} from './reducer';
+import {changeValue, submit, reset} from './reducer';
 
 export default formName => (
   mapStateToProps = () => {},
@@ -34,7 +34,8 @@ export default formName => (
 
     return {
       ...mapStateToProps(state, ownProps),
-      form
+      form,
+      isSubmited: Boolean(isSubmited)
     };
   },
   (dispatch, ownProps) => ({
@@ -48,6 +49,12 @@ export default formName => (
     },
     submitDispatch: callback => {
       dispatch(submit({
+        formName,
+        callback
+      }));
+    },
+    resetDispatch: callback => {
+      dispatch(reset({
         formName,
         callback
       }));

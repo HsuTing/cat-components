@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
 import Button from 'cat-components/lib/button';
-import Input, {inputConnect} from 'cat-components/lib/input-redux';
+import Input, {inputConnect, inputCheck} from 'cat-components/lib/input-redux';
 
 import * as style from './style/useInput';
 
@@ -97,7 +97,8 @@ class UseReduxWithNoDefaultValue extends React.Component {
   static propTypes = {
     form: PropTypes.object.isRequired,
     inputDispatch: PropTypes.func.isRequired,
-    submitDispatch: PropTypes.func.isRequired
+    submitDispatch: PropTypes.func.isRequired,
+    resetDispatch: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -106,7 +107,7 @@ class UseReduxWithNoDefaultValue extends React.Component {
   }
 
   render() {
-    const {form, inputDispatch, submitDispatch} = this.props;
+    const {form, inputDispatch, submitDispatch, resetDispatch} = this.props;
     const {value, isError, error} = form.test_input_no_default_value || {};
 
     return (
@@ -121,6 +122,15 @@ class UseReduxWithNoDefaultValue extends React.Component {
 
         <Button onClick={() => submitDispatch(this.submit)}
         >Submit</Button>
+
+        <Button
+          onClick={() => resetDispatch(data => {
+            Object.keys(data)
+              .forEach(key => {
+                data[key] = inputCheck('', rules);
+              });
+          })}
+        >Reset</Button>
       </div>
     );
   }
