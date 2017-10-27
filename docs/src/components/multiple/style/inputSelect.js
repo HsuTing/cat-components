@@ -23,7 +23,8 @@ export const root = {
   gridTemplateColumns: 'auto 34px',
   border: `0.5px solid ${grey._500_}`,
   borderRadius: inputStyle.input.borderRadius,
-  cursor: 'pointer'
+  cursor: 'pointer',
+  overflow: 'hidden'
 };
 
 export const input = isSelected => ({
