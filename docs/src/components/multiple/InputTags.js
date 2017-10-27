@@ -76,7 +76,6 @@ class InputTags extends React.Component {
         <div style={[inputStyle.input, style.root]}>
           {tags.map((tag, tagIndex) => (
             <Button key={tagIndex}
-              style={style.tag}
               onClick={this.removeTag(tagIndex)}
             >
               {tag}
