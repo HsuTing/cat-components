@@ -11,7 +11,10 @@ export default class Wrapper extends React.Component {
     redux: PropTypes.shape({
       reducer: PropTypes.func.isRequired,
       preloadedState: PropTypes.object,
-      enhancer: PropTypes.func
+      enhancer: PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.arrayOf(PropTypes.func)
+      ])
     }),
     router: PropTypes.shape({
       isServer: PropTypes.bool
@@ -45,13 +48,26 @@ export default class Wrapper extends React.Component {
     let store;
 
     if(preloadedState) {
-      if(enhancer)
-        store = createStore(reducer, preloadedState, applyMiddleware(enhancer));
-      else
+      if(enhancer) {
+        store = createStore(
+          reducer,
+          preloadedState, (
+            enhancer instanceof Array ?
+              applyMiddleware(...enhancer) :
+              applyMiddleware(enhancer)
+          )
+        );
+      } else
         store = createStore(reducer, preloadedState);
-    } else if(enhancer)
-      store = createStore(reducer, applyMiddleware(enhancer));
-    else
+    } else if(enhancer) {
+      store = createStore(
+        reducer, (
+          enhancer instanceof Array ?
+            applyMiddleware(...enhancer) :
+            applyMiddleware(enhancer)
+        )
+      );
+    } else
       store = createStore(reducer);
 
     return (

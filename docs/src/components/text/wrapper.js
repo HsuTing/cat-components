@@ -11,7 +11,7 @@ This is a component for using server side rendering with \`radium\`. It can alos
 
 - \`redux\` [object]
 
-  You can give \`reducer(required)\`, \`preloadedState\` and \`enhancer\`. This is used like \`createStore\` in \`redux\`.
+  You can give \`reducer(required)\`, \`preloadedState\` and \`enhancer\`. This is used like \`createStore\` in \`redux\`. Howerver, if you need to use multiple middlewares in enhancer, you need to use an array of the middlewares.
 
   You need to install \`redux\`, \`react-redux\` and include in \`modules\`.
 

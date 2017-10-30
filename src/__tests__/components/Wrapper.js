@@ -49,12 +49,55 @@ describe('Wrapper', () => {
         expect(wrapper.find('div').exists()).toBe(true);
       });
 
-      it('### use enhancer', () => {
+      describe('### use enhancer', () => {
+        it('### single', () => {
+          const wrapper = shallow(
+            <Wrapper
+              redux={{
+                reducer: combineReducers({data: reducer}),
+                preloadedState: {data: 'test'},
+                enhancer: createLogger({collapsed: true})
+              }}
+              modules={{
+                redux: require('redux'),
+                reactRedux: require('react-redux')
+              }}
+            >
+              <div />
+            </Wrapper>
+          );
+
+          expect(wrapper.find('div').exists()).toBe(true);
+        });
+
+        it('### multiple', () => {
+          const wrapper = shallow(
+            <Wrapper
+              redux={{
+                reducer: combineReducers({data: reducer}),
+                preloadedState: {data: 'test'},
+                enhancer: [createLogger({collapsed: true})]
+              }}
+              modules={{
+                redux: require('redux'),
+                reactRedux: require('react-redux')
+              }}
+            >
+              <div />
+            </Wrapper>
+          );
+
+          expect(wrapper.find('div').exists()).toBe(true);
+        });
+      });
+    });
+
+    describe('## use enhancer', () => {
+      it('### single', () => {
         const wrapper = shallow(
           <Wrapper
             redux={{
               reducer: combineReducers({data: reducer}),
-              preloadedState: {data: 'test'},
               enhancer: createLogger({collapsed: true})
             }}
             modules={{
@@ -68,25 +111,25 @@ describe('Wrapper', () => {
 
         expect(wrapper.find('div').exists()).toBe(true);
       });
-    });
 
-    it('## use enhancer', () => {
-      const wrapper = shallow(
-        <Wrapper
-          redux={{
-            reducer: combineReducers({data: reducer}),
-            enhancer: createLogger({collapsed: true})
-          }}
-          modules={{
-            redux: require('redux'),
-            reactRedux: require('react-redux')
-          }}
-        >
-          <div />
-        </Wrapper>
-      );
+      it('### multiple', () => {
+        const wrapper = shallow(
+          <Wrapper
+            redux={{
+              reducer: combineReducers({data: reducer}),
+              enhancer: [createLogger({collapsed: true})]
+            }}
+            modules={{
+              redux: require('redux'),
+              reactRedux: require('react-redux')
+            }}
+          >
+            <div />
+          </Wrapper>
+        );
 
-      expect(wrapper.find('div').exists()).toBe(true);
+        expect(wrapper.find('div').exists()).toBe(true);
+      });
     });
   });
 
