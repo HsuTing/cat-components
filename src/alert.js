@@ -50,7 +50,7 @@ export default class Alert extends React.Component {
   getChildContext() {
     return {
       alert: this.alert,
-      hideAlert: this.hideAlert
+      hideAlert: this.hide
     };
   }
 
