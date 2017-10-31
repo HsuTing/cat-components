@@ -3,7 +3,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
-import CloseIcon from 'react-icons/lib/md/close';
 
 import * as style from './../style/alert';
 
@@ -11,10 +10,7 @@ import * as style from './../style/alert';
 export default class Template extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
-    rootStyle: PropTypes.object,
-    iconStyle: PropTypes.object,
     isShown: PropTypes.bool,
-    hideAlert: PropTypes.func.isRequired,
     showStyle: PropTypes.object.isRequired,
     hideStyle: PropTypes.object.isRequired
   }
@@ -22,29 +18,21 @@ export default class Template extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isShown: true
+      addStyle: {display: 'none'}
     };
 
-    this.hide = this.hide.bind(this);
     this.animationEnd = this.animationEnd.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if(this.state.isShown !== nextProps.isShown)
-      this.setState({isShown: nextProps.isShown});
+    if(nextProps.isShown)
+      this.setState({addStyle: {}});
   }
 
   render() {
-    const {children, rootStyle, iconStyle, showStyle, hideStyle} = this.props;
-    const {isShown} = this.state;
+    const {children, isShown, showStyle, hideStyle} = this.props;
+    const {addStyle} = this.state;
     const childrenProps = children.props;
-    const childrens = React.Children.toArray(childrenProps.children)
-      .concat([
-        <CloseIcon key='icon'
-          style={{...style.icon, ...iconStyle}}
-          onClick={this.hide}
-        />
-      ]);
 
     return (
       <StyleRoot {...childrenProps}
@@ -52,21 +40,17 @@ export default class Template extends React.Component {
         style={[
           style.root,
           childrenProps.style,
-          rootStyle,
+          isShown ? {} : addStyle,
           isShown ? showStyle : hideStyle
         ]}
-      >
-        {childrens}
-      </StyleRoot>
+      />
     );
   }
 
-  hide() {
-    this.setState({isShown: false});
-  }
-
   animationEnd() {
-    if(!this.state.isShown)
-      this.props.hideAlert();
+    const {isShown} = this.props;
+
+    if(!isShown)
+      this.setState({addStyle: {display: 'none'}});
   }
 }

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import CloseIcon from 'react-icons/lib/md/close';
 
 import toggleStyle from 'utils/toggleStyle';
 import loadAnimation from 'utils/loadAnimation';
@@ -15,7 +16,6 @@ export const alertBuilder = builder;
 
 export default class Alert extends React.Component {
   static propTypes = {
-    iconStyle: PropTypes.object,
     children: PropTypes.element.isRequired,
     animationStyles: PropTypes.arrayOf(
       PropTypes.object.isRequired
@@ -35,8 +35,7 @@ export default class Alert extends React.Component {
     super(props);
     this.state = {
       isShown: false,
-      component: () => <div />,
-      rootStyle: {display: 'none'}
+      component: () => <div />
     };
 
     this.showStyle = toggleStyle(true, props.animationStyles);
@@ -44,7 +43,6 @@ export default class Alert extends React.Component {
 
     this.hide = this.hide.bind(this);
     this.alert = this.alert.bind(this);
-    this.hideAlert = this.hideAlert.bind(this);
   }
 
   getChildContext() {
@@ -55,8 +53,8 @@ export default class Alert extends React.Component {
   }
 
   render() {
-    const {children, iconStyle, ...props} = this.props;
-    const {isShown, component, rootStyle} = this.state;
+    const {children, ...props} = this.props;
+    const {isShown, component} = this.state;
 
     delete props.animationStyles;
 
@@ -66,39 +64,44 @@ export default class Alert extends React.Component {
 
         {children}
 
-        <Template rootStyle={rootStyle}
-          isShown={isShown}
-          iconStyle={iconStyle}
+        <Template isShown={isShown}
           showStyle={this.showStyle}
           hideStyle={this.hideStyle}
-          hideAlert={this.hideAlert}
-        >{component({hide: this.hide})}</Template>
+        >
+          {component({
+            hide: this.hide,
+            Icon: props => (
+              <CloseIcon onClick={this.hide}
+                {...props}
+                style={{...style.icon, ...props.style}}
+              />
+            )
+          })}
+        </Template>
       </div>
     );
   }
 
   hide() {
+    const {isShown} = this.state;
+
+    if(!isShown)
+      return;
+
     this.setState({
-      isShown: false,
-      rootStyle: {}
+      isShown: false
     });
   }
 
-  alert(component = () => <div />) {
-    if(this.state.isShown)
+  alert(component = ({Icon}) => <div><Icon /></div>) {
+    const {isShown} = this.state;
+
+    if(isShown)
       return;
 
     this.setState({
       isShown: true,
-      component,
-      rootStyle: {}
-    });
-  }
-
-  hideAlert() {
-    this.setState({
-      isShown: false,
-      rootStyle: {display: 'none'}
+      component
     });
   }
 }

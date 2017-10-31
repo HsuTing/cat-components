@@ -2,10 +2,13 @@
 
 export default wrapper => {
   describe('## Alert', () => {
-    const getDisplay = object => {
+    const getDisplay = display => {
       expect(
-        wrapper.find('Alert').find('Template').prop('rootStyle')
-      ).toMatchObject(object);
+        wrapper.find('Alert').find('Template').children().prop('style')
+          .reduce((result, style = {}) => (
+            style.display || result
+          ), '')
+      ).toBe(display);
     };
     const click = index => {
       wrapper.find('Alert').find('Button').at(index).simulate('click');
@@ -13,15 +16,16 @@ export default wrapper => {
     };
     const testHide = () => {
       wrapper.find('Alert').find('svg').simulate('click');
+      wrapper.find('Alert').find('svg').simulate('click');
       wrapper.find('Alert').find('Template').simulate('animationEnd');
-      getDisplay({display: 'none'});
+      getDisplay('none');
     };
 
     describe('### default alert', () => {
       it('#### show', () => {
-        getDisplay({display: 'none'});
+        getDisplay('none');
         click(0);
-        getDisplay({});
+        getDisplay('');
       });
 
       it('#### hide', () => {
@@ -31,10 +35,10 @@ export default wrapper => {
 
     describe('### custom alert', () => {
       it('#### show', () => {
-        getDisplay({display: 'none'});
+        getDisplay('none');
         click(1);
         click(1);
-        getDisplay({});
+        getDisplay('');
       });
 
       it('#### hide', () => {
