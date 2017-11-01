@@ -28,7 +28,8 @@ export default class Alert extends React.Component {
 
   static childContextTypes = {
     alert: PropTypes.func.isRequired,
-    hideAlert: PropTypes.func.isRequired
+    hideAlert: PropTypes.func.isRequired,
+    alertIsShown: PropTypes.bool.isRequired
   }
 
   constructor(props) {
@@ -48,7 +49,8 @@ export default class Alert extends React.Component {
   getChildContext() {
     return {
       alert: this.alert,
-      hideAlert: this.hide
+      hideAlert: this.hide,
+      alertIsShown: this.state.isShown
     };
   }
 

@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 export default Component => class extends React.Component { // eslint-disable-line react/display-name
   static contextTypes = {
     alert: PropTypes.func.isRequired,
-    hideAlert: PropTypes.func.isRequired
+    hideAlert: PropTypes.func.isRequired,
+    alertIsShown: PropTypes.bool.isRequired
   }
 
   render() {
