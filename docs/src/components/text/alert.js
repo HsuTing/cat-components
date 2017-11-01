@@ -32,6 +32,8 @@ You need to add \`Alert\` before you use \`alertBuilder\`.
 
       This is the function to hide \`alert\`.
 
+    - \`alertIsShown\` [bool]
+
 #### Example
 \`\`\`js
 ${example}
