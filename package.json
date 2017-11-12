@@ -14,7 +14,7 @@
     "prepublish": "yarn babel && yarn copy",
     "build": "yarn babel && yarn static",
     "prod": "yarn babel && cross-env NODE_ENV=production yarn static && yarn webpack",
-    "watch": "concurrently -c green \"yarn lint:watch\" \"yarn babel:watch\" \"yarn webpack-server\"",
+    "watch": "concurrently -c green --allow-restart \"yarn lint:watch\" \"yarn babel:watch\" \"yarn webpack-server\"",
     "static": "yarn babel:static && node ./lib/bin/static.js static.config.js"
   },
   "name": "cat-components",
