@@ -16,7 +16,7 @@ export default wrapper => {
         }
       });
 
-      expect(getBorderColor()).toBe(`0.5px solid ${red}`);
+      expect(getBorderColor()).toBe(`1px solid ${red}`);
     });
 
     it('### submit', () => {

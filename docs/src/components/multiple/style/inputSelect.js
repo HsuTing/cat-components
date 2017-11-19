@@ -21,7 +21,7 @@ export const menuHideStyle = {
 export const root = {
   display: 'grid',
   gridTemplateColumns: 'auto 34px',
-  border: `0.5px solid ${grey._500_}`,
+  border: `1px solid ${grey._500_}`,
   borderRadius: inputStyle.input.borderRadius,
   cursor: 'pointer',
   overflow: 'hidden'
@@ -61,7 +61,7 @@ export const option = (isLast, isSelected) => ({
   cursor: 'pointer',
   userSelect: 'none',
   ...(isLast ? {} : {
-    borderBottom: `0.5px solid ${grey._200_}`
+    borderBottom: `1px solid ${grey._200_}`
   }),
   ...(!isSelected ? {} : {
     color: white,

@@ -11,7 +11,7 @@ export const root = {
   margin: '4px 2px',
   background: white,
   borderRadius: '3px',
-  border: `0.5px solid ${grey}`,
+  border: `1px solid ${grey}`,
   cursor: 'pointer',
   outline: '0px',
   fontWeight: 'normal',

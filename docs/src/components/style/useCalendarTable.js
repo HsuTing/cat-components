@@ -6,7 +6,7 @@ import white from 'cat-components/lib/color/white';
 
 export const root = {
   padding: '5px',
-  border: `0.5px solid ${grey._200_}`,
+  border: `1px solid ${grey._200_}`,
   color: grey._500_,
   textAlign: 'right'
 };

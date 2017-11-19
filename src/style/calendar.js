@@ -19,7 +19,7 @@ export const root = {
 
 export const block = {
   padding: '10px 15px',
-  border: `0.5px solid ${grey._200_}`
+  border: `1px solid ${grey._200_}`
 };
 
 export const textBlock = {
@@ -37,7 +37,7 @@ export const choice = {
   height: '200px',
   overflowY: 'scroll',
   textAlign: 'center',
-  border: `0.5px solid ${grey._200_}`,
+  border: `1px solid ${grey._200_}`,
   cursor: 'pointer'
 };
 

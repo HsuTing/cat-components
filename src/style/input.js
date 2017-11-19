@@ -6,18 +6,18 @@ import blue from 'color/blue';
 export const input = {
   margin: '5px 0px',
   padding: '5px 10px',
-  width: 'calc(100% - 10px * 2 - 0.5px * 2)',
+  width: 'calc(100% - 10px * 2 - 1px * 2)',
   height: '22px',
   lineHeight: '22px',
   fontSize: '18px',
   letterSpacing: '1.2px',
-  border: `solid 0.5px ${black}`,
+  border: `solid 1px ${black}`,
   borderRadius: '3px',
   color: 'black',
   outline: '0px',
   resize: 'none',
   ':focus': {
-    border: `solid 0.5px ${blue}`
+    border: `solid 1px ${blue}`
   }
 };
 

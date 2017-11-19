@@ -4,7 +4,7 @@ import red from 'cat-components/lib/color/red';
 
 export const inputError = {
   color: red,
-  border: `0.5px solid ${red}`
+  border: `1px solid ${red}`
 };
 
 export const error = {
