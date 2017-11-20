@@ -84,9 +84,11 @@ export default class ImgZoom extends React.Component {
                 <Img src={src}
                   style={[
                     style.img,
-                    imgStyle,
-                    imgAnimation.length === 2 && !imgAnimationEnd ?
-                      toggleStyle(isZoom, imgAnimation) : {}
+                    imgStyle, (
+                      imgAnimation.length === 2 && !imgAnimationEnd ?
+                        toggleStyle(isZoom, imgAnimation) :
+                        {}
+                    )
                   ]}
                   onLoad={this.onLoad}
                   onAnimationEnd={this.onImgAnimationEnd}

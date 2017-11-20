@@ -3,7 +3,7 @@
 import white from 'color/white';
 
 export const root = isZoom => ({
-  display: 'flex',
+  display: 'grid',
   position: 'fixed',
   top: '0px',
   left: '0px',
@@ -15,7 +15,7 @@ export const root = isZoom => ({
 });
 
 export const imgBackground = {
-  display: 'flex',
+  display: 'grid',
   width: '80%',
   height: '80%',
   maxWidth: '1920px',

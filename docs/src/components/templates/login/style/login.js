@@ -1,14 +1,8 @@
 'use strict';
 
-import * as layoutStyle from 'cat-components/lib/layout';
-
 export const root = {
   display: 'grid',
-  width: '100vw',
-  gridTemplateColumns: '30% auto 30%',
-  ...layoutStyle.tablet({
-    gridTemplateColumns: '10% auto 10%'
-  })
+  width: '100vw'
 };
 
 export const content = {

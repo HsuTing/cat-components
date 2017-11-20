@@ -9,7 +9,7 @@ export const root = {
     '0%': {
       opacity: '0',
       transform: 'translate(-100%, 0)',
-      overflow: 'hidde'
+      overflow: 'hidden'
     },
 
     '100%': {

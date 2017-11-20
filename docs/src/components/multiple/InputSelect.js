@@ -12,13 +12,13 @@ import * as style from './style/inputSelect';
 const Options = radium(({choose, choice, hide, options}) => (
   <div>
     {options.map((option, optionIndex) => (
-      <option key={optionIndex}
+      <div key={optionIndex}
         style={style.option(optionIndex === options.length - 1, choice === option)}
         onClick={() => {
           hide();
           choose(option);
         }}
-      >{option}</option>
+      >{option}</div>
     ))}
   </div>
 ));
@@ -91,12 +91,17 @@ class InputSelect extends React.Component {
         trigger={['click']}
         animationStyles={[style.menuHideStyle, style.menuShowStyle]}
       >
-        <div style={style.root}>
-          <div style={[inputStyle.input, style.input(value === '')]}>
-            {value === '' ? placeholder : value}
-          </div>
+        <div style={[inputStyle.input, style.root]}>
+          <input style={style.input}
+            value={value}
+            onChange={() => {}}
+            placeholder={placeholder}
+            disabled
+          />
 
-          <ArrowDropDownIcon style={style.icon} />
+          <div>
+            <ArrowDropDownIcon style={style.icon} />
+          </div>
         </div>
       </Menu>
     );

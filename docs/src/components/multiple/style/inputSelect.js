@@ -1,10 +1,8 @@
 'use strict';
 
 import * as grey from 'cat-components/lib/color/grey';
-import black from 'cat-components/lib/color/black';
 import white from 'cat-components/lib/color/white';
 import blue from 'cat-components/lib/color/blue';
-import {inputStyle} from 'cat-components/lib/input';
 
 export const menuShowStyle = {
   zIndex: '99',
@@ -21,21 +19,22 @@ export const menuHideStyle = {
 export const root = {
   display: 'grid',
   gridTemplateColumns: 'auto 34px',
-  border: `1px solid ${grey._500_}`,
-  borderRadius: inputStyle.input.borderRadius,
+  padding: '0px',
+  width: 'calc(100% - 1px * 2)',
+  height: 'initial',
   cursor: 'pointer',
   overflow: 'hidden'
 };
 
-export const input = isSelected => ({
+export const input = {
   margin: '0px',
-  width: 'calc(100% - 10px * 2)',
-  height: 'calc(100% - 5px * 2)',
+  padding: '0px 15px',
   border: '0px',
-  borderRadius: '0px',
-  color: isSelected ? grey._500_ : black,
-  userSelect: 'none'
-});
+  cursor: 'pointer',
+  ':focus': {
+    border: '0px'
+  }
+};
 
 export const menu = {
   top: '39px',

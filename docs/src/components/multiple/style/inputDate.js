@@ -6,12 +6,14 @@ export const root = {
   display: 'grid',
   gridTemplateColumns: 'auto 34px',
   padding: '0px',
-  width: 'calc(100% - 1px)',
+  width: 'calc(100% - 1px * 2)',
   height: 'initial'
 };
 
 export const input = {
   margin: '0px',
+  width: 'calc(100% - 10px * 2)',
+  height: 'initial',
   border: '0px',
   ':focus': {
     border: '0px'
