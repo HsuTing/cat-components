@@ -30,6 +30,18 @@ export const menu = {
   transformOrigin: '100% 0px'
 };
 
+export const calendar = {
+  boxShadow: 'initial'
+};
+
+export const today = {
+  padding: '2px 0px',
+  background: red._50_,
+  fontSize: '12px',
+  textAlign: 'center',
+  cursor: 'pointer'
+};
+
 export const errorMessages = {
   fontSize: '12px',
   color: red

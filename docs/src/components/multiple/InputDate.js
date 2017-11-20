@@ -7,7 +7,7 @@ import areEqual from 'fbjs/lib/areEqual';
 import moment from 'moment';
 import ArrowDropDownIcon from 'react-icons/lib/md/arrow-drop-down';
 import Menu from 'cat-components/lib/menu';
-import Calendar from 'cat-components/lib/calendar';
+import Calendar, {calendarStyle} from 'cat-components/lib/calendar';
 import Input, {inputStyle, inputCheck} from 'cat-components/lib/input';
 
 import * as style from './style/inputDate';
@@ -96,8 +96,15 @@ class InputDate extends React.Component {
 
         <Menu menuStyle={style.menu}
           menu={() => (
-            <div onMouseMove={this.onMouseMove}>
-              <Calendar getDate={this.getDate}
+            <div style={calendarStyle.root}
+              onMouseMove={this.onMouseMove}
+            >
+              <div style={[calendarStyle.block, style.today]}
+                onClick={() => this.getDate(now.format())}
+              >Today</div>
+
+              <Calendar style={style.calendar}
+                getDate={this.getDate}
                 format={format}
                 defaultDate={{
                   year: now.year(),
