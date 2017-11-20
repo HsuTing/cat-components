@@ -28,10 +28,10 @@ describe('build color', () => {
   });
 
   it('# check color list', () => {
-    expect(colors).toMatchObject(
-      fs.readdirSync(path.resolve(__dirname, './../../data/color'))
-        .concat(['white', 'black'])
-        .sort()
-    );
+    expect(colors).toMatchObject([
+      ...(fs.readdirSync(path.resolve(__dirname, './../../data/color'))),
+      'white',
+      'black'
+    ].sort());
   });
 });

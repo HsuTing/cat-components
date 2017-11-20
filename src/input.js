@@ -80,7 +80,11 @@ export default class Input extends React.Component {
       type === 'textarea' ? 'textarea' : 'input', {
         ...props,
         type,
-        style: newStyle.concat([propsStyle]),
+        style: {
+          ...style.input,
+          ...(type === 'textarea' ? style.textarea : {}),
+          ...propsStyle
+        },
         value,
         onChange: this.onChange,
         onBlur: this.onBlur

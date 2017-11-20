@@ -23,15 +23,20 @@ const templateFolder = path.resolve(__dirname, './../../temp');
       message: 'Choose you need',
       choices: nodeFs.readdirSync(templateFolder)
         .reduce((choices, folderName) => {
-          return choices.concat(
-            nodeFs.readdirSync(path.resolve(templateFolder, folderName))
+          return [
+            ...choices,
+            ...(nodeFs.readdirSync(path.resolve(templateFolder, folderName))
               .reduce((items, itemName) => {
                 if(['style', 'temp'].includes(itemName))
                   return items;
 
-                return items.concat([`[${folderName}] ${itemName}`]);
+                return [
+                  ...items,
+                  `[${folderName}] ${itemName}`
+                ];
               }, [])
-          );
+            )
+          ];
         }, [])
     }, {
       name: 'targetPath',

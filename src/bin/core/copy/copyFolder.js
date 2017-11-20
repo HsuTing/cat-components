@@ -10,9 +10,12 @@ const getFiles = (nowPath, templatePath) => fs.readdirSync(nowPath)
     const childFilePath = path.resolve(nowPath, file);
     const stats = fs.lstatSync(childFilePath);
 
-    if(stats.isDirectory())
-      return result.concat(getFiles(childFilePath, templatePath));
-    else {
+    if(stats.isDirectory()) {
+      return [
+        ...result,
+        ...getFiles(childFilePath, templatePath)
+      ];
+    } else {
       result.push(
         childFilePath.replace(`${templatePath}/`, './')
       );
@@ -26,10 +29,12 @@ export default async (targetPath, templatePath, itemName) => {
     path.resolve(templatePath, itemName),
     templatePath
   ).reduce((result, filePath) => {
-    return result.concat([{
-      target: path.resolve(targetPath, filePath),
-      template: path.resolve(templatePath, filePath)
-    }]);
+    return [
+      ...result, {
+        target: path.resolve(targetPath, filePath),
+        template: path.resolve(templatePath, filePath)
+      }
+    ];
   }, []);
 
   return await filter(output);

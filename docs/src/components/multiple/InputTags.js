@@ -60,9 +60,10 @@ class InputTags extends React.Component {
       onChange({
         value: tags,
         isError: isError || tagsCheck.isError,
-        error: [...error].concat(
-          tagsCheck.isError ? tagsCheck.error : []
-        )
+        error: [
+          ...error,
+          ...(tagsCheck.isError ? tagsCheck.error : [])
+        ]
       });
     } else
       onChange(tagsCheck);

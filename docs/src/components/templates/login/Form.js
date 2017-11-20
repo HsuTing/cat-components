@@ -47,8 +47,10 @@ export default class Field extends React.Component {
     super(props);
     const {type} = props;
     this.fields = type === 'login' ?
-      [...fields] :
-      [...fields].concat(registerFields);
+      [...fields] : [
+        ...fields,
+        ...registerFields
+      ];
     this.enter = this.enter.bind(this);
     this.submit = this.submit.bind(this);
   }
