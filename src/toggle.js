@@ -63,17 +63,18 @@ export default class Toggle extends React.Component {
 
   constructor(props) {
     super(props);
+    const {type, checked, clicked} = props;
     this.state = {
       isClicked: (
-        props.type === 'checkbox' ?
-          props.checked :
-          props.checked || props.clicked
+        type === 'checkbox' ?
+          checked :
+          checked || clicked
       )
     };
 
-    if(props.type === 'radio') {
+    if(type === 'radio') {
       invariant(
-        !(props.clicked === undefined),
+        !(clicked === undefined),
         'If you use "radio", you should use "clicked" to make sure that the value of "radio" will be only one value.'
       );
     }
@@ -107,11 +108,13 @@ export default class Toggle extends React.Component {
     delete props.clicked;
     delete props.icons;
 
-    if(type === 'switch')
-      props.isClicked = isClicked;
-
     return (
       <Icon {...props}
+        {...(
+          type !== 'switch' ?
+            {} :
+            {isClicked}
+        )}
         style={iconStyle}
         onClick={this.click}
       />

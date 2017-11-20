@@ -11,12 +11,13 @@ export const buttonStyle = style;
 @radium
 export default class Button extends React.Component {
   static propTypes = {
+    style: PropTypes.object,
     link: PropTypes.string,
     target: PropTypes.string
   }
 
   render() {
-    const {link, target, ...props} = this.props;
+    const {link, target, style: propsStyle, ...props} = this.props;
 
     if(link) {
       return (
@@ -24,7 +25,7 @@ export default class Button extends React.Component {
           target={target ? target : '_self'}
         >
           <button {...props}
-            style={[style.root, props.style]}
+            style={[style.root, propsStyle]}
           ></button>
         </a>
       );
@@ -32,7 +33,7 @@ export default class Button extends React.Component {
 
     return (
       <button {...props}
-        style={[style.root, props.style]}
+        style={[style.root, propsStyle]}
       ></button>
     );
   }

@@ -13,6 +13,7 @@ export const loadingStyle = style;
 @radium
 export default class Loading extends React.Component {
   static propTypes = {
+    style: PropTypes.object,
     innerRadius: PropTypes.number,
     outerRadius: PropTypes.number,
     fps: PropTypes.number,
@@ -67,7 +68,7 @@ export default class Loading extends React.Component {
   }
 
   render() {
-    const {outerRadius, ...props} = this.props;
+    const {outerRadius, style: propsStyle, ...props} = this.props;
     const {path, start, end} = this.state;
 
     delete props.innerRadius;
@@ -78,7 +79,7 @@ export default class Loading extends React.Component {
 
     return (
       <StyleRoot {...props}
-        style={[style.root(outerRadius), style.animtion, props.style]}
+        style={[style.root(outerRadius), style.animtion, propsStyle]}
       >
         <svg style={style.root(outerRadius)}>
           <g style={style.g(outerRadius)}>

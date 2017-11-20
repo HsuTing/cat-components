@@ -35,13 +35,14 @@ export default class Sidebar extends React.Component {
 
   constructor(props) {
     super(props);
+    const {animationStyles} = props;
     this.state = {
       isShown: false,
       rootStyle: {display: 'none'}
     };
 
-    this.showStyle = toggleStyle(true, props.animationStyles);
-    this.hideStyle = toggleStyle(false, props.animationStyles);
+    this.showStyle = toggleStyle(true, animationStyles);
+    this.hideStyle = toggleStyle(false, animationStyles);
 
     this.hide = this.hide.bind(this);
     this.sidebar = this.sidebar.bind(this);

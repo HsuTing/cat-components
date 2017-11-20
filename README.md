@@ -64,6 +64,7 @@ You can use any name, but need to give this name as argument.
     name: 'index'
   }];
   ```
+
 - options
   - `component(required)`: This is your main component.
   - `name(required)`: The name of `html` is rendered.

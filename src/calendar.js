@@ -108,7 +108,7 @@ export default class Calendar extends React.Component {
   }
 
   render() {
-    const {format, isChosenStyle, ...props} = this.props;
+    const {style: propsStyle, format, isChosenStyle, ...props} = this.props;
     const {choices, date} = this.state;
 
     delete props.getDate;
@@ -117,7 +117,7 @@ export default class Calendar extends React.Component {
 
     return (
       <div {...props}
-        style={[style.root, this.props.style]}
+        style={[style.root, propsStyle]}
       >
         <div style={[style.block, style.textBlock]}>
           {moment(date).format(format)}

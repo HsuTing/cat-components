@@ -31,7 +31,7 @@ export default class CalendarTable extends React.Component {
   }
 
   render() {
-    const {children, ...props} = this.props;
+    const {children, style: propsStyle, ...props} = this.props;
 
     delete props.year;
     delete props.month;
@@ -39,7 +39,7 @@ export default class CalendarTable extends React.Component {
 
     return (
       <div {...props}
-        style={[style.root, props.style]}
+        style={[style.root, propsStyle]}
       >
         {this.getData().map((d, dIndex) => (
           React.cloneElement(children, {

@@ -67,19 +67,20 @@ export default class Input extends React.Component {
   }
 
   render() {
-    const props = {...this.props};
+    const {style: propsStyle, type, ...props} = this.props;
     const {value} = this.state;
     const newStyle = [style.input];
 
     delete props.rules;
 
-    if(props.type === 'textarea')
+    if(type === 'textarea')
       newStyle.push(style.textarea);
 
     return React.createElement(
-      props.type === 'textarea' ? 'textarea' : 'input', {
+      type === 'textarea' ? 'textarea' : 'input', {
         ...props,
-        style: newStyle.concat([props.style]),
+        type,
+        style: newStyle.concat([propsStyle]),
         value,
         onChange: this.onChange,
         onBlur: this.onBlur

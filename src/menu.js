@@ -16,6 +16,7 @@ export const menuStyle = style;
 export default class Menu extends React.Component {
   static propTypes ={
     children: PropTypes.element.isRequired,
+    style: PropTypes.object,
     menu: PropTypes.func.isRequired,
     menuStyle: PropTypes.object,
     delay: PropTypes.number,
@@ -35,6 +36,7 @@ export default class Menu extends React.Component {
 
   constructor(props) {
     super(props);
+    const {animationStyles} = props;
     this.state = {
       isShown: false,
       addStyle: {}
@@ -42,8 +44,8 @@ export default class Menu extends React.Component {
 
     this.init = true;
     this.isEnter = false;
-    this.showStyle = toggleStyle(true, props.animationStyles);
-    this.hideStyle = toggleStyle(false, props.animationStyles);
+    this.showStyle = toggleStyle(true, animationStyles);
+    this.hideStyle = toggleStyle(false, animationStyles);
     this.toggleMenu = this.toggleMenu.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.hideMenu = this.hideMenu.bind(this);
@@ -64,7 +66,7 @@ export default class Menu extends React.Component {
   }
 
   render() {
-    const {children, menu, menuStyle, trigger, ...props} = this.props;
+    const {children, style: propsStyle, menu, menuStyle, trigger, ...props} = this.props;
     const {isShown, addStyle} = this.state;
     const newMenuStyle = [
       style.menu,
@@ -81,7 +83,7 @@ export default class Menu extends React.Component {
 
     return (
       <div {...props}
-        style={[style.root, props.style]}
+        style={[style.root, propsStyle]}
       >
         {React.cloneElement(children, {
           ...(trigger.includes('click') ? {onClick: this.toggleMenu} : {}),

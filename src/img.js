@@ -9,6 +9,7 @@ import * as style from './style/img';
 @radium
 export default class Img extends React.Component {
   static propTypes = {
+    style: PropTypes.object,
     type: PropTypes.oneOf([
       'div',
       'img'
@@ -46,23 +47,26 @@ export default class Img extends React.Component {
   }
 
   render() {
-    const {type, link, target, ...props} = this.props;
+    const {style: propsStyle, type, link, target, ...props} = this.props;
     const {src} = this.state;
 
     delete props.src;
 
     if(!src) {
       return (
-        <StyleRoot {...props} />
+        <StyleRoot {...props}
+          style={propsStyle}
+        />
       );
     }
 
     const component = (
       type === 'div' ?
         <StyleRoot {...props}
-          style={[props.style, style.div(src)]}
+          style={[propsStyle, style.div(src)]}
         /> :
         <img {...props}
+          style={propsStyle}
           src={src}
         />
     );

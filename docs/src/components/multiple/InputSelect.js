@@ -37,7 +37,8 @@ class InputSelect extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = inputCheck(props.value, props.rules);
+    const {value, rules} = props;
+    this.state = inputCheck(value, rules);
     this.choose = this.choose.bind(this);
   }
 

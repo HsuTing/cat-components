@@ -15,6 +15,7 @@ export const sliderStyle = style;
 @radium
 export default class Slider extends React.Component {
   static propTypes = {
+    style: PropTypes.object,
     onChange: PropTypes.func,
     value: PropTypes.number,
     max: PropTypes.number,
@@ -34,8 +35,9 @@ export default class Slider extends React.Component {
 
   constructor(props) {
     super(props);
+    const {value} = props;
     this.state = {
-      value: props.value
+      value
     };
 
     this.findLeft = this.findLeft.bind(this);
@@ -65,7 +67,7 @@ export default class Slider extends React.Component {
   }
 
   render() {
-    const {max, min, buttonStyle, barStyle, ...props} = this.props;
+    const {style: propsStyle, max, min, buttonStyle, barStyle, ...props} = this.props;
     const {value} = this.state;
     const percentage = (value - min) / (max - min) * 100;
     const left = `calc(${percentage}% - 10px)`;
@@ -76,7 +78,7 @@ export default class Slider extends React.Component {
     return (
       <div {...props}
         ref={node => (this.node = node)}
-        style={[style.root, props.style]}
+        style={[style.root, propsStyle]}
         onClick={this.click}
       >
         <div style={[style.bar(left), barStyle(percentage / 100)]} />

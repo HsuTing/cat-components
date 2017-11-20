@@ -17,6 +17,7 @@ export const alertBuilder = builder;
 export default class Alert extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
+    style: PropTypes.object,
     animationStyles: PropTypes.arrayOf(
       PropTypes.object.isRequired
     )
@@ -34,13 +35,14 @@ export default class Alert extends React.Component {
 
   constructor(props) {
     super(props);
+    const {animationStyles} = props;
     this.state = {
       isShown: false,
       component: () => <div />
     };
 
-    this.showStyle = toggleStyle(true, props.animationStyles);
-    this.hideStyle = toggleStyle(false, props.animationStyles);
+    this.showStyle = toggleStyle(true, animationStyles);
+    this.hideStyle = toggleStyle(false, animationStyles);
 
     this.hide = this.hide.bind(this);
     this.alert = this.alert.bind(this);
@@ -72,10 +74,10 @@ export default class Alert extends React.Component {
         >
           {component({
             hide: this.hide,
-            Icon: props => (
+            Icon: ({style: propsStyle, ...props}) => (
               <CloseIcon onClick={this.hide}
                 {...props}
-                style={{...style.icon, ...props.style}}
+                style={{...style.icon, ...propsStyle}}
               />
             )
           })}

@@ -15,9 +15,11 @@ export class Table extends React.Component {
   }
 
   render() {
+    const {style: propsStyle, ...props} = this.props;
+
     return (
-      <table {...this.props}
-        style={[style.table, this.props.style]}
+      <table {...props}
+        style={[style.table, propsStyle]}
       />
     );
   }
@@ -30,9 +32,11 @@ export class Tr extends React.Component {
   }
 
   render() {
+    const {style: propsStyle, ...props} = this.props;
+
     return (
-      <tr {...this.props}
-        style={[style.tr, this.props.style]}
+      <tr {...props}
+        style={[style.tr, propsStyle]}
       />
     );
   }
@@ -45,9 +49,11 @@ export class Th extends React.Component {
   }
 
   render() {
+    const {style: propsStyle, ...props} = this.props;
+
     return (
-      <th {...this.props}
-        style={[style.th, this.props.style]}
+      <th {...props}
+        style={[style.th, propsStyle]}
       />
     );
   }
@@ -60,9 +66,11 @@ export class Td extends React.Component {
   }
 
   render() {
+    const {style: propsStyle, ...props} = this.props;
+
     return (
-      <td {...this.props}
-        style={[style.td, this.props.style]}
+      <td {...props}
+        style={[style.td, propsStyle]}
       />
     );
   }
@@ -75,9 +83,11 @@ export class Thead extends React.Component {
   }
 
   render() {
+    const {style: propsStyle, ...props} = this.props;
+
     return (
-      <thead {...this.props}
-        style={[style.thead, this.props.style]}
+      <thead {...props}
+        style={[style.thead, propsStyle]}
       />
     );
   }
@@ -91,11 +101,13 @@ export class Tbody extends React.Component {
   }
 
   render() {
+    const {children, style: propsStyle, ...props} = this.props;
+
     return (
-      <tbody {...this.props}
-        style={[style.tbody, this.props.style]}
+      <tbody {...props}
+        style={[style.tbody, propsStyle]}
       >
-        {React.Children.map(this.props.children, node => {
+        {React.Children.map(children, node => {
           return React.cloneElement(node, {
             style: style.trHover
           });

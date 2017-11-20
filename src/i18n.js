@@ -39,12 +39,13 @@ export default class I18n extends React.Component {
 
   constructor(props) {
     super(props);
+    const {lang, basename, defaultData} = props;
     const state = {
-      lang: props.lang,
-      basename: props.basename
+      lang,
+      basename
     };
 
-    state[props.lang] = props.defaultData;
+    state[lang] = defaultData;
     this.state = state;
     this.changeLanguage = this.changeLanguage.bind(this);
   }

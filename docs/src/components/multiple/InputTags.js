@@ -21,8 +21,9 @@ class InputTags extends React.Component {
 
   constructor(props) {
     super(props);
+    const {tags} = props;
     this.state = {
-      tags: props.tags,
+      tags,
       value: '',
       isError: false,
       error: []

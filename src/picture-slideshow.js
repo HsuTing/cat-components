@@ -15,6 +15,7 @@ export const pictureSlideshowStyle = style;
 @radium
 export default class ImgResizeSlideshow extends React.Component {
   static propTypes = {
+    style: PropTypes.object,
     index: PropTypes.number.isRequired,
     imgs: PropTypes.array.isRequired,
     type: PropTypes.oneOf([
@@ -75,7 +76,7 @@ export default class ImgResizeSlideshow extends React.Component {
   }
 
   render() {
-    const {imgs, type, ...props} = this.props;
+    const {imgs, type, style: propsStyle, ...props} = this.props;
     const {direction, index, preIndex} = this.state;
 
     delete props.index;
@@ -83,7 +84,7 @@ export default class ImgResizeSlideshow extends React.Component {
 
     return (
       <StyleRoot {...props}
-        style={[style.root, props.style]}
+        style={[style.root, propsStyle]}
       >
         {loadAnimation([
           this.hideStyle.left,

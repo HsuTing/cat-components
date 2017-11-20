@@ -24,10 +24,10 @@ export default class Menu extends React.Component {
   }
 
   render() {
-    const {img, email, hide, ...props} = this.props;
+    const {style: propsStyle, img, email, hide} = this.props;
 
     return (
-      <StyleRoot style={[style.root, props.style]}>
+      <StyleRoot style={[style.root, propsStyle]}>
         <div style={style.header}>
           <div />
 

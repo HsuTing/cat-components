@@ -20,9 +20,9 @@ class Item extends React.Component {
   }
 
   render() {
-    const {date, content, inverted, type, ...props} = this.props;
+    const {date, content, inverted, type, dateStyle: propsDateStyle} = this.props;
     const check = inverted ? type !== 'left' : type === 'left';
-    const dateStyle = check ? props.dateStyle : style.hide;
+    const dateStyle = check ? propsDateStyle : style.hide;
     const contentStyle = check ? style.hide : content.props.style || {};
     const tabletStyle = type === 'left' ? style.hide : style.init;
 
