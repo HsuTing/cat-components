@@ -49,9 +49,7 @@ export const menu = {
 
 export const icon = {
   height: '34px',
-  width: '34px',
-  color: white,
-  background: grey._500_
+  width: '34px'
 };
 
 export const option = (isLast, isSelected) => ({

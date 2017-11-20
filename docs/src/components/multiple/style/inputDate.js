@@ -3,7 +3,19 @@
 import red from 'cat-components/lib/color/red';
 
 export const root = {
-  position: 'relative'
+  display: 'grid',
+  gridTemplateColumns: 'auto 34px',
+  padding: '0px',
+  width: 'calc(100% - 1px)',
+  height: 'initial'
+};
+
+export const input = {
+  margin: '0px',
+  border: '0px',
+  ':focus': {
+    border: '0px'
+  }
 };
 
 export const menu = {
@@ -18,23 +30,13 @@ export const menu = {
   transformOrigin: '100% 0px'
 };
 
-export const input = isError => ({
-  color: isError ? red : 'initial'
-});
-
 export const errorMessages = {
   fontSize: '12px',
   color: red
 };
 
-export const iconRoot = {
-  position: 'absolute',
-  top: '5px',
-  right: '0px',
-  cursor: 'pointer'
-};
-
 export const icon = {
   width: '34px',
-  height: '34px'
+  height: '34px',
+  cursor: 'pointer'
 };

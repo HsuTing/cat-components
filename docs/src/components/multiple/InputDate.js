@@ -8,7 +8,7 @@ import moment from 'moment';
 import ArrowDropDownIcon from 'react-icons/lib/md/arrow-drop-down';
 import Menu from 'cat-components/lib/menu';
 import Calendar from 'cat-components/lib/calendar';
-import Input, {inputCheck} from 'cat-components/lib/input';
+import Input, {inputStyle, inputCheck} from 'cat-components/lib/input';
 
 import * as style from './style/inputDate';
 
@@ -66,7 +66,8 @@ class InputDate extends React.Component {
     return (
       this.state.value !== nextState.value ||
       this.state.isError !== nextState.isError ||
-      !areEqual(this.state.error, nextState.error)
+      !areEqual(this.state.error, nextState.error) ||
+      !areEqual(this.state._radiumStyleState, nextState._radiumStyleState)
     );
   }
 
@@ -82,38 +83,35 @@ class InputDate extends React.Component {
 
   render() {
     const {rules} = this.props;
-    const {value, isError} = this.state;
+    const {value} = this.state;
 
     return (
-      <div style={style.root}>
-        <Input style={style.input(isError)}
+      <div style={[inputStyle.input, style.root]}>
+        <Input style={style.input}
           maxLength={10}
           value={value}
           rules={rules}
           onChange={this.onChange}
-          onKeyDown={this.onKeyDown}
         />
 
-        <div style={style.iconRoot}>
-          <Menu menuStyle={style.menu}
-            menu={() => (
-              <div onMouseMove={this.onMouseMove}>
-                <Calendar getDate={this.getDate}
-                  format={format}
-                  defaultDate={{
-                    year: now.year(),
-                    month: now.month(),
-                    date: now.date()
-                  }}
-                  date={getMomentDate(value)}
-                />
-              </div>
-            )}
-            delay={0.1}
-          >
-            <ArrowDropDownIcon style={style.icon} />
-          </Menu>
-        </div>
+        <Menu menuStyle={style.menu}
+          menu={() => (
+            <div onMouseMove={this.onMouseMove}>
+              <Calendar getDate={this.getDate}
+                format={format}
+                defaultDate={{
+                  year: now.year(),
+                  month: now.month(),
+                  date: now.date()
+                }}
+                date={getMomentDate(value)}
+              />
+            </div>
+          )}
+          delay={0.1}
+        >
+          <ArrowDropDownIcon style={style.icon} />
+        </Menu>
       </div>
     );
   }
