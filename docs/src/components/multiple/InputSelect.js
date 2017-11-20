@@ -94,7 +94,6 @@ class InputSelect extends React.Component {
         <div style={[inputStyle.input, style.root]}>
           <input style={style.input}
             value={value}
-            onChange={() => {}}
             placeholder={placeholder}
             disabled
           />

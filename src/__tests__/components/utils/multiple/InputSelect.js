@@ -6,8 +6,18 @@ export default wrapper => {
       expect(
         wrapper.find('InputSelect').prop('value')
       ).toBe('');
+      expect(
+        wrapper.find('InputSelect').prop('placeholder')
+      ).toBe('Choose a option');
 
-      wrapper.find('InputSelect').find('option').first().simulate('click');
+      wrapper.find('InputSelect')
+        .find('Menu').children()
+        .children().last()
+        .childAt(0)
+        .children()
+        .children()
+        .children().first()
+        .simulate('click');
 
       expect(
         wrapper.find('InputSelect').prop('value')

@@ -1,5 +1,7 @@
 'use strict';
 
+import moment from 'moment';
+
 export default wrapper => {
   describe('## InputDate', () => {
     it('### give a date', () => {
@@ -35,6 +37,15 @@ export default wrapper => {
       expect(
         wrapper.find('InputDate').find('Input').prop('value')
       ).toBe('1990-01-01');
+    });
+
+    it('### Choose Today', () => {
+      wrapper.find('InputDate').find('Calendar').parents().first().simulate('mouseMove');
+      wrapper.find('InputDate').find('Calendar').parents().first().childAt(0).simulate('click');
+
+      expect(
+        wrapper.find('InputDate').find('Input').prop('value')
+      ).toBe(moment().format('YYYY-MM-DD'));
     });
   });
 };
