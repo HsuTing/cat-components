@@ -1,7 +1,6 @@
 'use strict';
 
 export const root = {
-  display: 'grid',
   width: '100vw'
 };
 
