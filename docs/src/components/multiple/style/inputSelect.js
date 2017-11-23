@@ -28,7 +28,8 @@ export const root = {
 
 export const input = {
   margin: '0px',
-  padding: '0px 15px',
+  padding: '0px 10px',
+  width: 'calc(100% - 10px * 2)',
   border: '0px',
   cursor: 'pointer',
   ':focus': {
