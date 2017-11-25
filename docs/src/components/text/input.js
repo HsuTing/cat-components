@@ -30,7 +30,7 @@ If you want to use \`input\` with \`redux\`, you just need to change \`input\` t
 
       This is the event of the \`input\`.
 
-  - \`message\` [string, required]
+  - \`message\` [func | string, required]
 
     This message will be pushed to \`error\` when value is incorrect.
 
