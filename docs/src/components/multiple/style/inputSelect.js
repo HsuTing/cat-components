@@ -18,7 +18,7 @@ export const menuHideStyle = {
 
 export const root = {
   display: 'grid',
-  gridTemplateColumns: 'auto 34px',
+  gridTemplateColumns: 'auto 32px',
   padding: '0px',
   width: 'calc(100% - 1px * 2)',
   height: 'initial',
@@ -48,8 +48,8 @@ export const menu = {
 };
 
 export const icon = {
-  height: '34px',
-  width: '34px'
+  height: '32px',
+  width: '32px'
 };
 
 export const option = (isLast, isSelected) => ({
