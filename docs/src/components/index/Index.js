@@ -3,6 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
+import * as redux from 'redux';
+import * as reactRedux from 'react-redux';
+import * as reactRouterDom from 'react-router-dom';
 import {Switch, Route} from 'react-router-dom';
 import ArrowUpward from 'react-icons/lib/md/arrow-upward';
 import Wrapper from 'cat-components/lib/wrapper';
@@ -110,13 +113,13 @@ class Index extends React.Component {
 }
 
 /* eslint-disable */
-export default ({redux, router, defaultData, basename, ...props}) => (
-  <Wrapper redux={redux}
+export default ({redux: propsRedux, router, defaultData, basename, ...props}) => (
+  <Wrapper redux={propsRedux}
     router={router}
     modules={{
-      redux: require('redux'),
-      reactRedux: require('react-redux'),
-      reactRouterDom: require('react-router-dom')
+      redux,
+      reactRedux,
+      reactRouterDom
     }}
   >
     <I18n lang='en-us'

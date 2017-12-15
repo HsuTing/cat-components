@@ -27,6 +27,9 @@ This is a component for using server side rendering with \`radium\`. It can alos
 'use strict';
 
 import React from 'react';
+import * as redux fomr 'redux';
+import * as reactRedux from 'react-redux';
+import * as reactRouterDom from 'react-router-dom';
 import Wrapper from 'cat-components/lib/Wrapper';
 
 class Example extends React.Component {
@@ -41,9 +44,9 @@ class Example extends React.Component {
 export default (props) => (
   <Wrapper {...props}
     modules={{
-      redux: require('redux'),
-      reactRedux: require('react-redux'),
-      reactRouterDom: require('react-router-dom')
+      redux,
+      reactRedux,
+      reactRouterDom
     }}
   >
     <Example />

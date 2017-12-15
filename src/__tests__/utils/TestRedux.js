@@ -3,6 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import radium from 'radium';
+import * as redux from 'redux';
+import * as reactRedux from 'react-redux';
 import {connect} from 'react-redux';
 import Wrapper from 'cat-components/lib/wrapper';
 
@@ -25,11 +27,11 @@ class TestRedux extends React.Component {
 }
 
 /* eslint-disable */
-export default ({redux}) => (
-  <Wrapper redux={redux}
+export default ({redux: propsRedux}) => (
+  <Wrapper redux={propsRedux}
     modules={{
-      redux: require('redux'),
-      reactRedux: require('react-redux')
+      redux,
+      reactRedux
     }}
   >
     <TestRedux />

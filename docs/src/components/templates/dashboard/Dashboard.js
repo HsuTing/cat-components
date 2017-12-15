@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import radium, {StyleRoot} from 'radium';
 import areEqual from 'fbjs/lib/areEqual';
+import * as reactRouterDom from 'react-router-dom';
 import {Switch, Route, withRouter} from 'react-router-dom';
 import MenuIcon from 'react-icons/lib/md/menu';
 import Wrapper from 'cat-components/lib/wrapper';
@@ -78,7 +79,7 @@ export default ({radiumConfig, router, ...props}) => (
   <Wrapper radiumConfig={radiumConfig}
     router={router}
     modules={{
-      reactRouterDom: require('react-router-dom')
+      reactRouterDom
     }}
   >
     <div>

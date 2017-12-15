@@ -2,6 +2,9 @@
 
 import React from 'react';
 import {shallow} from 'enzyme';
+import * as redux from 'redux';
+import * as reactRedux from 'react-redux';
+import * as reactRouterDom from 'react-router-dom';
 import {combineReducers} from 'redux';
 import {createLogger} from 'redux-logger';
 
@@ -18,8 +21,8 @@ describe('Wrapper', () => {
             reducer: combineReducers({data: reducer})
           }}
           modules={{
-            redux: require('redux'),
-            reactRedux: require('react-redux')
+            redux,
+            reactRedux
           }}
         >
           <div />
@@ -38,8 +41,8 @@ describe('Wrapper', () => {
               preloadedState: {data: 'test'}
             }}
             modules={{
-              redux: require('redux'),
-              reactRedux: require('react-redux')
+              redux,
+              reactRedux
             }}
           >
             <div />
@@ -59,8 +62,8 @@ describe('Wrapper', () => {
                 enhancer: createLogger({collapsed: true})
               }}
               modules={{
-                redux: require('redux'),
-                reactRedux: require('react-redux')
+                redux,
+                reactRedux
               }}
             >
               <div />
@@ -79,8 +82,8 @@ describe('Wrapper', () => {
                 enhancer: [createLogger({collapsed: true})]
               }}
               modules={{
-                redux: require('redux'),
-                reactRedux: require('react-redux')
+                redux,
+                reactRedux
               }}
             >
               <div />
@@ -101,8 +104,8 @@ describe('Wrapper', () => {
               enhancer: createLogger({collapsed: true})
             }}
             modules={{
-              redux: require('redux'),
-              reactRedux: require('react-redux')
+              redux,
+              reactRedux
             }}
           >
             <div />
@@ -120,8 +123,8 @@ describe('Wrapper', () => {
               enhancer: [createLogger({collapsed: true})]
             }}
             modules={{
-              redux: require('redux'),
-              reactRedux: require('react-redux')
+              redux,
+              reactRedux
             }}
           >
             <div />
@@ -136,7 +139,7 @@ describe('Wrapper', () => {
   it('# router', () => {
     const wrapper = shallow(
       <Wrapper router={{isServer: false}}
-        modules={{reactRouterDom: require('react-router-dom')}}
+        modules={{reactRouterDom}}
       >
         <div />
       </Wrapper>

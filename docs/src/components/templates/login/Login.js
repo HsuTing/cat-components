@@ -2,6 +2,9 @@
 
 import React from 'react';
 import radium, {StyleRoot} from 'radium';
+import * as redux from 'redux';
+import * as reactRedux from 'react-redux';
+import * as reactRouterDom from 'react-router-dom';
 import {Switch, Route} from 'react-router-dom';
 import Wrapper from 'cat-components/lib/wrapper';
 import Icon from 'cat-components/lib/icon';
@@ -42,14 +45,14 @@ class Login extends React.Component {
 }
 
 /* eslint-disable react/display-name, react/prop-types */
-export default ({radiumConfig, redux, router}) => (
+export default ({radiumConfig, redux: propsRedux, router}) => (
   <Wrapper radiumConfig={radiumConfig}
-    redux={redux}
+    redux={propsRedux}
     router={router}
     modules={{
-      redux: require('redux'),
-      reactRedux: require('react-redux'),
-      reactRouterDom: require('react-router-dom')
+      redux,
+      reactRedux,
+      reactRouterDom
     }}
   >
     <div>

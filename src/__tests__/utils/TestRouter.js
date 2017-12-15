@@ -2,6 +2,7 @@
 
 import React from 'react';
 import radium from 'radium';
+import * as reactRouterDom from 'react-router-dom';
 import {Route} from 'react-router-dom';
 import Wrapper from 'cat-components/lib/wrapper';
 
@@ -26,7 +27,7 @@ class TestRouter extends React.Component {
 /* eslint-disable */
 export default ({router}) => (
   <Wrapper router={router}
-    modules={{reactRouterDom: require('react-router-dom')}}
+    modules={{reactRouterDom}}
   >
     <TestRouter />
   </Wrapper>
