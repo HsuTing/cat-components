@@ -33,19 +33,26 @@ export default class Bundle extends React.Component {
   componentWillReceiveProps(nextProps) {
     const {load} = nextProps;
 
-    if(load !== this.props.load)
+    if(this.props.load !== load)
       this.loadMod(load);
+  }
+
+  render() {
+    const {children} = this.props;
+    const {mod} = this.state;
+
+    return (
+      mod ?
+        children(mod) :
+        null
+    );
   }
 
   loadMod(load) {
     this.setState({mod: null});
 
     load(mod => {
-      this.setState({mod: mod.default ? mod.default : mod});
+      this.setState({mod: mod.default || mod});
     });
-  }
-
-  render() {
-    return this.state.mod ? this.props.children(this.state.mod) : null;
   }
 }

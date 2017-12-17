@@ -59,7 +59,10 @@ export default class Template extends React.Component {
   }
 
   animationEnd() {
-    if(!this.state.isShown)
-      this.props.hideSidebar();
+    const {hideSidebar} = this.props;
+    const {isShown} = this.state;
+
+    if(!isShown)
+      hideSidebar();
   }
 }

@@ -20,8 +20,10 @@ class TestRedux extends React.Component {
   };
 
   render() {
+    const {data} = this.props;
+
     return (
-      <div>{`test redux(${this.props.data})`}</div>
+      <div>{`test redux(${data})`}</div>
     );
   }
 }

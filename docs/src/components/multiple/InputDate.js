@@ -47,9 +47,10 @@ class InputDate extends React.Component {
   }
 
   componentDidMount() {
+    const {onChange} = this.props;
     const {value, isError, error} = this.state;
 
-    this.props.onChange({
+    onChange({
       value,
       isError,
       error
@@ -72,9 +73,10 @@ class InputDate extends React.Component {
   }
 
   componentDidUpdate() {
+    const {onChange} = this.props;
     const {value, isError, error} = this.state;
 
-    this.props.onChange({
+    onChange({
       value,
       isError,
       error

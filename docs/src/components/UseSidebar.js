@@ -14,8 +14,10 @@ class UseSidebar extends React.Component {
   }
 
   render() {
+    const {sidebar} = this.props;
+
     return (
-      <Button onClick={this.props.sidebar}>Sidebar</Button>
+      <Button onClick={sidebar}>Sidebar</Button>
     );
   }
 }

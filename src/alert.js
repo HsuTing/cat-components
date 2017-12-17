@@ -49,10 +49,12 @@ export default class Alert extends React.Component {
   }
 
   getChildContext() {
+    const {isShown: alertIsShown} = this.state;
+
     return {
       alert: this.alert,
       hideAlert: this.hide,
-      alertIsShown: this.state.isShown
+      alertIsShown
     };
   }
 

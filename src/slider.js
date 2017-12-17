@@ -133,8 +133,8 @@ export default class Slider extends React.Component {
   }
 
   setValue(start) {
+    const {value: originValue} = this.state;
     const interval = this.node.offsetWidth || 100;
-    const originValue = this.state.value;
 
     return e => {
       const {min, max} = this.props;

@@ -60,9 +60,9 @@ export default class I18n extends React.Component {
   }
 
   render() {
-    return React.Children.only(
-      this.props.children
-    );
+    const {children} = this.props;
+
+    return React.Children.only(children);
   }
 
   changeLanguage(lang) {

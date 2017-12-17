@@ -113,13 +113,14 @@ export default class Menu extends React.Component {
 
   toggleMenu() {
     const {trigger} = this.props;
+    const {isShown} = this.state;
 
     this.init = false;
     if(trigger.includes('hover')) {
       if(!this.isEnter)
-        this.setState({isShown: !this.state.isShown});
+        this.setState({isShown: !isShown});
     } else
-      this.setState({isShown: !this.state.isShown});
+      this.setState({isShown: !isShown});
   }
 
   showMenu() {
@@ -151,6 +152,7 @@ export default class Menu extends React.Component {
 
   animationEnd(e) {
     const {isShown} = this.state;
+
     this.setState({
       addStyle: isShown ? {} : style.hide
     });

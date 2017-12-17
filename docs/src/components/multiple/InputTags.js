@@ -35,10 +35,10 @@ class InputTags extends React.Component {
   }
 
   componentDidMount() {
+    const {onChange, tagsRules} = this.props;
     const {tags} = this.state;
-    const {tagsRules} = this.props;
 
-    this.props.onChange(
+    onChange(
       inputCheck(tags, tagsRules)
     );
   }
@@ -52,8 +52,8 @@ class InputTags extends React.Component {
   }
 
   componentDidUpdate() {
+    const {onChange, tagsRules} = this.props;
     const {value, tags, isError, error} = this.state;
-    const {tagsRules, onChange} = this.props;
     const tagsCheck = inputCheck(tags, tagsRules);
 
     if(value !== '') {

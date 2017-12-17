@@ -29,22 +29,25 @@ export default class Wrapper extends React.Component {
   }
 
   render() {
+    const {children} = this.props;
+
     return this.renderRedux(
       this.renderRouter(
-        React.Children.only(this.props.children)
+        React.Children.only(children)
       )
     );
   }
 
   renderRedux(component) {
-    if(!this.props.redux)
+    const {redux: propsRedux, modules} = this.props;
+
+    if(!propsRedux)
       return component;
 
-    const {redux, reactRedux} = this.props.modules;
+    const {redux, reactRedux} = modules;
     const {createStore, applyMiddleware} = redux;
     const {Provider} = reactRedux;
-
-    const {reducer, preloadedState, enhancer} = this.props.redux;
+    const {reducer, preloadedState, enhancer} = propsRedux;
     let store;
 
     if(preloadedState) {
@@ -71,26 +74,26 @@ export default class Wrapper extends React.Component {
       store = createStore(reducer);
 
     return (
-      <Provider store={store}>
-        {component}
-      </Provider>
+      <Provider store={store}
+      >{component}</Provider>
     );
   }
 
   renderRouter(component) {
-    if(!this.props.router)
+    const {router, modules} = this.props;
+
+    if(!router)
       return component;
 
-    const {reactRouterDom} = this.props.modules;
-    const {isServer, ...routerProps} = this.props.router;
+    const {reactRouterDom} = modules;
+    const {isServer, ...routerProps} = router;
     const Router = reactRouterDom[
       isServer ? 'StaticRouter' : 'BrowserRouter'
     ];
 
     return (
-      <Router {...routerProps}>
-        {component}
-      </Router>
+      <Router {...routerProps}
+      >{component}</Router>
     );
   }
 }

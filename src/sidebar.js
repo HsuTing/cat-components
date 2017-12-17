@@ -81,19 +81,24 @@ export default class Sidebar extends React.Component {
   }
 
   hide() {
+    const {rootStyle} = this.props;
+
     this.setState({
       isShown: false,
-      rootStyle: this.props.rootStyle
+      rootStyle
     });
   }
 
   sidebar() {
-    if(this.state.isShown)
+    const {rootStyle} = this.props;
+    const {isShown} = this.state;
+
+    if(isShown)
       return;
 
     this.setState({
       isShown: true,
-      rootStyle: this.props.rootStyle
+      rootStyle
     });
   }
 
